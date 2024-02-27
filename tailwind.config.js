@@ -59,7 +59,7 @@ const config = {
             },
             dropShadow: {
                 'md-dark': [
-                    '0 4px 3px rgb(255 255 255 / 0.07)',
+                    '0 3px 3px rgb(255 255 255 / 0.07)',
                     '0 2px 2px rgb(255 255 255 / 0.06)'
                 ]
             }

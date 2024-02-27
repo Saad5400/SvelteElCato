@@ -38,7 +38,7 @@
             <Button href="#courses" class="flex-1 text-lg" variant="outline">
                 الدورات
             </Button>
-            <Button class="flex-1 text-lg" variant="outline">
+            <Button href="#posts" class="flex-1 text-lg" variant="outline">
                 المنشورات
             </Button>
             <div>

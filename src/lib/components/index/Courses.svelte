@@ -67,7 +67,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 justify-center items-center">
         {#each colleges as college}
             {#each college.courses as course}
-                <Button variant="ghost" class="min-h-32 flex flex-col drop-shadow-md dark:drop-shadow-md-dark"
+                <Button variant="outline" class="min-h-32 flex flex-col drop-shadow dark:drop-shadow-md-dark"
                         href="/{college.urlName}/{course.urlName}">
                     <span class="text-2xl">
                             {course.displayName}
