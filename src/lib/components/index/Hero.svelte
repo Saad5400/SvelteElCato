@@ -3,12 +3,13 @@
     import Telegram from "$lib/components/icons/Telegram.svelte";
     import Whatsapp from "$lib/components/icons/Whatsapp.svelte";
     import {Button} from "$lib/components/ui/button";
+    import Glitched from "$lib/components/index/Glitched.svelte";
 </script>
 
 <section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center">
     <div>
         <h2 class="mt-10 text-3xl font-semibold first:mt-0 tracking-[0.2em] font-sans">
-            EL CATO
+            <Glitched/>
         </h2>
         <Separator class="my-4"/>
         <div>
