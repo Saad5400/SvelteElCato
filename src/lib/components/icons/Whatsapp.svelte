@@ -1,5 +1,6 @@
 <script>
-    export let classes = "w-5 h-5";
+    let classes = "w-5 h-5";
+    export {classes as class};
 </script>
 
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->

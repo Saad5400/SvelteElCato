@@ -1,11 +1,11 @@
 <script>
-    import Separator from "$lib/components/ui/separator/separator.svelte";
+    import {Separator} from "$lib/components/ui/separator";
     import Telegram from "$lib/components/icons/Telegram.svelte";
     import Whatsapp from "$lib/components/icons/Whatsapp.svelte";
-    import Button from "$lib/components/ui/button/button.svelte";
+    import {Button} from "$lib/components/ui/button";
 </script>
 
-<div class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center">
+<section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center">
     <div>
         <h2 class="mt-10 text-3xl font-semibold first:mt-0 tracking-[0.2em] font-sans">
             EL CATO
@@ -35,10 +35,10 @@
             </p>
         </div>
         <div class="grid gap-2">
-            <Button class="flex-1 text-lg bg-primary/90 hover:bg-primary/80">
+            <Button href="#courses" class="flex-1 text-lg" variant="outline">
                 الدورات
             </Button>
-            <Button class="flex-1 text-lg bg-primary/90 hover:bg-primary/80">
+            <Button class="flex-1 text-lg" variant="outline">
                 المنشورات
             </Button>
             <div>
@@ -46,29 +46,25 @@
                     تواصل معنا:
                 </p>
                 <div class="flex flex-row w-full items-center justify-center gap-2">
-                    <Button class="flex-1 text-lg bg-[#017ACD] text-white hover:bg-[#017ACD]/90">
-                        <a class="flex flex-row items-center justify-center" href="https://t.me/ElCatoCS"
-                           target="_blank" rel="noopener">
-                            <p class="hidden md:inline-block">
-                                تيليجرام
-                            </p>
-                            <Telegram classes="w-5 h-5 ms-2"/>
-                        </a>
+                    <Button class="flex-1 text-lg flex flex-row items-center justify-center"
+                            href="https://t.me/ElCatoCS"
+                            target="_blank" rel="noopener" variant="outline">
+                        <p class="hidden md:inline-block">
+                            تيليجرام
+                        </p>
+                        <Telegram class="w-5 h-5 ms-2"/>
                     </Button>
-                    <Button class="flex-1 text-lg bg-[#278631] hover:bg-[#278631]/90 text-white">
-                        <a class="flex flex-row items-center justify-center" href="https://wa.me/966501321169"
-                           target="_blank" rel="noopener">
-                            <p class="hidden md:inline-block">
-                                واتس اب
-                            </p>
-                            <Whatsapp classes="w-5 h-5 ms-2"/>
-                        </a>
+                    <Button class="flex-1 text-lg flex flex-row items-center justify-center"
+                            href="https://wa.me/966501321169"
+                            target="_blank" rel="noopener" variant="outline">
+                        <p class="hidden md:inline-block">
+                            واتس اب
+                        </p>
+                        <Whatsapp class="w-5 h-5 ms-2"/>
                     </Button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="hidden md:block">
-        <img src="/images/hero.svg" alt="programming illustration" class="w-full h-full dark:invert-[.90]"/>
-    </div>
-</div>
+    <img src="/images/hero.svg" alt="programming illustration" class="w-full h-full dark:invert-[.90] hidden md:block"/>
+</section>
