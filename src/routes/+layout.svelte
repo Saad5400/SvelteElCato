@@ -5,7 +5,7 @@
 
     import Hacking from "$lib/components/index/Hacking.svelte";
 
-    let isHacking = true;
+    let isHacking = false; // TODO: Make it true
 
     setTimeout(() => {
         isHacking = false;
