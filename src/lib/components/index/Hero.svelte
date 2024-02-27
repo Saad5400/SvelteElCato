@@ -1,8 +1,8 @@
 <script>
-    import {Separator} from "$lib/components/ui/separator/index.js";
+    import {Separator} from "$lib/components/ui/separator";
     import Telegram from "$lib/components/icons/Telegram.svelte";
     import Whatsapp from "$lib/components/icons/Whatsapp.svelte";
-    import {Button} from "$lib/components/ui/button/index.js";
+    import {Button} from "$lib/components/ui/button";
 </script>
 
 <section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center">

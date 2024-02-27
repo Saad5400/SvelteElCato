@@ -57,7 +57,7 @@
 
     ]
 
-    import {Button} from "$lib/components/ui/button/index.js";
+    import {Button} from "$lib/components/ui/button";
 </script>
 
 <section id="courses" class="mt-40 scroll-m-20 flex flex-col gap-2">
