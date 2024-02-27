@@ -36,10 +36,10 @@
                 </p>
             </div>
             <div class="grid gap-2">
-                <Button class="flex-1 text-lg">
+                <Button class="flex-1 text-lg bg-primary/90 hover:bg-primary/80">
                     الدورات
                 </Button>
-                <Button class="flex-1 text-lg">
+                <Button class="flex-1 text-lg bg-primary/90 hover:bg-primary/80">
                     المنشورات
                 </Button>
                 <div>
@@ -48,15 +48,17 @@
                     </p>
                     <div class="flex flex-row w-full items-center justify-center gap-2">
                         <Button class="flex-1 text-lg bg-[#017ACD] text-white hover:bg-[#017ACD]/90">
-                            <a class="flex flex-row items-center justify-center" href="https://t.me/ElCatoCS" target="_blank" rel="noopener">
+                            <a class="flex flex-row items-center justify-center" href="https://t.me/ElCatoCS"
+                               target="_blank" rel="noopener">
                                 <p class="hidden md:inline-block">
                                     تيليجرام
                                 </p>
                                 <Telegram classes="w-5 h-5 ms-2"/>
                             </a>
                         </Button>
-                        <Button class="flex-1 text-lg bg-[#278631] hover:bg-[#278631]/90  text-white">
-                            <a class="flex flex-row items-center justify-center" href="https://wa.me/966501321169" target="_blank" rel="noopener">
+                        <Button class="flex-1 text-lg bg-[#278631] hover:bg-[#278631]/90 text-white">
+                            <a class="flex flex-row items-center justify-center" href="https://wa.me/966501321169"
+                               target="_blank" rel="noopener">
                                 <p class="hidden md:inline-block">
                                     واتس اب
                                 </p>
