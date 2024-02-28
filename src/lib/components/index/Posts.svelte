@@ -2,14 +2,15 @@
     import {createTable, Render, Subscribe} from "svelte-headless-table";
     import {readable} from "svelte/store";
     import * as Table from "$lib/components/ui/table";
+    import type {PageData} from "./$types";
+    import Post from "$lib/models/Post";
 
-    export let data;
-    data.items.forEach((item: any) => {
-        item.tags = item.expand.tags;
-        item.expand = undefined;
+    export let data: PageData;
+
+    const posts: Post[] = [];
+    data.items.forEach((post) => {
+        posts.push(new Post(post));
     });
-
-    const posts: App.Post[] = data.items;
     const table = createTable(readable(posts));
 
     const columns = table.createColumns([
@@ -31,17 +32,20 @@
         <Table.Root {...$tableAttrs}>
             <Table.Body {...$tableBodyAttrs}>
                 {#each $pageRows as row (row.id)}
-                    <Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-                        <Table.Row {...rowAttrs}>
-                            {#each row.cells as cell (cell.id)}
-                                <Subscribe attrs={cell.attrs()} let:attrs>
-                                    <Table.Cell {...attrs}>
-                                        <Render of={cell.render()}/>
-                                    </Table.Cell>
-                                </Subscribe>
-                            {/each}
-                        </Table.Row>
-                    </Subscribe>
+                    {@const post = row.original}
+                    <a href="/posts/{post.urlName}" class="contents">
+                        <Subscribe rowAttrs={row.attrs()} let:rowAttrs>
+                            <Table.Row {...rowAttrs}>
+                                {#each row.cells as cell (cell.id)}
+                                    <Subscribe attrs={cell.attrs()} let:attrs>
+                                        <Table.Cell {...attrs} class="text-lg">
+                                            <Render of={cell.render()}/>
+                                        </Table.Cell>
+                                    </Subscribe>
+                                {/each}
+                            </Table.Row>
+                        </Subscribe>
+                    </a>
                 {/each}
             </Table.Body>
         </Table.Root>
