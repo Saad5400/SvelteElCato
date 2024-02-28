@@ -1,19 +1,10 @@
 <div class="wrapper" dir="ltr">
-    <h1 class="glitch">
-        El Cato
+    <h1 class="glitch text-6xl lg:text-8xl">
+        EL CATO
     </h1>
 </div>
 
 <style lang="sass">
-  *
-    margin: 0
-    padding: 0
-
-  body, html
-    width: 100%
-    height: 100%
-    background-color: black
-
   .wrapper
     width: 100%
     height: 100%
@@ -22,21 +13,20 @@
     align-items: center
 
     h1.glitch
-      color: white
+      color: revert
       font-family: sans-serif
       font-weight: 800
       position: relative
-      font-size: 100px
       padding: 30px
 
     h1.glitch::before, h1.glitch::after
       padding: 30px
-      color: white
-      content: "El Cato"
+      color: revert
+      content: "EL CATO"
       position: absolute
       width: 100%
       height: 100%
-      background: black
+      background: inherit
       overflow: hidden
       top: 0
 
