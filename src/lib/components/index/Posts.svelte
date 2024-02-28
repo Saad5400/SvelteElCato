@@ -7,10 +7,7 @@
 
     export let data: PageData;
 
-    const posts: Post[] = [];
-    data.items.forEach((post) => {
-        posts.push(new Post(post));
-    });
+    const posts: Post[] = data.items.map((item: any) => new Post(item));
     const table = createTable(readable(posts));
 
     const columns = table.createColumns([

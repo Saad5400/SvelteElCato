@@ -9,6 +9,6 @@
 
 <div class="container mb-20">
     <Hero/>
-    <Courses/>
+    <Courses data={data.courses}/>
     <Posts data={data.posts}/>
 </div>
