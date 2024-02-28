@@ -1,38 +1,43 @@
-# create-svelte
+# Svelte El Cato
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Is the new website for El Cato. Using SvelteKit for the frontend and Pocketbase for the backend.
 
-## Creating a project
+# Getting started
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Prerequisites
+
+- Node.js v20+
+
+## Installation
+
+Clone the repository, using the terminal or via the GitHub 'Code' > 'Download ZIP' option.
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+git clone https://github.com/Saad5400/SvelteElCato
+cd SvelteElCato
 ```
 
-## Developing
+Install the dependencies:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```bash
+npm install
+```
+
+## Development
+
+Start the pocketbase server:
+
+```bash
+./pocektbase serve
+```
+
+Start the SvelteKit server (in a new terminal):
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+Visit the pocketbase server at [http://127.0.0.1:8090/_/](http://127.0.0.1:8090/_/), create a new Admin user, and add
+some data to the collections.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+You can now visit the SvelteKit server at [http://127.0.0.1:5174](http://127.0.0.1:5174) to see the website.
