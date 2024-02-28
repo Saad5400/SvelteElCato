@@ -3,6 +3,15 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	// @ts-ignore
+	onwarn: (warning, handler) => {
+		// @ts-ignore
+		const { code, frame } = warning;
+		if (code === "css-unused-selector")
+			return;
+
+		handler(warning);
+	},
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),

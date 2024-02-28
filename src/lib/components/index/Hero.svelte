@@ -4,12 +4,13 @@
     import Whatsapp from "$lib/components/icons/Whatsapp.svelte";
     import {Button} from "$lib/components/ui/button";
     import Glitched from "$lib/components/index/Glitched.svelte";
+    import HeroImage from "$lib/components/index/HeroImage.svelte";
 </script>
 
 <section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center">
     <div>
         <h2 class="mt-10 text-3xl font-semibold first:mt-0 tracking-[0.2em] font-sans">
-            <Glitched/>
+            <Glitched class="text-6xl lg:text-8xl">EL CATO</Glitched>
         </h2>
         <Separator class="my-4"/>
         <div>
@@ -67,5 +68,5 @@
             </div>
         </div>
     </div>
-    <img src="/images/hero.svg" alt="programming illustration" class="w-full h-full dark:invert-[.90] hidden md:block"/>
+    <HeroImage/>
 </section>

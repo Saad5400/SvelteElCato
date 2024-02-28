@@ -34,6 +34,7 @@
 		"@sindresorhus/slugify": "^2.2.1",
 		"bits-ui": "^0.18.2",
 		"clsx": "^2.1.0",
+		"highlight.js": "^11.9.0",
 		"lucide-svelte": "^0.341.0",
 		"mode-watcher": "^0.2.1",
 		"pocketbase": "^0.21.1",
