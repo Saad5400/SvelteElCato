@@ -2,8 +2,7 @@
     import type {PageData} from './$types';
     import {Separator} from "$lib/components/ui/separator";
     import Post from "$lib/models/Post";
-    import {Eye} from "lucide-svelte";
-    import Clock from "$lib/components/icons/Clock.svelte";
+    import {Clock, Eye} from "lucide-svelte";
     import {onMount} from "svelte";
     import slugify from '@sindresorhus/slugify';
     import hljs from 'highlight.js';

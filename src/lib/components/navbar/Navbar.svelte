@@ -1,5 +1,7 @@
 <script lang="ts">
+    import {toggleMode} from "mode-watcher";
     import {Button} from "$lib/components/ui/button";
+    import {Moon, Sun} from "lucide-svelte";
 
     export let title: string;
     export let url: string;
@@ -19,22 +21,31 @@
 
             </div>
             <nav class="flex items-center">
-<!--                <a href="https://t.me/ElCatoCS" target="_blank" rel="noreferrer">-->
-<!--                    <div class="inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 rounded-md text-xs w-9 px-0">-->
+                <!--                <a href="https://t.me/ElCatoCS" target="_blank" rel="noreferrer">-->
+                <!--                    <div class="inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 rounded-md text-xs w-9 px-0">-->
 
-<!--                        <span class="sr-only" data-svelte-h="svelte-13ytjzu">Profile</span>-->
-<!--                    </div>-->
-<!--                </a>-->
-                <a href="#" target="_blank" rel="noreferrer">
-                    <div class="inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 rounded-md text-xs w-9 px-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                        </svg>
-                        <span class="sr-only" data-svelte-h="svelte-13ytjzu">Telegram</span>
-                    </div>
-                </a>
+                <!--                        <span class="sr-only" data-svelte-h="svelte-13ytjzu">Profile</span>-->
+                <!--                    </div>-->
+                <!--                </a>-->
+                <!--                <a href="/profile" target="_blank" rel="noreferrer">-->
+                <!--                    <div class="inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 rounded-md text-xs w-9 px-0">-->
+                <!--                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"-->
+                <!--                             stroke="currentColor" class="w-5 h-5">-->
+                <!--                            <path stroke-linecap="round" stroke-linejoin="round"-->
+                <!--                                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>-->
+                <!--                        </svg>-->
+                <!--                        <span class="sr-only" data-svelte-h="svelte-13ytjzu">Telegram</span>-->
+                <!--                    </div>-->
+                <!--                </a>-->
+                <Button on:click={toggleMode} variant="ghost">
+                    <Sun
+                            class="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                    />
+                    <Moon
+                            class="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+                    />
+                    <span class="sr-only">Toggle theme</span>
+                </Button>
             </nav>
         </div>
     </div>
