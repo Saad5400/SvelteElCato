@@ -56,7 +56,7 @@
         animation-timing-function: linear;
         animation-delay: 0s;
         animation-iteration-count: infinite;
-        animation-direction: reverse-alternate;
+        animation-direction: reverse;
     }
 
     .wrapper h1.glitch::after {
@@ -67,7 +67,7 @@
         animation-timing-function: linear;
         animation-delay: 0s;
         animation-iteration-count: infinite;
-        animation-direction: reverse-alternate;
+        animation-direction: reverse;
     }
 
     @keyframes glitch-animation-1 {

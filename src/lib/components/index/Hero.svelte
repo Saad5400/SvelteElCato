@@ -5,6 +5,7 @@
     import {Button} from "$lib/components/ui/button";
     import Glitched from "$lib/components/index/Glitched.svelte";
     import HeroImage from "$lib/components/index/HeroImage.svelte";
+    import Glitched2 from "$lib/components/index/Glitched2.svelte";
 </script>
 
 <section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center">
@@ -68,5 +69,7 @@
             </div>
         </div>
     </div>
-    <HeroImage/>
+    <Glitched2>
+        <HeroImage/>
+    </Glitched2>
 </section>
