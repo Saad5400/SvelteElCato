@@ -1,4 +1,4 @@
-<pre class="text-[0.2rem] tracking-widest hidden md:flex items-center justify-center font-extrabold" dir="ltr">
+<pre class="text-[0.17rem] lg:text-[0.2rem] tracking-[0.2em] hidden md:flex items-center justify-center font-extrabold" dir="ltr">
 
 
 
@@ -154,6 +154,6 @@
 
 <style>
     pre {
-        filter: drop-shadow(0px 0px 0.1rem rgb(0 0 0));
+        text-shadow: 1px 1px 0 #000;
     }
 </style>

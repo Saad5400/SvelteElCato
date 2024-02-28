@@ -5,15 +5,15 @@
     import {Button} from "$lib/components/ui/button";
     import Glitched from "$lib/components/index/Glitched.svelte";
     import HeroImage from "$lib/components/index/HeroImage.svelte";
-    import Glitched2 from "$lib/components/index/Glitched2.svelte";
 </script>
 
-<section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center">
+<br/>
+<section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center gap-16 overflow-x-clip">
     <div>
         <h2 class="mt-10 text-3xl font-semibold first:mt-0 tracking-[0.2em] font-sans">
-            <Glitched class="text-6xl lg:text-8xl">EL CATO</Glitched>
+            <Glitched class="text-6xl lg:text-8xl glitch-always">EL CATO</Glitched>
         </h2>
-        <Separator class="my-4"/>
+        <Separator class="mb-4 mt-12"/>
         <div>
             <h1 class="text-4xl font-extrabold lg:text-5xl">
                 دورات تدريبية مخصصة للبرمجة والمزيد!
@@ -69,7 +69,5 @@
             </div>
         </div>
     </div>
-    <Glitched2>
         <HeroImage/>
-    </Glitched2>
 </section>
