@@ -3,116 +3,14 @@
     import {readable} from "svelte/store";
     import * as Table from "$lib/components/ui/table";
 
-    type Tag = {
-        displayName: string;
-    };
+    export let data;
+    data.items.forEach((item: any) => {
+        item.tags = item.expand.tags;
+        item.expand = undefined;
+    });
 
-    type Post = {
-        displayName: string;
-        // urlName: string;
-        tags: Tag[];
-    };
-
-    const data: Post[] = [
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-        {
-            displayName: "تحميل جافا",
-            tags: [],
-        },
-        {
-            displayName: "تحميل بايثون",
-            tags: [],
-        },
-    ];
-
-    const table = createTable(readable(data));
+    const posts: App.Post[] = data.items;
+    const table = createTable(readable(posts));
 
     const columns = table.createColumns([
         table.column({

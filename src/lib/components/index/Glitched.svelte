@@ -48,7 +48,7 @@
       animation-timing-function: linear
       animation-delay: 0s
       animation-iteration-count: infinite
-      animation-direction: reverse-alternate
+      animation-direction: reverse
 
     h1.glitch::after
       left: -3px
@@ -58,17 +58,17 @@
       animation-timing-function: linear
       animation-delay: 0s
       animation-iteration-count: infinite
-      animation-direction: reverse-alternate
+      animation-direction: reverse
 
   @keyframes glitch-animation-1
     $steps: 20
     @for $i from 0 through $steps
-      #{percentage($i*(1/$steps))}
+      #{percentage($i*(calc(1/$steps)))}
         clip: rect(random(150)+px, 400px, random(150)+px, 30px)
 
   @keyframes glitch-animation-2
     $steps: 20
     @for $i from 0 through $steps
-      #{percentage($i*(1/$steps))}
+      #{percentage($i*(calc(1/$steps)))}
         clip: rect(random(150)+px, 400px, random(150)+px, 30px)
 </style>

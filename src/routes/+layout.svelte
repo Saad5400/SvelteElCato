@@ -2,7 +2,6 @@
     import "../app.pcss";
     import {ModeWatcher} from "mode-watcher";
     import Navbar from "$lib/components/navbar/Navbar.svelte";
-
     import Hacking from "$lib/components/index/Hacking.svelte";
 
     let isHacking = false; // TODO: Make it true
