@@ -25,10 +25,16 @@ npm install
 
 ## Development
 
+Create a `.env` file in the root of the project with the following content (replace the URL with the URL of your Pocketbase)
+
+```env
+PUBLIC_POCKETBASE_URL=http://127.0.0.1:8090/
+```
+
 Start the pocketbase server:
 
 ```bash
-./pocektbase serve
+.\pocketbase.exe serve
 ```
 
 Start the SvelteKit server (in a new terminal):
