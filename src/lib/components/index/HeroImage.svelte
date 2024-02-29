@@ -7,9 +7,13 @@
 
     $: if (pre) pre.innerText = lines.join('\n');
 
+	function getRandomIndex(length: number) {
+		return Math.floor(Math.random() * length);
+	}
+
     function getRandomLetter() {
         const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?                                                                                                 ';
-        return letters[Math.floor(Math.random() * letters.length)];
+        return letters[getRandomIndex(letters.length)];
     }
 
     function getRandomLine(length: number) {
@@ -26,8 +30,14 @@
         let pending: number[] = lines.map((_, i) => i);
         let done: number[] = [];
         inter = setInterval(() => {
+
+			let randomLines: number[] = [];
+			for (let i = 0; i < 50; i++) {
+				randomLines.push(getRandomIndex(lines.length));
+			}
+
             for (let i = 0; i < lines.length; i++) {
-                if (done.includes(i)) {
+                if (done.includes(i) && !randomLines.includes(i)) {
                     lines[i] = originalLines[i];
                     continue;
                 }
