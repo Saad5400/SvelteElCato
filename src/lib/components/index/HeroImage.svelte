@@ -55,7 +55,7 @@
     })
 </script>
 
-<pre class="text-[0.17rem] lg:text-[0.2rem] tracking-[0.2em] hidden items-center justify-center font-extrabold"
+<pre class="text-[0.15rem] lg:text-[0.17rem] xl:text-[0.2rem] tracking-[0.2em] hidden items-center justify-center font-extrabold"
      dir="ltr" bind:this={pre}>
 
 
