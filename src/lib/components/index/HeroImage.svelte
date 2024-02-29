@@ -32,8 +32,11 @@
         inter = setInterval(() => {
 
 			let randomLines: number[] = [];
-			for (let i = 0; i < 50; i++) {
-				randomLines.push(getRandomIndex(lines.length));
+			for (let i = 0; i < 25; i++) {
+                const randomIndex = getRandomIndex(lines.length);
+                if (randomIndex > lines.length - 14 || randomIndex < 10) continue;
+
+				randomLines.push(randomIndex);
 			}
 
             for (let i = 0; i < lines.length; i++) {
@@ -47,7 +50,7 @@
             const index = pending[randomIndex];
             pending.splice(randomIndex, 1);
             done.push(index);
-        }, 100);
+        }, 50);
     })
 
     onDestroy(() => {
