@@ -16,16 +16,18 @@
     </h2>
     <Accordion.Root>
         <Accordion.Item value="item-1">
-            <!--            <Accordion.Trigger>Is it accessible?</Accordion.Trigger>-->
-            <!--            <Accordion.Content>-->
-            <!--                Yes. It adheres to the WAI-ARIA design pattern.-->
-            <!--            </Accordion.Content>-->
             {#each course.tracks as track}
                 <Accordion.Trigger>
                     {track.displayName}
                 </Accordion.Trigger>
                 <Accordion.Content>
-                    Hi
+                    {#each track.links as link}
+                        <div>
+                            <a href={link.url}>
+                                {link.displayName}
+                            </a>
+                        </div>
+                    {/each}
                 </Accordion.Content>
             {/each}
         </Accordion.Item>
