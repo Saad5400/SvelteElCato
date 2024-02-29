@@ -30,7 +30,7 @@ npm install
 
 Checkout the components library, [shadcn-svelte](https://www.shadcn-svelte.com/)
 
-Create a `.env` file in the root of the project with the following content (replace the URL with the URL of your Pocketbase)
+Create a `.env` file in the root of the project with the following content (replace the URL with the URL of your Pocketbase).
 
 ```env
 PUBLIC_POCKETBASE_URL=http://127.0.0.1:8090/
