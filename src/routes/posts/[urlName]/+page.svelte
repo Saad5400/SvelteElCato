@@ -3,27 +3,33 @@
     import {Separator} from "$lib/components/ui/separator";
     import Post from "$lib/models/Post";
     import {Clock, Eye} from "lucide-svelte";
-    import {onMount} from "svelte";
     import slugify from '@sindresorhus/slugify';
     import hljs from 'highlight.js';
     import java from 'highlight.js/lib/languages/java';
+    import {onMount} from "svelte";
 
     export let data: PageData;
     const post = new Post(data.post);
 
     let article: HTMLElement;
+    let link: HTMLLinkElement;
+    const linkId = 'highlightjs-style';
 
     onMount(async () => {
         article.style.display = 'none';
 
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        if (document.getElementsByTagName('html')[0].classList.contains('dark')) {
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.min.css';
-        } else {
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/classic-light.min.css';
+        link = document.getElementById(linkId) as HTMLLinkElement;
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.id = linkId;
+            document.head.appendChild(link);
         }
-        document.head.appendChild(link);
+        if (document.getElementsByTagName('html')[0].classList.contains('dark'))
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.min.css';
+        else
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/classic-light.min.css';
+
 
         article.innerHTML = post.content;
         const h1s = article.getElementsByTagName('h1');
