@@ -40,6 +40,8 @@ Start the pocketbase server:
 
 ```bash
 .\pocketbase.exe serve # Windows PowerShell
+pocketbase serve # Windows Command Prompt
+./pocketbase serve # Linux / macOS / Bash
 ```
 
 Start the SvelteKit server (in a new terminal):
