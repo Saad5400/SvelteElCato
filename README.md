@@ -40,4 +40,4 @@ npm run dev
 Visit the pocketbase server at [http://127.0.0.1:8090/_/](http://127.0.0.1:8090/_/), create a new Admin user, and add
 some data to the collections.
 
-You can now visit the SvelteKit server at [http://127.0.0.1:5174](http://127.0.0.1:5174) to see the website.
+You can now visit the SvelteKit server at [http://127.0.0.1:5173](http://127.0.0.1:5173) to see the website.

@@ -1,4 +1,52 @@
-<pre class="text-[0.17rem] lg:text-[0.2rem] tracking-[0.2em] hidden md:flex items-center justify-center font-extrabold" dir="ltr">
+<script lang="ts">
+    import {onDestroy, onMount} from "svelte";
+
+    let pre: HTMLPreElement;
+    let lines: string[] = [];
+    let originalLines: string[] = [];
+
+    $: if (pre) pre.innerText = lines.join('\n');
+
+    function getRandomLetter() {
+        const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?                                                                                                 ';
+        return letters[Math.floor(Math.random() * letters.length)];
+    }
+
+    function getRandomLine(length: number) {
+        return Array.from({length}, getRandomLetter).join('');
+    }
+
+    let inter: any;
+    onMount(async () => {
+        originalLines = pre.innerText.split('\n');
+        const maxLineLength = Math.max(...originalLines.map(line => line.length));
+        lines = originalLines.map(line => getRandomLine(maxLineLength));
+        pre.classList.add('md:flex');
+
+        let pending: number[] = lines.map((_, i) => i);
+        let done: number[] = [];
+        inter = setInterval(() => {
+            for (let i = 0; i < lines.length; i++) {
+                if (done.includes(i)) {
+                    lines[i] = originalLines[i];
+                    continue;
+                }
+                lines[i] = getRandomLine(maxLineLength);
+            }
+            const randomIndex = Math.floor(Math.random() * pending.length);
+            const index = pending[randomIndex];
+            pending.splice(randomIndex, 1);
+            done.push(index);
+        }, 100);
+    })
+
+    onDestroy(() => {
+        clearInterval(inter);
+    })
+</script>
+
+<pre class="text-[0.17rem] lg:text-[0.2rem] tracking-[0.2em] hidden items-center justify-center font-extrabold"
+     dir="ltr" bind:this={pre}>
 
 
 
