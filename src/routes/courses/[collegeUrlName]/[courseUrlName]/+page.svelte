@@ -5,7 +5,6 @@
 
     export let data: PageData;
     const course = new Course(data.course);
-    console.log(course);
 </script>
 
 <div class="container">

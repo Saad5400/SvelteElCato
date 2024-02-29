@@ -17,6 +17,6 @@ export default class Course extends BaseModel {
         this.order = data.order;
         this.description = data.description;
         this.college = new College(data.expand.college);
-        this.tracks = data.expand.tracks.map((track: any) => new Track(track));
+        this.tracks = data.expand?.tracks?.map((track: any) => new Track(track));
     }
 }
