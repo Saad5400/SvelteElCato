@@ -13,6 +13,8 @@ const buttonVariants = tv({
 			secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
 			ghost: "hover:bg-accent hover:text-accent-foreground",
 			link: "text-primary underline-offset-4 hover:underline",
+			outline3D: "border-input bg-background hover:bg-accent hover:text-accent-foreground border-0 border-r-4 border-b-4 hover:border-r-2 hover:border-b-2 transition-all",
+			outline3DLarge: "border-input bg-background hover:bg-accent hover:text-accent-foreground border-0 border-r-8 border-b-8 hover:border-r-4 hover:border-b-4 transition-all",
 		},
 		size: {
 			default: "h-10 px-4 py-2",

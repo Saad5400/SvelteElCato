@@ -38,10 +38,10 @@
             </p>
         </div>
         <div class="grid gap-2">
-            <Button href="#courses" class="flex-1 text-lg" variant="outline">
+            <Button href="#courses" class="flex-1 text-lg" variant="outline3D">
                 الدورات
             </Button>
-            <Button href="#posts" class="flex-1 text-lg" variant="outline">
+            <Button href="#posts" class="flex-1 text-lg" variant="outline3D">
                 المنشورات
             </Button>
             <div>
@@ -51,7 +51,7 @@
                 <div class="flex flex-row w-full items-center justify-center gap-2">
                     <Button class="flex-1 text-lg flex flex-row items-center justify-center"
                             href="https://t.me/ElCatoCS"
-                            target="_blank" rel="noopener" variant="outline">
+                            target="_blank" rel="noopener" variant="outline3D">
                         <p class="hidden md:inline-block">
                             تيليجرام
                         </p>
@@ -59,7 +59,7 @@
                     </Button>
                     <Button class="flex-1 text-lg flex flex-row items-center justify-center"
                             href="https://wa.me/966501321169"
-                            target="_blank" rel="noopener" variant="outline">
+                            target="_blank" rel="noopener" variant="outline3D">
                         <p class="hidden md:inline-block">
                             واتس اب
                         </p>
