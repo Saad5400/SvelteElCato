@@ -10,8 +10,8 @@
 <br/>
 <section class="grid md:grid-cols-2 min-h-[calc(100dvh-15rem)] items-center justify-center gap-32 overflow-x-clip">
     <div>
-        <h2 class="mt-10 text-3xl font-semibold first:mt-0 tracking-[0.2em] font-sans">
-            <Glitched class="text-6xl lg:text-8xl glitch-always">EL CATO</Glitched>
+        <h2 class="mt-10">
+            <Glitched class="text-7xl lg:text-9xl font-extrabold tracking-[0.2em] glitch-always">EL CATO</Glitched>
         </h2>
         <Separator class="mb-4 mt-12"/>
         <div>
