@@ -46,7 +46,6 @@
         original = pre.innerText;
         current = original;
         randomizeText();
-        pre.classList.remove('hidden');
 
         randomizeInter = setInterval(() => {
             randomizeText();
@@ -63,8 +62,8 @@
     })
 </script>
 
-<pre class="text-[0.15rem] lg:text-[0.17rem] xl:text-[0.2rem] tracking-[0.2em] hidden items-center justify-center font-extrabold"
-     dir="ltr" bind:this={pre}>
+<figure dir="ltr" class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center">
+    <pre class="text-[0.15rem] lg:text-[0.17rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold" bind:this={pre}>
 
 
 
@@ -217,6 +216,7 @@
 
 
 </pre>
+</figure>
 
 <style>
     pre {

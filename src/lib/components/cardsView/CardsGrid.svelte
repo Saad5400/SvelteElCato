@@ -3,7 +3,7 @@
     export let title = '';
 </script>
 
-<section {id} class="mt-40 scroll-m-20 flex flex-col gap-2">
+<section {id} class="scroll-m-20 flex flex-col gap-2">
     {#if title}
         <h3 class="text-2xl font-semibold">
             {title}

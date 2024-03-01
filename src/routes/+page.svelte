@@ -5,6 +5,7 @@
     import Card from "$lib/components/cardsView/Card.svelte";
     import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
     import Course from "$lib/models/Course";
+    import {Separator} from "$lib/components/ui/separator";
 
     export let data: PageData;
     const courses = data.courses.items.map((course: any) => new Course(course));
@@ -12,6 +13,7 @@
 
 <div class="container mb-20">
     <Hero/>
+    <Separator class="my-20"/>
     <!-- Courses -->
     <CardsGrid id="courses" title="الدورات">
         {#each courses as course}
