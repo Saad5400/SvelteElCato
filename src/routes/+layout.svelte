@@ -6,5 +6,5 @@
 
 <ModeWatcher/>
 
-<Navbar title="الرئيسية" url="/"/>
+<Navbar/>
 <slot/>

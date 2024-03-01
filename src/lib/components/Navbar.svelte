@@ -1,21 +1,61 @@
 <script lang="ts">
     import {toggleMode} from "mode-watcher";
     import {Button} from "$lib/components/ui/button";
-    import {Moon, Sun} from "lucide-svelte";
+    import {Menu, Moon, StepBack, Sun} from "lucide-svelte";
+    import {page} from "$app/stores";
+    import * as Sheet from "$lib/components/ui/sheet";
+    import navStore from "$lib/stores/navStore";
 
-    export let title: string;
-    export let url: string;
+    function getBackUrl(route: string): string {
+        switch (route) {
+            case "/":
+                return "";
+            case "/courses/[collegeUrlName]/[courseUrlName]/[trackUrlName]":
+                return `/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}`;
+            default:
+                return "/";
+        }
+    }
+
+    $: url = getBackUrl($page.route.id!);
 </script>
 
 <header class="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
     <div class="container flex h-14 max-w-screen-2xl items-center px-2">
-        <div class="">
+        {#if url}
             <a href="{url}" class="mr-4 flex items-center space-x-2">
-                <span class="font-bold inline-block">
-                    {title}
-                </span>
+                    <span class="font-bold inline-block">
+                        <Button size="icon" variant="ghost">
+                            <StepBack class="h-4 w-4 rotate-180"/>
+                        </Button>
+                    </span>
             </a>
-        </div>
+        {/if}
+        {#if $navStore.title && $navStore.items.length > 0}
+            <div class="contents md:hidden ">
+                <Sheet.Root>
+                    <Sheet.Trigger>
+                        <Button size="icon" variant="ghost">
+                            <Menu class="h-4 w-4"/>
+                        </Button>
+                    </Sheet.Trigger>
+                    <Sheet.Content>
+                        <Sheet.Header>
+                            <Sheet.Title>
+                                {$navStore.title}
+                            </Sheet.Title>
+                            <Sheet.Description>
+                                {#each $navStore.items as item}
+                                    <a href={item.href} class="block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100">
+                                        {item.title}
+                                    </a>
+                                {/each}
+                            </Sheet.Description>
+                        </Sheet.Header>
+                    </Sheet.Content>
+                </Sheet.Root>
+            </div>
+        {/if}
         <div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <div class="w-full flex-1 md:w-auto md:flex-none">
 
@@ -37,7 +77,7 @@
                 <!--                        <span class="sr-only" data-svelte-h="svelte-13ytjzu">Telegram</span>-->
                 <!--                    </div>-->
                 <!--                </a>-->
-                <Button on:click={toggleMode} variant="ghost">
+                <Button on:click={toggleMode} variant="ghost" size="icon">
                     <Sun
                             class="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
                     />

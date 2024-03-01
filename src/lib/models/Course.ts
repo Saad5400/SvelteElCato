@@ -7,7 +7,7 @@ export default class Course extends BaseModel {
     urlName: string;
     order: number;
     description: string;
-    college: College | null;
+    college: College;
     tracks: Track[];
 
     constructor(data: any) {
@@ -16,7 +16,7 @@ export default class Course extends BaseModel {
         this.urlName = data.urlName;
         this.order = data.order;
         this.description = data.description;
-        this.college = data.expand?.college ? new College(data.expand.college) : null;
+        this.college = data.expand?.college ? new College(data.expand.college) : null!;
         this.tracks = data.expand?.tracks?.map((track: any) => new Track(track)).sort((a: Track, b: Track) => a.order - b.order) || [];
     }
 }

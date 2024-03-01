@@ -4,23 +4,22 @@
     import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
     import Card from "$lib/components/cardsView/Card.svelte";
     import {Separator} from "$lib/components/ui/separator";
+    import {page} from "$app/stores";
 
     export let data: PageData;
-    console.log(data);
-    const course = new Course(data.course);
 </script>
 
 <div class="container">
     <h1>
-        {course.displayName}
+        {data.course.displayName}
     </h1>
     <Separator class="my-4 opacity-0"/>
     <CardsGrid title="المسارات">
-        {#each course.tracks as track}
+        {#each data.course.tracks as track}
             <Card
                     title={track.displayName}
                     subtitle={track.description}
-                    href={`./${track.id}`}
+                    href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
             />
         {/each}
     </CardsGrid>

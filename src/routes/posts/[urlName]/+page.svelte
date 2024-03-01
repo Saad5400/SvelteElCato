@@ -9,7 +9,6 @@
     import {onMount} from "svelte";
 
     export let data: PageData;
-    const post = new Post(data.post);
 
     let article: HTMLElement;
     let link: HTMLLinkElement;
@@ -31,7 +30,7 @@
             link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/classic-light.min.css';
 
 
-        article.innerHTML = post.content;
+        article.innerHTML = data.post.content;
         const h1s = article.getElementsByTagName('h1');
         for (let i = 0; i < h1s.length; i++) {
             const h1 = h1s[i];
@@ -48,21 +47,21 @@
 <div class="container">
     <div class="w-fit">
         <h1>
-            {post.displayName}
+            {data.post.displayName}
         </h1>
         <Separator class="mt-4 mb-1"/>
         <small class="flex flex-row justify-between items-center">
             <span dir="ltr">
-                {post.updated.toLocaleString()}
+                {data.post.updated.toLocaleString()}
             </span>
             <span class="flex flex-row items-center justify-center gap-2">
                 <span class="flex flex-row items-center justify-center gap-1">
                     <Clock class="w-3 h-3"/>
-                    {post.readTime}
+                    {data.post.readTime}
                 </span>
                 <span class="flex flex-row items-center justify-center gap-1">
                     <Eye class="w-3 h-3"/>
-                    {post.views}
+                    {data.post.views}
                 </span>
             </span>
         </small>

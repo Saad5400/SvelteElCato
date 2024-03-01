@@ -8,7 +8,6 @@
     import {Separator} from "$lib/components/ui/separator";
 
     export let data: PageData;
-    const courses = data.courses.items.map((course: any) => new Course(course));
 </script>
 
 <div class="container mb-20">
@@ -16,7 +15,7 @@
     <Separator class="my-20 opacity-0"/>
     <!-- Courses -->
     <CardsGrid id="courses" title="الدورات">
-        {#each courses as course}
+        {#each data.courses as course}
             <Card
                 href="courses/{course.college.urlName}/{course.urlName}"
                 title={course.displayName}
@@ -27,5 +26,5 @@
     </CardsGrid>
 
     <!-- Posts -->
-    <Posts data={data.posts}/>
+    <Posts posts={data.posts}/>
 </div>

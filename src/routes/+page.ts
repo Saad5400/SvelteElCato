@@ -1,10 +1,12 @@
 import type {PageLoad} from './$types';
+import Course from "$lib/models/Course";
+import Post from "$lib/models/Post";
 
 export const load: PageLoad = async ({parent}) => {
     const {pb} = await parent();
 
     return {
-        posts: await pb.collection('posts').getList(1, 10, {expand: 'tags'}),
-        courses: await pb.collection('courses').getList(1, 10, {expand: 'college'}),
+        posts: Post.toClassList(await pb.collection('posts').getList(1, 10, {expand: 'tags'})),
+        courses: Course.toClassList(await pb.collection('courses').getList(1, 10, {expand: 'college'}))
     }
 };

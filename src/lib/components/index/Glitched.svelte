@@ -40,12 +40,12 @@
     }
 
     &:before {
-      color: #0ff;
+      @apply text-accent-foreground/50;
       z-index: -1;
     }
 
     &:after {
-      color: #f0f;
+      @apply text-destructive-foreground/50;
       z-index: -2;
     }
   }

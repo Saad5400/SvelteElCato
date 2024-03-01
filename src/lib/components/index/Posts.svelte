@@ -6,9 +6,8 @@
     import Post from "$lib/models/Post";
     import BetweenLines from "$lib/components/BetweenLines.svelte";
 
-    export let data: PageData;
+    export let posts: PageData;
 
-    const posts: Post[] = data.items.map((item: any) => new Post(item));
     const table = createTable(readable(posts));
 
     const columns = table.createColumns([
