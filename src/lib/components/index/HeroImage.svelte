@@ -4,6 +4,7 @@
     let pre: HTMLPreElement;
     let current: string;
     let original: string;
+    let preserve: number[] = [];
     $: if (pre) pre.innerText = current;
 
     function getRandomIndex(length: number) {
@@ -16,26 +17,49 @@
     }
 
     function randomizeText() {
-        current = [...original].map((letter) => {
-            if ([' ', '\n', '\t', '\r'].includes(letter)) return letter;
+        current = [...original].map((letter, index) => {
+            if ([' ', '\n', '\t', '\r'].includes(letter) || preserve.includes(index)) return letter;
             return getRandomLetter();
         }).join('');
     }
 
-    let inter: any;
+    function preserveText() {
+        if (preserve.length < original.length) {
+            let randomIndex = getRandomIndex(original.length);
+            while (preserve.includes(randomIndex)) {
+                randomIndex = getRandomIndex(original.length);
+            }
+            for (let i = -50; i <= 50; i++) {
+                const index = randomIndex + i;
+                if (index < 0 || index >= original.length || preserve.includes(index)) continue;
+                preserve.push(index);
+            }
+        } else {
+            clearInterval(randomizeInter);
+            clearInterval(preserveInter);
+        }
+    }
+
+    let randomizeInter: any;
+    let preserveInter: any;
     onMount(async () => {
         original = pre.innerText;
         current = original;
         randomizeText();
         pre.classList.remove('hidden');
 
-        inter = setInterval(() => {
+        randomizeInter = setInterval(() => {
             randomizeText();
+        }, 100)
+
+        preserveInter = setInterval(() => {
+            preserveText();
         }, 100)
     })
 
     onDestroy(() => {
-        clearInterval(inter);
+        clearInterval(randomizeInter);
+        clearInterval(preserveInter);
     })
 </script>
 
