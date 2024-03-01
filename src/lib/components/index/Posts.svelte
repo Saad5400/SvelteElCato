@@ -4,6 +4,7 @@
     import * as Table from "$lib/components/ui/table";
     import type {PageData} from "./$types";
     import Post from "$lib/models/Post";
+    import BetweenLines from "$lib/components/BetweenLines.svelte";
 
     export let data: PageData;
 
@@ -22,9 +23,9 @@
 </script>
 
 <section id="posts" class="mt-24 scroll-m-20 flex flex-col gap-2">
-    <h3 class="text-2xl font-semibold">
+    <BetweenLines>
         المنشورات
-    </h3>
+    </BetweenLines>
     <div class="rounded-md border">
         <Table.Root {...$tableAttrs}>
             <Table.Body {...$tableBodyAttrs}>

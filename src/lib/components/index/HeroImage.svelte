@@ -62,7 +62,8 @@
     })
 </script>
 
-<figure dir="ltr" class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center">
+<figure dir="ltr"
+        class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center">
     <pre class="text-[0.15rem] lg:text-[0.17rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold" bind:this={pre}>
 
 
@@ -220,6 +221,9 @@
 
 <style>
     pre {
-        text-shadow: 1px 1px 0 #000;
+        text-shadow: 1px 1px 0 #000,
+        -1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000;
     }
 </style>

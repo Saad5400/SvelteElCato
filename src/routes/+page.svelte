@@ -13,7 +13,7 @@
 
 <div class="container mb-20">
     <Hero/>
-    <Separator class="my-20"/>
+    <Separator class="my-20 opacity-0"/>
     <!-- Courses -->
     <CardsGrid id="courses" title="الدورات">
         {#each courses as course}
