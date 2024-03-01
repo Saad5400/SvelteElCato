@@ -2,55 +2,36 @@
     import {onDestroy, onMount} from "svelte";
 
     let pre: HTMLPreElement;
-    let lines: string[] = [];
-    let originalLines: string[] = [];
+    let current: string;
+    let original: string;
+    $: if (pre) pre.innerText = current;
 
-    $: if (pre) pre.innerText = lines.join('\n');
-
-	function getRandomIndex(length: number) {
-		return Math.floor(Math.random() * length);
-	}
+    function getRandomIndex(length: number) {
+        return Math.floor(Math.random() * length);
+    }
 
     function getRandomLetter() {
-        const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?                                                                                                 ';
+        const letters = '01';
         return letters[getRandomIndex(letters.length)];
     }
 
-    function getRandomLine(length: number) {
-        return Array.from({length}, getRandomLetter).join('');
+    function randomizeText() {
+        current = [...original].map((letter) => {
+            if ([' ', '\n', '\t', '\r'].includes(letter)) return letter;
+            return getRandomLetter();
+        }).join('');
     }
 
     let inter: any;
     onMount(async () => {
-        originalLines = pre.innerText.split('\n');
-        const maxLineLength = Math.max(...originalLines.map(line => line.length));
-        lines = originalLines.map(line => getRandomLine(maxLineLength));
-        pre.classList.add('md:flex');
+        original = pre.innerText;
+        current = original;
+        randomizeText();
+        pre.classList.remove('hidden');
 
-        let pending: number[] = lines.map((_, i) => i);
-        let done: number[] = [];
         inter = setInterval(() => {
-
-			let randomLines: number[] = [];
-			for (let i = 0; i < 25; i++) {
-                const randomIndex = getRandomIndex(lines.length);
-                if (randomIndex > lines.length - 14 || randomIndex < 10) continue;
-
-				randomLines.push(randomIndex);
-			}
-
-            for (let i = 0; i < lines.length; i++) {
-                if (done.includes(i) && !randomLines.includes(i)) {
-                    lines[i] = originalLines[i];
-                    continue;
-                }
-                lines[i] = getRandomLine(maxLineLength);
-            }
-            const randomIndex = Math.floor(Math.random() * pending.length);
-            const index = pending[randomIndex];
-            pending.splice(randomIndex, 1);
-            done.push(index);
-        }, 50);
+            randomizeText();
+        }, 100)
     })
 
     onDestroy(() => {
