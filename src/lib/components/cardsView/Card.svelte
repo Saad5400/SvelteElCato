@@ -7,11 +7,12 @@
     export let title = "";
     export let subtitle = "";
     export let description = "";
+    export let dataSveltekitPreloadData: true | "" | "hover" | "tap" | "off" | null | undefined = "hover";
 
     export {className as class}
 </script>
 
-<Button class={className} {variant} {href}>
+<Button class={className} {variant} {href} data-sveltekit-preload-data={dataSveltekitPreloadData}>
     {#if title}
         <span class="text-2xl">
             {title}

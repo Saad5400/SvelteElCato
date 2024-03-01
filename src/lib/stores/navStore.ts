@@ -5,7 +5,7 @@ type NavStore = {
     items: NavItem[];
 };
 
-type NavItem = {
+export type NavItem = {
     title: string;
     href: string;
 };

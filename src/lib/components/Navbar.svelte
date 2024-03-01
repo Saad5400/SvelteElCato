@@ -11,6 +11,7 @@
             case "/":
                 return "";
             case "/courses/[collegeUrlName]/[courseUrlName]/[trackUrlName]":
+            case "/courses/[collegeUrlName]/[courseUrlName]/[trackUrlName]/[stepId]":
                 return `/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}`;
             default:
                 return "/";
@@ -32,7 +33,7 @@
             </a>
         {/if}
         {#if $navStore.title && $navStore.items.length > 0}
-            <div class="contents md:hidden ">
+            <div class="contents lg:hidden ">
                 <Sheet.Root>
                     <Sheet.Trigger>
                         <Button size="icon" variant="ghost">
@@ -46,9 +47,9 @@
                             </Sheet.Title>
                             <Sheet.Description>
                                 {#each $navStore.items as item}
-                                    <a href={item.href} class="block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100">
+                                    <Button href={item.href} class="block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start">
                                         {item.title}
-                                    </a>
+                                    </Button>
                                 {/each}
                             </Sheet.Description>
                         </Sheet.Header>

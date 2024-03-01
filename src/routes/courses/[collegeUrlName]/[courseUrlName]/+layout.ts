@@ -12,7 +12,7 @@ export const load: LayoutLoad = async ({parent, params, fetch}) => {
                         courseUrlName: params.courseUrlName,
                         collegeUrlName: params.collegeUrlName
                     }),
-                    {expand: 'college,tracks'}
+                    {expand: 'college,tracks,tracks.steps'}
                 )
         )
     }
