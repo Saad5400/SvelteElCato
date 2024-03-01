@@ -54,3 +54,27 @@ Visit the pocketbase server at [http://127.0.0.1:8090/_/](http://127.0.0.1:8090/
 some data to the collections.
 
 You can now visit the SvelteKit server at [http://127.0.0.1:5173](http://127.0.0.1:5173) to see the website.
+
+## Deployment
+
+### Backend (Pocketbase)
+
+Deploy
+
+```bash
+cd pb
+flyctl deploy
+```
+
+Download backup
+
+```bash
+# this will register a ssh key with your local agent (if you haven't already)
+flyctl ssh issue --agent
+
+# proxies connections to a fly VM through a Wireguard tunnel
+flyctl proxy 10022:22
+
+# run in a separate terminal to copy the pb_data directory
+scp -r -P 10022 root@localhost:/pb/pb_data  /your/local/pb_data
+```
