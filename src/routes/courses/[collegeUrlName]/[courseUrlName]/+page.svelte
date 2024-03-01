@@ -19,7 +19,7 @@
             <Card
                     title={track.displayName}
                     subtitle={track.description}
-                    href={`/courses/${course.id}/tracks/${track.id}`}
+                    href={`./${track.id}`}
             />
         {/each}
     </CardsGrid>
