@@ -4,7 +4,7 @@ export default class Step extends BaseModel {
     displayName: string;
     linked: string;
     order: number;
-    type: "external" | "lesson" | "post";
+    type: "external" | "lesson" | "post" | "youtube";
 
     constructor(data: any) {
         super(data);

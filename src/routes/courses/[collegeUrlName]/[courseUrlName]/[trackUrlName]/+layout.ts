@@ -17,5 +17,7 @@ export const load: LayoutLoad = async ({parent, params, fetch}) => {
         items: navItems
     });
 
-    return {}
+    return {
+        track
+    }
 };
