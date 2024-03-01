@@ -15,7 +15,7 @@
         </h2>
         <Separator class="mb-4 mt-12"/>
         <div>
-            <h1 class="text-4xl font-extrabold lg:text-5xl">
+            <h1 class="text-2xl sm:text-3xl font-extrabold xl:text-4xl text-center">
                 دورات تدريبية مخصصة للبرمجة والمزيد!
             </h1>
             <p class="my-4 text-lg">
@@ -38,20 +38,20 @@
             </p>
         </div>
         <div class="grid gap-2">
-            <Button href="#courses" class="flex-1 text-lg" variant="outline3D">
+            <Button href="#courses" class="flex-1 text-lg">
                 الدورات
             </Button>
-            <Button href="#posts" class="flex-1 text-lg" variant="outline3D">
+            <Button href="#posts" class="flex-1 text-lg">
                 المنشورات
             </Button>
             <div>
-                <p>
+                <p class="text-muted-foreground">
                     تواصل معنا:
                 </p>
                 <div class="flex flex-row w-full items-center justify-center gap-2">
                     <Button class="flex-1 text-lg flex flex-row items-center justify-center"
                             href="https://t.me/ElCatoCS"
-                            target="_blank" rel="noopener" variant="outline3D">
+                            target="_blank" rel="noopener">
                         <p class="hidden md:inline-block">
                             تيليجرام
                         </p>
@@ -59,7 +59,7 @@
                     </Button>
                     <Button class="flex-1 text-lg flex flex-row items-center justify-center"
                             href="https://wa.me/966501321169"
-                            target="_blank" rel="noopener" variant="outline3D">
+                            target="_blank" rel="noopener">
                         <p class="hidden md:inline-block">
                             واتس اب
                         </p>

@@ -1,14 +1,29 @@
 <script lang="ts">
     import Hero from "$lib/components/index/Hero.svelte";
-    import Courses from "$lib/components/index/Courses.svelte";
     import Posts from "$lib/components/index/Posts.svelte";
     import type {PageData} from './$types';
+    import Card from "$lib/components/cardsView/Card.svelte";
+    import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
+    import Course from "$lib/models/Course";
 
     export let data: PageData;
+    const courses = data.courses.items.map((course: any) => new Course(course));
 </script>
 
 <div class="container mb-20">
     <Hero/>
-    <Courses data={data.courses}/>
+    <!-- Courses -->
+    <CardsGrid id="courses" title="الدورات">
+        {#each courses as course}
+            <Card
+                href="courses/{course.college.urlName}/{course.urlName}"
+                title={course.displayName}
+                subtitle={course.college.displayName}
+                description={course.description}
+            />
+        {/each}
+    </CardsGrid>
+
+    <!-- Posts -->
     <Posts data={data.posts}/>
 </div>
