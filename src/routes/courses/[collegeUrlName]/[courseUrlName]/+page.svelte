@@ -6,6 +6,7 @@
     import {Separator} from "$lib/components/ui/separator";
 
     export let data: PageData;
+    console.log(data);
     const course = new Course(data.course);
 </script>
 

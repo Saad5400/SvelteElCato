@@ -8,7 +8,7 @@
     <slot/>
 </h3>
 
-<style lang="postcss">
+<style lang="scss">
     h3 {
         @apply flex flex-row items-center self-stretch;
 
