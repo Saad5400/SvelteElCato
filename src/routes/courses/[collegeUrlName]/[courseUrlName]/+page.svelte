@@ -13,7 +13,7 @@
     <h1>
         {course.displayName}
     </h1>
-    <Separator class="my-4"/>
+    <Separator class="my-4 opacity-0"/>
     <CardsGrid title="المسارات">
         {#each course.tracks as track}
             <Card
