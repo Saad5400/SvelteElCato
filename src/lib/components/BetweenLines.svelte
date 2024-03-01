@@ -14,7 +14,7 @@
 
         &:before,
         &:after {
-            @apply h-0.5 w-full flex-grow content-[''] bg-accent-foreground;
+            @apply h-[1px] w-full flex-grow content-[''] bg-muted-foreground/50;
         }
 
         &:not(:empty) {
