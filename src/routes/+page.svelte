@@ -10,6 +10,12 @@
     export let data: PageData;
 </script>
 
+<svelte:head>
+    <title>
+        الصفحة الرئيسية
+    </title>
+</svelte:head>
+
 <div class="container mb-20">
     <Hero/>
     <Separator class="my-20 opacity-0"/>

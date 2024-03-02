@@ -61,6 +61,12 @@
     });
 </script>
 
+<svelte:head>
+    <title>
+        {data.post.displayName}
+    </title>
+</svelte:head>
+
 <div class="container">
     <div class="w-fit">
         <h1>

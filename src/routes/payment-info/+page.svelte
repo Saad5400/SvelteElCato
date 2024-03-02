@@ -4,6 +4,12 @@
     import {Button} from "$lib/components/ui/button";
 </script>
 
+<svelte:head>
+    <title>
+        معلومات الدفع
+    </title>
+</svelte:head>
+
 <div class="container max-w-[50rem] flex flex-col gap-8 mb-20 text-start">
     <h1 class="text-center">
         معلومات الدفع

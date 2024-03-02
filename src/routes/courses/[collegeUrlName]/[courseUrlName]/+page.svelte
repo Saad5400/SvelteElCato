@@ -9,6 +9,12 @@
     export let data: PageData;
 </script>
 
+<svelte:head>
+    <title>
+        {data.course.displayName}
+    </title>
+</svelte:head>
+
 <div class="container">
     <h1>
         {data.course.displayName}

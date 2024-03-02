@@ -5,6 +5,12 @@
     export let data: PageData;
 </script>
 
+<svelte:head>
+    <title>
+        {data.course.displayName} {data.track.displayName}: {data.step.displayName}
+    </title>
+</svelte:head>
+
 {#if data.step.type === "youtube"}
     <iframe src={data.step.linked}
             class="flex-1 min-h-screen-without-navbar"

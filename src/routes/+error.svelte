@@ -24,6 +24,12 @@
     $: message = getArabicMessage(code);
 </script>
 
+<svelte:head>
+    <title>
+        خطأ {code}
+    </title>
+</svelte:head>
+
 <div class="text-center flex flex-col justify-center items-center min-w-[100dvw] min-h-screen absolute top-0 bottom-0 left-0 right-0 z-50 bg-destructive text-destructive-foreground gap-2">
     <h1>{code}</h1>
     <h2>{message}</h2>
