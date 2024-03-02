@@ -21,7 +21,7 @@
                     title={track.displayName}
                     subtitle={track.description}
                     href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
-                    dataSveltekitPreloadData="tap"
+                    dataSveltekitPreloadData="off"
             />
         {/each}
     </CardsGrid>

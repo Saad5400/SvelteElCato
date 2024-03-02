@@ -7,10 +7,9 @@
 
     export let data: LayoutData;
 
-    // TODO: uncomment
-    // onDestroy(() => {
-    //     navStore.set({title: '', items: []});
-    // });
+    onDestroy(() => {
+        navStore.set({title: '', items: []});
+    });
 </script>
 
 <div class="flex flex-row">
