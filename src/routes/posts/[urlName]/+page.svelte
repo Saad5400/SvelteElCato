@@ -77,10 +77,10 @@
 </svelte:head>
 
 <div class="container">
-    <div class="w-fit">
-        <h1>
+    <div class="text-center mb-8 text-primary-foreground/90">
+        <h2>
             {data.post.displayName}
-        </h1>
+        </h2>
         <Separator class="mt-4 mb-1"/>
         <small class="flex flex-row justify-between items-center min-w-40">
             <span class="flex flex-row justify-start gap-1">
