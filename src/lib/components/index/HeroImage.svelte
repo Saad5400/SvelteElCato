@@ -191,7 +191,7 @@
         class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center">
     <pre class="text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold"
          bind:this={pre}
-         class:tracking-[1.5rem]={iOS}>                                                                         011                                                                                                                                               0011
+         class:tracking-wide-xl={iOS}>                                                                         011                                                                                                                                               0011
                                                                         11011                                                                                                                                             110111
                                                                        10001000                                                                                                                                          10001001
                                                                       1011011000                                                                                                                                       001110111011
