@@ -64,6 +64,9 @@
                         <p class="hidden md:inline-block">
                             تيليجرام
                         </p>
+                        <span class="sr-only">
+                            تواصل معنا عبر تيليجرام
+                        </span>
                         <Telegram class="w-5 h-5 ms-2"/>
                     </Button>
                     <Button class="flex-1 text-lg flex flex-row items-center justify-center"
@@ -72,6 +75,9 @@
                         <p class="hidden md:inline-block">
                             واتس اب
                         </p>
+                        <span class="sr-only">
+                            تواصل معنا عبر واتس اب
+                        </span>
                         <Whatsapp class="w-5 h-5 ms-2"/>
                     </Button>
                 </div>
