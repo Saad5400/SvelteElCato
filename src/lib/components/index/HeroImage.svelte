@@ -185,13 +185,25 @@
     })
 
     $: iOS = browser ? /iPad|iPhone|iPod|iOS|Mac/.test(navigator.userAgent) : false;
+
+    let windowScrollY = 0;
+    function getTranslateY(windowScrollY: number): number {
+        console.log(windowScrollY);
+        if (windowScrollY < 200) return windowScrollY / 2;
+    }
+    $: translateY = getTranslateY(windowScrollY);
 </script>
 
+<svelte:window bind:scrollY={windowScrollY} />
+
 <figure dir="ltr"
-        class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center">
+        class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center"
+        style="transform: translateY({translateY}px) translateX(-2%)"
+>
     <pre class="text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold"
          bind:this={pre}
-         class:tracking-wide-xl={iOS}>                                                                         011                                                                                                                                               0011
+         class:tracking-[1.5rem]={iOS}>
+    >                                                                         011                                                                                                                                               0011
                                                                         11011                                                                                                                                             110111
                                                                        10001000                                                                                                                                          10001001
                                                                       1011011000                                                                                                                                       001110111011
