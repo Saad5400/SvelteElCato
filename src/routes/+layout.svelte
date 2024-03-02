@@ -4,6 +4,9 @@
     import Navbar from "$lib/components/Navbar.svelte";
     import {ProgressBar} from "@prgm/sveltekit-progress-bar";
     import {Toaster} from "$lib/components/ui/sonner";
+    import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+    injectSpeedInsights();
 </script>
 
 <ModeWatcher/>
