@@ -188,7 +188,6 @@
 
     let windowScrollY = 0;
     function getTranslateY(windowScrollY: number): number {
-        console.log(windowScrollY);
         if (windowScrollY < 200) return windowScrollY / 2;
     }
     $: translateY = getTranslateY(windowScrollY);
