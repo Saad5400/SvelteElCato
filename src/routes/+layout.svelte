@@ -7,6 +7,7 @@
 
 <ModeWatcher/>
 
-<Navbar/>
 <ProgressBar class="text-accent-foreground" zIndex={100}/>
-<slot/>
+<Navbar>
+    <slot/>
+</Navbar>

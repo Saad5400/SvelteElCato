@@ -6,7 +6,8 @@
     import slugify from '@sindresorhus/slugify';
     import hljs from 'highlight.js';
     import java from 'highlight.js/lib/languages/java';
-    import {onMount} from "svelte";
+    import {onDestroy, onMount} from "svelte";
+    import navStore, {type NavItem} from "$lib/stores/navStore";
 
     export let data: PageData;
 
@@ -31,16 +32,32 @@
 
 
         article.innerHTML = data.post.content;
+        let links: NavItem[] = [];
         const h1s = article.getElementsByTagName('h1');
         for (let i = 0; i < h1s.length; i++) {
             const h1 = h1s[i];
             h1.id = slugify(h1.textContent!);
+            links.push({
+                title: h1.textContent!,
+                href: `#${h1.id}`
+            });
         }
+        navStore.set({
+            title: 'المحتويات',
+            items: links
+        });
 
         hljs.registerLanguage('java', java);
         hljs.highlightAll();
 
         article.style.display = 'contents';
+    });
+
+    onDestroy(() => {
+        navStore.set({
+            title: '',
+            items: []
+        });
     });
 </script>
 

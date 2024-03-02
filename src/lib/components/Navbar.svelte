@@ -22,7 +22,6 @@
 
     let navOpen = false;
 </script>
-
 <header class="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
     <div class="container flex h-14 max-w-screen-2xl items-center px-2">
         {#if url}
@@ -98,3 +97,27 @@
         </div>
     </div>
 </header>
+<div class="flex flex-row">
+    {#if $navStore.title && $navStore.items.length > 0}
+        <div class="min-w-[20rem] max-w-80 min-h-screen-without-navbar max-h-screen-without-navbar scrollbar-thin overflow-y-auto hidden lg:block ms-4"
+             style="scrollbar-gutter: stable">
+            <div class="fixed min-w-[20rem]">
+                <h3 class="text-center">
+                    {$navStore.title}
+                </h3>
+                <nav>
+                    {#each $navStore.items as item}
+                        {@const active = $page.url.href.includes(item.href)}
+                        <Button href={item.href}
+                                data-sveltekit-preload-data="off"
+                                class={"block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
+                        >
+                            {item.title}
+                        </Button>
+                    {/each}
+                </nav>
+            </div>
+        </div>
+    {/if}
+    <slot/>
+</div>

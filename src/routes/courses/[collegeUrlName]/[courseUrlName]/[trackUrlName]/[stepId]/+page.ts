@@ -5,6 +5,8 @@ import {browser} from "$app/environment";
 export const load: PageLoad = async ({parent, params}) => {
     const {track} = await parent();
 
+    if (!track || !track.steps) error(404);
+
     const step = track.steps.find(s => s.id === params.stepId) || error(404);
 
     const isExternal = step.type === 'external';
