@@ -43,7 +43,7 @@
             });
         }
         navStore.set({
-            title: 'المحتويات',
+            title: 'محتويات الصفحة',
             items: links
         });
 
