@@ -1,5 +1,6 @@
 <script lang="ts">
     import {onDestroy, onMount} from "svelte";
+    import {browser} from "$app/environment";
 
     let pre: HTMLPreElement;
     let current: string;
@@ -182,11 +183,15 @@
         clearInterval(randomizeInter);
         clearInterval(preserveInter);
     })
+
+    $: iOS = browser ? /iPad|iPhone|iPod|iOS|Mac/.test(navigator.userAgent) : false;
 </script>
 
 <figure dir="ltr"
         class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center">
-    <pre class="text-[0.15rem] lg:text-[0.17rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold" bind:this={pre}>                                                                         011                                                                                                                                               0011
+    <pre class="text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold"
+         bind:this={pre}
+         class:tracking-widest={iOS}>                                                                         011                                                                                                                                               0011
                                                                         11011                                                                                                                                             110111
                                                                        10001000                                                                                                                                          10001001
                                                                       1011011000                                                                                                                                       001110111011
