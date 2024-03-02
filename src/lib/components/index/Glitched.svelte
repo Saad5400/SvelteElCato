@@ -40,12 +40,12 @@
     }
 
     &:before {
-      @apply text-accent-foreground/50;
+      @apply text-[#0ff] dark:text-[#f0f];
       z-index: -1;
     }
 
     &:after {
-      @apply text-destructive-foreground/50;
+      @apply text-[#f0f] dark:text-[#0ff];
       z-index: -2;
     }
   }
