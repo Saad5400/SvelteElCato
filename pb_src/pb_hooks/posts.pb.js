@@ -10,11 +10,28 @@ routerAdd("POST", "/api/posts/views/:id", async (c) => {
 
 onModelBeforeUpdate((e) => {
     const readTime = e.model.get("readTime");
-    if (!readTime || readTime == 0) {
+    const htmlContent = e.model.get("content");
+    if (!readTime || readTime === 0) {
         const htmlContent = e.model.get("content");
         const textContent = htmlContent.replace(/<[^>]*>/g, "");
         const wordCount = textContent.trim().split(/\s+/).length;
         const readTimeMinutes = Math.ceil(wordCount / 200);
-        e.model.set("readTime", readTimeMinutes);
+        if (readTimeMinutes !== readTime) {
+            e.model.set("readTime", readTimeMinutes);
+        }
+    }
+}, "posts");
+
+onModelBeforeCreate((e) => {
+    const readTime = e.model.get("readTime");
+    const htmlContent = e.model.get("content");
+    if (!readTime || readTime === 0) {
+        const htmlContent = e.model.get("content");
+        const textContent = htmlContent.replace(/<[^>]*>/g, "");
+        const wordCount = textContent.trim().split(/\s+/).length;
+        const readTimeMinutes = Math.ceil(wordCount / 200);
+        if (readTimeMinutes !== readTime) {
+            e.model.set("readTime", readTimeMinutes);
+        }
     }
 }, "posts");
