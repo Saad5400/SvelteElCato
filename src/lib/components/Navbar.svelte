@@ -19,22 +19,24 @@
     }
 
     $: url = getBackUrl($page.route.id!);
+
+    let navOpen = false;
 </script>
 
 <header class="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
     <div class="container flex h-14 max-w-screen-2xl items-center px-2">
         {#if url}
             <a href="{url}" class="mr-4 flex items-center space-x-2">
-                    <span class="font-bold inline-block">
-                        <Button size="icon" variant="ghost">
-                            <StepBack class="h-4 w-4 rotate-180"/>
-                        </Button>
-                    </span>
+                <span class="font-bold inline-block">
+                    <Button size="icon" variant="ghost">
+                        <StepBack class="h-4 w-4 rotate-180"/>
+                    </Button>
+                </span>
             </a>
         {/if}
         {#if $navStore.title && $navStore.items.length > 0}
             <div class="contents lg:hidden ">
-                <Sheet.Root>
+                <Sheet.Root bind:open={navOpen}>
                     <Sheet.Trigger>
                         <Button size="icon" variant="ghost">
                             <Menu class="h-4 w-4"/>
@@ -47,7 +49,12 @@
                             </Sheet.Title>
                             <Sheet.Description>
                                 {#each $navStore.items as item}
-                                    <Button href={item.href} class="block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start">
+                                    {@const active = $page.url.href.includes(item.href)}
+                                    <Button href={item.href}
+                                            data-sveltekit-preload-data="off"
+                                            class={"block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
+                                            on:click={() => setTimeout(() => navOpen = false, 100)}
+                                    >
                                         {item.title}
                                     </Button>
                                 {/each}

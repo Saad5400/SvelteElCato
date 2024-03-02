@@ -59,14 +59,14 @@ You can now visit the SvelteKit server at [http://127.0.0.1:5173](http://127.0.0
 
 ### Backend (Pocketbase)
 
-Deploy
+Deploy:
 
 ```bash
 cd pb
 flyctl deploy
 ```
 
-Download backup
+Download the `pb_data` directory from the Pocketbase server:
 
 ```bash
 # this will register a ssh key with your local agent (if you haven't already)
@@ -76,5 +76,5 @@ flyctl ssh issue --agent
 flyctl proxy 10022:22
 
 # run in a separate terminal to copy the pb_data directory
-scp -r -P 10022 root@localhost:/pb/pb_data  /your/local/pb_data
+scp -r -P 10022 -i SSH_KEY root@localhost:/pb/pb_data  /your/local/pb_data
 ```

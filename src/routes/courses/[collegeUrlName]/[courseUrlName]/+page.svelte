@@ -16,6 +16,7 @@
     <Separator class="my-4 opacity-0"/>
     <CardsGrid title="المسارات">
         {#each data.course.tracks as track}
+            <!-- TODO: redirect to the last visited step -->
             <Card
                     title={track.displayName}
                     subtitle={track.description}

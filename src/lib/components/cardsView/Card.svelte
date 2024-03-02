@@ -2,7 +2,7 @@
     import {Button, type Variant} from "$lib/components/ui/button/index.js";
 
     export let href: string;
-    export let className = "min-h-32 flex flex-col";
+    export let className = "flex flex-col h-fit";
     export let variant: Variant = "outline3DLarge";
     export let title = "";
     export let subtitle = "";
@@ -24,8 +24,15 @@
         </span>
     {/if}
     {#if description}
-        <span class="text-lg text-secondary-foreground/80 mt-4">
+        <span class="text-lg text-secondary-foreground/80 my-4">
             {description}
         </span>
     {/if}
 </Button>
+
+<style lang="postcss">
+    span {
+        /*wrap text*/
+        @apply whitespace-normal;
+    }
+</style>
