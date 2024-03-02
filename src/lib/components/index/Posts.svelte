@@ -10,7 +10,7 @@
 
     export let posts: PageData;
 
-    const table = createTable(readable(posts));
+    const table = createTable(readable(posts.sort((a: Post, b: Post) =>  b.views - a.views)));
 
     const columns = table.createColumns([
         table.column({

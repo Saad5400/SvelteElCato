@@ -1,15 +1,24 @@
 <script lang="ts">
     import type {PageData} from './$types';
     import {Separator} from "$lib/components/ui/separator";
-    import Post from "$lib/models/Post";
     import {Clock, Eye} from "lucide-svelte";
     import slugify from '@sindresorhus/slugify';
     import hljs from 'highlight.js';
     import java from 'highlight.js/lib/languages/java';
     import {onDestroy, onMount} from "svelte";
     import navStore, {type NavItem} from "$lib/stores/navStore";
+    import {page} from "$app/stores";
 
     export let data: PageData;
+
+    $: route = $page.route.id;
+    $: if (route === "/posts/[urlName]") {
+        setTimeout(async () => {
+            await data.pb.send(`/api/posts/views/${data.post.id}`, {
+                method: 'POST'
+            });
+        }, 10);
+    }
 
     let article: HTMLElement;
     let link: HTMLLinkElement;
@@ -75,7 +84,7 @@
         <Separator class="mt-4 mb-1"/>
         <small class="flex flex-row justify-between items-center">
             <span dir="ltr">
-                {data.post.updated.toLocaleString()}
+                {data.post.updated.toLocaleDateString()}
             </span>
             <span class="flex flex-row items-center justify-center gap-2">
                 <span class="flex flex-row items-center justify-center gap-1">
