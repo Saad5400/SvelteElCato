@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-
-    @font-face {
-        font-family: "Handjet";
-        src: url("/fonts/Handjet.ttf") format("truetype");
-        font-display: swap;
-    }
-
     :root {
         --background: 0 0% 100%;
         --foreground: 20 14.3% 4.1%;
@@ -66,7 +59,6 @@
 
     body {
         @apply bg-background text-foreground tracking-wide;
-        font-family: "Handjet", sans-serif;
     }
 
     h1 {
