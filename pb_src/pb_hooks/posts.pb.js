@@ -15,7 +15,7 @@ onModelBeforeUpdate((e) => {
         const htmlContent = e.model.get("content");
         const textContent = htmlContent.replace(/<[^>]*>/g, "");
         const wordCount = textContent.trim().split(/\s+/).length;
-        const readTimeMinutes = Math.ceil(wordCount / 200);
+        const readTimeMinutes = Math.ceil(wordCount / 50);
         if (readTimeMinutes !== readTime) {
             e.model.set("readTime", readTimeMinutes);
         }
