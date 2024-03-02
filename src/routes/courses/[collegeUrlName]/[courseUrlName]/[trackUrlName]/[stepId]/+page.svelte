@@ -8,6 +8,7 @@
     export let data: PageData;
 
     let timeout: any;
+
     function setTimeoutToRedirect() {
         if (!browser) return;
         clearTimeout(timeout);
@@ -40,8 +41,7 @@
         سيتم نقلك تلقائياً إلى الصفحة المطلوبة
         <div>
             او
-            <Button href={data.step.linked} target="_blank" rel="noopener noreferrer" variant="link"
-                    on:click={() => data.redirectTime = -1}>
+            <Button href={data.step.linked} target="_blank" rel="noopener noreferrer" variant="link">
                 اضغط هنا للانتقال مباشرة
             </Button>
         </div>

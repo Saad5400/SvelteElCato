@@ -187,7 +187,7 @@
     $: iOS = browser ? /iPad|iPhone|iPod|iOS|Mac/.test(navigator.userAgent) : false;
 
     let windowScrollY = 0;
-    function getTranslateY(windowScrollY: number): number {
+    function getTranslateY(windowScrollY: number): number | undefined {
         if (windowScrollY < 200) return windowScrollY / 2;
     }
     $: translateY = getTranslateY(windowScrollY);

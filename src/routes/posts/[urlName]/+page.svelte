@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {PageData} from './$types';
     import {Separator} from "$lib/components/ui/separator";
-    import {Clock, Eye} from "lucide-svelte";
+    import {Calendar, Clock, Eye} from "lucide-svelte";
     import slugify from '@sindresorhus/slugify';
     import hljs from 'highlight.js';
     import java from 'highlight.js/lib/languages/java';
@@ -82,8 +82,9 @@
             {data.post.displayName}
         </h1>
         <Separator class="mt-4 mb-1"/>
-        <small class="flex flex-row justify-between items-center">
-            <span dir="ltr">
+        <small class="flex flex-row justify-between items-center min-w-40">
+            <span class="flex flex-row justify-start gap-1">
+                <Calendar class="w-3 h-3"/>
                 {data.post.updated.toLocaleDateString()}
             </span>
             <span class="flex flex-row items-center justify-center gap-2">
