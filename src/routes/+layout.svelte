@@ -6,6 +6,15 @@
     import {Toaster} from "$lib/components/ui/sonner";
 </script>
 
+<svelte:head>
+    <link
+            rel="preload"
+            href="/fonts/Handjet.ttf"
+            as="font"
+            crossOrigin="anonymous"
+    />
+</svelte:head>
+
 <ModeWatcher/>
 
 <Toaster class="max-w-[20rem]"/>
