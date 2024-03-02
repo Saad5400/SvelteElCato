@@ -40,6 +40,7 @@
 		"lucide-svelte": "^0.341.0",
 		"mode-watcher": "^0.2.1",
 		"pocketbase": "^0.21.1",
+		"svelte-sonner": "^0.3.19",
 		"tailwind-merge": "^2.2.1",
 		"tailwind-variants": "^0.2.0"
 	}
