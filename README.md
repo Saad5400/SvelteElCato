@@ -39,9 +39,9 @@ PUBLIC_POCKETBASE_URL=http://127.0.0.1:8090/
 Start the pocketbase server:
 
 ```bash
-.\pocketbase.exe serve # Windows PowerShell
-pocketbase serve # Windows Command Prompt
-./pocketbase serve # Linux / macOS / Bash
+.\pb_src\pocketbase.exe serve # Windows PowerShell
+pb_src/pocketbase serve # Windows Command Prompt
+./pb_src/pocketbase serve # Linux / macOS / Bash
 ```
 
 Start the SvelteKit server (in a new terminal):
