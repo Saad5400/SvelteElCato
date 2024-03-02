@@ -3,7 +3,6 @@ import Course from "$lib/models/Course";
 
 export const load: LayoutLoad = async ({parent, params, fetch}) => {
     const {pb} = await parent();
-
     return {
         course: Course.toClass(
             await pb.collection('courses')
@@ -12,7 +11,10 @@ export const load: LayoutLoad = async ({parent, params, fetch}) => {
                         courseUrlName: params.courseUrlName,
                         collegeUrlName: params.collegeUrlName
                     }),
-                    {expand: 'college,tracks,tracks.steps'}
+                    {
+                        expand: 'college,tracks,tracks.steps',
+                        fetch: async (url, config) => fetch(url, config)
+                    }
                 )
         )
     }
