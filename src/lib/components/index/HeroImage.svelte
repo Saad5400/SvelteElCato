@@ -321,6 +321,6 @@
         -1px -1px 0 #000,
         1px -1px 0 #000;
 
-        @apply opacity-70 lg:opacity-100;
+        @apply opacity-70 lg:opacity-100 dark:opacity-100;
     }
 </style>
