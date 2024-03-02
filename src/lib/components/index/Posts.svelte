@@ -1,10 +1,12 @@
 <script lang="ts">
     import {createTable, Render, Subscribe} from "svelte-headless-table";
     import {readable} from "svelte/store";
+    // @ts-ignore
     import * as Table from "$lib/components/ui/table";
-    import type {PageData} from "./$types";
-    import Post from "$lib/models/Post";
+    // @ts-ignore
+    import type {PageData} from './$types';
     import BetweenLines from "$lib/components/BetweenLines.svelte";
+    import type Post from "$lib/models/Post";
 
     export let posts: PageData;
 
@@ -12,13 +14,17 @@
 
     const columns = table.createColumns([
         table.column({
-            accessor: "displayName",
+            accessor: (post) => (post as Post).displayName,
             header: "المنشورات",
         }),
     ]);
 
     const {headerRows, pageRows, tableAttrs, tableBodyAttrs} =
         table.createViewModel(columns);
+
+    function getOriginalPost(row: any) {
+        return row.original;
+    }
 </script>
 
 <section id="posts" class="mt-24 scroll-m-20 flex flex-col gap-2">
@@ -29,7 +35,7 @@
         <Table.Root {...$tableAttrs}>
             <Table.Body {...$tableBodyAttrs}>
                 {#each $pageRows as row (row.id)}
-                    {@const post = row.original}
+                    {@const post = getOriginalPost(row)}
                     <a href="/posts/{post.urlName}" class="contents" data-sveltekit-preload-data="hover">
                         <Subscribe rowAttrs={row.attrs()} let:rowAttrs>
                             <Table.Row {...rowAttrs}>

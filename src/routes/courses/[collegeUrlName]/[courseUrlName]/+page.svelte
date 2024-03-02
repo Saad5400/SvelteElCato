@@ -1,6 +1,5 @@
 <script lang="ts">
     import type {PageData} from './$types';
-    import Course from "$lib/models/Course";
     import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
     import Card from "$lib/components/cardsView/Card.svelte";
     import {Separator} from "$lib/components/ui/separator";

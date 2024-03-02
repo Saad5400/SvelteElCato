@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type {LayoutData} from './$types';
+    // import type {LayoutData} from './$types';
     import navStore from "$lib/stores/navStore";
     import {onDestroy} from "svelte";
 
-    export let data: LayoutData;
+    // export let data: LayoutData;
 
     onDestroy(() => {
         navStore.set({title: '', items: []});
