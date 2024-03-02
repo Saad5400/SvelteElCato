@@ -314,11 +314,13 @@
 </pre>
 </figure>
 
-<style>
+<style lang="postcss">
     pre {
         text-shadow: 1px 1px 0 #000,
         -1px 1px 0 #000,
         -1px -1px 0 #000,
         1px -1px 0 #000;
+
+        @apply opacity-70 lg:opacity-100;
     }
 </style>
