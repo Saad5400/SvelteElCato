@@ -1,8 +1,23 @@
 <script lang="ts">
     import type {PageData} from './$types';
     import {Button} from "$lib/components/ui/button";
+    import {onMount} from "svelte";
+    import {page} from "$app/stores";
+    import {browser} from "$app/environment";
 
     export let data: PageData;
+
+    let timeout: any;
+    function setTimeoutToRedirect() {
+        if (!browser) return;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            open(data.step.linked, "_blank")
+        }, 500);
+    }
+
+    $: stepId = $page.params.stepId;
+    $: if (stepId && data.isExternal) setTimeoutToRedirect();
 </script>
 
 <svelte:head>

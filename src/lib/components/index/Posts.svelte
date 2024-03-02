@@ -36,7 +36,7 @@
             <Table.Body {...$tableBodyAttrs}>
                 {#each $pageRows as row (row.id)}
                     {@const post = getOriginalPost(row)}
-                    <a href="/posts/{post.urlName}" class="contents" data-sveltekit-preload-data="hover">
+                    <a href="/posts/{post.urlName}" class="contents">
                         <Subscribe rowAttrs={row.attrs()} let:rowAttrs>
                             <Table.Row {...rowAttrs}>
                                 {#each row.cells as cell (cell.id)}
