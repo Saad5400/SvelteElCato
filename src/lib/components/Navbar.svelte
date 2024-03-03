@@ -50,7 +50,7 @@
                                 {#each $navStore.items as item}
                                     {@const active = $page.url.href.includes(item.href)}
                                     <Button href={item.href}
-                                            class={"block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
+                                            class={"whitespace-normal h-fit block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
                                             on:click={() => setTimeout(() => navOpen = false, 100)}
                                     >
                                         {item.title}
@@ -108,7 +108,7 @@
                     {#each $navStore.items as item}
                         {@const active = $page.url.href.includes(item.href)}
                         <Button href={item.href}
-                                class={"block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
+                                class={"max-w-72 block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
                         >
                             {item.title}
                         </Button>
