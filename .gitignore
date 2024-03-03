@@ -13,3 +13,5 @@ pb_data
 pb_public
 .idea
 .vscode
+
+*.pem*
