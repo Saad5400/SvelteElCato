@@ -51,8 +51,8 @@
             STC Pay
         </h2>
         <div>
-            <CopyText copyText="0536439394"/>
-            رقم الجوال: 0536439394
+            <CopyText copyText="0501321169"/>
+            رقم الجوال: 0501321169
         </div>
     </section>
     <section>
