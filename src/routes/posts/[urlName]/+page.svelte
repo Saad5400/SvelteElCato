@@ -20,6 +20,8 @@
         }, 10);
     }
 
+    $: id = $page.url.hash;
+
     let article: HTMLElement;
     let link: HTMLLinkElement;
     const linkId = 'highlightjs-style';
@@ -60,6 +62,16 @@
         hljs.highlightAll();
 
         article.style.display = 'contents';
+
+        setTimeout(() => {
+            id = id.replace('#', '');
+            if (id) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.scrollIntoView();
+                }
+            }
+        }, 100);
     });
 
     onDestroy(() => {
