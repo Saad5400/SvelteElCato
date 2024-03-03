@@ -102,7 +102,7 @@
 </svelte:head>
 
 <div class="container">
-    <div class="text-center mb-8 text-primary-foreground/90">
+    <div class="text-center mb-8 text-accent-foreground/90">
         <h2>
             {data.post.displayName}
         </h2>
