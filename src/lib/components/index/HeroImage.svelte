@@ -184,8 +184,6 @@
         clearInterval(preserveInter);
     })
 
-    $: iOS = browser ? /iPad|iPhone|iPod|iOS|Mac/.test(navigator.userAgent) : false;
-
     let windowScrollY = 0;
 
     function getTranslateY(windowScrollY: number): number | undefined {
@@ -201,9 +199,8 @@
         class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center"
         style="transform: translateY({translateY}px) translateX(-2%)"
 >
-    <pre class="text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] tracking-[0.2em] font-extrabold"
+    <pre class="roboto-mono text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] font-extrabold"
          bind:this={pre}
-         class:tracking-[1.5rem]={iOS}>
     >
                                                                         011                                                                                                                                               0011
                                                                         11011                                                                                                                                             110111

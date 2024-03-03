@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+
+    @font-face {
+        font-family: "Handjet";
+        src: url("/fonts/Handjet.ttf") format("truetype");
+        font-display: block;
+    }
+
+    @font-face {
+        font-family: "RobotoMono";
+        src: url("/fonts/RobotoMono.ttf") format("truetype");
+        font-display: block;
+    }
+
+    .roboto-mono {
+        font-family: 'RobotoMono', monospace;
+    }
+
     :root {
         --background: 0 0% 100%;
         --foreground: 20 14.3% 4.1%;
@@ -59,6 +76,7 @@
 
     body {
         @apply bg-background text-foreground tracking-wide;
+        font-family: 'Handjet', sans-serif;
     }
 
     h1 {
