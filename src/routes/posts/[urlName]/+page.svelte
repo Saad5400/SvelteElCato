@@ -74,6 +74,19 @@
     <title>
         {data.post.displayName}
     </title>
+    <style>
+        article a {
+            @apply transition-all underline underline-offset-4 hover:underline-offset-8;
+        }
+        article h1,
+        article h2,
+        article h3,
+        article h4,
+        article h5,
+        article h6 {
+            @apply my-4;
+        }
+    </style>
 </svelte:head>
 
 <div class="container">

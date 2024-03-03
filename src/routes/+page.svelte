@@ -4,7 +4,6 @@
     import type {PageData} from './$types';
     import Card from "$lib/components/cardsView/Card.svelte";
     import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
-    import Course from "$lib/models/Course";
     import {Separator} from "$lib/components/ui/separator";
 
     export let data: PageData;
