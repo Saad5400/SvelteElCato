@@ -98,9 +98,9 @@
 </header>
 <div class="flex flex-row">
     {#if $navStore.title && $navStore.items.length > 0}
-        <div class="min-w-[20rem] max-w-80 min-h-screen-without-navbar max-h-screen-without-navbar scrollbar-thin overflow-y-auto hidden lg:block ms-4 border-e-2"
+        <div class="min-w-[20rem] max-w-80 min-h-screen-without-navbar max-h-screen-without-navbar scrollbar-thin overflow-y-auto hidden lg:block ms-4"
              style="scrollbar-gutter: stable">
-            <div class="fixed min-w-[20rem]">
+            <div class="fixed min-w-[20rem] border-e-2">
                 <h3 class="text-center">
                     {$navStore.title}
                 </h3>
