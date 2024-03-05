@@ -5,6 +5,8 @@
     import Card from "$lib/components/cardsView/Card.svelte";
     import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
     import {Separator} from "$lib/components/ui/separator";
+    import Course from "$lib/models/Course";
+    import Post from "$lib/models/Post";
 
     export let data: PageData;
 </script>
@@ -20,16 +22,24 @@
     <Separator class="my-20 opacity-0"/>
     <!-- Courses -->
     <CardsGrid id="courses" title="الدورات">
-        {#each data.courses as course}
-            <Card
-                href="courses/{course.college.urlName}/{course.urlName}"
-                title={course.displayName}
-                subtitle={course.college.displayName}
-                description={course.description}
-            />
-        {/each}
+        {#await data.courses}
+            Loading...
+        {:then courses}
+            {#each Course.toClassList(courses) as course}
+                <Card
+                    href="courses/{course.college.urlName}/{course.urlName}"
+                    title={course.displayName}
+                    subtitle={course.college.displayName}
+                    description={course.description}
+                />
+            {/each}
+        {/await}
     </CardsGrid>
 
     <!-- Posts -->
-    <Posts posts={data.posts}/>
+    {#await data.posts}
+        Loading...
+    {:then posts}
+        <Posts posts={Post.toClassList(posts)}/>
+    {/await}
 </div>
