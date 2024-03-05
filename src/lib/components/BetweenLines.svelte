@@ -4,13 +4,13 @@
     export {className as class}
 </script>
 
-<h3 class={className}>
+<header class={className}>
     <slot/>
-</h3>
+</header>
 
 <style lang="scss">
-    h3 {
-        @apply flex flex-row items-center self-stretch;
+    header {
+        @apply scroll-m-20 text-2xl font-semibold flex flex-row items-center self-stretch;
 
         &:before,
         &:after {
