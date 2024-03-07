@@ -25,9 +25,9 @@
 <header class="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
     <div class="container flex h-14 max-w-screen-2xl items-center px-2">
         {#if url}
-            <a href="{url}" class="mr-4 flex items-center space-x-2">
+            <a href="{url}" class="mr-4 flex items-center space-x-2" aria-label="Go back">
                 <span class="font-bold inline-block">
-                    <Button size="icon" variant="ghost">
+                    <Button size="icon" variant="ghost" aria-label="Go back">
                         <StepBack class="h-4 w-4 rotate-180"/>
                     </Button>
                 </span>
