@@ -1,10 +1,5 @@
 <script lang="ts">
-    import {onMount} from "svelte";
-
-    $: isDark = true;
-    onMount(() => {
-        isDark = document.documentElement.classList.contains('dark');
-    });
+    import {mode} from "mode-watcher";
 
     export let content: string;
 </script>
@@ -31,7 +26,7 @@
 </style>
 
 <svelte:head>
-    {#if isDark}
+    {#if $mode === 'dark'}
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.min.css"/>
     {:else}
