@@ -2,12 +2,10 @@
     import type {PageData} from './$types';
     import {Separator} from "$lib/components/ui/separator";
     import {Calendar, Clock, Eye} from "lucide-svelte";
-    import slugify from '@sindresorhus/slugify';
-    import hljs from 'highlight.js';
-    import java from 'highlight.js/lib/languages/java';
-    import {onDestroy, onMount} from "svelte";
-    import navStore, {type NavItem} from "$lib/stores/navStore";
+    import {onDestroy} from "svelte";
+    import navStore from "$lib/stores/navStore";
     import {page} from "$app/stores";
+    import Article from "$lib/components/Article.svelte";
 
     export let data: PageData;
 
@@ -22,58 +20,6 @@
 
     $: id = $page.url.hash;
 
-    let article: HTMLElement;
-    let link: HTMLLinkElement;
-    const linkId = 'highlightjs-style';
-
-    onMount(async () => {
-        article.style.display = 'none';
-
-        link = document.getElementById(linkId) as HTMLLinkElement;
-        if (!link) {
-            link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.id = linkId;
-            document.head.appendChild(link);
-        }
-        if (document.getElementsByTagName('html')[0].classList.contains('dark'))
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.min.css';
-        else
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/classic-light.min.css';
-
-
-        article.innerHTML = data.post.content;
-        let links: NavItem[] = [];
-        const h1s = article.getElementsByTagName('h1');
-        for (let i = 0; i < h1s.length; i++) {
-            const h1 = h1s[i];
-            h1.id = slugify(h1.textContent!);
-            links.push({
-                title: h1.textContent!,
-                href: `#${h1.id}`
-            });
-        }
-        navStore.set({
-            title: 'محتويات الصفحة',
-            items: links
-        });
-
-        hljs.registerLanguage('java', java);
-        hljs.highlightAll();
-
-        article.style.display = 'contents';
-
-        setTimeout(() => {
-            id = id.replace('#', '');
-            if (id) {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.scrollIntoView();
-                }
-            }
-        }, 100);
-    });
-
     onDestroy(() => {
         navStore.set({
             title: '',
@@ -86,19 +32,6 @@
     <title>
         {data.post.displayName}
     </title>
-    <style>
-        article a {
-            @apply transition-all underline underline-offset-4 hover:underline-offset-8;
-        }
-        article h1,
-        article h2,
-        article h3,
-        article h4,
-        article h5,
-        article h6 {
-            @apply my-4;
-        }
-    </style>
 </svelte:head>
 
 <div class="container">
@@ -125,7 +58,7 @@
         </small>
     </div>
     <br/>
-    <article dir="ltr" bind:this={article}/>
+    <Article content={data.post.content}/>
     <br/>
     <br/>
     <br/>
