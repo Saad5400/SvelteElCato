@@ -23,10 +23,11 @@
         {#each data.courses as course}
             <Card
                 href="courses/{course.college.urlName}/{course.urlName}"
-                title={course.displayName}
                 subtitle={course.college.displayName}
                 description={course.description}
-            />
+            >
+                {course.displayName}
+            </Card>
         {/each}
     </CardsGrid>
 

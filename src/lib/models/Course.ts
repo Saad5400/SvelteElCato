@@ -1,6 +1,7 @@
 import BaseModel from "$lib/models/BaseModel";
 import College from "$lib/models/College";
 import Track from "$lib/models/Track";
+import Quiz from "$lib/models/Quiz";
 
 export default class Course extends BaseModel {
     displayName: string;
@@ -9,6 +10,7 @@ export default class Course extends BaseModel {
     description: string;
     college: College;
     tracks: Track[];
+    quizzes: Quiz[];
 
     constructor(data: any) {
         super(data);
@@ -18,5 +20,6 @@ export default class Course extends BaseModel {
         this.description = data.description;
         this.college = data.expand?.college ? new College(data.expand.college) : null!;
         this.tracks = data.expand?.tracks?.map((track: any) => new Track(track)).sort((a: Track, b: Track) => a.order - b.order) || [];
+        this.quizzes = data.expand?.quizzes?.map((quiz: any) => new Quiz(quiz)) || [];
     }
 }

@@ -14,19 +14,28 @@
     </title>
 </svelte:head>
 
-<div class="container">
+<div class="container flex flex-col gap-8 first:gap-16">
     <h1>
         {data.course.displayName}
     </h1>
-    <Separator class="my-4 opacity-0"/>
     <CardsGrid title="المسارات">
         {#each data.course.tracks as track}
             <!-- TODO: redirect to the last visited step -->
             <Card
-                    title={track.displayName}
                     subtitle={track.description}
                     href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
-            />
+            >
+                {track.displayName}
+            </Card>
+        {/each}
+    </CardsGrid>
+    <CardsGrid title="الاختبارات">
+        {#each data.course.quizzes as quiz}
+            <Card
+                    href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/quizzes/${quiz.urlName}`}
+            >
+                {quiz.displayName}
+            </Card>
         {/each}
     </CardsGrid>
 </div>

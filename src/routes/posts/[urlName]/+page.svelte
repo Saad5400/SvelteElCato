@@ -2,7 +2,7 @@
     import type {PageData} from './$types';
     import {Separator} from "$lib/components/ui/separator";
     import {Calendar, Clock, Eye} from "lucide-svelte";
-    import {onDestroy} from "svelte";
+    import {onDestroy, onMount} from "svelte";
     import navStore from "$lib/stores/navStore";
     import {page} from "$app/stores";
     import Article from "$lib/components/Article.svelte";
@@ -18,7 +18,12 @@
         }, 10);
     }
 
-    $: id = $page.url.hash;
+    onMount(() => {
+        navStore.set({
+            title: 'محتويات الصفحة',
+            items: data.navItems
+        });
+    })
 
     onDestroy(() => {
         navStore.set({

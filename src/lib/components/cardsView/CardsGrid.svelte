@@ -11,7 +11,7 @@
             {title}
         </BetweenLines>
     {/if}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 justify-center items-center">
+    <div class="flex flex-row flex-wrap gap-2 md:gap-4 lg:gap-6 items-center">
         <slot/>
     </div>
 </section>

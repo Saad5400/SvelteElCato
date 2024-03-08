@@ -22,6 +22,7 @@
 
     :global(article code) {
         @apply whitespace-pre-wrap;
+        background: inherit !important;
     }
 </style>
 

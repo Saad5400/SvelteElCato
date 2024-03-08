@@ -33,12 +33,9 @@ export const load: PageLoad = async ({parent, params, fetch}) => {
             href: `#${slug}`
         });
     });
-    navStore.set({
-        title: 'محتويات الصفحة',
-        items: navItems
-    });
 
     return {
-        post
+        post,
+        navItems
     }
 };
