@@ -62,7 +62,7 @@ You can now visit the SvelteKit server at [http://127.0.0.1:5173](http://127.0.0
 Deploy:
 
 ```bash
-cd pb
+cd pb_src
 flyctl deploy
 ```
 

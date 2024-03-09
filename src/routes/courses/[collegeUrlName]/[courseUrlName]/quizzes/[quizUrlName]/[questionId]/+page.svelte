@@ -24,12 +24,13 @@
     </title>
 </svelte:head>
 
-<div class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar p-16 gap-8" dir="ltr">
-    <div class="flex-1 flex flex-col items-center justify-start text-center gap-8">
+<div class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar py-4 md:py-8 lg:py-12 xl:py-16 gap-8"
+     dir="ltr">
+    <div class="w-full flex-1 flex flex-col items-center justify-start text-center gap-8">
         <Article content={data.question.content}/>
-        <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4 p-2 md:p-4 lg:p-8 xl:p-16">
             {#each data.question.options() as option, index}
-                <Button variant="outline3D" class="w-full h-full flex flex-col min-w-64 text-lg"
+                <Button variant="outline3D" class="h-full flex flex-col min-w-64 text-lg"
                         on:click={(e) => choiceClicked(e, option.name, e.currentTarget)}>
                     <Article content={option.content}/>
                 </Button>
