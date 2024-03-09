@@ -1,7 +1,6 @@
 <script lang="ts">
     import type {PageData} from './$types';
-    import {Button} from "$lib/components/ui/button";
-    import { Menu } from 'lucide-svelte';
+    import Menu from 'virtual:icons/f7/Menu';
 
     export let data: PageData;
 </script>

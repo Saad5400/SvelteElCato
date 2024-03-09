@@ -1,10 +1,13 @@
 <script lang="ts">
     import {toggleMode} from "mode-watcher";
     import {Button} from "$lib/components/ui/button";
-    import {Menu, Moon, StepBack, Sun} from "lucide-svelte";
     import {page} from "$app/stores";
     import * as Sheet from "$lib/components/ui/sheet";
     import navStore from "$lib/stores/navStore";
+    import SkipBack from 'virtual:icons/f7/BackwardEnd';
+    import Moon from 'virtual:icons/f7/MoonStars';
+    import Sun from 'virtual:icons/f7/SunMax';
+    import Menu from 'virtual:icons/f7/Menu';
 
     function getBackUrl(route: string): string {
         switch (route) {
@@ -32,7 +35,7 @@
                     variant="ghost"
                     aria-label="Go back"
             >
-                <StepBack class="h-4 w-4 rotate-180"/>
+                <SkipBack class="rotate-180"/>
             </Button>
         {/if}
         {#if $navStore.title && $navStore.items.length > 0}
@@ -40,7 +43,8 @@
                 <Sheet.Root bind:open={navOpen}>
                     <Sheet.Trigger>
                         <Button size="icon" variant="ghost">
-                            <Menu class="h-4 w-4"/>
+                            <!-- <Menu class="h-4 w-4"/> -->
+                            <Menu/>
                         </Button>
                     </Sheet.Trigger>
                     <Sheet.Content>
@@ -87,10 +91,10 @@
                 <!--                </a>-->
                 <Button on:click={toggleMode} variant="ghost" size="icon">
                     <Sun
-                            class="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                            class="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
                     />
                     <Moon
-                            class="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+                            class="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
                     />
                     <span class="sr-only">Toggle theme</span>
                 </Button>

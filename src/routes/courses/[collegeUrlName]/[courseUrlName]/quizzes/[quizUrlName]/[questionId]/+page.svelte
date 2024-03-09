@@ -1,13 +1,12 @@
 <script lang="ts">
     import type {PageData} from './$types';
     import Article from "$lib/components/Article.svelte";
-    import type {ButtonEventHandler} from "$lib/components/ui/button";
     import {Button} from "$lib/components/ui/button";
-    import {Info} from "lucide-svelte";
+    import Info from 'virtual:icons/f7/InfoCircleFill';
     import {page} from "$app/stores";
     import * as Drawer from "$lib/components/ui/drawer";
 
-    function choiceClicked(event: ButtonEventHandler<MouseEvent>, name: string, clicked: HTMLElement) {
+    function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
             clicked.classList.add("bg-green-500");
             clicked.classList.add("hover:bg-green-600");

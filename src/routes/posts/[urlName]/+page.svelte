@@ -1,7 +1,9 @@
 <script lang="ts">
     import type {PageData} from './$types';
     import {Separator} from "$lib/components/ui/separator";
-    import {Calendar, Clock, Eye} from "lucide-svelte";
+    import Calendar from 'virtual:icons/f7/Calendar';
+    import Clock from 'virtual:icons/f7/Clock';
+    import Eye from 'virtual:icons/f7/Eye';
     import {onDestroy, onMount} from "svelte";
     import navStore from "$lib/stores/navStore";
     import {page} from "$app/stores";

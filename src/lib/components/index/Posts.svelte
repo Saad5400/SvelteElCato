@@ -8,7 +8,7 @@
     import BetweenLines from "$lib/components/BetweenLines.svelte";
     import type Post from "$lib/models/Post";
     import {Button} from "$lib/components/ui/button";
-    import {Eye} from "lucide-svelte";
+    import Eye from "virtual:icons/f7/Eye";
 
     export let posts: PageData;
 
