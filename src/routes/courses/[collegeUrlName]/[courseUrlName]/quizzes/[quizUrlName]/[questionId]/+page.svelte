@@ -30,9 +30,9 @@
 
 <div class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar py-4 md:py-8 lg:py-12 xl:py-16 gap-8"
      dir="ltr">
-    <div class="w-full flex-1 flex flex-col items-center justify-start text-center gap-8">
+    <div class="w-full flex-1 flex flex-col items-center justify-start text-center gap-8 p-2 md:p-4 lg:p-8 xl:p-16">
         <Article content={data.question.content}/>
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 p-2 md:p-4 lg:p-8 xl:p-16">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
             {#each data.question.options() as option, index}
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
