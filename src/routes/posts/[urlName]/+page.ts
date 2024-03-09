@@ -13,8 +13,7 @@ export const load: PageLoad = async ({parent, params, fetch}) => {
             pb.filter("urlName = {:urlName}", {urlName: params.urlName}),
             {
                 expand: 'tags',
-                fetch: async (url, config) => fetch(url, config),
-                credentials: 'include'
+                fetch: async (url, config) => fetch(url, config)
             }
         )
         .catch(handleError)

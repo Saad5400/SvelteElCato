@@ -16,8 +16,7 @@ export const load: LayoutLoad = async ({parent, params, fetch}) => {
                     }),
                     {
                         expand: 'college,tracks,tracks.steps,quizzes,quizzes.questions',
-                        fetch: async (url, config) => fetch(url, config),
-                        credentials: 'include'
+                        fetch: async (url, config) => fetch(url, config)
                     }
                 )
                 .catch(handleError)
