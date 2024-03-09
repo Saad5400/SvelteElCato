@@ -22,7 +22,7 @@
     <CardsGrid id="courses" title="الدورات">
         {#each data.courses as course}
             <Card
-                href="courses/{course.college.urlName}/{course.urlName}"
+                href="/courses/{course.college.urlName}/{course.urlName}"
                 subtitle={course.college.displayName}
                 description={course.description}
             >

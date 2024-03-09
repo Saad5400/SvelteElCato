@@ -1,13 +1,13 @@
 <script lang="ts">
-    import {toggleMode} from "mode-watcher";
-    import {Button} from "$lib/components/ui/button";
-    import {page} from "$app/stores";
+    import { toggleMode } from "mode-watcher";
+    import { Button } from "$lib/components/ui/button";
+    import { page } from "$app/stores";
     import * as Sheet from "$lib/components/ui/sheet";
     import navStore from "$lib/stores/navStore";
-    import SkipBack from 'virtual:icons/f7/BackwardEnd';
-    import Moon from 'virtual:icons/f7/MoonStars';
-    import Sun from 'virtual:icons/f7/SunMax';
-    import Menu from 'virtual:icons/f7/Menu';
+    import SkipBack from "virtual:icons/f7/BackwardEnd";
+    import Moon from "virtual:icons/f7/MoonStars";
+    import Sun from "virtual:icons/f7/SunMax";
+    import Menu from "virtual:icons/f7/Menu";
 
     function getBackUrl(route: string): string {
         switch (route) {
@@ -27,24 +27,29 @@
 
     let navOpen = false;
 </script>
-<header class="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
+
+<header
+    class="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4"
+>
     <div class="container flex h-14 max-w-screen-2xl items-center px-2">
         {#if url}
-            <Button href="{url}"
-                    class="mr-4 flex items-center space-x-2 font-bold" size="icon"
-                    variant="ghost"
-                    aria-label="Go back"
+            <Button
+                href={url}
+                class="mr-4 flex items-center space-x-2 font-bold"
+                size="icon"
+                variant="ghost"
+                aria-label="Go back"
             >
-                <SkipBack class="rotate-180"/>
+                <SkipBack class="rotate-180" />
             </Button>
         {/if}
         {#if $navStore.title && $navStore.items.length > 0}
-            <div class="contents lg:hidden ">
+            <div class="contents lg:hidden">
                 <Sheet.Root bind:open={navOpen}>
                     <Sheet.Trigger>
                         <Button size="icon" variant="ghost">
                             <!-- <Menu class="h-4 w-4"/> -->
-                            <Menu/>
+                            <Menu />
                         </Button>
                     </Sheet.Trigger>
                     <Sheet.Content>
@@ -54,10 +59,20 @@
                             </Sheet.Title>
                             <Sheet.Description>
                                 {#each $navStore.items as item}
-                                    {@const active = $page.url.href.includes(item.href)}
-                                    <Button href={item.href}
-                                            class={"whitespace-normal h-fit block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
-                                            on:click={() => setTimeout(() => navOpen = false, 100)}
+                                    {@const active = $page.url.href.includes(
+                                        item.href,
+                                    )}
+                                    <Button
+                                        href={item.href}
+                                        class={"whitespace-normal h-fit block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start " +
+                                            (active
+                                                ? "border-r-2 border-b-2 border-accent-foreground"
+                                                : "")}
+                                        on:click={() =>
+                                            setTimeout(
+                                                () => (navOpen = false),
+                                                100,
+                                            )}
                                     >
                                         {item.title}
                                     </Button>
@@ -68,17 +83,17 @@
                 </Sheet.Root>
             </div>
         {/if}
-        <div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-            <div class="w-full flex-1 md:w-auto md:flex-none">
-
-            </div>
+        <div
+            class="flex flex-1 items-center justify-between space-x-2 md:justify-end"
+        >
+            <div class="w-full flex-1 md:w-auto md:flex-none"></div>
             <nav class="flex items-center">
                 <Button on:click={toggleMode} variant="ghost" size="icon">
                     <Sun
-                            class="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                        class="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
                     />
                     <Moon
-                            class="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+                        class="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
                     />
                     <span class="sr-only">Toggle theme</span>
                 </Button>
@@ -86,10 +101,12 @@
         </div>
     </div>
 </header>
-<div class="flex flex-row">
+<main class="flex flex-row">
     {#if $navStore.title && $navStore.items.length > 0}
-        <div class="min-w-[20rem] max-w-80 min-h-screen-without-navbar max-h-screen-without-navbar scrollbar-thin overflow-y-auto hidden lg:block ms-4"
-             style="scrollbar-gutter: stable">
+        <nav
+            class="min-w-[20rem] max-w-80 min-h-screen-without-navbar max-h-screen-without-navbar scrollbar-thin overflow-y-auto hidden lg:block ms-4"
+            style="scrollbar-gutter: stable"
+        >
             <div class="fixed min-w-[20rem] border-e-2">
                 <h3 class="text-center">
                     {$navStore.title}
@@ -97,15 +114,19 @@
                 <nav>
                     {#each $navStore.items as item}
                         {@const active = $page.url.href.includes(item.href)}
-                        <Button href={item.href}
-                                class={"max-w-72 block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit " + (active ? 'border-r-2 border-b-2 border-accent-foreground' : '')}
+                        <Button
+                            href={item.href}
+                            class={"max-w-72 block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit " +
+                                (active
+                                    ? "border-r-2 border-b-2 border-accent-foreground"
+                                    : "")}
                         >
                             {item.title}
                         </Button>
                     {/each}
                 </nav>
             </div>
-        </div>
+        </nav>
     {/if}
-    <slot/>
-</div>
+    <slot />
+</main>
