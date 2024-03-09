@@ -45,7 +45,7 @@
                             </Drawer.Trigger>
                             <Drawer.Content>
                                 <Drawer.Header>
-                                    <Drawer.Description class="flex flex-row items-center justify-center min-h-60">
+                                    <Drawer.Description class="flex flex-row flex-wrap whitespace-normal items-center justify-center min-h-60">
                                         <Article content={data.question.explanation} />
                                     </Drawer.Description>
                                 </Drawer.Header>
