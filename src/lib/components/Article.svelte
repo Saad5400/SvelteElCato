@@ -36,6 +36,6 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr">
+<article dir="ltr" class="text-start">
     {@html content}
 </article>

@@ -20,7 +20,7 @@
 
     export let data: PageData;
     let showExplanation = false;
-    $: if($page.url.href) showExplanation = false;
+    $: if ($page.url.href) showExplanation = false;
 </script>
 
 <svelte:head>
@@ -38,15 +38,16 @@
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
                         <Drawer.Root>
-                            <Drawer.Trigger>
+                            <Drawer.Trigger class="contents">
                                 <Button variant="secondary" class="indicator-item" size="icon">
                                     <Info class="w-3 h-3"/>
                                 </Button>
                             </Drawer.Trigger>
                             <Drawer.Content>
                                 <Drawer.Header>
-                                    <Drawer.Description class="flex flex-row flex-wrap whitespace-normal items-center justify-center min-h-60 py-8">
-                                        <Article content={data.question.explanation} />
+                                    <Drawer.Description
+                                            class="flex flex-row flex-wrap whitespace-normal items-center justify-center min-h-60 py-8">
+                                        <Article content={data.question.explanation}/>
                                     </Drawer.Description>
                                 </Drawer.Header>
                             </Drawer.Content>
@@ -75,20 +76,3 @@
         </div>
     {/if}
 </div>
-
-<style lang="postcss">
-    .indicator {
-        & :where(.indicator-item) {
-            @apply bottom-auto end-0 start-auto top-0 -translate-y-5 translate-x-1/3;
-        }
-    }
-
-    .indicator {
-        @apply relative inline-flex;
-
-        & :where(.indicator-item) {
-            z-index: 1;
-            @apply absolute transform whitespace-nowrap;
-        }
-    }
-</style>
