@@ -7,7 +7,7 @@
     export let data: LayoutData;
 
     $: route = $page.route.id;
-    $: if (route.startsWith("/courses/[collegeUrlName]/[courseUrlName]/[trackUrlName]")) {
+    $: if (route?.startsWith("/courses/[collegeUrlName]/[courseUrlName]/[trackUrlName]")) {
         const navItems: NavItem[] = data.track.steps.map((step) => {
             return {
                 title: step.displayName,
@@ -25,6 +25,6 @@
     });
 </script>
 
-<div class="flex-1 flex flex-row">
+<div class="flex flex-row flex-1">
     <slot/>
 </div>
