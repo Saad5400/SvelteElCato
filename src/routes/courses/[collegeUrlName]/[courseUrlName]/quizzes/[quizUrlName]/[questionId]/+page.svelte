@@ -6,6 +6,7 @@
     import { page } from "$app/stores";
     import * as Drawer from "$lib/components/ui/drawer";
     import { Confetti } from "svelte-confetti";
+    import { mode } from "mode-watcher";
 
     function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
@@ -43,8 +44,14 @@
             {#each data.question.options() as option, index}
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
-                        <div class="fixed left-0 top-0 min-w-[100dvw] min-h-screen flex items-center justify-center overflow-clip">
-                            <Confetti />
+                        <div
+                            class="fixed left-0 top-0 min-w-[100dvw] min-h-screen flex items-center justify-center overflow-clip z-50 pointer-events-none"
+                        >
+                            <Confetti
+                                size={15}
+                                fallDistance="0px"
+                                colorArray={["url(/images/dark-skull.png)"]}
+                            />
                         </div>
                         <Drawer.Root>
                             <Drawer.Trigger class="contents">
