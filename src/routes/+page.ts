@@ -23,7 +23,7 @@ export const load: PageLoad = async ({ parent, fetch }) => {
     const [courses, posts] = await Promise.all([coursesRequest, postsRequest]);
 
     return {
-        posts,
-        courses
+        posts: Post.toClassList(posts),
+        courses: Course.toClassList(courses)
     }
 };
