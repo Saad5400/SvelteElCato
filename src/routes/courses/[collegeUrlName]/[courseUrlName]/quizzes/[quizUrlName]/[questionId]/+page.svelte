@@ -33,11 +33,11 @@
 </svelte:head>
 
 <div
-    class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar py-4 md:py-8 lg:py-12 xl:py-16 gap-8 !roboto-mono"
+    class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar pb-8 gap-8 !roboto-mono"
     dir="ltr"
 >
     <div
-        class="flex flex-col items-center justify-start flex-1 w-full gap-8 p-2 text-center md:p-4 lg:p-8 xl:p-16"
+        class="flex flex-col items-center justify-start flex-1 w-full gap-8 p-2 text-center md:px-4 lg:px-8 xl:px-16"
     >
         <Article content={data.question.content} />
         <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
