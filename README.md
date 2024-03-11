@@ -70,7 +70,7 @@ Download the `pb_data` directory from the Pocketbase server:
 
 ```bash
 # this will register a ssh key with your local agent (if you haven't already)
-flyctl ssh issue --agent
+flyctl ssh issue
 
 # proxies connections to a fly VM through a Wireguard tunnel
 flyctl proxy 10023:22

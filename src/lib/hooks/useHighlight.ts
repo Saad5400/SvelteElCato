@@ -19,8 +19,11 @@ export default function useHighlight(content: string): string {
                 .replace(/<code.*?>/, '')
                 .replace(/<\/code>/, '');
 
-            const highlighted = hljs.highlightAuto(code);
-            content = content.replace(codeTag, `<code class="hljs ${highlighted.language}">${highlighted.value}</code>`);
+            const highlighted = hljs.highlightAuto(code, ['java']);
+            
+            // replace &amp;lt with < and &amp;gt with >
+            let value = highlighted.value.replace(/&amp;lt;/g, '<').replace(/&amp;gt;/g, '>');
+            content = content.replace(codeTag, `<code class="hljs ${highlighted.language}">${value}</code>`);
         });
     });
 
