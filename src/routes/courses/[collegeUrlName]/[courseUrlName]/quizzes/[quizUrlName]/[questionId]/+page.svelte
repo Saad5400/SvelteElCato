@@ -28,11 +28,11 @@
     </title>
 </svelte:head>
 
-<div class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar py-4 md:py-8 lg:py-12 xl:py-16 gap-8"
+<div class="flex-1 flex flex-col items-center justify-between min-h-screen-without-navbar py-4 md:py-8 lg:py-12 xl:py-16 gap-8 !roboto-mono"
      dir="ltr">
-    <div class="roboto-mono w-full flex-1 flex flex-col items-center justify-start text-center gap-8 p-2 md:p-4 lg:p-8 xl:p-16">
+    <div class="flex flex-col items-center justify-start flex-1 w-full gap-8 p-2 text-center md:p-4 lg:p-8 xl:p-16">
         <Article content={data.question.content}/>
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
             {#each data.question.options() as option, index}
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
@@ -45,14 +45,14 @@
                             <Drawer.Content>
                                 <Drawer.Header>
                                     <Drawer.Description
-                                            class="flex flex-row flex-wrap whitespace-normal items-center justify-center min-h-60 py-8">
+                                            class="flex flex-row flex-wrap items-center justify-center py-8 whitespace-normal min-h-60 !roboto-mono">
                                         <Article content={data.question.explanation}/>
                                     </Drawer.Description>
                                 </Drawer.Header>
                             </Drawer.Content>
                         </Drawer.Root>
                     {/if}
-                    <Button variant="outline3D" class="text-lg h-full w-full"
+                    <Button variant="outline3D" class="w-full h-full text-lg"
                             on:click={(e) => choiceClicked(e, option.name, e.currentTarget)}>
                         <Article content={option.content}/>
                     </Button>
@@ -61,7 +61,7 @@
         </div>
     </div>
     {#if data.next || data.prev}
-        <div class="w-full max-w-96 flex flex-row gap-4">
+        <div class="flex flex-row w-full gap-4 max-w-96">
             {#if data.prev}
                 <Button variant="outline3D" class="flex-1 w-full" href={`./${data.prev.id}`}>
                     السابق
