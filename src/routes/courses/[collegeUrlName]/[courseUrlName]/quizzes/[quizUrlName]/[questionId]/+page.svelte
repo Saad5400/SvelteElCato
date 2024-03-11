@@ -5,6 +5,7 @@
     import Info from "virtual:icons/f7/InfoCircleFill";
     import { page } from "$app/stores";
     import * as Drawer from "$lib/components/ui/drawer";
+    import { Confetti } from "svelte-confetti";
 
     function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
@@ -14,6 +15,7 @@
         } else {
             clicked.classList.add("bg-destructive");
             clicked.classList.add("hover:bg-destructive/70");
+            clicked.classList.add("boop-active");
         }
     }
 
@@ -41,6 +43,9 @@
             {#each data.question.options() as option, index}
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
+                        <div class="fixed left-0 top-0 min-w-[100dvw] min-h-screen flex items-center justify-center overflow-clip">
+                            <Confetti />
+                        </div>
                         <Drawer.Root>
                             <Drawer.Trigger class="contents">
                                 <Button
