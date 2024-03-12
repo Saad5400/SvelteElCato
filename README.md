@@ -1,6 +1,6 @@
 # Svelte El Cato
 
-Is the new website for El Cato. Using [SvelteKit](https://kit.svelte.dev/) for the frontend and [PocketBase](https://pocketbase.io/) for the backend.
+Is the new website for [El Cato](elcato.sb.sa). Using [SvelteKit](https://kit.svelte.dev/) for the frontend and [PocketBase](https://pocketbase.io/) for the backend.
 
 # Getting started
 
