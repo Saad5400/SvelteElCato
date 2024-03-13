@@ -21,7 +21,7 @@
     }
 
     :global(article code) {
-        @apply whitespace-pre-wrap;
+        @apply whitespace-pre-wrap !px-0;
         background: inherit !important;
     }
 </style>
@@ -36,6 +36,6 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr" class="break-words text-start max-w-[calc(100dvw-5rem)]">
+<article dir="ltr" class="break-words text-start">
     {@html content}
 </article>
