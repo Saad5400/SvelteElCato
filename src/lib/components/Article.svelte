@@ -21,8 +21,7 @@
     }
 
     :global(article code) {
-        @apply whitespace-pre-wrap !px-0;
-        background: inherit !important;
+        @apply whitespace-pre-wrap !px-0 bg-accent-foreground/15;
     }
 </style>
 
