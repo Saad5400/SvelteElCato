@@ -4,13 +4,13 @@
     import Navbar from "$lib/components/Navbar.svelte";
     import { ProgressBar } from "@prgm/sveltekit-progress-bar";
     import { Toaster } from "$lib/components/ui/sonner";
-    import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
-    import { inject as injectAnalytics } from "@vercel/analytics";
+    // import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
+    // import { inject as injectAnalytics } from "@vercel/analytics";
     import usePageTransition from "$lib/hooks/usePageTransition";
 
     usePageTransition();
-    injectSpeedInsights();
-    injectAnalytics();
+    // injectSpeedInsights();
+    // injectAnalytics();
 </script>
 
 <ModeWatcher />
