@@ -1,10 +1,10 @@
 <script lang="ts">
-    import {onDestroy, onMount} from "svelte";
-    import {browser} from "$app/environment";
+  import { onDestroy, onMount } from "svelte";
+  import { browser } from "$app/environment";
 
-    let pre: HTMLPreElement;
-    let current: string;
-    let original = `                                                                         .*-                                                                                                                                               :#*.
+  let pre: HTMLPreElement;
+  let current: string;
+  let original = `                                                                         .*-                                                                                                                                               :#*.
                                                                         :##%*                                                                                                                                             =%%%%=
                                                                        -##%#%#.                                                                                                                                          +%%%%%%+
                                                                       +#######%=                                                                                                                                       .#%%%%%%%%#:
@@ -129,80 +129,88 @@
                                                                                                                                              .:===++#%%######+-..
                                                                                                                                                 .:-===*%###+:
                                                                                                                                                     .:-=*+-`;
-    let preserve: number[] = [];
-    $: if (pre) pre.innerText = current;
+  let preserve: number[] = [];
+  $: if (pre) pre.innerText = current;
 
-    function getRandomIndex(length: number) {
-        return Math.floor(Math.random() * length);
+  function getRandomIndex(length: number) {
+    return Math.floor(Math.random() * length);
+  }
+
+  function getRandomLetter() {
+    const letters = "01";
+    return letters[getRandomIndex(letters.length)];
+  }
+
+  function randomizeText() {
+    current = [...original]
+      .map((letter, index) => {
+        if (
+          [" ", "\n", "\t", "\r"].includes(letter) ||
+          preserve.includes(index)
+        )
+          return letter;
+        return getRandomLetter();
+      })
+      .join("");
+  }
+
+  function preserveText() {
+    if (preserve.length < original.length) {
+      let randomIndex = getRandomIndex(original.length);
+      while (preserve.includes(randomIndex)) {
+        randomIndex = getRandomIndex(original.length);
+      }
+      for (let i = -50; i <= 50; i++) {
+        const index = randomIndex + i;
+        if (index < 0 || index >= original.length || preserve.includes(index))
+          continue;
+        preserve.push(index);
+      }
+    } else {
+      clearInterval(randomizeInter);
+      clearInterval(preserveInter);
     }
+  }
 
-    function getRandomLetter() {
-        const letters = '01';
-        return letters[getRandomIndex(letters.length)];
-    }
+  let randomizeInter: any;
+  let preserveInter: any;
+  onMount(async () => {
+    randomizeText();
 
-    function randomizeText() {
-        current = [...original].map((letter, index) => {
-            if ([' ', '\n', '\t', '\r'].includes(letter) || preserve.includes(index)) return letter;
-            return getRandomLetter();
-        }).join('');
-    }
+    randomizeInter = setInterval(() => {
+      randomizeText();
+    }, 100);
 
-    function preserveText() {
-        if (preserve.length < original.length) {
-            let randomIndex = getRandomIndex(original.length);
-            while (preserve.includes(randomIndex)) {
-                randomIndex = getRandomIndex(original.length);
-            }
-            for (let i = -50; i <= 50; i++) {
-                const index = randomIndex + i;
-                if (index < 0 || index >= original.length || preserve.includes(index)) continue;
-                preserve.push(index);
-            }
-        } else {
-            clearInterval(randomizeInter);
-            clearInterval(preserveInter);
-        }
-    }
+    preserveInter = setInterval(() => {
+      preserveText();
+    }, 100);
+  });
 
-    let randomizeInter: any;
-    let preserveInter: any;
-    onMount(async () => {
-        randomizeText();
+  onDestroy(() => {
+    clearInterval(randomizeInter);
+    clearInterval(preserveInter);
+  });
 
-        randomizeInter = setInterval(() => {
-            randomizeText();
-        }, 100)
+  let windowScrollY = 0;
 
-        preserveInter = setInterval(() => {
-            preserveText();
-        }, 100)
-    })
+  function getTranslateY(windowScrollY: number): number | undefined {
+    if (windowScrollY < 200) return windowScrollY / 2;
+  }
 
-    onDestroy(() => {
-        clearInterval(randomizeInter);
-        clearInterval(preserveInter);
-    })
-
-    let windowScrollY = 0;
-
-    function getTranslateY(windowScrollY: number): number | undefined {
-        if (windowScrollY < 200) return windowScrollY / 2;
-    }
-
-    $: translateY = getTranslateY(windowScrollY);
+  $: translateY = getTranslateY(windowScrollY);
 </script>
 
-<svelte:window bind:scrollY={windowScrollY}/>
+<svelte:window bind:scrollY={windowScrollY} />
 
-<figure dir="ltr"
-        class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center"
-        style="transform: translateY({translateY}px) translateX(-2%)"
-        aria-hidden="true"
+<figure
+  dir="ltr"
+  class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center"
+  style="transform: translateY({translateY}px) translateX(-2%)"
+  aria-hidden="true"
 >
-    <pre class="roboto-mono text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] font-extrabold"
-         bind:this={pre}
-    >
+  <pre
+    class="roboto-mono text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] font-extrabold"
+    bind:this={pre}>
                                                                         011                                                                                                                                               0011
                                                                         11011                                                                                                                                             110111
                                                                        10001000                                                                                                                                          10001001
@@ -332,12 +340,13 @@
 </figure>
 
 <style lang="postcss">
-    pre {
-        text-shadow: 1px 1px 0 #000,
-        -1px 1px 0 #000,
-        -1px -1px 0 #000,
-        1px -1px 0 #000;
+  pre {
+    text-shadow:
+      1px 1px 0 #000,
+      -1px 1px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000;
 
-        @apply opacity-70 lg:opacity-100 dark:opacity-100;
-    }
+    @apply opacity-70 lg:opacity-100;
+  }
 </style>
