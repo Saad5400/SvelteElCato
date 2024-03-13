@@ -36,6 +36,6 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr" class="text-start">
+<article dir="ltr" class="break-words text-start max-w-[calc(100%-1rem)]">
     {@html content}
 </article>
