@@ -15,7 +15,7 @@ export const load: PageLoad = async ({ parent, fetch }) => {
         .catch(handleError);
 
     const postsRequest = await pb.collection('posts')
-        .getList(1, 10, {
+        .getList(1, 100, {
             expand: 'tags', fetch: async (url, config) => fetch(url, config)
         })
         .catch(handleError);
