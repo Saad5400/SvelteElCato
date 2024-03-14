@@ -39,6 +39,6 @@
     }
 
     :global(article code) {
-        @apply whitespace-pre-wrap bg-accent-foreground/15  break-all;
+        @apply whitespace-pre-wrap break-all font-light;
     }
 </style>
