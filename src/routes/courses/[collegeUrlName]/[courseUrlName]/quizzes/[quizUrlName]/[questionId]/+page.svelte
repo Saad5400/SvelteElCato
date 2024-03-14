@@ -96,7 +96,7 @@
                     class="flex-1 w-full"
                     href={`./${data.prev.id}`}
                 >
-                    السابق
+                    Previous
                 </Button>
             {/if}
             {#if data.next}
@@ -105,7 +105,7 @@
                     class="flex-1 w-full"
                     href={`./${data.next.id}`}
                 >
-                    التالي
+                    Next
                 </Button>
             {/if}
         </div>
