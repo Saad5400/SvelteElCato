@@ -32,7 +32,7 @@
     <CardsGrid title="الاختبارات">
         {#each data.course.quizzes as quiz}
             <Card
-                    href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/quizzes/${quiz.urlName}`}
+                    href={quiz.url(data.course, quiz.questions_ids[0])}
             >
                 {quiz.displayName}
             </Card>
