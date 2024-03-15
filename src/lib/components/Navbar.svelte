@@ -54,10 +54,10 @@
                     </Sheet.Trigger>
                     <Sheet.Content>
                         <Sheet.Header>
-                            <Sheet.Title>
+                            <Sheet.Title class="text-center">
                                 {$navStore.title}
                             </Sheet.Title>
-                            <Sheet.Description>
+                            <Sheet.Description class="max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto">
                                 {#each $navStore.items as item}
                                     {@const active = $page.url.href.includes(
                                         item.href,
@@ -104,14 +104,14 @@
 <main class="flex flex-row">
     {#if $navStore.title && $navStore.items.length > 0}
         <nav
-            class="min-w-[20rem] max-w-80 min-h-screen-without-navbar max-h-screen-without-navbar scrollbar-thin overflow-y-auto hidden lg:block ms-4"
+            class="min-w-[20rem] max-w-80 min-h-screen-without-navbar hidden lg:block ms-4"
             style="scrollbar-gutter: stable"
         >
-            <div class="fixed min-w-[20rem] border-e-2">
-                <h3 class="text-center">
+            <div class="fixed border-e-2 max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto">
+                <h3 class="text-center mb-4">
                     {$navStore.title}
                 </h3>
-                <nav>
+                <nav class="">
                     {#each $navStore.items as item}
                         {@const active = $page.url.href.includes(item.href)}
                         <Button
