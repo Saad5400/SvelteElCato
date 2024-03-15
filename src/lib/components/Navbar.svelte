@@ -116,7 +116,7 @@
                         {@const active = $page.url.href.includes(item.href)}
                         <Button
                             href={item.href}
-                            class={"max-w-72 block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit " +
+                            class={"max-w-72 block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit min-w-[20rem] " +
                                 (active
                                     ? "border-r-2 border-b-2 border-accent-foreground"
                                     : "")}

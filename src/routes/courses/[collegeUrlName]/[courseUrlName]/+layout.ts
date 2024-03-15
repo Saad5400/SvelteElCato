@@ -15,7 +15,7 @@ export const load: LayoutLoad = async ({parent, params, fetch}) => {
                         collegeUrlName: params.collegeUrlName
                     }),
                     {
-                        expand: 'college,tracks,tracks.steps,quizzes,quizzes.questions',
+                        expand: 'college,tracks,quizzes',
                         fetch: async (url, config) => fetch(url, config)
                     }
                 )

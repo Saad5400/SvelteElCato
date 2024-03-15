@@ -1,12 +1,22 @@
-import type {LayoutLoad} from './$types';
-import Track from "$lib/models/Track";
-import navStore, {type NavItem} from "$lib/stores/navStore";
+import Track from '$lib/models/Track';
+import { handleError } from '$lib/models/TypedPocketBase';
+import type { LayoutLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
-export const load: LayoutLoad = async ({parent, params, fetch}) => {
-    const {course} = await parent();
+export const load: LayoutLoad = async ({ parent, params, fetch }) => {
+    const { course, pb } = await parent();
 
-    const track = course.tracks.find(t => t.urlName === params.trackUrlName) || error(404, 'Track not found');
+    let track = course.tracks.find(t => t.urlName === params.trackUrlName) || error(404, 'Track not found');
+    let trackWithSteps = await pb.collection('tracks')
+        .getFirstListItem(
+            pb.filter("id = {:trackId}", { trackId: track.id }),
+            {
+                expand: 'steps',
+            }
+        )
+        .catch(handleError);
+
+    track = new Track(trackWithSteps);
 
     return {
         track
