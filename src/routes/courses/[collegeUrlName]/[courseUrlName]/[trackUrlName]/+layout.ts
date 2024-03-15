@@ -12,6 +12,7 @@ export const load: LayoutLoad = async ({ parent, params, fetch }) => {
             pb.filter("id = {:trackId}", { trackId: track.id }),
             {
                 expand: 'steps',
+                fetch: async (url, config) => fetch(url, config)
             }
         )
         .catch(handleError);
