@@ -32,7 +32,7 @@
     <CardsGrid title="الاختبارات">
         {#each data.course.quizzes as quiz}
             <Card
-                    href={quiz.url(data.course, quiz.questions_ids[0])}
+                    href={quiz.url(data.course)}
             >
                 {quiz.displayName}
             </Card>

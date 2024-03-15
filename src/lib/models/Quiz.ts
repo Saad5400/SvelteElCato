@@ -16,7 +16,7 @@ export default class Quiz extends BaseModel {
         this.questions = data.expand?.questions?.map((question: any) => new Question(question)) || [];
     }
 
-    public url(course: Course, questionId: string): string {
-        return course.url() + `/quizzes/${this.urlName}/${questionId}`;
+    public url(course: Course): string {
+        return course.url() + `/quizzes/${this.urlName}/${this.questions_ids[0]}`;
     }
 }
