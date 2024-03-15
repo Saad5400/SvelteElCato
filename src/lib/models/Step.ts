@@ -3,7 +3,7 @@ import BaseModel from "$lib/models/BaseModel";
 export default class Step extends BaseModel {
     displayName: string;
     linked: string;
-    type: "external" | "lesson" | "post" | "youtube";
+    type: "external" | "lesson" | "post" | "youtube" | "section";
 
     constructor(data: any) {
         super(data);
