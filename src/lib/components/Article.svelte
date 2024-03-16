@@ -39,6 +39,6 @@
     }
 
     :global(article code) {
-        @apply whitespace-pre-wrap break-all font-light;
+        @apply whitespace-pre-wrap break-all font-light !bg-inherit;
     }
 </style>
