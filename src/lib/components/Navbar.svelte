@@ -99,10 +99,10 @@
             <nav class="flex items-center">
                 <Button on:click={toggleMode} variant="ghost" size="icon">
                     <Sun
-                        class="absolute dark:rotate-90 dark:scale-0 rotate-0 scale-100"
+                        class="absolute dark:rotate-90 dark:scale-0 rotate-0 scale-100 duration-500"
                     />
                     <Moon
-                        class="absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100"
+                        class="absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100 duration-500"
                     />
                     <span class="sr-only">Toggle theme</span>
                 </Button>
