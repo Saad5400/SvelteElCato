@@ -1,18 +1,28 @@
 <script lang="ts">
-    import {createTable, Render, Subscribe} from "svelte-headless-table";
-    import {readable} from "svelte/store";
+    import { createTable, Render, Subscribe } from "svelte-headless-table";
+    import { addTableFilter } from "svelte-headless-table/plugins";
+    import { readable } from "svelte/store";
     // @ts-ignore
     import * as Table from "$lib/components/ui/table";
     // @ts-ignore
-    import type {PageData} from './$types';
+    import type { PageData } from "./$types";
     import BetweenLines from "$lib/components/BetweenLines.svelte";
     import type Post from "$lib/models/Post";
-    import {Button} from "$lib/components/ui/button";
+    import { Button } from "$lib/components/ui/button";
     import Eye from "virtual:icons/f7/Eye";
+    import { Input } from "$lib/components/ui/input";
 
     export let posts: PageData;
 
-    const table = createTable(readable(posts.sort((a: Post, b: Post) => b.views - a.views)));
+    const table = createTable(
+        readable(posts.sort((a: Post, b: Post) => b.views - a.views)),
+        {
+            filter: addTableFilter({
+                fn: ({ filterValue, value }) =>
+                    value.toLowerCase().includes(filterValue.toLowerCase()),
+            }),
+        },
+    );
 
     const columns = table.createColumns([
         table.column({
@@ -21,8 +31,9 @@
         }),
     ]);
 
-    const {headerRows, pageRows, tableAttrs, tableBodyAttrs} =
+    const { headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates } =
         table.createViewModel(columns);
+    const { filterValue } = pluginStates.filter;
 
     function getOriginalPost(row: any) {
         return row.original;
@@ -30,9 +41,15 @@
 </script>
 
 <section id="posts" class="mt-24 scroll-m-20 flex flex-col gap-2">
-    <BetweenLines>
-        المنشورات
-    </BetweenLines>
+    <BetweenLines>المنشورات</BetweenLines>
+    <div class="flex items-center py-4">
+        <Input
+            class="transition-all max-w-sm focus:max-w-full bg-accent backdrop-blur-sm"
+            placeholder="البحث"
+            type="text"
+            bind:value={$filterValue}
+        />
+    </div>
     <div class="rounded-md border">
         <Table.Root {...$tableAttrs}>
             <Table.Body {...$tableBodyAttrs}>
@@ -42,14 +59,22 @@
                         <Table.Row {...rowAttrs}>
                             {#each row.cells as cell (cell.id)}
                                 <Subscribe attrs={cell.attrs()} let:attrs>
-                                    <Table.Cell {...attrs} class="text-lg flex p-0">
-                                        <Button href="/posts/{post.urlName}" class="flex-1 p-2 whitespace-normal h-fit justify-between px-4">
+                                    <Table.Cell
+                                        {...attrs}
+                                        class="text-lg flex p-0"
+                                    >
+                                        <Button
+                                            href="/posts/{post.urlName}"
+                                            class="flex-1 p-2 whitespace-normal h-fit justify-between px-4"
+                                        >
                                             <span class="text-lg">
-                                                <Render of={cell.render()}/>
+                                                <Render of={cell.render()} />
                                             </span>
-                                            <span class="flex flex-row items-center gap-2">
+                                            <span
+                                                class="flex flex-row items-center gap-2"
+                                            >
                                                 {post.views}
-                                                <Eye class="w-3 h3"/>
+                                                <Eye class="w-3 h3" />
                                             </span>
                                         </Button>
                                     </Table.Cell>

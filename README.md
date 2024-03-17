@@ -73,8 +73,8 @@ Download the `pb_data` directory from the Pocketbase server:
 flyctl ssh issue
 
 # proxies connections to a fly VM through a Wireguard tunnel
-flyctl proxy 10024:22
+flyctl proxy 10025:22
 
 # run in a separate terminal to copy the pb_data directory
-scp -r -P 10024 -i ./key.pem root@localhost:/pb/pb_data  ./
+scp -r -P 10025 -i ./key.pem root@localhost:/pb/pb_data  ./
 ```
