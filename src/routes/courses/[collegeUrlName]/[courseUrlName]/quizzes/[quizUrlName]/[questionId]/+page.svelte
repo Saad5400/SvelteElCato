@@ -14,10 +14,12 @@
             clicked.classList.add("hover:bg-green-600");
             clicked.classList.add("jump-active");
             showExplanation = true;
+            navigator.vibrate(100);
         } else {
             clicked.classList.add("bg-destructive");
             clicked.classList.add("hover:bg-destructive/70");
             clicked.classList.add("boop-active");
+            navigator.vibrate([100, 100, 100]);
         }
     }
 
@@ -67,7 +69,7 @@
                             <Drawer.Content>
                                 <Drawer.Header>
                                     <Drawer.Description
-                                        class="flex flex-row flex-wrap items-center justify-center py-8 whitespace-normal min-h-60 !roboto-mono"
+                                        class="flex flex-row flex-wrap items-center justify-center py-8 whitespace-normal min-h-60 !roboto-mono max-w-screen-lg mx-auto"
                                     >
                                         <Article
                                             content={data.question.explanation}
