@@ -5,13 +5,14 @@
     import Info from "virtual:icons/f7/InfoCircleFill";
     import { page } from "$app/stores";
     import * as Drawer from "$lib/components/ui/drawer";
-    import { Confetti } from "svelte-confetti";
+    // import { Confetti } from "svelte-confetti";
     import { mode } from "mode-watcher";
 
     function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
             clicked.classList.add("bg-green-500");
             clicked.classList.add("hover:bg-green-600");
+            clicked.classList.add("jump-active");
             showExplanation = true;
         } else {
             clicked.classList.add("bg-destructive");
@@ -44,7 +45,7 @@
             {#each data.question.options() as option, index}
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
-                        <div
+                        <!-- <div
                             class="fixed left-0 top-0 min-w-[100dvw] min-h-screen flex items-center justify-center overflow-clip z-50 pointer-events-none"
                         >
                             <Confetti
@@ -52,7 +53,7 @@
                                 fallDistance="0px"
                                 colorArray={["url(/images/dark-skull.png)"]}
                             />
-                        </div>
+                        </div> -->
                         <Drawer.Root>
                             <Drawer.Trigger class="contents">
                                 <Button

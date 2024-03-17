@@ -261,6 +261,41 @@
         animation: 1s boop forwards running;
     }
 
+    @keyframes jump {
+        0% {
+            transform: translateY(0);
+        }
+
+        20% {
+            transform: translateY(-30px);
+        }
+
+        40% {
+            transform: translateY(0px);
+        }
+
+        60% {
+            transform: translateY(-15px);
+        }
+
+        80% {
+            transform: translateY(0px);
+        }
+
+        90% {
+            transform: translateY(-7px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .jump-active {
+        display: inline-block;
+        animation: 1s jump forwards running;
+    }
+
     .repeating-text-light {
         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50" width="50" height="50"><text fill="black" x="0" y="40" font-family="DINPro, Roboto, sans-serif" font-size="10px">72W</text></svg>');
     }
