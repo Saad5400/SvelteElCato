@@ -11,6 +11,12 @@
     export let size: $$Props["size"] = "default";
     export let builders: $$Props["builders"] = [];
     export {className as class};
+    export let sound: "click" | "click_correct" | "click_incorrect" = "click";
+
+    function click(e: any) {
+        const audio = new Audio(`/sounds/${sound}.mp3`);
+        audio.play();
+    }
 </script>
 
 <ButtonPrimitive.Root
@@ -18,6 +24,7 @@
         class={cn(buttonVariants({ variant, size, className }))}
         type="button"
         {...$$restProps}
+        on:click={click}
         on:click
         on:keydown
 >

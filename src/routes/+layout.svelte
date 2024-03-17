@@ -34,9 +34,7 @@
     // injectAnalytics();
 </script>
 
-<!-- false error -->
 <ModeWatcher disableTransitions={false} />
-
 <Toaster class="max-w-[20rem]" />
 <ProgressBar class="text-accent-foreground" zIndex={100} />
 <Navbar>

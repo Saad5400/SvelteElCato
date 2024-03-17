@@ -84,6 +84,9 @@
                         class="justify-start w-full h-full text-lg whitespace-normal"
                         on:click={(e) =>
                             choiceClicked(e, option.name, e.currentTarget)}
+                        sound={data.question.correct === option.name
+                            ? "click_correct"
+                            : "click_incorrect"}
                     >
                         <Article content={option.content} />
                     </Button>

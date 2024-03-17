@@ -31,6 +31,6 @@
     });
 </script>
 
-<div id="quizLayout" class="flex-1 flex flex-row">
+<div id="quizLayout" class="flex-1 flex flex-row overflow-x-clip">
     <slot />
 </div>
