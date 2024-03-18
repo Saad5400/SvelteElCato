@@ -34,6 +34,12 @@ export const load: PageLoad = async ({parent, params, fetch}) => {
         });
     });
 
+    const imgElements = post.content.match(/<img.*?>/g);
+    imgElements?.forEach((img, index) => {
+        const newImg = img.replace(/<img/, `<img loading="lazy"`);
+        post.content = post.content.replace(img, newImg);
+    });
+
     return {
         post,
         navItems
