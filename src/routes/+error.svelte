@@ -1,5 +1,6 @@
 <script lang="ts">
     import {page} from '$app/stores';
+    import { Button } from '$lib/components/ui/button';
 
     function getArabicMessage(code: number) {
         switch (code) {
@@ -32,6 +33,9 @@
 
 <div class="text-center flex flex-col justify-center items-center min-w-[100dvw] min-h-screen absolute top-0 bottom-0 left-0 right-0 z-50 bg-destructive text-destructive-foreground gap-2">
     <h1>{code}</h1>
-    <h2>{simpleMessage}</h2>
+    <h2 class="max-w-[calc(100dvw-5rem)]">{simpleMessage}</h2>
+    <Button class="text-xl h-fit text-accent-foreground" href="/" variant="link">
+        العودة إلى الصفحة الرئيسية
+    </Button>
     <p dir="ltr">{message}</p>
 </div>

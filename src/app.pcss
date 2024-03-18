@@ -124,7 +124,11 @@
     }
 
     small {
-        @apply text-sm font-medium leading-none;
+        @apply transition-all text-sm font-medium leading-none;
+    }
+
+    a {
+        @apply !transition-all underline underline-offset-4 hover:underline-offset-8;
     }
 
     .min-h-screen-without-navbar {
