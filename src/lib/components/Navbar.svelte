@@ -113,7 +113,7 @@
 <main class="flex flex-row">
     {#if $navStore.title && $navStore.items.length > 0}
         <nav
-            class="min-w-[20rem] max-w-80 min-h-screen-without-navbar hidden lg:block ms-4"
+            class="min-w-[20rem] max-w-80 min-h-screen-without-navbar hidden lg:block mx-4"
             style="scrollbar-gutter: stable"
         >
             <div
