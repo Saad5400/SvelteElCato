@@ -23,6 +23,10 @@
 </article>
 
 <style lang="postcss">
+    :global(article a) {
+        @apply !transition-all underline underline-offset-4 hover:underline-offset-8;
+    }
+
     :global(
             article h1,
             article h2,
