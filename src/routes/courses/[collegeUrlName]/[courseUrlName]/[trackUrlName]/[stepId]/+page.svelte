@@ -1,9 +1,10 @@
 <script lang="ts">
-    import type {PageData} from './$types';
-    import {Button} from "$lib/components/ui/button";
-    import {onMount} from "svelte";
-    import {page} from "$app/stores";
-    import {browser} from "$app/environment";
+    import type { PageData } from "./$types";
+    import { Button } from "$lib/components/ui/button";
+    import { onMount } from "svelte";
+    import { page } from "$app/stores";
+    import { browser } from "$app/environment";
+    import Article from "$lib/components/Article.svelte";
 
     export let data: PageData;
 
@@ -13,7 +14,7 @@
         if (!browser) return;
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            open(data.step.linked, "_blank")
+            open(data.step.linked, "_blank");
         }, 500);
     }
 
@@ -23,27 +24,46 @@
 
 <svelte:head>
     <title>
-        {data.course.displayName} {data.track.displayName}: {data.step.displayName}
+        {data.course.displayName}
+        {data.track.displayName}: {data.step.displayName}
     </title>
 </svelte:head>
 
-{#if data.step.type === "youtube"}
-    <iframe src={data.step.linked}
-            class="flex-1 min-h-screen-without-navbar"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-    />
-{:else if data.isExternal}
-    <div class="flex-1 flex flex-col items-center justify-center min-h-screen-without-navbar">
-        هذا الدرس يحتوي رابط خارجي
-        <br/>
-        سيتم نقلك تلقائياً إلى الصفحة المطلوبة
-        <div>
-            او
-            <Button href={data.step.linked} target="_blank" rel="noopener noreferrer" variant="link">
-                اضغط هنا للانتقال مباشرة
-            </Button>
-        </div>
+<div class="flex flex-col w-full min-h-screen-without-navbar">
+    <div class="flex-1 flex w-full h-full max-h-[calc(100dvh-20rem)]">
+        {#if data.step.type === "youtube"}
+            <iframe
+                src={data.step.linked}
+                class="flex-1 w-full h-full"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            />
+        {:else if data.isExternal}
+            <div
+                class="flex-1 flex flex-col items-center justify-center w-full h-full text-center"
+            >
+                هذا الدرس يحتوي رابط خارجي
+                <br />
+                سيتم نقلك تلقائياً إلى الصفحة المطلوبة
+                <div>
+                    او
+                    <Button
+                        href={data.step.linked}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="link"
+                    >
+                        اضغط هنا للانتقال مباشرة
+                    </Button>
+                </div>
+            </div>
+        {/if}
     </div>
-{/if}
+
+    {#if data.step.description}
+        <div class="p-4 border-t-2">
+            <Article content={data.step.description} />
+        </div>
+    {/if}
+</div>

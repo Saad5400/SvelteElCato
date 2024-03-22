@@ -6,7 +6,7 @@
     import { page } from "$app/stores";
     import * as Drawer from "$lib/components/ui/drawer";
     // import { Confetti } from "svelte-confetti";
-    import { mode } from "mode-watcher";
+    import Separator from "$lib/components/ui/separator/separator.svelte";
 
     function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
@@ -43,6 +43,7 @@
         class="flex flex-col items-center justify-start flex-1 w-full gap-8 p-2 text-center md:px-4 lg:px-8 xl:px-16"
     >
         <Article content={data.question.content} />
+        <Separator />
         <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
             {#each data.question.options() as option, index}
                 <div class="indicator">
