@@ -8,7 +8,7 @@
     import Moon from "virtual:icons/f7/MoonStars";
     import Sun from "virtual:icons/f7/SunMax";
     import Menu from "virtual:icons/f7/Menu";
-    import BetweenLines from "./BetweenLines.svelte";
+    import NavMenu from "./NavMenu.svelte";
 
     function getBackUrl(route: string): string {
         switch (route) {
@@ -61,31 +61,7 @@
                             <Sheet.Description
                                 class="max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto text-accent-foreground"
                             >
-                                {#each $navStore.items as item}
-                                    {@const active = $page.url.href.includes(
-                                        item.href,
-                                    )}
-                                    {#if item.href}
-                                        <Button
-                                            href={item.href}
-                                            class={"whitespace-normal h-fit block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start " +
-                                                (active
-                                                    ? "border-r-2 border-b-2 border-accent-foreground"
-                                                    : "")}
-                                            on:click={() =>
-                                                setTimeout(
-                                                    () => (navOpen = false),
-                                                    100,
-                                                )}
-                                        >
-                                            {item.title}
-                                        </Button>
-                                    {:else}
-                                        <BetweenLines class="my-2">
-                                            {item.title}
-                                        </BetweenLines>
-                                    {/if}
-                                {/each}
+                                <NavMenu />
                             </Sheet.Description>
                         </Sheet.Header>
                     </Sheet.Content>
@@ -122,26 +98,7 @@
                 <h3 class="text-center mb-4">
                     {$navStore.title}
                 </h3>
-                <nav class="">
-                    {#each $navStore.items as item}
-                        {@const active = $page.url.href.includes(item.href)}
-                        {#if item.href}
-                            <Button
-                                href={item.href}
-                                class={"max-w-72 block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit min-w-[20rem] " +
-                                    (active
-                                        ? "border-r-2 border-b-2 border-accent-foreground"
-                                        : "")}
-                            >
-                                {item.title}
-                            </Button>
-                        {:else}
-                            <BetweenLines class="my-2 pe-4">
-                                {item.title}
-                            </BetweenLines>
-                        {/if}
-                    {/each}
-                </nav>
+                <NavMenu />
             </div>
         </nav>
     {/if}

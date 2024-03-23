@@ -1,7 +1,5 @@
 import type {LayoutLoad} from './$types';
 import Course from "$lib/models/Course";
-import {error} from "@sveltejs/kit";
-import type {ClientResponseError} from "pocketbase";
 import {handleError} from "$lib/models/TypedPocketBase";
 
 export const load: LayoutLoad = async ({parent, params, fetch}) => {
