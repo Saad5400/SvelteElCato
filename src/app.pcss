@@ -95,6 +95,12 @@
         @apply leading-7 [&:not(:first-child)]:mt-6 text-lg;
     }
 
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+
     blockquote {
         @apply pl-6 mt-6 italic border-l-2;
     }

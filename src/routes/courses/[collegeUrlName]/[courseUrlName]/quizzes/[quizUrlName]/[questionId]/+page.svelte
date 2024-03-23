@@ -97,24 +97,20 @@
     </div>
     {#if data.next || data.prev}
         <div class="flex flex-row w-full gap-4 max-w-96">
-            {#if data.prev}
-                <Button
-                    variant="outline3D"
-                    class="flex-1 w-full"
-                    href={`./${data.prev.id}`}
-                >
-                    Previous
-                </Button>
-            {/if}
-            {#if data.next}
-                <Button
-                    variant="outline3D"
-                    class="flex-1 w-full"
-                    href={`./${data.next.id}`}
-                >
-                    Next
-                </Button>
-            {/if}
+            <Button
+                variant="outline3D"
+                class={"flex-1 w-full " + (data.prev ? "" : "disabled")}
+                href={`./${data.prev?.id}`}
+            >
+                Previous
+            </Button>
+            <Button
+                variant="outline3D"
+                class={"flex-1 w-full " + (data.next ? "" : "disabled")}
+                href={`./${data.next?.id}`}
+            >
+                Next
+            </Button>
         </div>
     {/if}
 </div>
