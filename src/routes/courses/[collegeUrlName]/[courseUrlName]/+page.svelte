@@ -14,7 +14,7 @@
     </title>
 </svelte:head>
 
-<div class="container flex flex-col gap-8 first:gap-16">
+<div class="container flex flex-col gap-8 first:gap-16 mb-16">
     <h1>
         {data.course.displayName}
     </h1>

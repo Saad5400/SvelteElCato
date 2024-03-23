@@ -39,6 +39,10 @@
     }
 
     :global(article code) {
-        @apply whitespace-pre-wrap break-all font-light !bg-inherit;
+        @apply font-light !bg-inherit;
+    }
+
+    :global(article pre) {
+        @apply overflow-x-auto max-w-[calc(100dvw-1rem)];
     }
 </style>

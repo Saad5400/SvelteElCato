@@ -27,5 +27,8 @@ export default function useHighlight(content: string): string {
         });
     });
 
+    // replace pre tags with p tags but add style to make it look like pre
+    // content = content.replace(/<pre.*?>/g, '<p style="white-space: pre-wrap;">');
+
     return content;
 }
