@@ -11,7 +11,7 @@
         {#if item.href}
             <Button
                 href={item.href}
-                class={"block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit min-w-full md:min-w-[calc(20rem)] " +
+                class={"block py-2 px-4 text-sm font-medium text-on-background/80 hover:bg-background/80 hover:text-on-background/100 text-start me-4 whitespace-normal h-fit min-w-full lg:min-w-[calc(20rem)] " +
                     (active
                         ? "border-r-2 border-b-2 border-accent-foreground"
                         : "")}

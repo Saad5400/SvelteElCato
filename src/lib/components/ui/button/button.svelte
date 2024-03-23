@@ -16,6 +16,7 @@
     function click(e: any) {
         const audio = new Audio(`/sounds/${sound}.mp3`);
         audio.play();
+        navigator.vibrate(50);
     }
 </script>
 

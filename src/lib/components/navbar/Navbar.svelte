@@ -93,7 +93,7 @@
             style="scrollbar-gutter: stable"
         >
             <div
-                class="fixed border-e-2 max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto"
+                class="fixed max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto"
             >
                 <h3 class="text-center mb-4">
                     {$navStore.title}
@@ -102,5 +102,6 @@
             </div>
         </nav>
     {/if}
+    <div class="border-2 hidden lg:block" />
     <slot />
 </main>
