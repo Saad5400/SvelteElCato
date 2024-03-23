@@ -17,7 +17,7 @@
     function click(e: any) {
         const audio = new Audio(`/sounds/${sound}.mp3`);
         audio.play();
-        useVibrate(1);
+        useVibrate(10);
     }
 </script>
 
