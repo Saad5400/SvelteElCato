@@ -7,6 +7,7 @@
     import * as Drawer from "$lib/components/ui/drawer";
     // import { Confetti } from "svelte-confetti";
     import Separator from "$lib/components/ui/separator/separator.svelte";
+    import useVibrate from "$lib/hooks/useVibrate";
 
     function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
@@ -14,12 +15,12 @@
             clicked.classList.add("hover:bg-green-600");
             clicked.classList.add("jump-active");
             showExplanation = true;
-            navigator.vibrate(100);
+            useVibrate(100);
         } else {
             clicked.classList.add("bg-destructive");
             clicked.classList.add("hover:bg-destructive/70");
             clicked.classList.add("boop-active");
-            navigator.vibrate([100, 100, 100]);
+            useVibrate([100, 50, 100]);
         }
     }
 

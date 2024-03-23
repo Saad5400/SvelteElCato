@@ -2,6 +2,7 @@
     import {Button as ButtonPrimitive} from "bits-ui";
     import {cn} from "$lib/utils";
     import {buttonVariants, type Props, type Events} from ".";
+    import useVibrate from "$lib/hooks/useVibrate";
 
     type $$Props = Props;
     type $$Events = Events;
@@ -16,7 +17,7 @@
     function click(e: any) {
         const audio = new Audio(`/sounds/${sound}.mp3`);
         audio.play();
-        navigator.vibrate(50);
+        useVibrate(50);
     }
 </script>
 
