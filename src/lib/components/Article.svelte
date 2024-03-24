@@ -20,7 +20,7 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr" class="break-words text-start">
+<article dir="ltr" class="break-words text-start overflow-x-auto max-w-full h-full">
     <span class={"block " + prefixClass}>
         {prefix}
     </span>
@@ -49,10 +49,6 @@
 
     :global(article pre) {
         @apply max-w-[calc(100dvw-1rem)];
-    }
-
-    :global(article) {
-        @apply overflow-x-auto max-w-full h-full;
     }
 
     :global(article p:not(:first-child)) {

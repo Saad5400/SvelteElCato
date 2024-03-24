@@ -57,7 +57,7 @@
                                 {$navStore.title}
                             </Sheet.Title>
                             <Sheet.Description
-                                class="max-h-[calc(100dvh-5rem)]  overflow-y-auto text-accent-foreground pe-1"
+                                class="max-h-[calc(100dvh-5rem)]  overflow-y-auto text-accent-foreground pe-2"
                             >
                                 <NavMenu />
                             </Sheet.Description>
