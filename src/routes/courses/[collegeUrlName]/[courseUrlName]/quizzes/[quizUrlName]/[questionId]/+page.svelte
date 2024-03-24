@@ -60,15 +60,7 @@
             {#each data.question.options() as option, index}
                 <div class="indicator">
                     {#if data.question.explanation && option.name === data.question.correct && showExplanation}
-                        <!-- <div
-                            class="fixed left-0 top-0 min-w-[100dvw] min-h-screen flex items-center justify-center overflow-clip z-50 pointer-events-none"
-                        >
-                            <Confetti
-                                size={15}
-                                fallDistance="0px"
-                                colorArray={["url(/images/dark-skull.png)"]}
-                            />
-                        </div> -->
+                        <!-- Explain -->
                         <Drawer.Root>
                             <Drawer.Trigger class="contents">
                                 <Button

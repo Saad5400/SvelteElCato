@@ -39,10 +39,14 @@
     }
 
     :global(article code) {
-        @apply font-light !bg-inherit;
+        @apply font-light !bg-inherit scrollbar-thin;
     }
 
     :global(article pre) {
-        @apply overflow-x-auto max-w-[calc(100dvw-1rem)];
+        @apply max-w-[calc(100dvw-1rem)];
+    }
+
+    :global(article) {
+        @apply overflow-x-auto max-w-full h-full;
     }
 </style>
