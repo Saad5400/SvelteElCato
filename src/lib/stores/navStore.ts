@@ -9,6 +9,7 @@ type NavStore = {
 export type NavItem = {
     title: string;
     href: string;
+    class?: string;
 };
 
 const navStore = writable<NavStore>({

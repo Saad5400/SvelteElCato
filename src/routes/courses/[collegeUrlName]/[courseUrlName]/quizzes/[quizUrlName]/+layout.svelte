@@ -3,7 +3,9 @@
     import navStore, { type NavItem } from "$lib/stores/navStore";
     import { onDestroy } from "svelte";
     import { page } from "$app/stores";
+    import { persisted } from "svelte-persisted-store";
 
+    const solvedStore = persisted("solvedQuestions", [] as string[]);
     export let data: LayoutData;
 
     $: route = $page.route.id;
@@ -17,6 +19,9 @@
                 return {
                     title: index + "",
                     href: `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/${data.quiz.urlName}/${question.id}`,
+                    class: $solvedStore.includes(question.id)
+                        ? "correct"
+                        : "",
                 };
             },
         );

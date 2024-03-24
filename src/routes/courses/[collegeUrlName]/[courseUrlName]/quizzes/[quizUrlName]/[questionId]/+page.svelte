@@ -8,19 +8,22 @@
     // import { Confetti } from "svelte-confetti";
     import Separator from "$lib/components/ui/separator/separator.svelte";
     import useVibrate from "$lib/hooks/useVibrate";
+    import { persisted } from "svelte-persisted-store";
+
+    const solvedStore = persisted("solvedQuestions", [] as string[]);
 
     function correct(element: HTMLElement) {
-        element.classList.add("bg-green-500");
-        element.classList.add("hover:bg-green-600");
-        element.classList.add("jump-active");
+        element.classList.add("correct");
         showExplanation = true;
         useVibrate([10, 10, 10]);
+        solvedStore.update((solved) => {
+            solved.push(data.question.id);
+            return solved;
+        });
     }
 
     function incorrect(element: HTMLElement) {
-        element.classList.add("bg-red-500");
-        element.classList.add("hover:bg-red-600");
-        element.classList.add("boop-active");
+        element.classList.add("incorrect");
         useVibrate([50, 50, 50]);
     }
 
