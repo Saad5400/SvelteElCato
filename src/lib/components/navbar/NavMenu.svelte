@@ -6,7 +6,7 @@
     import { get } from "svelte/store";
 </script>
 
-<nav class="scrollbar-thin">
+<nav class="">
     {#each $navStore.items as item}
         {@const active = $page.url.href.includes(item.href)}
         {#if item.href}

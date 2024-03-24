@@ -57,7 +57,7 @@
                                 {$navStore.title}
                             </Sheet.Title>
                             <Sheet.Description
-                                class="max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto text-accent-foreground pe-1"
+                                class="max-h-[calc(100dvh-5rem)]  overflow-y-auto text-accent-foreground pe-1"
                             >
                                 <NavMenu />
                             </Sheet.Description>
@@ -90,9 +90,7 @@
             class="min-w-[20rem] max-w-80 min-h-screen-without-navbar hidden lg:block mx-4"
             style="scrollbar-gutter: stable"
         >
-            <div
-                class="fixed max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto"
-            >
+            <div class="fixed max-h-[calc(100dvh-5rem)] overflow-y-auto">
                 <h3 class="text-center mb-4">
                     {$navStore.title}
                 </h3>

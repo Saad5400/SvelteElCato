@@ -39,7 +39,7 @@
     }
 
     :global(article code) {
-        @apply font-light !bg-inherit scrollbar-thin;
+        @apply font-light !bg-inherit;
     }
 
     :global(article pre) {
