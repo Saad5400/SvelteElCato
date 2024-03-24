@@ -2,6 +2,8 @@
     import { mode } from "mode-watcher";
 
     export let content: string;
+    export let prefix: string = "";
+    export let prefixClass: string = "";
 </script>
 
 <svelte:head>
@@ -18,7 +20,10 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr" class="break-words text-start">
+<article dir="ltr" class={"break-words text-start " + prefixClass}>
+    <span class="block">
+        {prefix}
+    </span>
     {@html content}
 </article>
 
@@ -48,5 +53,13 @@
 
     :global(article) {
         @apply overflow-x-auto max-w-full h-full;
+    }
+
+    :global(article p:not(:first-child)) {
+        @apply !mt-0;
+    }
+
+    :global(article p) {
+        @apply text-accent-foreground;
     }
 </style>
