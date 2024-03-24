@@ -20,8 +20,8 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr" class={"break-words text-start " + prefixClass}>
-    <span class="block">
+<article dir="ltr" class="break-words text-start">
+    <span class={"block " + prefixClass}>
         {prefix}
     </span>
     {@html content}
@@ -57,9 +57,5 @@
 
     :global(article p:not(:first-child)) {
         @apply !mt-0;
-    }
-
-    :global(article p) {
-        @apply text-accent-foreground;
     }
 </style>
