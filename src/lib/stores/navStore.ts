@@ -3,6 +3,7 @@ import {writable} from "svelte/store";
 type NavStore = {
     title: string;
     items: NavItem[];
+    open?: boolean;
 };
 
 export type NavItem = {
@@ -12,7 +13,8 @@ export type NavItem = {
 
 const navStore = writable<NavStore>({
     title: "",
-    items: []
+    items: [],
+    open: false
 });
 
 export default navStore;

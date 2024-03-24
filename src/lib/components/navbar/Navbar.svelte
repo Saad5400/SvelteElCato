@@ -25,8 +25,6 @@
     }
 
     $: url = getBackUrl($page.route.id!);
-
-    let navOpen = true;
 </script>
 
 <header
@@ -46,7 +44,7 @@
         {/if}
         {#if $navStore.title && $navStore.items.length > 0}
             <div class="contents lg:hidden">
-                <Sheet.Root bind:open={navOpen}>
+                <Sheet.Root bind:open={$navStore.open}>
                     <Sheet.Trigger>
                         <Button size="icon" variant="ghost">
                             <!-- <Menu class="h-4 w-4"/> -->

@@ -3,6 +3,7 @@
     import navStore from "$lib/stores/navStore";
     import BetweenLines from "$lib/components/BetweenLines.svelte";
     import { Button } from "$lib/components/ui/button";
+    import { get } from "svelte/store";
 </script>
 
 <nav class="scrollbar-thin">
@@ -15,6 +16,7 @@
                     (active
                         ? "border-r-2 border-b-2 border-accent-foreground"
                         : "")}
+                on:click={() => navStore.set({... get(navStore), open: false })}
             >
                 {item.title}
             </Button>
