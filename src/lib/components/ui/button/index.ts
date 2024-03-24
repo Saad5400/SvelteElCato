@@ -35,6 +35,7 @@ export type Size = VariantProps<typeof buttonVariants>["size"];
 type Props = ButtonPrimitive.Props & {
 	variant?: Variant;
 	size?: Size;
+	sound?: "click" | "click_correct" | "click_incorrect";
 };
 
 type Events = ButtonPrimitive.Events;

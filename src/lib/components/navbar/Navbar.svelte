@@ -26,7 +26,7 @@
 
     $: url = getBackUrl($page.route.id!);
 
-    let navOpen = false;
+    let navOpen = true;
 </script>
 
 <header
@@ -59,7 +59,7 @@
                                 {$navStore.title}
                             </Sheet.Title>
                             <Sheet.Description
-                                class="max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto text-accent-foreground"
+                                class="max-h-[calc(100dvh-5rem)] scrollbar-thin overflow-y-auto text-accent-foreground pe-1"
                             >
                                 <NavMenu />
                             </Sheet.Description>

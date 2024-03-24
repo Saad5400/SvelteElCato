@@ -12,7 +12,7 @@
     export let size: $$Props["size"] = "default";
     export let builders: $$Props["builders"] = [];
     export {className as class};
-    export let sound: "click" | "click_correct" | "click_incorrect" = "click";
+    export let sound: $$Props["sound"] = "click";
 
     function click(e: any) {
         const audio = new Audio(`/sounds/${sound}.mp3`);

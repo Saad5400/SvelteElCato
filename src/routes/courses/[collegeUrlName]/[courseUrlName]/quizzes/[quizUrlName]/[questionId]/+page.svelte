@@ -9,18 +9,26 @@
     import Separator from "$lib/components/ui/separator/separator.svelte";
     import useVibrate from "$lib/hooks/useVibrate";
 
+    function correct(element: HTMLElement) {
+        element.classList.add("bg-green-500");
+        element.classList.add("hover:bg-green-600");
+        element.classList.add("jump-active");
+        showExplanation = true;
+        useVibrate([10, 10, 10]);
+    }
+
+    function incorrect(element: HTMLElement) {
+        element.classList.add("bg-red-500");
+        element.classList.add("hover:bg-red-600");
+        element.classList.add("boop-active");
+        useVibrate([50, 50, 50]);
+    }
+
     function choiceClicked(event: any, name: string, clicked: HTMLElement) {
         if (name == data.question.correct) {
-            clicked.classList.add("bg-green-500");
-            clicked.classList.add("hover:bg-green-600");
-            clicked.classList.add("jump-active");
-            showExplanation = true;
-            useVibrate(100);
+            correct(clicked);
         } else {
-            clicked.classList.add("bg-destructive");
-            clicked.classList.add("hover:bg-destructive/70");
-            clicked.classList.add("boop-active");
-            useVibrate([100, 50, 100]);
+            incorrect(clicked);
         }
     }
 
@@ -100,14 +108,14 @@
         <div class="flex flex-row w-full gap-4 max-w-96">
             <Button
                 variant="outline3D"
-                class={"flex-1 w-full " + (data.prev ? "" : "disabled")}
+                class={"choice flex-1 w-full " + (data.prev ? "" : "disabled")}
                 href={`./${data.prev?.id}`}
             >
                 Previous
             </Button>
             <Button
                 variant="outline3D"
-                class={"flex-1 w-full " + (data.next ? "" : "disabled")}
+                class={"choice flex-1 w-full " + (data.next ? "" : "disabled")}
                 href={`./${data.next?.id}`}
             >
                 Next
