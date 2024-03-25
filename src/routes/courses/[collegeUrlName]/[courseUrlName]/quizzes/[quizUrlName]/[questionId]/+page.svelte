@@ -17,7 +17,8 @@
         showExplanation = true;
         useVibrate([10, 10, 10]);
         solvedStore.update((solved) => {
-            solved.push(data.question.id);
+            if (!solved.includes(data.question.id))
+                solved.push(data.question.id);
             return solved;
         });
     }
@@ -54,7 +55,13 @@
     <div
         class="flex flex-col items-start justify-start flex-1 w-full gap-8 p-2 md:px-4 lg:px-8 xl:px-16"
     >
-        <Article content={data.question.content} prefix={`Question ${data.questionIndex}:`} prefixClass={$solvedStore.includes(data.question.id) ? "text-success" : ""} />
+        <Article
+            content={data.question.content}
+            prefix={`Question ${data.questionIndex}:`}
+            prefixClass={$solvedStore.includes(data.question.id)
+                ? "text-success"
+                : ""}
+        />
         <Separator />
         <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
             {#each data.question.options() as option, index}
