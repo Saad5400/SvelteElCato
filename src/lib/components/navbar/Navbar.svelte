@@ -9,6 +9,9 @@
     import Sun from "virtual:icons/f7/SunMax";
     import Menu from "virtual:icons/f7/Menu";
     import NavMenu from "./NavMenu.svelte";
+    import { onDestroy, onMount } from "svelte";
+
+    let largeNavMenu: HTMLElement;
 
     function getBackUrl(route: string): string {
         switch (route) {
@@ -25,6 +28,20 @@
     }
 
     $: url = getBackUrl($page.route.id!);
+
+    let unsubscribeNavStore = () => {};
+    onMount(() => {
+        unsubscribeNavStore = navStore.subscribe((value) => {
+            setTimeout(() => {
+                if (!largeNavMenu) return;
+                largeNavMenu.classList.remove("w-80");
+            }, 1500);
+        });
+    });
+
+    onDestroy(() => {
+        unsubscribeNavStore();
+    });
 </script>
 
 <header
@@ -86,18 +103,44 @@
 </header>
 <main class="flex flex-row">
     {#if $navStore.title && $navStore.items.length > 0}
-        <nav
-            class="min-w-[20rem] max-w-80 min-h-screen-without-navbar hidden lg:block mx-4"
-            style="scrollbar-gutter: stable"
-        >
-            <div class="fixed max-h-[calc(100dvh-5rem)] overflow-y-auto">
-                <h3 class="text-center mb-4">
-                    {$navStore.title}
-                </h3>
-                <NavMenu />
+        <div class="contents" id="navMenuDiv">
+            <nav
+                class="max-w-80 min-h-screen-without-navbar hidden lg:block mx-4 transition-all !overflow-x-hidden w-8 w-80"
+                id="largeNavMenu"
+                bind:this={largeNavMenu}
+            >
+                <div
+                    class="fixed w-full max-w-80 max-h-[calc(100dvh-5rem)] scrollbar-none overflow-y-auto"
+                >
+                    <h3 class="text-center mb-4">
+                        {$navStore.title}
+                    </h3>
+                    <NavMenu />
+                </div>
+            </nav>
+            <div class="border-2 hidden lg:flex items-center">
+                <span
+                    class="transition-all scale-x-100 absolute translate-x-2"
+                    id="openNavIcon"
+                >
+                    <SkipBack class="text-primary" />
+                </span>
             </div>
-        </nav>
+        </div>
     {/if}
-    <div class="border-2 hidden lg:block" />
     <slot />
 </main>
+
+<style lang="postcss">
+    #largeNavMenu {
+        clip-path: inset(0 0 0 0);
+    }
+
+    #navMenuDiv:hover #largeNavMenu {
+        @apply w-80;
+    }
+
+    #navMenuDiv:hover #openNavIcon {
+        @apply -scale-x-100;
+    }
+</style>

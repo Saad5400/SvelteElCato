@@ -4,6 +4,9 @@
     export let content: string;
     export let prefix: string = "";
     export let prefixClass: string = "";
+    let classes = "";
+
+    export { classes as class };
 </script>
 
 <svelte:head>
@@ -20,7 +23,10 @@
     {/if}
 </svelte:head>
 
-<article dir="ltr" class="break-words text-start overflow-x-auto max-w-full h-full">
+<article
+    dir="ltr"
+    class={"break-words text-start overflow-x-auto max-w-full h-full " + classes}
+>
     <span class={"block " + prefixClass}>
         {prefix}
     </span>

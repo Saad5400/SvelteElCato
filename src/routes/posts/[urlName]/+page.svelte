@@ -41,7 +41,7 @@
     </title>
 </svelte:head>
 
-<div class="container">
+<div class="container flex-1">
     <div class="text-center mb-8 text-accent-foreground/90">
         <h2>
             {data.post.displayName}
@@ -65,12 +65,5 @@
         </small>
     </div>
     <br/>
-    <Article content={data.post.content}/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <Article content={data.post.content} class="overflow-x-clip"/>
 </div>

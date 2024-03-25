@@ -5,7 +5,6 @@
     import Card from "$lib/components/cardsView/Card.svelte";
     import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
     import { Separator } from "$lib/components/ui/separator";
-    import { onMount } from "svelte";
 
     export let data: PageData;
 </script>
@@ -37,7 +36,7 @@
     <Posts posts={data.posts} />
 </div>
 
-<style>
+<style lang="postcss">
     .repeating-text {
         @apply bg-repeat w-[100dvw] absolute left-0 top-0 -z-10 opacity-40 pointer-events-none;
     }
