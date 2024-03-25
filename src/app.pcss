@@ -313,14 +313,14 @@
     }
 
     .correct {
-        @apply border-success dark:border-success/70 jump-active;
+        @apply !border-success dark:!border-success/70 jump-active;
     }
 
     .incorrect {
-        @apply border-destructive boop-active;
+        @apply !border-destructive boop-active;
     }
 
-    button.active, a.active {
+    button.active, a.active, button.active.correct, a.active.correct {
         @apply border-r-2 border-b-2 !border-accent-foreground;
     }
 }
