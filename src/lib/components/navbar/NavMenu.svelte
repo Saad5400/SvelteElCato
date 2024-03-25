@@ -4,9 +4,22 @@
     import BetweenLines from "$lib/components/BetweenLines.svelte";
     import { Button } from "$lib/components/ui/button";
     import { get } from "svelte/store";
+    import { onDestroy, onMount } from "svelte";
+
+    let nav: HTMLElement;
+    let unsubscribeNavStore = () => {};
+    onMount(() => {
+        unsubscribeNavStore = navStore.subscribe((value) => {
+            nav.getElementsByClassName("active")[0]?.scrollIntoView({ block: "center" });
+        });
+    });
+
+    onDestroy(() => {
+        unsubscribeNavStore();
+    });
 </script>
 
-<nav>
+<nav bind:this={nav}>
     {#each $navStore.items as item}
         {@const active = $page.url.href.includes(item.href)}
         {#if item.href}
