@@ -9,6 +9,7 @@
     // import { inject as injectAnalytics } from "@vercel/analytics";
     import usePageTransition from "$lib/hooks/usePageTransition";
     import { onMount } from "svelte";
+    import InitLoading from "$lib/components/InitLoading.svelte";
 
     usePageTransition();
     onMount(() => {
@@ -47,6 +48,7 @@
     // injectAnalytics();
 </script>
 
+<InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar class="text-accent-foreground" zIndex={100} />

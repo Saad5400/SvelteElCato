@@ -7,13 +7,13 @@
     @font-face {
         font-family: "Handjet";
         src: url("/fonts/Handjet.ttf") format("truetype");
-        font-display: block;
+        font-display: swap;
     }
 
     @font-face {
         font-family: "RobotoMono";
         src: url("/fonts/RobotoMono.ttf") format("truetype");
-        font-display: block;
+        font-display: swap;
     }
 
     .roboto-mono {
@@ -73,7 +73,7 @@
     }
 
     body {
-        @apply tracking-wide bg-background text-foreground;
+        @apply tracking-wide bg-background text-foreground overflow-clip;
         font-family: 'Handjet', sans-serif;
     }
 
