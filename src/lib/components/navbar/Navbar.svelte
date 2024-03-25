@@ -105,7 +105,7 @@
     {#if $navStore.title && $navStore.items.length > 0}
         <div class="contents" id="navMenuDiv">
             <nav
-                class="max-w-80 min-h-screen-without-navbar hidden lg:block mx-4 transition-all !overflow-x-hidden w-8 w-80"
+                class="max-w-80 min-h-screen-without-navbar hidden lg:block ms-4 transition-all !overflow-x-hidden w-8 w-80"
                 id="largeNavMenu"
                 bind:this={largeNavMenu}
             >
@@ -118,7 +118,7 @@
                     <NavMenu />
                 </div>
             </nav>
-            <div class="border-2 hidden lg:flex items-center">
+            <div class="border-e-2 ps-4 hidden lg:flex items-center">
                 <span
                     class="transition-all scale-x-100 absolute translate-x-2"
                     id="openNavIcon"
