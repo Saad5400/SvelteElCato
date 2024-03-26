@@ -25,7 +25,7 @@
 
 <article
     dir="ltr"
-    class={"break-words text-start overflow-x-auto max-w-full h-full " + classes}
+    class={"break-words text-start max-w-full h-full " + classes}
 >
     <span class={"block " + prefixClass}>
         {prefix}
@@ -54,7 +54,7 @@
     }
 
     :global(article pre) {
-        @apply max-w-[calc(100dvw-1rem)];
+        @apply max-w-[calc(100dvw-1rem)] overflow-x-auto;
     }
 
     :global(article p:not(:first-child)) {

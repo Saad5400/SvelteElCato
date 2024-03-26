@@ -5,6 +5,7 @@
     import { page } from "$app/stores";
     import { browser } from "$app/environment";
     import Article from "$lib/components/Article.svelte";
+    import useHighlight from "$lib/hooks/useHighlight";
 
     export let data: PageData;
 
@@ -62,8 +63,8 @@
     </div>
 
     {#if data.step.description}
-        <div class="p-4 border-t-2">
-            <Article content={data.step.description} />
+        <div class="p-4 border-t-2 max-w-[100dvw]">
+            <Article content={useHighlight(data.step.description)} />
         </div>
     {/if}
 </div>
