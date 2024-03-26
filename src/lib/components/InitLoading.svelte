@@ -14,7 +14,7 @@
 </script>
 
 <div
-  class="fixed z-[999] flex min-h-[100dvh] min-w-[100dvw] scale-100 flex-row flex-wrap items-center justify-center bg-destructive text-center !font-mono text-8xl text-destructive-foreground transition-all duration-500"
+  class="fixed z-[999] flex min-h-[100dvh] min-w-[100dvw] scale-100 flex-row flex-wrap items-center justify-center bg-destructive text-center !font-mono text-6xl text-destructive-foreground transition-all duration-500"
   dir="ltr"
   bind:this={div}
 >
