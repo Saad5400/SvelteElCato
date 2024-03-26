@@ -19,4 +19,5 @@
   bind:this={div}
 >
   Getting Hacked
+  <span class="text-sm">Just kidding, please wait for loading.</span>
 </div>
