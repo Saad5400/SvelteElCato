@@ -1,15 +1,19 @@
 <script lang="ts">
-    import {Button} from "$lib/components/ui/button";
-    import Copy from 'virtual:icons/carbon/Copy';
-    import {toast} from "svelte-sonner";
+  import { Button } from "$lib/components/ui/button";
+  import Copy from "virtual:icons/carbon/Copy";
+  import { toast } from "svelte-sonner";
 
-    export let copyText: string;
+  export let copyText: string;
 </script>
 
-<Button variant="ghost" class="gap-2" on:click={() => {
+<Button
+  variant="ghost"
+  class="gap-2"
+  on:click={() => {
     navigator.clipboard.writeText(copyText);
     toast.success(`تم نسخ '${copyText}' إلى الحافظة`);
-}}>
-    <Copy class="h-3 w-3"/>
-    <slot/>
+  }}
+>
+  <Copy class="h-3 w-3" />
+  <slot />
 </Button>

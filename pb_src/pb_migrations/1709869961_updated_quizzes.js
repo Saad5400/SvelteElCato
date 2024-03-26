@@ -1,18 +1,21 @@
 /// <reference path="../pb_data/types.d.ts" />
-migrate((db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("megjv1n6a5d7unh")
+migrate(
+  (db) => {
+    const dao = new Dao(db);
+    const collection = dao.findCollectionByNameOrId("megjv1n6a5d7unh");
 
-  collection.listRule = ""
-  collection.viewRule = ""
+    collection.listRule = "";
+    collection.viewRule = "";
 
-  return dao.saveCollection(collection)
-}, (db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("megjv1n6a5d7unh")
+    return dao.saveCollection(collection);
+  },
+  (db) => {
+    const dao = new Dao(db);
+    const collection = dao.findCollectionByNameOrId("megjv1n6a5d7unh");
 
-  collection.listRule = null
-  collection.viewRule = null
+    collection.listRule = null;
+    collection.viewRule = null;
 
-  return dao.saveCollection(collection)
-})
+    return dao.saveCollection(collection);
+  },
+);

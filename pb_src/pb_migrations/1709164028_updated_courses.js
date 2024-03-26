@@ -1,48 +1,55 @@
 /// <reference path="../pb_data/types.d.ts" />
-migrate((db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("rdc13big79ez8hy")
+migrate(
+  (db) => {
+    const dao = new Dao(db);
+    const collection = dao.findCollectionByNameOrId("rdc13big79ez8hy");
 
-  // update
-  collection.schema.addField(new SchemaField({
-    "system": false,
-    "id": "qmzoqid9",
-    "name": "paths",
-    "type": "relation",
-    "required": false,
-    "presentable": false,
-    "unique": false,
-    "options": {
-      "collectionId": "nznq9mf0vr61khr",
-      "cascadeDelete": false,
-      "minSelect": null,
-      "maxSelect": null,
-      "displayFields": null
-    }
-  }))
+    // update
+    collection.schema.addField(
+      new SchemaField({
+        system: false,
+        id: "qmzoqid9",
+        name: "paths",
+        type: "relation",
+        required: false,
+        presentable: false,
+        unique: false,
+        options: {
+          collectionId: "nznq9mf0vr61khr",
+          cascadeDelete: false,
+          minSelect: null,
+          maxSelect: null,
+          displayFields: null,
+        },
+      }),
+    );
 
-  return dao.saveCollection(collection)
-}, (db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("rdc13big79ez8hy")
+    return dao.saveCollection(collection);
+  },
+  (db) => {
+    const dao = new Dao(db);
+    const collection = dao.findCollectionByNameOrId("rdc13big79ez8hy");
 
-  // update
-  collection.schema.addField(new SchemaField({
-    "system": false,
-    "id": "qmzoqid9",
-    "name": "pathes",
-    "type": "relation",
-    "required": false,
-    "presentable": false,
-    "unique": false,
-    "options": {
-      "collectionId": "nznq9mf0vr61khr",
-      "cascadeDelete": false,
-      "minSelect": null,
-      "maxSelect": null,
-      "displayFields": null
-    }
-  }))
+    // update
+    collection.schema.addField(
+      new SchemaField({
+        system: false,
+        id: "qmzoqid9",
+        name: "pathes",
+        type: "relation",
+        required: false,
+        presentable: false,
+        unique: false,
+        options: {
+          collectionId: "nznq9mf0vr61khr",
+          cascadeDelete: false,
+          minSelect: null,
+          maxSelect: null,
+          displayFields: null,
+        },
+      }),
+    );
 
-  return dao.saveCollection(collection)
-})
+    return dao.saveCollection(collection);
+  },
+);

@@ -1,21 +1,21 @@
-import {writable} from "svelte/store";
+import { writable } from "svelte/store";
 
 type NavStore = {
-    title: string;
-    items: NavItem[];
-    open?: boolean;
+  title: string;
+  items: NavItem[];
+  open?: boolean;
 };
 
 export type NavItem = {
-    title: string;
-    href: string;
-    class?: string;
+  title: string;
+  href: string;
+  class?: string;
 };
 
 const navStore = writable<NavStore>({
-    title: "",
-    items: [],
-    open: false
+  title: "",
+  items: [],
+  open: false,
 });
 
 export default navStore;

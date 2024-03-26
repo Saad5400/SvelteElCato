@@ -204,12 +204,12 @@
 
 <figure
   dir="ltr"
-  class="w-[calc(100dvw-5rem)] -z-10 blur-sm lg:blur-0 lg:w-fit overflow-x-clip absolute lg:relative flex items-center justify-center"
+  class="absolute -z-10 flex w-[calc(100dvw-5rem)] items-center justify-center overflow-x-clip blur-sm lg:relative lg:w-fit lg:blur-0"
   style="transform: translateY({translateY}px) translateX(-2%)"
   aria-hidden="true"
 >
   <pre
-    class="roboto-mono text-[0.125rem] sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem] font-extrabold"
+    class="roboto-mono text-[0.125rem] font-extrabold sm:text-[0.15rem] lg:text-[0.175rem] xl:text-[0.2rem]"
     bind:this={pre}>
                                                                         011                                                                                                                                               0011
                                                                         11011                                                                                                                                             110111
