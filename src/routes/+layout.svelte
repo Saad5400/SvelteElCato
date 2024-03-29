@@ -12,6 +12,7 @@
   import InitLoading from "$lib/components/InitLoading.svelte";
 
   usePageTransition();
+  /*
   onMount(() => {
     const azkar = [
       "سبحان الله وبحمده سبحان الله العظيم",
@@ -36,15 +37,15 @@
       "اللهم اغفر لي ذنبي واحسن خاتمتي",
       "استغفرالله والحمدلله والله اكبر ولا اله الا الله",
     ];
-    /* toast.info(azkar[Math.floor(Math.random() * azkar.length)], {
+    toast.info(azkar[Math.floor(Math.random() * azkar.length)], {
       description: "ما نقص مالٌ من صدقةٍ",
       action: {
         label: "تبرع مع إحسان",
         onClick: () =>
           window.open("https://ehsan.sa/", "_blank", "noopener noreferrer"),
       },
-    }); */
-  });
+    });
+  }); */
   // injectSpeedInsights();
   // injectAnalytics();
 </script>
