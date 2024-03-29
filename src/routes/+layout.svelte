@@ -8,11 +8,10 @@
   // import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
   // import { inject as injectAnalytics } from "@vercel/analytics";
   import usePageTransition from "$lib/hooks/usePageTransition";
-  // import { onMount } from "svelte";
-  // import InitLoading from "$lib/components/InitLoading.svelte";
+  import { onMount } from "svelte";
+  import InitLoading from "$lib/components/InitLoading.svelte";
 
   usePageTransition();
-  /*
   onMount(() => {
     const azkar = [
       "سبحان الله وبحمده سبحان الله العظيم",
@@ -45,12 +44,12 @@
           window.open("https://ehsan.sa/", "_blank", "noopener noreferrer"),
       },
     });
-  }); */
+  });
   // injectSpeedInsights();
   // injectAnalytics();
 </script>
 
-<!-- <InitLoading /> -->
+<InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar class="text-accent-foreground" zIndex={100} />
