@@ -8,8 +8,8 @@
   // import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
   // import { inject as injectAnalytics } from "@vercel/analytics";
   import usePageTransition from "$lib/hooks/usePageTransition";
-  import { onMount } from "svelte";
-  import InitLoading from "$lib/components/InitLoading.svelte";
+  // import { onMount } from "svelte";
+  // import InitLoading from "$lib/components/InitLoading.svelte";
 
   usePageTransition();
   /*
