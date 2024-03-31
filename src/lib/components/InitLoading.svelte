@@ -6,11 +6,11 @@
   let div: HTMLDivElement;
 
   onMount(async () => {
-    div.style.scale = "0";
-    div.style.pointerEvents = "none";
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    document.body.style.overflowY = "auto";
-    div.remove();
+    // div.style.scale = "0";
+    // div.style.pointerEvents = "none";
+    // await new Promise((resolve) => setTimeout(resolve, 500));
+    // document.body.style.overflowY = "auto";
+    // div.remove();
   });
 </script>
 

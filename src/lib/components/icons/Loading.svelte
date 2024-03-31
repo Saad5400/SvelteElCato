@@ -1,65 +1,1929 @@
-<script>
-  let classes = "w-5 h-5 mx-5";
-  export { classes as class };
-</script>
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class={classes}
-  ><circle
-    fill="currentColor"
-    stroke="currentColor"
-    stroke-width="15"
-    r="15"
-    cx="40"
-    cy="100"
-    data-darkreader-inline-fill=""
-    data-darkreader-inline-stroke=""
-    style="--darkreader-inline-fill: #ff6dff; --darkreader-inline-stroke: #ff6dff;"
-    ><animate
-      attributeName="opacity"
-      calcMode="spline"
-      dur="0.5"
-      values="1;0;1;"
-      keySplines=".5 0 .5 1;.5 0 .5 1"
-      repeatCount="indefinite"
-      begin="-.4"
-    ></animate></circle
-  ><circle
-    fill="currentColor"
-    stroke="currentColor"
-    stroke-width="15"
-    r="15"
-    cx="100"
-    cy="100"
-    data-darkreader-inline-fill=""
-    data-darkreader-inline-stroke=""
-    style="--darkreader-inline-fill: #ff6dff; --darkreader-inline-stroke: #ff6dff;"
-    ><animate
-      attributeName="opacity"
-      calcMode="spline"
-      dur="0.5"
-      values="1;0;1;"
-      keySplines=".5 0 .5 1;.5 0 .5 1"
-      repeatCount="indefinite"
-      begin="-.2"
-    ></animate></circle
-  ><circle
-    fill="currentColor"
-    stroke="currentColor"
-    stroke-width="15"
-    r="15"
-    cx="160"
-    cy="100"
-    data-darkreader-inline-fill=""
-    data-darkreader-inline-stroke=""
-    style="--darkreader-inline-fill: #ff6dff; --darkreader-inline-stroke: #ff6dff;"
-    ><animate
-      attributeName="opacity"
-      calcMode="spline"
-      dur="0.5"
-      values="1;0;1;"
-      keySplines=".5 0 .5 1;.5 0 .5 1"
-      repeatCount="indefinite"
-      begin="0"
-    ></animate></circle
-  ></svg
+<svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 300.000000 300.000000"
+  preserveAspectRatio="xMidYMid meet"
+  width="300"
+  height="300"
 >
+  <metadata>
+    Created by potrace 1.10, written by Peter Selinger 2001-2011
+  </metadata>
+  <g
+    transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)"
+    fill="currentColor"
+    stroke="none"
+  >
+    <path
+      d="M698 2711 l-47 -77 -7 -133 c-6 -113 -5 -133 7 -129 17 6 34 157 19
+172 -6 6 -10 16 -10 23 0 8 15 0 34 -18 34 -31 35 -32 29 -98 l-6 -67 57 10
+56 10 -32 16 c-28 13 -33 21 -36 54 -2 25 -17 60 -38 92 l-35 53 26 46 c26 43
+45 58 45 34 0 -6 16 -29 35 -52 19 -22 35 -47 35 -54 0 -7 3 -13 8 -13 4 0 12
+-9 17 -19 6 -11 34 -54 63 -96 28 -42 52 -79 52 -83 0 -8 53 -85 64 -93 10 -8
+-2 -48 -15 -50 -5 -1 -17 -2 -26 -3 -10 -1 -47 -6 -83 -11 -36 -4 -84 -9 -108
+-10 -40 -1 -44 1 -49 26 -3 18 -11 26 -22 25 -12 -2 -17 -15 -19 -51 -3 -48
+-3 -48 25 -42 118 23 323 49 339 43 12 -6 15 -10 7 -13 -7 -3 -13 -10 -13 -15
+0 -6 3 -8 7 -5 10 10 33 -13 33 -34 0 -13 -7 -17 -27 -15 -16 1 -34 -2 -42 -8
+-11 -8 -13 -8 -8 1 5 7 0 9 -14 6 -12 -4 -25 0 -30 8 -7 12 -9 11 -9 -2 0 -9
+-6 -16 -12 -17 -7 -1 -30 -4 -52 -8 -27 -4 -41 -2 -47 8 -7 10 -9 9 -9 -4 0
+-15 -9 -18 -47 -17 l-48 1 35 11 c19 6 42 18 50 27 8 9 21 15 28 14 6 -1 17
+-2 23 -3 6 0 8 -8 5 -17 -5 -14 -4 -15 9 -4 8 7 12 16 9 21 -3 5 3 9 13 10 10
+0 29 2 43 4 14 2 36 6 49 8 14 2 27 9 29 15 2 8 -6 10 -25 7 -26 -5 -194 -32
+-238 -39 -11 -2 -37 -4 -57 -5 l-38 -1 0 -51 c0 -27 4 -48 9 -45 4 3 87 17
+182 31 96 14 185 29 199 33 36 12 63 4 55 -16 -3 -9 -3 -13 1 -10 9 10 34 -17
+34 -36 0 -9 6 -16 13 -16 8 0 21 -8 30 -18 20 -22 58 -25 160 -12 45 6 100 13
+121 15 47 6 119 -12 110 -26 -3 -6 -11 -8 -17 -6 -6 2 -18 -4 -27 -13 -8 -9
+-11 -10 -6 -3 5 8 6 16 3 19 -3 3 -11 -4 -17 -16 -6 -12 -10 -23 -8 -24 7 -6
+318 49 318 56 0 5 -10 8 -22 9 -60 1 -189 20 -237 33 -44 13 -67 14 -115 5
+-34 -5 -105 -11 -158 -13 l-98 -2 -102 155 c-56 86 -129 199 -161 251 -48 75
+-214 330 -221 337 0 0 -22 -34 -48 -76z"
+      class="svg-elem-1"
+    ></path>
+    <path
+      d="M2156 2712 c-27 -42 -74 -117 -104 -167 -65 -107 -61 -102 -71 -87
+-5 8 -23 -16 -53 -70 -24 -46 -73 -134 -108 -196 -34 -62 -61 -114 -59 -116 5
+-4 203 29 237 39 12 4 22 3 22 -2 0 -6 -10 -15 -22 -22 -20 -10 -17 -11 22 -6
+25 4 110 15 190 25 79 10 148 16 152 14 4 -3 8 6 8 20 0 14 8 30 18 36 15 10
+15 10 -3 5 -20 -5 -23 6 -57 182 -35 184 -36 189 -18 217 l18 29 -57 88 c-31
+48 -58 88 -61 88 -3 0 -27 -34 -54 -77z m88 -41 c18 -28 25 -52 24 -87 0 -63
+10 -156 20 -186 5 -13 10 -43 11 -67 1 -25 5 -49 8 -54 3 -5 6 -28 8 -50 1
+-22 7 -43 14 -45 28 -9 -30 -32 -110 -42 -120 -17 -151 -18 -179 -7 l-25 9 23
+9 c13 5 28 7 33 3 5 -3 9 0 9 7 0 10 3 10 11 2 13 -13 42 -6 33 8 -5 9 2 10
+83 12 23 0 40 5 37 9 -3 4 6 8 20 8 14 0 27 4 30 8 4 7 -60 -1 -229 -30 -38
+-6 -79 -17 -90 -24 -11 -7 -46 -16 -79 -19 -58 -7 -58 -7 -51 16 7 24 64 130
+74 139 4 3 17 28 31 55 14 28 39 64 56 81 17 17 50 63 73 102 23 39 47 77 54
+84 7 7 24 32 37 56 13 23 30 42 37 42 7 0 24 -18 37 -39z"
+      class="svg-elem-2"
+    ></path>
+    <path
+      d="M2132 2236 c-9 -5 -35 -9 -57 -7 -22 1 -65 -7 -95 -19 l-55 -20 50 4
+c83 7 279 38 295 47 9 5 -12 7 -53 6 -37 -1 -75 -6 -85 -11z"
+      class="svg-elem-3"
+    ></path>
+    <path
+      d="M1898 2584 c-4 -3 -77 -17 -164 -30 -87 -14 -161 -28 -164 -31 -13
+-14 280 33 324 52 17 7 26 14 20 14 -6 1 -13 -2 -16 -5z"
+      class="svg-elem-4"
+    ></path>
+    <path
+      d="M763 2373 c-40 -4 -42 -6 -48 -44 -4 -22 -4 -43 -1 -46 9 -9 36 6 43
+24 7 21 30 45 58 61 13 7 15 11 5 10 -8 -1 -34 -3 -57 -5z"
+      class="svg-elem-5"
+    ></path>
+    <path
+      d="M630 2306 c0 -29 -3 -74 -6 -100 -6 -38 -4 -46 9 -46 17 0 23 29 30
+143 3 50 1 57 -15 57 -15 0 -18 -8 -18 -54z"
+      class="svg-elem-6"
+    ></path>
+    <path
+      d="M226 2263 c-4 -5 -55 -17 -114 -28 -78 -15 -108 -25 -110 -36 -3 -14
+9 -14 110 2 62 10 130 19 151 19 26 0 37 4 37 15 0 25 -56 46 -74 28z"
+      class="svg-elem-7"
+    ></path>
+    <path
+      d="M1657 2233 c-15 -2 -25 -8 -22 -13 3 -5 -16 -7 -42 -5 -26 2 -60 1
+-75 -2 -24 -5 -26 -8 -17 -25 10 -19 17 -20 97 -14 98 8 170 20 180 31 4 3 -2
+13 -12 21 -23 16 -60 19 -51 4 3 -6 -4 -10 -17 -10 -18 0 -20 2 -8 10 8 5 11
+9 5 8 -5 0 -22 -3 -38 -5z"
+      class="svg-elem-8"
+    ></path>
+    <path
+      d="M2646 2159 c-32 -5 -62 -12 -65 -15 -9 -10 123 6 134 17 5 6 5 9 0 8
+-6 -1 -37 -5 -69 -10z"
+      class="svg-elem-9"
+    ></path>
+    <path
+      d="M2519 2135 c-3 -2 -19 -5 -37 -7 -17 -1 -29 -4 -26 -7 8 -8 -126 -40
+-231 -55 -55 -8 -163 -17 -239 -21 -77 -3 -141 -7 -143 -9 -3 -2 11 -9 29 -15
+23 -7 55 -8 96 -3 34 5 64 6 67 4 14 -14 1 -22 -36 -22 -28 0 -39 -4 -37 -12
+9 -26 48 -20 77 11 25 27 37 31 97 36 179 15 202 15 207 1 9 -24 -16 -45 -58
+-50 -49 -6 -115 -33 -115 -46 0 -13 13 -13 25 -1 6 5 54 15 107 22 80 11 97
+16 94 29 -3 8 -7 29 -11 47 -7 35 -11 33 130 48 73 8 78 11 62 35 -11 18 -47
+27 -58 15z"
+      class="svg-elem-10"
+    ></path>
+    <path
+      d="M428 2105 c-70 -12 -131 -24 -135 -28 -9 -10 -9 -10 163 18 85 14
+156 25 157 25 2 0 1 -16 -1 -35 -3 -26 0 -35 11 -35 17 0 27 21 27 56 0 22 -4
+24 -47 23 -27 -1 -105 -11 -175 -24z"
+      class="svg-elem-11"
+    ></path>
+    <path
+      d="M915 2064 c-71 -14 -140 -25 -153 -26 -30 -1 -20 -10 15 -14 32 -4
+173 17 173 25 0 4 14 7 30 8 17 2 46 4 65 5 19 2 35 6 35 10 0 4 7 5 15 2 8
+-4 15 -1 15 5 0 16 -49 12 -195 -15z"
+      class="svg-elem-12"
+    ></path>
+    <path
+      d="M427 2029 c-100 -8 -127 -19 -50 -19 34 0 55 -5 64 -16 10 -12 23
+-14 58 -9 41 5 50 3 80 -23 33 -27 35 -32 32 -87 l-3 -58 34 7 c18 3 80 10
+138 16 58 6 143 17 190 24 47 8 110 17 140 21 83 11 104 21 53 26 -24 3 -43 2
+-43 -2 0 -4 -9 -9 -20 -12 -11 -3 -20 -1 -20 4 0 6 -8 5 -20 -1 -11 -6 -20 -8
+-20 -5 0 3 -9 1 -20 -5 -11 -6 -20 -7 -20 -2 0 5 -33 3 -72 -3 -40 -7 -76 -11
+-80 -9 -4 2 -9 1 -12 -4 -5 -9 -42 -8 -95 4 -25 5 -32 4 -27 -5 4 -6 13 -8 19
+-5 7 4 8 3 4 -1 -12 -13 -71 -15 -78 -3 -9 14 12 37 27 31 7 -2 15 0 18 5 3 6
+16 8 29 5 37 -10 12 8 -70 48 -43 21 -69 38 -58 37 11 -1 36 2 55 6 28 6 45 2
+82 -18 46 -25 47 -25 39 -3 -4 12 -19 30 -33 40 -23 17 -31 18 -81 7 -30 -6
+-76 -10 -102 -9 -41 3 -45 4 -29 16 21 15 31 15 -109 2z"
+      class="svg-elem-13"
+    ></path>
+    <path
+      d="M1690 1954 c-102 -18 -176 -33 -165 -33 12 -1 26 -6 33 -13 8 -8 15
+-8 24 0 8 6 36 13 63 16 28 3 66 7 85 10 19 3 69 11 110 17 41 6 81 16 89 22
+12 9 13 9 7 0 -4 -7 -2 -13 3 -13 6 0 11 7 11 15 0 21 -44 18 -260 -21z"
+      class="svg-elem-14"
+    ></path>
+    <path
+      d="M2305 1944 c-69 -12 -84 -19 -107 -46 -29 -33 -29 -48 -1 -44 10 2
+24 -3 31 -11 8 -7 18 -10 24 -7 7 4 4 10 -6 16 -16 9 -23 47 -8 50 10 2 49 7
+94 13 41 5 43 3 53 -77 6 -49 -5 -68 -24 -44 -13 15 -42 15 -41 0 0 -5 8 -9
+18 -9 14 0 92 -67 92 -79 0 -9 -107 -22 -205 -25 -42 -1 -74 -15 -63 -27 6 -6
+276 24 286 32 2 1 -4 40 -13 86 -9 45 -21 107 -26 136 -6 28 -13 52 -17 51 -4
+-1 -43 -8 -87 -15z"
+      class="svg-elem-15"
+    ></path>
+    <path
+      d="M2910 1949 c-36 -4 -78 -10 -93 -13 -19 -4 -26 -2 -21 6 5 8 -11 9
+-60 6 -37 -3 -70 -9 -74 -12 -3 -4 4 -16 16 -28 l21 -21 148 19 c124 16 148
+22 151 37 2 9 -2 16 -10 16 -7 -1 -42 -5 -78 -10z"
+      class="svg-elem-16"
+    ></path>
+    <path
+      d="M1107 1843 c-4 -3 -7 -13 -7 -22 0 -10 3 -12 8 -6 4 6 15 11 25 12
+32 1 37 3 37 13 0 6 -9 10 -20 10 -11 0 -20 -6 -20 -12 0 -10 -2 -10 -8 0 -5
+7 -11 9 -15 5z"
+      class="svg-elem-17"
+    ></path>
+    <path
+      d="M1025 1830 c-16 -4 -117 -18 -224 -31 -188 -22 -194 -22 -207 -4 -13
+17 -21 18 -126 6 -61 -7 -119 -16 -127 -22 -12 -7 -9 -9 14 -5 17 3 58 8 93
+11 55 6 62 5 62 -10 0 -15 7 -17 46 -12 l45 5 -3 -32 c-2 -23 1 -30 12 -29 8
+1 78 12 155 23 77 12 175 26 217 32 73 10 77 12 87 41 6 16 11 32 11 33 0 6
+-21 3 -55 -6z"
+      class="svg-elem-18"
+    ></path>
+    <path
+      d="M2174 1815 c8 -9 17 -14 19 -13 1 2 15 -5 29 -14 14 -9 28 -14 32
+-11 3 3 -14 16 -39 29 -51 28 -63 30 -41 9z"
+      class="svg-elem-19"
+    ></path>
+    <path
+      d="M2056 1786 l-29 -13 36 -7 c31 -6 47 -21 47 -46 0 -5 -16 -6 -37 -3
+-26 4 -34 3 -29 -5 4 -7 23 -12 42 -12 28 0 34 4 34 20 0 18 -26 81 -33 79 -1
+0 -15 -6 -31 -13z"
+      class="svg-elem-20"
+    ></path>
+    <path
+      d="M990 1739 c-30 -6 -97 -16 -148 -25 -51 -8 -112 -21 -135 -28 -78
+-26 -337 -47 -337 -28 0 13 -39 16 -56 4 -7 -4 -8 -15 -3 -29 7 -19 16 -23 49
+-23 23 0 55 -7 71 -16 17 -8 40 -17 51 -19 11 -2 29 -7 41 -10 20 -5 20 -5 6
+7 -14 11 -15 18 -5 33 6 11 20 21 31 22 45 4 101 16 138 29 34 12 38 12 33 -1
+-14 -37 29 -70 71 -54 16 6 23 4 26 -9 3 -12 5 -11 6 6 0 12 7 22 16 22 8 0
+22 12 32 28 24 38 40 52 47 45 3 -4 6 -2 6 3 0 5 9 10 20 10 11 0 20 -3 20 -6
+0 -17 61 5 75 26 8 13 12 23 8 23 -5 -1 -33 -5 -63 -10z m-126 -70 c-7 -13
+-82 -48 -101 -49 -28 0 -12 37 20 48 45 14 90 15 81 1z"
+      class="svg-elem-21"
+    ></path>
+    <path
+      d="M2295 1720 c-15 -6 -6 -9 33 -9 29 -1 51 3 48 7 -6 11 -57 12 -81 2z"
+      class="svg-elem-22"
+    ></path>
+    <path
+      d="M2790 1714 c-58 -9 -68 -12 -32 -10 28 2 52 0 52 -4 0 -7 -83 -20
+-130 -20 -20 0 -22 2 -10 11 27 18 -122 -2 -155 -21 -35 -21 -114 -35 -358
+-65 -45 -6 -47 -8 -34 -23 16 -19 37 -97 37 -136 0 -31 1 -31 155 -12 102 13
+111 16 137 45 33 37 35 69 7 105 -12 15 -20 28 -18 30 5 4 163 24 293 36 119
+12 130 16 163 54 l23 26 -23 -1 c-12 -1 -60 -8 -107 -15z m-348 -137 c8 -16 8
+-22 -1 -25 -7 -2 -16 -15 -22 -29 -5 -15 -14 -21 -21 -17 -6 4 -8 3 -5 -3 7
+-11 -10 -30 -28 -33 -5 0 -19 -3 -30 -5 -11 -3 -48 -7 -82 -9 -50 -4 -63 -1
+-69 12 -10 25 -19 110 -12 118 2 1 43 4 91 7 47 2 89 5 91 8 13 13 77 -5 88
+-24z m-10 -89 c-19 -16 -37 -26 -40 -23 -4 4 8 20 27 36 45 37 56 26 13 -13z"
+      class="svg-elem-23"
+    ></path>
+    <path
+      d="M2085 1664 c-16 -7 -23 -13 -15 -14 13 0 13 -1 0 -10 -10 -7 -1 -8
+30 -4 55 8 54 7 33 26 -15 13 -22 13 -48 2z"
+      class="svg-elem-24"
+    ></path>
+    <path
+      d="M912 1575 c-37 -16 -37 -16 -52 -112 -11 -65 -14 -73 -34 -73 -12 0
+-28 6 -35 13 -11 10 -13 9 -7 -6 3 -10 6 -21 6 -23 0 -2 17 -4 39 -4 l38 0 5
+63 c8 91 24 120 73 131 69 14 85 25 40 25 -22 0 -55 -6 -73 -14z"
+      class="svg-elem-25"
+    ></path>
+    <path
+      d="M1280 1581 c0 -5 14 -11 31 -15 17 -3 28 -10 24 -16 -10 -16 -42 -12
+-61 7 -12 13 -15 13 -11 3 4 -8 10 -23 13 -32 4 -10 14 -18 23 -18 14 0 14 2
+1 10 -12 8 -11 10 6 10 12 0 27 6 33 14 9 10 6 17 -13 30 -28 18 -46 21 -46 7z"
+      class="svg-elem-26"
+    ></path>
+    <path
+      d="M2060 1580 c0 -5 8 -10 17 -10 15 0 15 -2 -2 -14 -11 -7 -30 -17 -43
+-20 -13 -4 -49 -22 -81 -41 -41 -22 -63 -30 -74 -24 -10 6 -18 5 -23 -2 -5 -8
+-3 -9 6 -4 9 5 11 4 6 -4 -6 -9 -11 -9 -21 -1 -9 8 -14 7 -18 -3 -3 -8 -30
+-21 -60 -31 -31 -10 -73 -26 -93 -37 -57 -28 -216 -26 -369 5 -16 4 -3 -4 31
+-17 54 -21 123 -76 124 -99 0 -5 10 -8 23 -7 21 0 21 1 2 9 -14 6 4 9 55 9 51
+0 69 -3 55 -9 -15 -7 -16 -9 -4 -9 9 -1 28 17 43 38 31 44 85 71 202 101 42
+11 104 35 138 54 35 18 80 39 100 46 44 14 49 21 36 54 -9 25 -50 38 -50 16z
+m-430 -227 c0 -1 -4 -13 -10 -27 -9 -25 -13 -26 -86 -26 -64 0 -75 2 -70 15 3
+9 -1 18 -9 21 -32 13 -3 19 84 19 50 0 91 0 91 -2z"
+      class="svg-elem-27"
+    ></path>
+    <path
+      d="M550 1550 c0 -23 28 -69 68 -113 31 -34 42 -54 39 -68 -5 -19 -2 -19
+56 -13 34 4 64 9 67 11 12 11 -45 44 -66 39 -20 -5 -50 15 -39 26 3 2 -15 19
+-40 37 -47 34 -60 50 -24 31 36 -20 31 -5 -10 28 -42 34 -51 38 -51 22z"
+      class="svg-elem-28"
+    ></path>
+    <path
+      d="M1010 1550 c-8 -5 -32 -10 -53 -10 -54 0 -38 -15 43 -41 38 -12 75
+-28 81 -35 6 -8 18 -14 25 -14 8 0 14 -4 14 -9 0 -5 15 -12 33 -16 17 -4 40
+-9 50 -11 9 -3 17 0 17 7 0 7 -3 9 -7 6 -8 -8 -34 13 -28 22 2 4 -12 13 -31
+20 -18 7 -34 17 -34 22 0 6 -5 7 -11 4 -5 -4 -18 0 -27 8 -16 15 -21 17 -41
+17 -5 0 -11 9 -13 20 -2 15 -7 17 -18 10z"
+      class="svg-elem-29"
+    ></path>
+    <path
+      d="M896 1483 c-11 -29 -6 -42 29 -68 31 -25 38 -26 81 -17 32 7 56 7 78
+-1 34 -11 96 -55 96 -67 0 -4 16 -34 35 -66 26 -43 42 -59 59 -61 l23 -2 -24
+50 c-14 27 -31 49 -38 49 -7 0 -18 7 -26 16 -11 13 -9 15 12 10 47 -11 155
+-26 184 -26 l30 1 -28 15 c-43 23 -238 85 -248 78 -5 -3 -40 8 -77 25 -184 82
+-180 80 -186 64z"
+      class="svg-elem-30"
+    ></path>
+    <path
+      d="M2106 1482 c-10 -2 -38 -15 -62 -28 -24 -13 -49 -24 -57 -24 -8 0
+-26 -9 -41 -21 -14 -11 -30 -18 -36 -14 -16 10 -260 -78 -260 -95 0 -3 43 0
+96 6 83 11 101 17 127 41 l30 28 -22 -33 c-14 -19 -35 -35 -51 -38 -19 -4 -27
+-12 -25 -23 1 -9 -6 -35 -16 -58 -10 -24 -16 -43 -12 -43 3 0 -14 -18 -37 -41
+-23 -22 -39 -44 -35 -47 9 -9 -81 -31 -103 -26 -14 4 -17 18 -17 87 0 45 5 85
+10 89 6 4 2 8 -7 8 -16 0 -18 -11 -18 -100 l0 -100 -30 0 -30 0 0 100 c0 101
+-7 121 -28 76 -8 -19 -8 -26 1 -29 9 -3 9 -8 -2 -20 -7 -10 -9 -17 -3 -17 6 0
+12 -25 14 -55 l3 -55 -43 2 c-25 1 -46 7 -49 14 -2 7 -11 10 -19 7 -8 -3 -14
+-1 -14 4 0 6 -11 23 -25 39 -23 27 -29 39 -27 55 2 13 -51 20 -61 10 -22 -22
+-69 -1 -93 41 -6 11 -14 14 -23 9 -17 -11 1 -47 29 -56 11 -3 20 -13 20 -21 0
+-8 4 -13 9 -10 5 3 12 -5 15 -19 3 -13 31 -45 61 -71 58 -50 63 -60 24 -46
+-18 7 -28 5 -42 -8 -16 -16 -16 -17 0 -32 19 -16 89 -38 119 -38 16 0 17 2 4
+11 -13 9 -13 10 0 5 79 -27 125 -37 127 -29 2 6 16 8 31 5 15 -3 23 -1 19 4
+-5 5 -21 10 -35 10 -72 3 -82 5 -82 13 0 5 60 6 133 3 116 -4 137 -2 160 13
+15 9 34 15 42 11 9 -3 14 -2 11 3 -3 5 12 20 34 35 l39 26 33 -19 c24 -15 42
+-18 66 -13 32 7 33 8 15 24 -27 24 -111 28 -151 6 -48 -26 -48 -23 -2 29 22
+26 39 52 36 59 -3 7 2 15 10 18 8 3 14 12 14 20 0 8 9 18 20 21 11 3 20 12 20
+20 0 7 3 15 8 17 16 7 61 76 54 83 -4 4 3 6 15 3 12 -3 24 -1 26 6 2 6 21 12
+43 13 21 1 59 4 84 7 24 4 71 8 103 10 32 2 61 7 64 10 4 3 11 2 17 -3 11 -9
+17 -11 35 -11 5 0 7 -19 5 -42 -2 -24 -5 -79 -7 -123 -4 -78 -3 -79 11 -45 8
+19 17 74 20 123 4 72 2 90 -12 106 -16 17 -14 18 50 20 37 1 71 4 76 7 5 3 80
+14 168 24 160 19 187 27 209 61 9 16 8 19 -8 19 -28 0 -52 -11 -45 -21 3 -5
+-9 -9 -26 -9 -21 0 -29 4 -24 12 5 8 2 9 -10 5 -10 -4 -34 -7 -54 -8 -34 -1
+-35 -2 -12 -10 16 -5 6 -6 -32 -2 -45 4 -61 2 -73 -11 -9 -9 -28 -16 -43 -16
+-15 0 -63 -9 -107 -19 -44 -11 -116 -24 -160 -31 -44 -6 -93 -13 -108 -16 -16
+-3 -69 -6 -118 -9 -95 -4 -101 -7 -133 -65 -11 -19 -32 -50 -48 -68 -16 -18
+-26 -37 -24 -41 3 -4 -11 -8 -30 -9 -20 -2 -34 1 -31 5 99 180 138 223 201
+223 23 0 59 5 81 11 22 6 45 11 51 11 10 1 7 56 -5 61 -3 2 -15 2 -25 -1z
+m-787 -367 c22 -24 41 -51 41 -59 0 -19 31 -26 115 -26 109 0 236 20 242 39 9
+25 75 91 92 91 10 0 1 -14 -22 -38 -53 -54 -46 -65 8 -12 54 53 60 37 9 -20
+-22 -24 -45 -40 -59 -40 -18 0 -22 -4 -18 -19 3 -10 -1 -22 -7 -26 -21 -13
+-233 -26 -308 -19 l-74 7 4 28 c4 24 1 29 -17 29 -23 0 -113 85 -102 97 4 4
+28 -13 54 -38 43 -40 43 -29 1 14 -19 19 -24 37 -9 37 5 0 27 -20 50 -45z"
+      class="svg-elem-31"
+    ></path>
+    <path
+      d="M835 1318 c-33 -4 -109 -10 -170 -12 -94 -4 -194 -13 -328 -31 -107
+-14 -130 -17 -145 -20 -10 -1 -56 -8 -104 -15 -63 -9 -88 -16 -88 -26 0 -17 8
+-17 140 1 204 27 266 34 366 44 56 6 109 13 118 17 13 5 16 -1 16 -32 0 -69 7
+-80 46 -76 21 3 34 0 34 -7 0 -6 5 -11 12 -11 7 0 -4 15 -24 33 -35 32 -56 73
+-44 85 15 14 183 26 191 13 3 -6 12 -11 18 -11 7 0 6 4 -3 11 -13 9 -13 10 0
+6 8 -2 16 -9 16 -15 1 -7 2 -20 3 -29 2 -24 119 -99 132 -86 6 6 -14 26 -56
+56 -84 60 -90 93 -7 42 31 -20 65 -46 76 -58 11 -13 30 -22 47 -22 15 0 25 2
+21 6 -4 3 -24 17 -44 33 -44 32 -53 61 -13 46 15 -6 26 -6 30 0 4 6 1 11 -4
+11 -6 1 -14 2 -18 4 -5 1 -21 5 -38 10 -16 4 -34 11 -40 15 -23 18 -84 25
+-140 18z"
+      class="svg-elem-32"
+    ></path>
+    <path
+      d="M1626 1265 c-20 -15 -20 -15 0 -15 10 1 30 7 44 15 l25 14 -25 0
+c-14 0 -34 -6 -44 -14z"
+      class="svg-elem-33"
+    ></path>
+    <path
+      d="M210 1115 c-58 -7 -99 -13 -91 -14 7 0 27 -12 43 -26 28 -24 35 -25
+115 -21 47 3 88 7 90 10 3 3 16 0 30 -5 14 -5 29 -7 33 -4 5 3 37 -13 71 -35
+58 -37 99 -51 99 -32 0 4 -22 19 -50 33 -27 13 -50 29 -50 36 0 6 -6 14 -12
+16 -7 3 1 3 17 1 17 -3 49 -1 72 4 30 7 43 6 47 -2 3 -7 5 -7 5 2 1 7 15 12
+36 12 22 0 35 5 35 13 0 16 -20 16 -395 -9 -118 -8 -101 8 23 22 72 8 83 11
+42 11 -30 0 -102 -6 -160 -12z"
+      class="svg-elem-34"
+    ></path>
+    <path
+      d="M2423 1089 c18 -46 66 -45 96 3 11 18 10 19 -18 13 -17 -3 -36 -3
+-43 1 -7 5 -20 9 -29 9 -13 1 -14 -3 -6 -26z"
+      class="svg-elem-35"
+    ></path>
+    <path
+      d="M1991 1060 c-19 -4 -21 -7 -10 -16 25 -20 83 -48 104 -50 42 -4 73
+-15 125 -43 l53 -29 46 50 c25 28 49 57 54 64 13 22 -21 9 -45 -17 -47 -51
+-49 -52 -126 -19 -39 16 -79 30 -89 30 -10 0 -35 8 -54 18 -19 10 -45 15 -58
+12z"
+      class="svg-elem-36"
+    ></path>
+    <path
+      d="M1070 1039 c0 -3 -27 -4 -60 -2 -40 2 -60 0 -60 -8 0 -7 -9 -9 -24
+-5 -14 3 -28 1 -31 -5 -5 -6 -31 -9 -71 -6 -35 2 -64 1 -64 -4 0 -4 -9 -5 -20
+-2 -11 3 -20 0 -20 -6 0 -6 -8 -11 -17 -11 -9 0 -14 -3 -11 -6 9 -8 511 36
+522 46 4 5 -26 10 -68 12 -42 2 -76 0 -76 -3z"
+      class="svg-elem-37"
+    ></path>
+    <path
+      d="M2582 1025 c-92 -11 -146 -25 -95 -25 44 0 189 23 198 31 5 5 7 8 5
+8 -3 -1 -51 -7 -108 -14z"
+      class="svg-elem-38"
+    ></path>
+    <path
+      d="M1815 990 c-20 -23 -12 -25 33 -9 18 6 29 15 26 20 -9 16 -40 10 -59
+-11z"
+      class="svg-elem-39"
+    ></path>
+    <path
+      d="M2430 990 c-8 -5 -27 -10 -42 -10 -16 0 -28 -5 -28 -11 0 -6 19 -9
+47 -7 36 2 49 7 51 21 4 19 -6 22 -28 7z"
+      class="svg-elem-40"
+    ></path>
+    <path
+      d="M1193 973 c3 -5 -27 -8 -66 -9 -40 0 -119 -6 -177 -13 -58 -7 -175
+-15 -260 -17 -85 -2 -174 -5 -197 -7 -24 -1 -43 0 -43 4 0 3 -22 6 -50 8 -53
+2 -58 -3 -36 -32 12 -15 27 -18 88 -17 40 1 78 1 84 1 7 -1 34 -16 60 -34 79
+-54 206 -129 210 -124 5 5 -54 45 -170 114 l-90 53 76 0 c63 0 83 -4 124 -27
+38 -21 46 -23 34 -8 -14 17 -14 17 7 5 12 -8 20 -17 18 -20 -2 -4 1 -7 8 -7 7
+0 54 -26 106 -58 l93 -58 167 13 c167 13 318 21 379 20 17 0 32 4 32 9 0 5 18
+8 40 8 22 -1 40 -6 40 -11 0 -5 6 -3 14 3 8 7 27 8 46 4 29 -5 32 -4 27 11 -6
+15 0 17 58 14 44 -2 66 -8 70 -17 4 -11 -6 -12 -57 -7 -44 5 -58 4 -48 -4 13
+-8 12 -10 -5 -11 -11 -1 -29 -3 -40 -4 -11 -2 -47 -6 -80 -10 -33 -4 -80 -9
+-105 -12 -25 -2 -103 -6 -175 -7 -71 -1 -168 -6 -214 -10 l-83 -8 20 -21 21
+-20 243 21 c134 12 336 29 450 39 114 9 213 20 219 24 6 3 14 21 17 38 8 36
+29 39 24 4 -3 -28 11 -29 35 -4 13 14 44 22 113 31 52 6 118 16 145 21 28 5
+115 18 194 29 79 11 147 22 150 26 6 6 -31 3 -246 -22 -98 -12 -150 -13 -205
+-6 -40 5 -75 6 -78 2 -9 -13 -154 -32 -340 -44 -25 -2 -64 -6 -85 -9 -61 -9
+-133 -15 -330 -28 -99 -6 -182 -13 -183 -14 -8 -8 -95 25 -106 40 -7 9 -37 20
+-76 25 -36 5 -96 21 -135 36 -38 14 -75 26 -82 26 -7 1 -10 5 -7 9 2 4 0 9 -6
+11 -5 1 68 3 163 3 94 0 189 4 210 8 38 8 50 30 21 41 -21 8 -36 8 -31 -1z
+m-212 -146 c17 -5 28 -15 31 -30 6 -32 -26 -33 -47 -1 -11 17 -22 23 -33 19
+-9 -3 -13 -3 -9 1 11 12 -13 33 -31 27 -14 -4 -14 -3 -3 5 10 7 23 7 40 -2 14
+-7 38 -16 52 -19z m118 -30 c14 3 23 0 27 -12 9 -23 -11 -42 -29 -27 -8 7 -17
+9 -20 5 -4 -3 -16 2 -27 12 -19 17 -19 19 -3 35 17 16 18 16 25 -1 5 -12 14
+-16 27 -12z m824 -1 c9 16 62 15 83 -2 17 -14 17 -15 1 -10 -10 3 -25 -1 -33
+-9 -19 -18 -44 -20 -44 -2 0 9 -2 9 -9 -1 -12 -19 -35 12 -26 35 7 17 8 17 14
+-1 4 -11 10 -15 14 -10z"
+      class="svg-elem-41"
+    ></path>
+    <path
+      d="M1863 886 c-61 -6 -114 -13 -117 -16 -6 -6 353 17 369 24 19 8 -140
+3 -252 -8z"
+      class="svg-elem-42"
+    ></path>
+    <path
+      d="M1150 857 c67 -32 200 -51 200 -29 0 6 -16 8 -39 5 -29 -4 -63 3
+-126 26 -108 39 -119 38 -35 -2z"
+      class="svg-elem-43"
+    ></path>
+    <path
+      d="M1498 843 c17 -2 47 -2 65 0 17 2 3 4 -33 4 -36 0 -50 -2 -32 -4z"
+      class="svg-elem-44"
+    ></path>
+    <path
+      d="M2046 691 c-5 -7 -43 -10 -186 -13 -8 0 -35 -4 -60 -9 -25 -4 -88
+-10 -140 -14 -52 -3 -120 -8 -150 -10 -30 -3 -109 -9 -175 -15 -66 -5 -148
+-10 -183 -10 -48 0 -61 -3 -56 -12 6 -9 3 -9 -9 0 -9 8 -21 11 -27 7 -5 -3
+-17 1 -26 9 -9 9 -19 14 -24 11 -5 -3 -11 -1 -15 4 -3 6 11 13 32 16 47 8 71
+16 58 20 -27 9 -200 12 -275 5 -47 -5 -130 -11 -185 -15 -55 -4 -103 -9 -107
+-11 -4 -3 -20 -1 -35 3 l-28 7 30 8 c20 5 9 6 -33 4 -35 -2 -65 -6 -68 -8 -2
+-3 7 -15 21 -28 l25 -24 158 12 c86 7 206 15 265 19 l108 6 55 -38 c29 -21 54
+-39 54 -42 0 -2 -4 -1 -10 2 -5 3 -10 3 -10 -2 1 -18 85 -76 279 -192 l204
+-122 31 29 c17 16 58 49 91 73 133 100 182 139 219 178 29 30 43 38 52 30 7
+-6 30 -9 51 -6 l38 4 -41 1 c-23 1 -47 9 -54 17 -14 17 -40 20 -40 5 0 -15
+-81 -101 -90 -95 -4 3 -7 -3 -6 -13 0 -10 -6 -16 -17 -16 -9 1 -28 -12 -42
+-28 -14 -16 -25 -26 -25 -21 0 4 -12 -4 -28 -19 -15 -16 -49 -44 -77 -64 l-50
+-36 55 58 c30 33 100 105 155 162 81 82 95 102 77 102 -12 0 -22 -6 -22 -13 0
+-7 -13 -24 -30 -39 -16 -14 -30 -24 -30 -22 0 3 -15 -12 -32 -33 -37 -43 -32
+-38 -115 -115 -34 -32 -69 -58 -78 -58 -10 0 -49 32 -88 70 -38 39 -72 70 -74
+70 -9 0 -40 36 -46 53 -4 9 -14 17 -22 17 -23 0 -14 -12 99 -128 105 -107 125
+-132 106 -132 -5 0 -10 3 -10 8 0 4 -15 16 -33 25 -19 10 -45 29 -60 42 -23
+22 -58 44 -167 104 -19 11 -45 29 -57 40 -12 12 -27 21 -33 21 -5 0 -10 5 -10
+10 0 6 -10 10 -22 11 -13 0 -17 3 -10 6 10 4 9 8 -5 19 -17 12 -16 13 7 14 14
+1 34 4 45 6 11 3 65 5 120 5 55 0 143 5 195 10 158 18 182 20 262 20 54 0 77
+4 75 12 -1 9 34 12 127 14 77 1 133 6 139 12 19 19 71 12 110 -15 21 -14 41
+-24 43 -21 3 2 -17 19 -44 36 -48 30 -114 42 -126 22z"
+      class="svg-elem-45"
+    ></path>
+    <path
+      d="M2368 620 c-17 -16 -27 -30 -22 -30 14 0 79 60 65 60 -6 0 -25 -13
+-43 -30z"
+      class="svg-elem-46"
+    ></path>
+    <path
+      d="M1992 628 c-6 -6 -12 -15 -12 -19 0 -11 50 5 50 16 1 15 -24 17 -38
+3z"
+      class="svg-elem-47"
+    ></path>
+    <path
+      d="M875 612 c6 -6 129 -84 275 -173 336 -206 381 -232 386 -227 3 4
+-622 388 -661 406 -7 3 -7 1 0 -6z"
+      class="svg-elem-48"
+    ></path>
+    <path
+      d="M2195 598 c-182 -28 -179 -27 -70 -24 55 1 108 7 119 13 28 15 8 20
+-49 11z"
+      class="svg-elem-49"
+    ></path>
+    <path
+      d="M2236 540 c-51 -20 -78 -38 -37 -25 13 4 31 9 40 10 9 2 17 4 19 5 3
+3 19 7 32 9 6 0 10 6 10 11 0 13 -5 12 -64 -10z"
+      class="svg-elem-50"
+    ></path>
+    <path
+      d="M1939 492 c-19 -8 -79 -58 -79 -66 0 -14 22 -4 50 24 17 17 37 30 45
+30 8 0 15 5 15 10 0 11 -8 12 -31 2z"
+      class="svg-elem-51"
+    ></path>
+    <path
+      d="M1803 393 c-13 -8 -23 -19 -23 -24 0 -12 73 16 78 29 5 17 -29 14
+-55 -5z"
+      class="svg-elem-52"
+    ></path>
+    <path
+      d="M2134 359 c-18 -20 -18 -20 11 -13 37 8 39 10 30 23 -9 16 -20 13
+-41 -10z"
+      class="svg-elem-53"
+    ></path>
+    <path
+      d="M1240 263 c0 -15 55 -63 72 -63 25 0 14 21 -25 48 -34 23 -47 27 -47
+15z"
+      class="svg-elem-54"
+    ></path>
+  </g>
+</svg>
+
+<style>
+  /***************************************************
+ * Generated by SVG Artista on 4/1/2024, 2:16:36 AM
+ * MIT license (https://opensource.org/licenses/MIT)
+ * W. https://svgartista.net
+ **************************************************/
+
+  @-webkit-keyframes animate-svg-fill-1 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-1 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-1 {
+    -webkit-animation: animate-svg-fill-1 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.1s both;
+    animation: animate-svg-fill-1 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-2 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-2 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-2 {
+    -webkit-animation: animate-svg-fill-2 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.2s both;
+    animation: animate-svg-fill-2 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.2s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-3 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-3 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-3 {
+    -webkit-animation: animate-svg-fill-3 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.30000000000000004s both;
+    animation: animate-svg-fill-3 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      0.30000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-4 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-4 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-4 {
+    -webkit-animation: animate-svg-fill-4 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.4s both;
+    animation: animate-svg-fill-4 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.4s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-5 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-5 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-5 {
+    -webkit-animation: animate-svg-fill-5 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.5s both;
+    animation: animate-svg-fill-5 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.5s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-6 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-6 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-6 {
+    -webkit-animation: animate-svg-fill-6 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s both;
+    animation: animate-svg-fill-6 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-7 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-7 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-7 {
+    -webkit-animation: animate-svg-fill-7 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.7000000000000001s both;
+    animation: animate-svg-fill-7 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      0.7000000000000001s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-8 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-8 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-8 {
+    -webkit-animation: animate-svg-fill-8 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s both;
+    animation: animate-svg-fill-8 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-9 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-9 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-9 {
+    -webkit-animation: animate-svg-fill-9 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s both;
+    animation: animate-svg-fill-9 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-10 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-10 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-10 {
+    -webkit-animation: animate-svg-fill-10 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1s both;
+    animation: animate-svg-fill-10 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-11 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-11 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-11 {
+    -webkit-animation: animate-svg-fill-11 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.1s both;
+    animation: animate-svg-fill-11 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 1.1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-12 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-12 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-12 {
+    -webkit-animation: animate-svg-fill-12 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.2000000000000002s both;
+    animation: animate-svg-fill-12 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.2000000000000002s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-13 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-13 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-13 {
+    -webkit-animation: animate-svg-fill-13 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.3000000000000003s both;
+    animation: animate-svg-fill-13 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.3000000000000003s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-14 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-14 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-14 {
+    -webkit-animation: animate-svg-fill-14 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.4000000000000001s both;
+    animation: animate-svg-fill-14 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.4000000000000001s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-15 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-15 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-15 {
+    -webkit-animation: animate-svg-fill-15 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.5000000000000002s both;
+    animation: animate-svg-fill-15 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.5000000000000002s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-16 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-16 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-16 {
+    -webkit-animation: animate-svg-fill-16 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s both;
+    animation: animate-svg-fill-16 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-17 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-17 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-17 {
+    -webkit-animation: animate-svg-fill-17 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.7000000000000002s both;
+    animation: animate-svg-fill-17 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.7000000000000002s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-18 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-18 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-18 {
+    -webkit-animation: animate-svg-fill-18 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.8000000000000003s both;
+    animation: animate-svg-fill-18 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.8000000000000003s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-19 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-19 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-19 {
+    -webkit-animation: animate-svg-fill-19 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 1.9000000000000001s both;
+    animation: animate-svg-fill-19 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      1.9000000000000001s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-20 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-20 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-20 {
+    -webkit-animation: animate-svg-fill-20 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2s both;
+    animation: animate-svg-fill-20 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 2s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-21 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-21 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-21 {
+    -webkit-animation: animate-svg-fill-21 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.1s both;
+    animation: animate-svg-fill-21 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 2.1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-22 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-22 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-22 {
+    -webkit-animation: animate-svg-fill-22 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.2s both;
+    animation: animate-svg-fill-22 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 2.2s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-23 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-23 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-23 {
+    -webkit-animation: animate-svg-fill-23 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.3000000000000003s both;
+    animation: animate-svg-fill-23 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      2.3000000000000003s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-24 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-24 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-24 {
+    -webkit-animation: animate-svg-fill-24 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.4000000000000004s both;
+    animation: animate-svg-fill-24 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      2.4000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-25 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-25 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-25 {
+    -webkit-animation: animate-svg-fill-25 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.5000000000000004s both;
+    animation: animate-svg-fill-25 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      2.5000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-26 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-26 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-26 {
+    -webkit-animation: animate-svg-fill-26 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.6s both;
+    animation: animate-svg-fill-26 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 2.6s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-27 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-27 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-27 {
+    -webkit-animation: animate-svg-fill-27 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.7s both;
+    animation: animate-svg-fill-27 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 2.7s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-28 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-28 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-28 {
+    -webkit-animation: animate-svg-fill-28 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.8000000000000003s both;
+    animation: animate-svg-fill-28 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      2.8000000000000003s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-29 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-29 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-29 {
+    -webkit-animation: animate-svg-fill-29 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 2.9000000000000004s both;
+    animation: animate-svg-fill-29 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      2.9000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-30 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-30 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-30 {
+    -webkit-animation: animate-svg-fill-30 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.0000000000000004s both;
+    animation: animate-svg-fill-30 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      3.0000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-31 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-31 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-31 {
+    -webkit-animation: animate-svg-fill-31 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.1s both;
+    animation: animate-svg-fill-31 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 3.1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-32 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-32 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-32 {
+    -webkit-animation: animate-svg-fill-32 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.2s both;
+    animation: animate-svg-fill-32 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 3.2s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-33 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-33 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-33 {
+    -webkit-animation: animate-svg-fill-33 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.3000000000000003s both;
+    animation: animate-svg-fill-33 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      3.3000000000000003s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-34 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-34 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-34 {
+    -webkit-animation: animate-svg-fill-34 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.4000000000000004s both;
+    animation: animate-svg-fill-34 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      3.4000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-35 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-35 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-35 {
+    -webkit-animation: animate-svg-fill-35 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.5000000000000004s both;
+    animation: animate-svg-fill-35 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      3.5000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-36 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-36 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-36 {
+    -webkit-animation: animate-svg-fill-36 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.6s both;
+    animation: animate-svg-fill-36 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 3.6s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-37 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-37 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-37 {
+    -webkit-animation: animate-svg-fill-37 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.7s both;
+    animation: animate-svg-fill-37 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 3.7s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-38 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-38 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-38 {
+    -webkit-animation: animate-svg-fill-38 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.8000000000000003s both;
+    animation: animate-svg-fill-38 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      3.8000000000000003s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-39 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-39 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-39 {
+    -webkit-animation: animate-svg-fill-39 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 3.9000000000000004s both;
+    animation: animate-svg-fill-39 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      3.9000000000000004s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-40 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-40 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-40 {
+    -webkit-animation: animate-svg-fill-40 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4s both;
+    animation: animate-svg-fill-40 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-41 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-41 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-41 {
+    -webkit-animation: animate-svg-fill-41 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.1s both;
+    animation: animate-svg-fill-41 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-42 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-42 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-42 {
+    -webkit-animation: animate-svg-fill-42 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.2s both;
+    animation: animate-svg-fill-42 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.2s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-43 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-43 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-43 {
+    -webkit-animation: animate-svg-fill-43 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.3s both;
+    animation: animate-svg-fill-43 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.3s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-44 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-44 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-44 {
+    -webkit-animation: animate-svg-fill-44 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.3999999999999995s both;
+    animation: animate-svg-fill-44 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)
+      4.3999999999999995s both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-45 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-45 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-45 {
+    -webkit-animation: animate-svg-fill-45 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.5s both;
+    animation: animate-svg-fill-45 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.5s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-46 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-46 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-46 {
+    -webkit-animation: animate-svg-fill-46 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.6s both;
+    animation: animate-svg-fill-46 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.6s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-47 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-47 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-47 {
+    -webkit-animation: animate-svg-fill-47 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.7s both;
+    animation: animate-svg-fill-47 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.7s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-48 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-48 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-48 {
+    -webkit-animation: animate-svg-fill-48 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.8s both;
+    animation: animate-svg-fill-48 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.8s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-49 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-49 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-49 {
+    -webkit-animation: animate-svg-fill-49 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 4.9s both;
+    animation: animate-svg-fill-49 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 4.9s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-50 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-50 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-50 {
+    -webkit-animation: animate-svg-fill-50 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 5s both;
+    animation: animate-svg-fill-50 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 5s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-51 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-51 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-51 {
+    -webkit-animation: animate-svg-fill-51 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 5.1s both;
+    animation: animate-svg-fill-51 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 5.1s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-52 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-52 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-52 {
+    -webkit-animation: animate-svg-fill-52 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 5.2s both;
+    animation: animate-svg-fill-52 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 5.2s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-53 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-53 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-53 {
+    -webkit-animation: animate-svg-fill-53 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 5.3s both;
+    animation: animate-svg-fill-53 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 5.3s
+      both;
+  }
+
+  @-webkit-keyframes animate-svg-fill-54 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  @keyframes animate-svg-fill-54 {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: currentColor;
+    }
+  }
+
+  .svg-elem-54 {
+    -webkit-animation: animate-svg-fill-54 0.1s
+      cubic-bezier(0.47, 0, 0.745, 0.715) 5.4s both;
+    animation: animate-svg-fill-54 0.1s cubic-bezier(0.47, 0, 0.745, 0.715) 5.4s
+      both;
+  }
+</style>
