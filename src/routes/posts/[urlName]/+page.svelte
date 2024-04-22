@@ -25,6 +25,13 @@
       title: "محتويات الصفحة",
       items: data.navItems,
     });
+
+    if (location && location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
   });
 
   onDestroy(() => {
