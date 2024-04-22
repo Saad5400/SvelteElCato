@@ -29,7 +29,9 @@
     if (location && location.hash) {
       const element = document.querySelector(location.hash);
       if (element) {
-        element.scrollIntoView();
+        setTimeout(() => {
+          element.scrollIntoView();
+        }, 100);
       }
     }
   });
