@@ -115,7 +115,13 @@
         </Button>
       </div>
       <div
-        class="flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4"
+        class={"flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4 " +
+          ($solvedStore.includes(data.question.id)
+            ? "border-success text-success "
+            : "") +
+          ($markedStore.includes(data.question.id)
+            ? "border-primary text-primary "
+            : "")}
       >
         Question {data.questionIndex + 1}/{data.quiz.questions.length}
       </div>
