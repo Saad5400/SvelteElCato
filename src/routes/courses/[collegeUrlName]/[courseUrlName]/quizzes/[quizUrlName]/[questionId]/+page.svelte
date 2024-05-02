@@ -117,7 +117,7 @@
       <div
         class="flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4"
       >
-        Question {data.questionIndex}/{data.quiz.questions.length}
+        Question {data.questionIndex + 1}/{data.quiz.questions.length}
       </div>
     </div>
     <Article content={data.question.content} />
