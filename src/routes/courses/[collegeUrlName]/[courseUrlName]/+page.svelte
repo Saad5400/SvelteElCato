@@ -10,13 +10,14 @@
   export let data: PageData;
 
   const markedStore = persisted("markedQuestions", [] as string[]);
+  const solvedStore = persisted("solvedQuestions", [] as string[]);
 
   function hasMarkedQuestion(quiz: Quiz) {
     return quiz.questions_ids.some((id) => $markedStore.includes(id));
   }
 
   function hasUnsolvedQuestion(quiz: Quiz) {
-    return quiz.questions_ids.some((id) => !$markedStore.includes(id));
+    return quiz.questions_ids.some((id) => !$solvedStore.includes(id));
   }
 </script>
 
