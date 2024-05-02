@@ -120,7 +120,7 @@
             ? "border-success text-success "
             : "") +
           ($markedStore.includes(data.question.id)
-            ? "border-primary text-primary "
+            ? "!border-primary !text-primary "
             : "")}
       >
         Question {data.questionIndex + 1}/{data.quiz.questions.length}
