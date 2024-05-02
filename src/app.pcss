@@ -72,7 +72,7 @@
   }
 
   body {
-    @apply bg-background tracking-wide text-foreground transition-all;
+    @apply bg-background tracking-wide text-foreground;
     font-family: "Handjet", sans-serif;
   }
 
@@ -303,6 +303,21 @@
     animation: 1s jump forwards running;
   }
 
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spin-active {
+    display: inline-block;
+    animation: 0.5s spin forwards running;
+  }
+
   .repeating-text-light {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50" width="50" height="50"><text fill="black" x="0" y="40" font-family="DINPro, Roboto, sans-serif" font-size="10px">72W</text></svg>');
   }
@@ -313,6 +328,10 @@
 
   .correct {
     @apply jump-active !border-success dark:!border-success/70;
+  }
+
+  .marked {
+    @apply !border-primary dark:!border-primary/70;
   }
 
   .incorrect {

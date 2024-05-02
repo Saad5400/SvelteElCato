@@ -9,8 +9,11 @@
   import Separator from "$lib/components/ui/separator/separator.svelte";
   import useVibrate from "$lib/hooks/useVibrate";
   import { persisted } from "svelte-persisted-store";
+  import Flag from "virtual:icons/f7/Flag";
+  import Checkmark from "virtual:icons/f7/Checkmark";
 
   const solvedStore = persisted("solvedQuestions", [] as string[]);
+  const markedStore = persisted("markedQuestions", [] as string[]);
 
   function correct(element: HTMLElement) {
     element.classList.add("correct");
@@ -52,15 +55,72 @@
   dir="ltr"
 >
   <div
-    class="flex w-full flex-1 flex-col items-start justify-start gap-8 p-2 md:px-4 lg:px-8 xl:px-16"
+    class="flex w-full flex-1 flex-col items-start justify-start gap-2 p-2 md:px-4 lg:px-8 xl:px-16"
   >
-    <Article
-      content={data.question.content}
-      prefix={`Question ${data.questionIndex}:`}
-      prefixClass={$solvedStore.includes(data.question.id)
-        ? "text-success"
-        : ""}
-    />
+    <div class="flex flex-row items-center gap-1">
+      <div class="flex flex-row gap-1">
+        <Button
+          variant="outline"
+          size="icon"
+          class={"rounded-e-none border-e-0 border-foreground/50 text-foreground " +
+            ($markedStore.includes(data.question.id)
+              ? "border-primary text-primary hover:text-primary"
+              : "")}
+          on:click={() => {
+            if ($markedStore.includes(data.question.id)) {
+              markedStore.update((solved) => {
+                solved.splice(solved.indexOf(data.question.id), 1);
+                return solved;
+              });
+            } else {
+              markedStore.update((solved) => {
+                solved.push(data.question.id);
+                return solved;
+              });
+            }
+          }}
+        >
+          <Flag
+            class={$markedStore.includes(data.question.id)
+              ? "spin spin-active"
+              : ""}
+          />
+        </Button>
+        <Button
+          variant="outline"
+          size="icon"
+          class={"rounded-s-none border-s-0 border-foreground/50 text-foreground " +
+            ($solvedStore.includes(data.question.id)
+              ? "border-success text-success hover:text-success"
+              : "")}
+          on:click={() => {
+            if ($solvedStore.includes(data.question.id)) {
+              solvedStore.update((solved) => {
+                solved.splice(solved.indexOf(data.question.id), 1);
+                return solved;
+              });
+            } else {
+              solvedStore.update((solved) => {
+                solved.push(data.question.id);
+                return solved;
+              });
+            }
+          }}
+        >
+          <Checkmark
+            class={$solvedStore.includes(data.question.id)
+              ? "spin spin-active"
+              : ""}
+          />
+        </Button>
+      </div>
+      <div
+        class="flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4"
+      >
+        Question {data.questionIndex}/{data.quiz.questions.length}
+      </div>
+    </div>
+    <Article content={data.question.content} />
     <Separator />
     <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
       {#each data.question.options() as option, index}
@@ -99,7 +159,7 @@
     </div>
   </div>
   {#if data.next || data.prev}
-    <div class="flex w-full max-w-96 flex-row gap-4">
+    <div class="flex w-full flex-row gap-4 p-2 md:px-4 lg:px-8 xl:px-16">
       <Button
         variant="outline3D"
         class={"choice w-full flex-1 " + (data.prev ? "" : "disabled")}

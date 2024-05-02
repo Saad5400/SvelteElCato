@@ -105,7 +105,7 @@
   {#if $navStore.title && $navStore.items.length > 0}
     <div class="contents" id="navMenuDiv">
       <nav
-        class="min-h-screen-without-navbar ms-4 hidden w-8 w-80 max-w-80 !overflow-x-hidden transition-all lg:block"
+        class="min-h-screen-without-navbar ms-4 hidden w-8 w-80 max-w-80 !overflow-x-hidden transition-all ease-in-out lg:block"
         id="largeNavMenu"
         bind:this={largeNavMenu}
       >

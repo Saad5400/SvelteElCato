@@ -31,7 +31,7 @@
   </CardsGrid>
   <CardsGrid title="الاختبارات">
     {#each data.course.quizzes as quiz}
-      <Card href={quiz.url(data.course)}>
+      <Card href={quiz.url(data.course)} class="h-auto">
         {quiz.displayName}
       </Card>
     {/each}
