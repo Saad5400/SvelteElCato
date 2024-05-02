@@ -1,23 +1,36 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { Button } from "$lib/components/ui/button";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import Article from "$lib/components/Article.svelte";
   import useHighlight from "$lib/hooks/useHighlight";
+  import { persisted } from "svelte-persisted-store";
+  import AppBlockingOutlineSharp from "virtual:icons/material-symbols-light/AppBlockingOutlineSharp";
 
   export let data: PageData;
 
   let timeout: any;
+  const autoRedirect = persisted("autoRedirect", true as boolean);
 
   function setTimeoutToRedirect() {
-    if (!browser) return;
+    if (!browser || !$autoRedirect) return;
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       open(data.step.linked, "_blank");
     }, 500);
   }
+
+  const unsubscribe = autoRedirect.subscribe((value) => {
+    if (value) setTimeoutToRedirect();
+    else clearTimeout(timeout);
+  });
+
+  onDestroy(() => {
+    unsubscribe();
+    clearTimeout(timeout);
+  });
 
   $: stepId = $page.params.stepId;
   $: if (stepId && data.isExternal) setTimeoutToRedirect();
@@ -46,7 +59,15 @@
       >
         هذا الدرس يحتوي رابط خارجي
         <br />
-        سيتم نقلك تلقائياً إلى الصفحة المطلوبة
+        {#if $autoRedirect}
+          سيتم نقلك تلقائياً إلى الصفحة المطلوبة
+        {:else}
+          <div>
+            لقد تم تعطيل التحويل التلقائي، اضغط على <AppBlockingOutlineSharp
+              class="inline h-5 w-5"
+            /> أعلى يسار الصفحة لتفعيل التحويل التلقائي
+          </div>
+        {/if}
         <div>
           او
           <Button

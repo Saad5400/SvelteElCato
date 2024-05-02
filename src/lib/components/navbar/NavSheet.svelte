@@ -2,29 +2,14 @@
   import NavItems from "$lib/components/navbar/NavItems.svelte";
   import SkipBack from "virtual:icons/f7/BackwardEnd";
   import navStore from "$lib/stores/navStore";
-  import { onDestroy, onMount } from "svelte";
 
   let largeNavMenu: HTMLElement;
-
-  let unsubscribeNavStore = () => {};
-  onMount(() => {
-    unsubscribeNavStore = navStore.subscribe((value) => {
-      setTimeout(() => {
-        if (!largeNavMenu) return;
-        largeNavMenu.classList.remove("w-80");
-      }, 1500);
-    });
-  });
-
-  onDestroy(() => {
-    unsubscribeNavStore();
-  });
 </script>
 
 {#if $navStore.title && $navStore.items.length > 0}
   <div class="contents" id="navMenuDiv">
     <nav
-      class="min-h-screen-without-navbar ms-4 hidden w-8 w-80 max-w-80 !overflow-x-hidden transition-all ease-in-out lg:block"
+      class="min-h-screen-without-navbar ms-4 hidden w-8 max-w-80 !overflow-x-hidden transition-all ease-in-out lg:block"
       id="largeNavMenu"
       bind:this={largeNavMenu}
     >

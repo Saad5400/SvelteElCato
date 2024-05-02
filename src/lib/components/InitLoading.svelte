@@ -20,7 +20,7 @@
   dir="ltr"
   bind:this={div}
 >
-  <Loading class="w-24" />
+  <Loading />
 </div>
 
 <style lang="postcss">

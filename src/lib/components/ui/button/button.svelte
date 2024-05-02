@@ -3,6 +3,7 @@
   import { cn } from "$lib/utils";
   import { buttonVariants, type Props, type Events } from ".";
   import useVibrate from "$lib/hooks/useVibrate";
+  import { persisted } from "svelte-persisted-store";
 
   type $$Props = Props;
   type $$Events = Events;
@@ -14,9 +15,13 @@
   export { className as class };
   export let sound: $$Props["sound"] = "click";
 
+  const allowSound = persisted("allowSound", true as boolean);
+
   function click(e: any) {
-    const audio = new Audio(`/sounds/${sound}.mp3`);
-    audio.play();
+    if ($allowSound) {
+      const audio = new Audio(`/sounds/${sound}.mp3`);
+      audio.play();
+    }
     useVibrate(10);
   }
 </script>

@@ -41,6 +41,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@iconify-json/material-symbols-light": "^1.1.19",
     "@sindresorhus/slugify": "^2.2.1",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
