@@ -56,7 +56,7 @@
         {#each $pageRows as row (row.id)}
           {@const post = getOriginalPost(row)}
           <Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-            <Table.Row {...rowAttrs}>
+            <Table.Row {...rowAttrs} class="border-0">
               {#each row.cells as cell (cell.id)}
                 <Subscribe attrs={cell.attrs()} let:attrs>
                   <Table.Cell {...attrs} class="flex p-0 text-lg">
