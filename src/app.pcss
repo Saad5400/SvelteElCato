@@ -331,7 +331,7 @@
   }
 
   .marked {
-    @apply !border-primary dark:!border-primary/70;
+    @apply !border-destructive dark:!border-destructive/70;
   }
 
   .incorrect {
@@ -339,9 +339,17 @@
   }
 
   button.active,
-  a.active,
+  a.active {
+    @apply border-b-2 border-r-2 !border-accent-foreground;
+  }
+
   button.active.correct,
   a.active.correct {
-    @apply border-b-2 border-r-2 !border-accent-foreground;
+    @apply !border-accent-foreground !border-s-success !border-b-success;
+  }
+
+  button.active.marked,
+  a.active.marked {
+    @apply !border-accent-foreground !border-s-destructive !border-b-destructive;
   }
 }

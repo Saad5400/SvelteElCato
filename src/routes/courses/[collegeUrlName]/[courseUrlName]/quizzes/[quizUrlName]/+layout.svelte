@@ -18,7 +18,7 @@
   ) {
     const navItems: NavItem[] = data.quiz.questions.map((question, index) => {
       return {
-        title: index + "",
+        title: index + 1 + "",
         href: `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/${data.quiz.urlName}/${question.id}`,
         class:
           ($solvedStore.includes(question.id) ? "correct " : " ") +
