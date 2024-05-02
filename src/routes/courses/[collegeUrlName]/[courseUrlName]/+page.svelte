@@ -2,10 +2,22 @@
   import type { PageData } from "./$types";
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import Card from "$lib/components/cardsView/Card.svelte";
-  import { Separator } from "$lib/components/ui/separator";
   import { page } from "$app/stores";
+  import { persisted } from "svelte-persisted-store";
+  import type Quiz from "$lib/models/Quiz";
+  import useClass from "$lib/hooks/useClass";
 
   export let data: PageData;
+
+  const markedStore = persisted("markedQuestions", [] as string[]);
+
+  function hasMarkedQuestion(quiz: Quiz) {
+    return quiz.questions_ids.some((id) => $markedStore.includes(id));
+  }
+
+  function hasUnsolvedQuestion(quiz: Quiz) {
+    return quiz.questions_ids.some((id) => !$markedStore.includes(id));
+  }
 </script>
 
 <svelte:head>
@@ -31,7 +43,14 @@
   </CardsGrid>
   <CardsGrid title="الاختبارات">
     {#each data.course.quizzes as quiz}
-      <Card href={quiz.url(data.course)} class="h-auto">
+      <Card
+        href={quiz.url(data.course)}
+        class={useClass(
+          hasMarkedQuestion(quiz),
+          "marked",
+          useClass(hasUnsolvedQuestion(quiz), "border-success/30", "h-auto"),
+        )}
+      >
         {quiz.displayName}
       </Card>
     {/each}
