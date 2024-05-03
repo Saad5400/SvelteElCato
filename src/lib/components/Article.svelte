@@ -50,11 +50,11 @@
   }
 
   :global(article code) {
-    @apply !bg-inherit font-light h-full;
+    @apply !bg-inherit font-light;
   }
 
   :global(article pre) {
-    @apply max-w-[calc(100dvw-1rem)] overflow-x-auto h-full;
+    @apply max-w-[calc(100dvw-1rem)] overflow-x-auto;
   }
 
   :global(article p:not(:first-child)) {
