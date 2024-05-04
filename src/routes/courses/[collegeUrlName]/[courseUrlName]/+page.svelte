@@ -16,8 +16,8 @@
     return quiz.questions_ids.some((id) => $markedStore.includes(id));
   }
 
-  function hasUnsolvedQuestion(quiz: Quiz) {
-    return quiz.questions_ids.some((id) => !$solvedStore.includes(id));
+  function allQuestionsSolved(quiz: Quiz) {
+    return quiz.questions_ids.every((id) => $solvedStore.includes(id));
   }
 </script>
 
@@ -47,9 +47,9 @@
       <Card
         href={quiz.url(data.course)}
         class={useClass(
-          hasMarkedQuestion(quiz),
-          "marked",
-          useClass(hasUnsolvedQuestion(quiz), "border-success/30", "h-auto"),
+          allQuestionsSolved(quiz),
+          "border-success",
+          useClass(hasMarkedQuestion(quiz), "marked", "h-auto"),
         )}
       >
         {quiz.displayName}

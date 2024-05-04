@@ -4,7 +4,7 @@
 
   export let href: string | null = null;
   export let className = "flex-1 flex flex-col h-fit min-w-64";
-  export let titleClassName = "text-2xl";
+  export let titleClassName = "text-2xl text-center";
   export let variant: Variant = "outline3DLarge";
   export let subtitle = "";
   export let description = "";
