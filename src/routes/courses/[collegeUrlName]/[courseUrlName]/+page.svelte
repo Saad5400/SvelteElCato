@@ -48,7 +48,7 @@
         href={quiz.url(data.course)}
         class={useClass(
           allQuestionsSolved(quiz),
-          "border-success",
+          "correct",
           useClass(hasMarkedQuestion(quiz), "marked", "h-auto"),
         )}
       >
