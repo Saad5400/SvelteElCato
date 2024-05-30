@@ -12,7 +12,7 @@ primary_region = 'cdg'
 
 # optional if you want to change the PocketBase version
 [build.args]
-  PB_VERSION="0.21.3"
+  PB_VERSION="0.22.12"
 
 [build]
 
