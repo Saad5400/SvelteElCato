@@ -31,29 +31,33 @@
   <h1>
     {data.course.displayName}
   </h1>
-  <CardsGrid title="المسارات">
-    {#each data.course.tracks as track}
-      <!-- TODO: redirect to the last visited step -->
-      <Card
-        subtitle={track.description}
-        href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
-      >
-        {track.displayName}
-      </Card>
-    {/each}
-  </CardsGrid>
-  <CardsGrid title="الاختبارات">
-    {#each data.course.quizzes as quiz}
-      <Card
-        href={quiz.url(data.course)}
-        class={useClass(
-          allQuestionsSolved(quiz),
-          "correct",
-          useClass(hasMarkedQuestion(quiz), "marked", "h-auto"),
-        )}
-      >
-        {quiz.displayName}
-      </Card>
-    {/each}
-  </CardsGrid>
+  {#if data.course.tracks && data.course.tracks.length > 0}
+    <CardsGrid title="المسارات">
+      {#each data.course.tracks as track}
+        <!-- TODO: redirect to the last visited step -->
+        <Card
+          subtitle={track.description}
+          href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
+        >
+          {track.displayName}
+        </Card>
+      {/each}
+    </CardsGrid>
+  {/if}
+  {#if data.course.quizzes && data.course.quizzes.length > 0}
+    <CardsGrid title="الاختبارات">
+      {#each data.course.quizzes as quiz}
+        <Card
+          href={quiz.url(data.course)}
+          class={useClass(
+            allQuestionsSolved(quiz),
+            "correct",
+            useClass(hasMarkedQuestion(quiz), "marked", "h-auto"),
+          )}
+        >
+          {quiz.displayName}
+        </Card>
+      {/each}
+    </CardsGrid>
+  {/if}
 </div>
