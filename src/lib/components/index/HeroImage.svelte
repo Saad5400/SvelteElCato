@@ -1,10 +1,35 @@
+<script>
+  let width = 0;
+  let height = 0;
+  let left = "0";
+  let top = "0";
+
+  function mouseMove(e) {
+    const multiplier = 2;
+    const leftOffset = 0;
+    const x = e.clientX;
+    const y = e.clientY;
+    const xPercent = x / width;
+    const yPercent = y / height;
+    left = `${xPercent * multiplier + leftOffset}rem`;
+    top = `${yPercent * multiplier}rem`;
+  }
+</script>
+
+<svelte:window
+  on:mousemove={mouseMove}
+  bind:innerWidth={width}
+  bind:innerHeight={height}
+/>
+
 <figure
   dir="ltr"
-  class="absolute -z-10 flex w-[calc(100dvw-5rem)] items-center justify-center overflow-x-clip blur-sm lg:relative lg:w-fit lg:blur-0"
+  class="absolute -z-10 flex w-[calc(100dvw-5rem)] items-center justify-center overflow-x-clip blur-md lg:relative lg:w-full lg:blur-0"
   aria-hidden="true"
 >
   <svg
-    class="w-[40rem]"
+    class="w-[40rem] lg:-translate-y-1/2 lg:absolute"
+    style="left: {left}; top: {top};"
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 300.000000 300.000000"
