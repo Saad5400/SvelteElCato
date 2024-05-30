@@ -37,7 +37,6 @@ export default class Question extends BaseModel {
     if (this.d) options.push({ name: "d", content: this.d });
     if (this.e) options.push({ name: "e", content: this.e });
 
-    // shuffle options
-    return options.sort(() => Math.random() - 0.5);
+    return options;
   }
 }
