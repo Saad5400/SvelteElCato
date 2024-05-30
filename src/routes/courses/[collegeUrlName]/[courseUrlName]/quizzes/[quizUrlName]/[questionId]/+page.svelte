@@ -39,6 +39,8 @@
   export let data: PageData;
   let showExplanation = false;
   $: if ($page.url.href) showExplanation = false;
+  let options = data.question.options();
+  $: if ($page.url.href) options = data.question.options();
 </script>
 
 <svelte:head>
@@ -59,7 +61,7 @@
     <Article content={data.question.content} />
     <Separator />
     <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-      {#each data.question.options() as option, index}
+      {#each options as option, index}
         <div class="indicator">
           {#if data.question.explanation && option.name === data.question.correct && showExplanation}
             <!-- Explain -->
