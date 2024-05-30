@@ -8,6 +8,7 @@ export default class Course extends BaseModel {
   urlName: string;
   order: number;
   description: string;
+  hidden: boolean;
   college: College;
   tracks: Track[];
   quizzes: Quiz[];
@@ -18,6 +19,7 @@ export default class Course extends BaseModel {
     this.urlName = data.urlName;
     this.order = data.order;
     this.description = data.description;
+    this.hidden = data.hidden;
     this.college = data.expand?.college
       ? new College(data.expand.college)
       : null!;

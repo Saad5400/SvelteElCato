@@ -22,13 +22,15 @@
   <!-- Courses -->
   <CardsGrid id="courses" title="الدورات">
     {#each data.courses as course}
-      <Card
-        href="/courses/{course.college.urlName}/{course.urlName}"
-        subtitle={course.college.displayName}
-        description={course.description}
-      >
-        {course.displayName}
-      </Card>
+      {#if !course.hidden}
+        <Card
+          href="/courses/{course.college.urlName}/{course.urlName}"
+          subtitle={course.college.displayName}
+          description={course.description}
+        >
+          {course.displayName}
+        </Card>
+      {/if}
     {/each}
   </CardsGrid>
 
