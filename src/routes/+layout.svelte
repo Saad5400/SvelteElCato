@@ -36,14 +36,7 @@
       "اللهم اغفر لي ذنبي واحسن خاتمتي",
       "استغفرالله والحمدلله والله اكبر ولا اله الا الله",
     ];
-    toast.info(azkar[Math.floor(Math.random() * azkar.length)], {
-      description: "ما نقص مالٌ من صدقةٍ",
-      action: {
-        label: "تبرع مع إحسان",
-        onClick: () =>
-          window.open("https://ehsan.sa/", "_blank", "noopener noreferrer"),
-      },
-    });
+    toast.info(azkar[Math.floor(Math.random() * azkar.length)]);
   });
   // injectSpeedInsights();
   // injectAnalytics();
