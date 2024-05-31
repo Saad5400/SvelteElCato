@@ -3,353 +3,368 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "Handjet";
-    src: url("/fonts/Handjet.ttf") format("truetype");
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: "RobotoMono";
-    src: url("/fonts/RobotoMono.ttf") format("truetype");
-    font-display: block;
-  }
-
-  .roboto-mono {
-    font-family: "RobotoMono", monospace;
-  }
-
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 24.6 95% 53.1%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
-    --destructive: 0 72.22% 50.59%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 24.6 95% 53.1%;
-    --radius: 0.5rem;
-    --success: 120 100% 35%;
-  }
-
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 20.5 90.2% 48.2%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 25.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 20.5 90.2% 48.2%;
-    --success: 120 100% 25%;
-  }
-
-  * {
-    @apply border-border scrollbar-thin;
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-background tracking-wide text-foreground;
-    font-family: "Handjet", sans-serif;
-  }
-
-  h1 {
-    @apply scroll-m-20 text-4xl font-extrabold lg:text-5xl;
-  }
-
-  h2 {
-    @apply scroll-m-20 pb-2 text-3xl font-semibold first:mt-0;
-  }
-
-  h3 {
-    @apply scroll-m-20 text-2xl font-semibold;
-  }
-
-  h4 {
-    @apply scroll-m-20 text-xl font-semibold;
-  }
-
-  p {
-    @apply text-lg leading-7 [&:not(:first-child)]:mt-6;
-  }
-
-  a.disabled {
-    pointer-events: none;
-    cursor: default;
-    opacity: 0.5;
-  }
-
-  blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
-  }
-
-  table {
-    @apply w-full;
-  }
-
-  tr {
-    @apply m-0 border-t p-0 even:bg-muted;
-  }
-
-  th {
-    @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right;
-  }
-
-  ul {
-    @apply my-6 ml-6 list-disc [&>li]:mt-2;
-  }
-
-  ol {
-    @apply my-6 ml-6 list-decimal [&>li]:mt-2;
-  }
-
-  pre:not([class*="language-"]) code {
-    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-  }
-
-  small {
-    @apply text-sm font-medium leading-none;
-  }
-
-  .min-h-screen-without-navbar {
-    @apply min-h-[calc(100dvh-5rem)];
-  }
-
-  .max-h-screen-without-navbar {
-    @apply max-h-[calc(100dvh-5rem)];
-  }
-
-  .indicator {
-    & :where(.indicator-item) {
-      @apply bottom-auto end-0 start-auto top-0 -translate-y-5 translate-x-1/3;
-    }
-  }
-
-  .indicator {
-    @apply relative inline-flex;
-
-    & :where(.indicator-item) {
-      z-index: 1;
-      @apply absolute transform whitespace-nowrap;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-  }
-
-  @keyframes fade-out {
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes slide-from-right {
-    from {
-      transform: translateX(30px);
-    }
-  }
-
-  @keyframes slide-to-right {
-    to {
-      transform: translateX(30px);
-    }
-  }
-
-  @keyframes slide-from-left {
-    from {
-      transform: translateX(-30px);
-    }
-  }
-
-  @keyframes slide-to-left {
-    to {
-      transform: translateX(-30px);
-    }
-  }
-
-  @keyframes slide-from-bottom {
-    from {
-      transform: translateY(30px);
-    }
-  }
-
-  @keyframes slide-to-bottom {
-    to {
-      transform: translateY(30px);
-    }
-  }
-
-  @keyframes slide-from-top {
-    from {
-      transform: translateY(-30px);
-    }
-  }
-
-  @keyframes slide-to-top {
-    to {
-      transform: translateY(-30px);
-    }
-  }
-
-  /* :root::view-transition-old(root) {
-        animation:
-            90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-            300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-bottom;
+    @font-face {
+        font-family: "Handjet";
+        src: url("/fonts/Handjet.ttf") format("truetype");
+        font-display: block;
     }
 
-    :root::view-transition-new(root) {
-        animation:
-            210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-            300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-top;
-    } */
-
-  @keyframes boop {
-    0% {
-      transform: rotate(0deg);
+    @font-face {
+        font-family: "RobotoMono";
+        src: url("/fonts/RobotoMono.ttf") format("truetype");
+        font-display: block;
     }
 
-    20% {
-      transform: rotate(-15deg);
+    .roboto-mono {
+        font-family: "RobotoMono", monospace;
     }
 
-    40% {
-      transform: rotate(15deg);
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 20 14.3% 4.1%;
+        --card: 0 0% 100%;
+        --card-foreground: 20 14.3% 4.1%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 20 14.3% 4.1%;
+        --primary: 24.6 95% 53.1%;
+        --primary-foreground: 60 9.1% 97.8%;
+        --secondary: 60 4.8% 95.9%;
+        --secondary-foreground: 24 9.8% 10%;
+        --muted: 60 4.8% 95.9%;
+        --muted-foreground: 25 5.3% 44.7%;
+        --accent: 60 4.8% 95.9%;
+        --accent-foreground: 24 9.8% 10%;
+        --destructive: 0 72.22% 50.59%;
+        --destructive-foreground: 60 9.1% 97.8%;
+        --border: 20 5.9% 90%;
+        --input: 20 5.9% 90%;
+        --ring: 24.6 95% 53.1%;
+        --radius: 0.5rem;
+        --success: 120 100% 35%;
     }
 
-    60% {
-      transform: rotate(-7deg);
+    .dark {
+        --background: 20 14.3% 4.1%;
+        --foreground: 60 9.1% 97.8%;
+        --card: 20 14.3% 4.1%;
+        --card-foreground: 60 9.1% 97.8%;
+        --popover: 20 14.3% 4.1%;
+        --popover-foreground: 60 9.1% 97.8%;
+        --primary: 20.5 90.2% 48.2%;
+        --primary-foreground: 60 9.1% 97.8%;
+        --secondary: 12 6.5% 15.1%;
+        --secondary-foreground: 60 9.1% 97.8%;
+        --muted: 12 6.5% 15.1%;
+        --muted-foreground: 24 5.4% 63.9%;
+        --accent: 12 6.5% 15.1%;
+        --accent-foreground: 60 9.1% 97.8%;
+        --destructive: 0 72.2% 50.6%;
+        --destructive-foreground: 60 9.1% 97.8%;
+        --border: 12 6.5% 25.1%;
+        --input: 12 6.5% 15.1%;
+        --ring: 20.5 90.2% 48.2%;
+        --success: 120 100% 25%;
     }
 
-    80% {
-      transform: rotate(7deg);
+    * {
+        @apply border-border scrollbar-thin;
+        scroll-behavior: smooth;
     }
 
-    90% {
-      transform: rotate(-3deg);
+    body {
+        @apply bg-background tracking-wide text-foreground;
+        font-family: "Handjet", sans-serif;
     }
 
-    95% {
-      transform: rotate(2deg);
+    h1 {
+        @apply scroll-m-20 text-4xl font-extrabold lg:text-5xl;
     }
 
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-
-  .boop-active {
-    display: inline-block;
-    animation: 1s boop forwards running;
-  }
-
-  @keyframes jump {
-    0% {
-      transform: translateY(0);
+    h2 {
+        @apply scroll-m-20 pb-2 text-3xl font-semibold first:mt-0;
     }
 
-    20% {
-      transform: translateY(-30px);
+    h3 {
+        @apply scroll-m-20 text-2xl font-semibold;
     }
 
-    40% {
-      transform: translateY(0px);
+    h4 {
+        @apply scroll-m-20 text-xl font-semibold;
     }
 
-    60% {
-      transform: translateY(-15px);
+    p {
+        @apply text-lg leading-7 [&:not(:first-child)]:mt-6;
     }
 
-    80% {
-      transform: translateY(0px);
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
     }
 
-    90% {
-      transform: translateY(-7px);
+    blockquote {
+        @apply mt-6 border-l-2 pl-6 italic;
     }
 
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  .jump-active {
-    display: inline-block;
-    animation: 1s jump forwards running;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
+    table {
+        @apply w-full;
     }
 
-    100% {
-      transform: rotate(360deg);
+    tr {
+        @apply m-0 border-t p-0 even:bg-muted;
     }
-  }
 
-  .spin-active {
-    display: inline-block;
-    animation: 0.5s spin forwards running;
-  }
+    th {
+        @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right;
+    }
 
-  .repeating-text-light {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50" width="50" height="50"><text fill="black" x="0" y="40" font-family="DINPro, Roboto, sans-serif" font-size="10px">72W</text></svg>');
-  }
+    ul {
+        @apply my-6 ml-6 list-disc [&>li]:mt-2;
+    }
 
-  .repeating-text-dark {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50" width="50" height="50"><text fill="white" x="0" y="40" font-family="DINPro, Roboto, sans-serif" font-size="10px">72W</text></svg>');
-  }
+    ol {
+        @apply my-6 ml-6 list-decimal [&>li]:mt-2;
+    }
 
-  .correct {
-    @apply jump-active !border-success dark:!border-success/70;
-  }
+    pre:not([class*="language-"]) code {
+        @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    }
 
-  .marked {
-    @apply !border-destructive dark:!border-destructive/70;
-  }
+    small {
+        @apply text-sm font-medium leading-none;
+    }
 
-  .incorrect {
-    @apply boop-active !border-destructive;
-  }
+    .min-h-screen-without-navbar {
+        @apply min-h-[calc(100dvh-5rem)];
+    }
 
-  button.active,
-  a.active {
-    @apply border-b-2 border-r-2 !border-accent-foreground;
-  }
+    .max-h-screen-without-navbar {
+        @apply max-h-[calc(100dvh-5rem)];
+    }
 
-  button.active.correct,
-  a.active.correct {
-    @apply !border-accent-foreground !border-s-success !border-b-success;
-  }
+    .indicator {
+        & :where(.indicator-item) {
+            @apply bottom-auto end-0 start-auto top-0 -translate-y-5 translate-x-1/3;
+        }
+    }
 
-  button.active.marked,
-  a.active.marked {
-    @apply !border-accent-foreground !border-s-destructive !border-b-destructive;
-  }
+    .indicator {
+        @apply relative inline-flex;
+
+        & :where(.indicator-item) {
+            z-index: 1;
+            @apply absolute transform whitespace-nowrap;
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+    }
+
+    @keyframes fade-out {
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes slide-from-right {
+        from {
+            transform: translateX(30px);
+        }
+    }
+
+    @keyframes slide-to-right {
+        to {
+            transform: translateX(30px);
+        }
+    }
+
+    @keyframes slide-from-left {
+        from {
+            transform: translateX(-30px);
+        }
+    }
+
+    @keyframes slide-to-left {
+        to {
+            transform: translateX(-30px);
+        }
+    }
+
+    @keyframes slide-from-bottom {
+        from {
+            transform: translateY(30px);
+        }
+    }
+
+    @keyframes slide-to-bottom {
+        to {
+            transform: translateY(30px);
+        }
+    }
+
+    @keyframes slide-from-top {
+        from {
+            transform: translateY(-30px);
+        }
+    }
+
+    @keyframes slide-to-top {
+        to {
+            transform: translateY(-30px);
+        }
+    }
+
+    /* :root::view-transition-old(root) {
+          animation:
+              90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+              300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-bottom;
+      }
+
+      :root::view-transition-new(root) {
+          animation:
+              210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+              300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-top;
+      } */
+    ::view-transition-old(question) {
+        animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out, 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-top;
+    }
+
+    ::view-transition-new(question) {
+        animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in, 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-bottom;
+    }
+
+    .question-back::view-transition-old(question) {
+        animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out, 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-bottom;
+    }
+
+    .question-back::view-transition-new(question) {
+        animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in, 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-top;
+    }
+
+    @keyframes boop {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        20% {
+            transform: rotate(-15deg);
+        }
+
+        40% {
+            transform: rotate(15deg);
+        }
+
+        60% {
+            transform: rotate(-7deg);
+        }
+
+        80% {
+            transform: rotate(7deg);
+        }
+
+        90% {
+            transform: rotate(-3deg);
+        }
+
+        95% {
+            transform: rotate(2deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .boop-active {
+        display: inline-block;
+        animation: 1s boop forwards running;
+    }
+
+    @keyframes jump {
+        0% {
+            transform: translateY(0);
+        }
+
+        20% {
+            transform: translateY(-30px);
+        }
+
+        40% {
+            transform: translateY(0px);
+        }
+
+        60% {
+            transform: translateY(-15px);
+        }
+
+        80% {
+            transform: translateY(0px);
+        }
+
+        90% {
+            transform: translateY(-7px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .jump-active {
+        display: inline-block;
+        animation: 1s jump forwards running;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spin-active {
+        display: inline-block;
+        animation: 0.5s spin forwards running;
+    }
+
+    .repeating-text-light {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50" width="50" height="50"><text fill="black" x="0" y="40" font-family="DINPro, Roboto, sans-serif" font-size="10px">72W</text></svg>');
+    }
+
+    .repeating-text-dark {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50" width="50" height="50"><text fill="white" x="0" y="40" font-family="DINPro, Roboto, sans-serif" font-size="10px">72W</text></svg>');
+    }
+
+    .correct {
+        @apply jump-active !border-success dark:!border-success/70;
+    }
+
+    .marked {
+        @apply !border-destructive dark:!border-destructive/70;
+    }
+
+    .incorrect {
+        @apply boop-active !border-destructive;
+    }
+
+    button.active,
+    a.active {
+        @apply border-b-2 border-r-2 !border-accent-foreground;
+    }
+
+    button.active.correct,
+    a.active.correct {
+        @apply !border-accent-foreground !border-s-success !border-b-success;
+    }
+
+    button.active.marked,
+    a.active.marked {
+        @apply !border-accent-foreground !border-s-destructive !border-b-destructive;
+    }
 }

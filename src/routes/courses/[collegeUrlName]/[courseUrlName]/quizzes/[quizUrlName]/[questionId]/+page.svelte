@@ -56,6 +56,7 @@
 >
   <div
     class="flex w-full flex-1 flex-col items-start justify-start gap-2 p-2 md:px-4 lg:px-8 xl:px-16"
+    id="main"
   >
     <QuestionHeader {data} />
     <Article content={data.question.content} />
@@ -102,6 +103,9 @@
         variant="outline3D"
         class={"choice w-full flex-1 " + (data.prev ? "" : "disabled")}
         href={`./${data.prev?.id}`}
+        on:click={() => {
+          document.documentElement.classList.add("question-back");
+        }}
       >
         Previous
       </Button>
@@ -109,9 +113,18 @@
         variant="outline3D"
         class={"choice w-full flex-1 " + (data.next ? "" : "disabled")}
         href={`./${data.next?.id}`}
+        on:click={() => {
+          document.documentElement.classList.remove("question-back");
+        }}
       >
         Next
       </Button>
     </div>
   {/if}
 </div>
+
+<style>
+  #main {
+    view-transition-name: question;
+  }
+</style>

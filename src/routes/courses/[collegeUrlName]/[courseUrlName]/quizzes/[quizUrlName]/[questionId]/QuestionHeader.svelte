@@ -12,7 +12,7 @@
   const markedStore = persisted("markedQuestions", [] as string[]);
 </script>
 
-<div class="flex flex-row items-center gap-1">
+<div class="flex flex-row items-center gap-1" id="container">
   <div class="flex flex-row gap-1">
     <IconButton text="وضع علامة">
       <Button
@@ -85,3 +85,9 @@
     Question {data.questionIndex + 1}/{data.quiz.questions.length}
   </div>
 </div>
+
+<style>
+  #container {
+    view-transition-name: question-header-container;
+  }
+</style>
