@@ -55,9 +55,13 @@
           الأسئلة المعلمة
         </Card>
       {/if}
-      {#if $markedStore.length > 0}
-        <Separator class="col-span-full" />
-      {/if}
+      <Card
+        href={`${data.course.url()}/quizzes/random`}
+        class="col-span-full h-fit"
+      >
+        جميع الأسئلة عشوائيا
+      </Card>
+      <Separator class="col-span-full" />
       {#each data.course.quizzes as quiz}
         <Card
           href={quiz.url(data.course)}

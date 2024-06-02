@@ -2,15 +2,12 @@ import type { PageLoad } from "./$types";
 import Question from "$lib/models/Question";
 
 export const load: PageLoad = async ({ parent, params, fetch }) => {
-  const { quiz, pb } = await parent();
+  const { questions, pb } = await parent();
 
-  const questionIndex = quiz.questions_ids.indexOf(params.questionId);
+  const questionIndex = questions.indexOf(params.questionId);
   const next =
-    quiz.questions_ids.length < questionIndex + 2
-      ? null
-      : quiz.questions_ids[questionIndex + 1];
-  const prev =
-    questionIndex === 0 ? null : quiz.questions_ids[questionIndex - 1];
+    questions.length < questionIndex + 2 ? null : questions[questionIndex + 1];
+  const prev = questionIndex === 0 ? null : questions[questionIndex - 1];
 
   const question = await Question.fetch(params.questionId, pb, fetch);
 

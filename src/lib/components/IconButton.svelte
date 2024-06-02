@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as HoverCard from "$lib/components/ui/hover-card";
 
-  export let text;
+  export let text: string;
 </script>
 
 <HoverCard.Root openDelay={100} closeDelay={100}>

@@ -1,4 +1,7 @@
 import BaseModel from "$lib/models/BaseModel";
+import { handleError } from "$lib/models/TypedPocketBase";
+import type TypedPocketBase from "$lib/models/TypedPocketBase";
+import useHighlight from "$lib/hooks/useHighlight";
 
 export interface Option {
   name: string;
@@ -36,7 +39,31 @@ export default class Question extends BaseModel {
     if (this.c) options.push({ name: "c", content: this.c });
     if (this.d) options.push({ name: "d", content: this.d });
     if (this.e) options.push({ name: "e", content: this.e });
-    
+
     return options.sort(() => Math.random() - 0.5);
+  }
+
+  public static async fetch(
+    id: string,
+    pb: TypedPocketBase,
+    fetch: typeof window.fetch,
+  ): Promise<Question> {
+    const question = new Question(
+      await pb
+        .collection("questions")
+        .getOne(id, {
+          fetch: async (url, config) => fetch(url, config),
+        })
+        .catch(handleError),
+    );
+
+    question.content = useHighlight(question.content);
+    question.a = useHighlight(question.a);
+    question.b = useHighlight(question.b);
+    if (question.c) question.c = useHighlight(question.c);
+    if (question.d) question.d = useHighlight(question.d);
+    if (question.e) question.e = useHighlight(question.e);
+
+    return question;
   }
 }
