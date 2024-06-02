@@ -3,14 +3,16 @@
   import navStore, { type NavItem } from "$lib/stores/navStore";
   import { onDestroy, onMount } from "svelte";
   import { persisted } from "svelte-persisted-store";
-
-  export let data: LayoutData;
+  import { page } from "$app/stores";
 
   const solvedStore = persisted("solvedQuestions", [] as string[]);
   const markedStore = persisted("markedQuestions", [] as string[]);
 
-  onMount(() => {
-    const navItems: NavItem[] = data.questions.map((question_id, index) => {
+  export let data: LayoutData;
+
+  $: navStore.set({
+    title: "جميع الأسئلة عشوائيا",
+    items: data.questions.map((question_id, index) => {
       return {
         title: index + 1 + "",
         href: `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/random/${question_id}`,
@@ -18,11 +20,7 @@
           ($solvedStore.includes(question_id) ? "correct " : " ") +
           ($markedStore.includes(question_id) ? "marked" : ""),
       };
-    });
-    navStore.set({
-      title: "جميع الأسئلة عشوائيا",
-      items: navItems,
-    });
+    }),
   });
 
   onDestroy(() => {

@@ -10,8 +10,9 @@
 
   export let data: LayoutData;
 
-  onMount(() => {
-    const navItems: NavItem[] = $markedStore.map((question_id, index) => {
+  $: navStore.set({
+    title: "الأسئلة المعلمة",
+    items: $markedStore.map((question_id, index) => {
       return {
         title: index + 1 + "",
         href: `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/marked/${question_id}`,
@@ -19,11 +20,7 @@
           ($solvedStore.includes(question_id) ? "correct " : " ") +
           ($markedStore.includes(question_id) ? "marked" : ""),
       };
-    });
-    navStore.set({
-      title: "الأسئلة المعلمة",
-      items: navItems,
-    });
+    }),
   });
 
   onDestroy(() => {

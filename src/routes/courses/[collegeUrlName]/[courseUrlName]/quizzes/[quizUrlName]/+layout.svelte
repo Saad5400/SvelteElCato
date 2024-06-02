@@ -10,28 +10,18 @@
 
   export let data: LayoutData;
 
-  $: route = $page.route.id;
-  $: if (
-    route?.startsWith(
-      "/courses/[collegeUrlName]/[courseUrlName]/quizzes/[quizUrlName]",
-    )
-  ) {
-    const navItems: NavItem[] = data.quiz.questions_ids.map(
-      (question_id, index) => {
-        return {
-          title: index + 1 + "",
-          href: `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/${data.quiz.urlName}/${question_id}`,
-          class:
-            ($solvedStore.includes(question_id) ? "correct " : " ") +
-            ($markedStore.includes(question_id) ? "marked" : ""),
-        };
-      },
-    );
-    navStore.set({
-      title: data.quiz.displayName,
-      items: navItems,
-    });
-  }
+  $: navStore.set({
+    title: data.quiz.displayName,
+    items: data.quiz.questions_ids.map((question_id, index) => {
+      return {
+        title: index + 1 + "",
+        href: `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/${data.quiz.urlName}/${question_id}`,
+        class:
+          ($solvedStore.includes(question_id) ? "correct " : " ") +
+          ($markedStore.includes(question_id) ? "marked" : ""),
+      };
+    }),
+  });
 
   onDestroy(() => {
     navStore.set({ title: "", items: [] });
