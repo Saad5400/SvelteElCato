@@ -82,7 +82,7 @@
         ? "!border-destructive !text-destructive "
         : "")}
   >
-    Question {data.questionIndex + 1}/{data.quiz.questions.length}
+    Question {data.questionIndex + 1}/{data.quiz.questions_ids.length}
   </div>
 </div>
 

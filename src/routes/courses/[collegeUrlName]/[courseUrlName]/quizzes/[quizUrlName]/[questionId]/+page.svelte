@@ -5,11 +5,11 @@
   import Info from "virtual:icons/f7/InfoCircleFill";
   import { page } from "$app/stores";
   import * as Drawer from "$lib/components/ui/drawer";
-  // import { Confetti } from "svelte-confetti";
   import Separator from "$lib/components/ui/separator/separator.svelte";
   import useVibrate from "$lib/hooks/useVibrate";
   import { persisted } from "svelte-persisted-store";
   import QuestionHeader from "./QuestionHeader.svelte";
+  import { preloadData } from "$app/navigation";
 
   const solvedStore = persisted("solvedQuestions", [] as string[]);
 
@@ -38,9 +38,13 @@
 
   export let data: PageData;
   let showExplanation = false;
-  $: if ($page.url.href) showExplanation = false;
   let options = data.question.options();
-  $: if ($page.url.href) options = data.question.options();
+
+  $: if ($page.url.href) {
+    showExplanation = false;
+    options = data.question.options();
+    if (data.next) preloadData(`./${data.next}`);
+  }
 </script>
 
 <svelte:head>
@@ -102,7 +106,7 @@
       <Button
         variant="outline3D"
         class={"choice w-full flex-1 " + (data.prev ? "" : "disabled")}
-        href={`./${data.prev?.id}`}
+        href={`./${data.prev}`}
         on:click={() => {
           document.documentElement.classList.add("question-back");
         }}
@@ -112,7 +116,7 @@
       <Button
         variant="outline3D"
         class={"choice w-full flex-1 " + (data.next ? "" : "disabled")}
-        href={`./${data.next?.id}`}
+        href={`./${data.next}`}
         on:click={() => {
           document.documentElement.classList.remove("question-back");
         }}

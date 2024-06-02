@@ -2,20 +2,27 @@ import type { PageLoad } from "./$types";
 import { error } from "@sveltejs/kit";
 import useHighlight from "$lib/hooks/useHighlight";
 import Question from "$lib/models/Question";
+import { handleError } from "$lib/models/TypedPocketBase";
 
-export const load: PageLoad = async ({ parent, params }) => {
-  const { quiz } = await parent();
+export const load: PageLoad = async ({ parent, params, fetch }) => {
+  const { quiz, pb } = await parent();
 
-  let question =
-    quiz.questions.find((s) => s.id === params.questionId) || error(404);
-  const questionIndex = quiz.questions.indexOf(question);
+  const questionIndex = quiz.questions_ids.indexOf(params.questionId);
   const next =
-    quiz.questions.length > questionIndex + 1
-      ? quiz.questions[questionIndex + 1]
-      : null;
-  const prev = questionIndex > 0 ? quiz.questions[questionIndex - 1] : null;
+    quiz.questions_ids.length < questionIndex + 2
+      ? null
+      : quiz.questions_ids[questionIndex + 1];
+  const prev =
+    questionIndex === 0 ? null : quiz.questions_ids[questionIndex - 1];
 
-  question = new Question(JSON.parse(JSON.stringify(question)));
+  const question = new Question(
+    await pb
+      .collection("questions")
+      .getOne(params.questionId, {
+        fetch: async (url, config) => fetch(url, config),
+      })
+      .catch(handleError),
+  );
 
   question.content = useHighlight(question.content);
   question.a = useHighlight(question.a);
