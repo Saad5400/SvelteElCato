@@ -10,6 +10,7 @@
   import { persisted } from "svelte-persisted-store";
   import QuestionHeader from "./QuestionHeader.svelte";
   import { preloadData } from "$app/navigation";
+  import { browser } from "$app/environment";
 
   const solvedStore = persisted("solvedQuestions", [] as string[]);
 
@@ -43,7 +44,7 @@
   $: if ($page.url.href) {
     showExplanation = false;
     options = data.question.options();
-    if (data.next) preloadData(`./${data.next}`);
+    if (browser && data.next) preloadData(`./${data.next}`);
   }
 </script>
 
