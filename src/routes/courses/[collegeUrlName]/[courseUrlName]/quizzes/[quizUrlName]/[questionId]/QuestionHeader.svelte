@@ -14,7 +14,7 @@
 
 <div class="flex flex-row items-center gap-1" id="container">
   <div class="flex flex-row gap-1">
-    <IconButton text="وضع علامة">
+    <IconButton text="علامة">
       <Button
         variant="outline"
         size="icon"
