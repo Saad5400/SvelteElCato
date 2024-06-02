@@ -64,16 +64,3 @@ Deploy:
 cd pb_src
 flyctl deploy
 ```
-
-Download the `pb_data` directory from the Pocketbase server:
-
-```bash
-# this will register a ssh key with your local agent (if you haven't already)
-flyctl ssh issue
-
-# proxies connections to a fly VM through a Wireguard tunnel
-flyctl proxy 10025:22
-
-# run in a separate terminal to copy the pb_data directory
-scp -r -P 10025 -i ./key.pem root@localhost:/pb/pb_data  ./
-```
