@@ -6,6 +6,7 @@
   import { persisted } from "svelte-persisted-store";
   import type Quiz from "$lib/models/Quiz";
   import useClass from "$lib/hooks/useClass";
+  import { Separator } from "$lib/components/ui/separator";
 
   export let data: PageData;
 
@@ -46,6 +47,17 @@
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
     <CardsGrid title="الاختبارات">
+      {#if $markedStore.length > 0}
+        <Card
+          href={`${data.course.url()}/quizzes/marked/${$markedStore[0]}`}
+          class="col-span-full h-fit"
+        >
+          الأسئلة المعلمة
+        </Card>
+      {/if}
+      {#if $markedStore.length > 0}
+        <Separator class="col-span-full" />
+      {/if}
       {#each data.course.quizzes as quiz}
         <Card
           href={quiz.url(data.course)}

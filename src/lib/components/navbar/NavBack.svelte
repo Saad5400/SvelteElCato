@@ -11,6 +11,7 @@
       case "/courses/[collegeUrlName]/[courseUrlName]/[trackUrlName]/[stepId]":
       case "/courses/[collegeUrlName]/[courseUrlName]/quizzes/[quizUrlName]":
       case "/courses/[collegeUrlName]/[courseUrlName]/quizzes/[quizUrlName]/[questionId]":
+      case "/courses/[collegeUrlName]/[courseUrlName]/quizzes/marked/[questionId]":
         return `/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}`;
       default:
         return "/";
