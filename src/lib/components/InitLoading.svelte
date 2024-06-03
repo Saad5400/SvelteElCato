@@ -6,10 +6,9 @@
   let div: HTMLDivElement;
 
   onMount(async () => {
-    div.style.scale = "0";
+    div.style.opacity = "0";
     div.style.pointerEvents = "none";
     await new Promise((resolve) => setTimeout(resolve, 500));
-    document.body.style.overflowY = "auto";
     div.remove();
   });
 </script>
@@ -22,10 +21,3 @@
 >
   <Loading />
 </div>
-
-<style lang="postcss">
-  #init-loading {
-    @apply transition-none;
-    transition: scale 0.1s ease-in-out;
-  }
-</style>
