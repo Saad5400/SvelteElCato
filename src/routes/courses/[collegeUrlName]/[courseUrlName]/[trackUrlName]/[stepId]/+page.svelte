@@ -15,7 +15,7 @@
   const autoRedirect = persisted("autoRedirect", true as boolean);
 
   function setTimeoutToRedirect() {
-    if (!browser || !$autoRedirect) return;
+    if (!browser || !$autoRedirect || !data.isExternal) return;
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       open(data.step.linked, "_blank");
