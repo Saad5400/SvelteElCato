@@ -60,7 +60,7 @@
           {$questionsStore.title}
         </Dialog.Title>
         <nav
-          class="flex max-h-[40rem] w-fit flex-row flex-wrap items-center justify-center gap-2 overflow-y-auto"
+          class="flex max-h-[20rem] w-fit flex-row flex-wrap items-center justify-center gap-2 overflow-y-auto"
           bind:this={questionsNav}
         >
           {#each $questionsStore.items as item}
