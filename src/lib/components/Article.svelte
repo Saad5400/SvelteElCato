@@ -24,8 +24,8 @@
 </svelte:head>
 
 <article
-  dir="ltr"
-  class={"h-full max-w-full break-words text-start " + classes}
+  dir="auto"
+  class={"h-full w-full max-w-full break-words text-start " + classes}
 >
   <span class={"block " + prefixClass}>
     {prefix}
