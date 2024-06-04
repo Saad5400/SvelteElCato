@@ -10,7 +10,7 @@
   export let data: LayoutData;
 
   $: updateNavStore(
-    $markedStore,
+    $markedStore.filter((q) => data.questions.includes(q)),
     `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/marked/`,
     $solvedStore,
     $markedStore,

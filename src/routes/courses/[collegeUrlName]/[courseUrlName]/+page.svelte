@@ -47,9 +47,9 @@
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
     <CardsGrid title="الاختبارات">
-      {#if $markedStore.length > 0}
+      {#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}
         <Card
-          href={`${data.course.url()}/quizzes/marked/${$markedStore[0]}`}
+          href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}
           class="col-span-full h-fit"
         >
           الأسئلة المعلمة
