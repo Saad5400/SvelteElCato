@@ -21,6 +21,7 @@
   export let totalQuestions: number;
 
   const solvedStore = persisted("solvedQuestions", [] as string[]);
+  const markedStore = persisted("markedQuestions", [] as string[]);
 
   function correct(element: HTMLElement) {
     element.classList.add("correct");
@@ -33,15 +34,27 @@
   }
 
   function incorrect(element: HTMLElement) {
+    if (!showExplanation && !$markedStore.includes(question.id)) markQuestion();
     element.classList.add("incorrect");
     useVibrate([50, 50, 50]);
   }
 
   function choiceClicked(event: any, name: string, clicked: HTMLElement) {
-    if (name == question.correct) {
-      correct(clicked);
+    if (name == question.correct) correct(clicked);
+    else incorrect(clicked);
+  }
+
+  function markQuestion() {
+    if ($markedStore.includes(question.id)) {
+      markedStore.update((solved) => {
+        solved.splice(solved.indexOf(question.id), 1);
+        return solved;
+      });
     } else {
-      incorrect(clicked);
+      markedStore.update((solved) => {
+        solved.push(question.id);
+        return solved;
+      });
     }
   }
 
@@ -70,7 +83,12 @@
     class="flex w-full flex-1 flex-col items-start justify-start gap-2 p-2 md:px-4 lg:px-8 xl:px-16"
     id="main"
   >
-    <QuestionHeader {question} {questionIndex} {totalQuestions} />
+    <QuestionHeader
+      {question}
+      {questionIndex}
+      {totalQuestions}
+      {markQuestion}
+    />
     <Article content={question.content} />
     <Separator />
     <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
@@ -97,7 +115,7 @@
           {/if}
           <Button
             variant="outline3D"
-            class="h-full w-full justify-start whitespace-normal text-lg"
+            class="h-full w-full justify-start whitespace-normal text-lg text-foreground/90"
             on:click={(e) => choiceClicked(e, option.name, e.currentTarget)}
             sound={question.correct === option.name
               ? "click_correct"

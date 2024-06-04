@@ -9,6 +9,7 @@
   export let question: Question;
   export let questionIndex: number;
   export let totalQuestions: number;
+  export let markQuestion: () => void;
 
   const solvedStore = persisted("solvedQuestions", [] as string[]);
   const markedStore = persisted("markedQuestions", [] as string[]);
@@ -24,19 +25,7 @@
           ($markedStore.includes(question.id)
             ? "border-destructive text-destructive hover:text-destructive"
             : "")}
-        on:click={() => {
-          if ($markedStore.includes(question.id)) {
-            markedStore.update((solved) => {
-              solved.splice(solved.indexOf(question.id), 1);
-              return solved;
-            });
-          } else {
-            markedStore.update((solved) => {
-              solved.push(question.id);
-              return solved;
-            });
-          }
-        }}
+        on:click={markQuestion}
       >
         <Flag
           class={$markedStore.includes(question.id)

@@ -7,10 +7,10 @@
   const markedStore = persisted("markedQuestions", [] as string[]);
 
   $: question = data.question;
-  $: courseMarked = $markedStore.filter((id) => data.questions.includes(id));
-  $: questionIndex = courseMarked.indexOf(data.question.id);
-  $: next = courseMarked.length > questionIndex + 1 ? courseMarked[questionIndex + 1] : null;
-  $: prev = questionIndex > 0 ? courseMarked[questionIndex - 1] : null;
+  $: markedQuestions = $markedStore.filter((id) => data.questions.includes(id));
+  $: questionIndex = markedQuestions.indexOf(data.question.id);
+  $: next = markedQuestions.length > questionIndex + 1 ? markedQuestions[questionIndex + 1] : null;
+  $: prev = questionIndex > 0 ? markedQuestions[questionIndex - 1] : null;
 </script>
 
 <QuestionComponent
@@ -20,5 +20,5 @@
   {next}
   {prev}
   {questionIndex}
-  totalQuestions={courseMarked.length}
+  totalQuestions={markedQuestions.length}
 />

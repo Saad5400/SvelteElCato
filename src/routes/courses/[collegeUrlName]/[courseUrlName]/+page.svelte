@@ -50,14 +50,18 @@
       {#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}
         <Card
           href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}
-          class="col-span-full h-fit"
+          class="marked col-span-full h-fit"
         >
           الأسئلة المعلمة
         </Card>
       {/if}
       <Card
         href={`${data.course.url()}/quizzes/random`}
-        class="col-span-full h-fit"
+        class={useClass(
+          data.questions.every((id) => $solvedStore.includes(id)),
+          "correct",
+          "col-span-full h-fit",
+        )}
       >
         جميع الأسئلة عشوائيا
       </Card>
@@ -65,11 +69,7 @@
       {#each data.course.quizzes as quiz}
         <Card
           href={quiz.url(data.course)}
-          class={useClass(
-            allQuestionsSolved(quiz),
-            "correct",
-            useClass(hasMarkedQuestion(quiz), "marked", "h-auto"),
-          )}
+          class={useClass(allQuestionsSolved(quiz), "correct", "h-auto")}
         >
           {quiz.displayName}
         </Card>
