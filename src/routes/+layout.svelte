@@ -42,7 +42,6 @@
   // injectAnalytics();
 </script>
 
-<InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar class="text-accent-foreground" zIndex={100} />
