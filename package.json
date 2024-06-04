@@ -49,6 +49,7 @@
     "bits-ui": "^0.18.6",
     "clsx": "^2.1.0",
     "highlight.js": "^11.9.0",
+    "lucide-svelte": "^0.383.0",
     "mode-watcher": "^0.3.0",
     "pocketbase": "^0.21.1",
     "svelte-persisted-store": "^0.9.1",
