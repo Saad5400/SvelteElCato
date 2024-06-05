@@ -14,7 +14,7 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
   const quiz = course.quizzes.find((quiz) =>
     quiz.questions_ids.includes(question.id),
   )!;
-  question.explanation = `<u>${quiz.displayName}</u> <br />` + question.explanation;
+  question.explanation += `<br /><u>${quiz.displayName}</u>`;
 
   return {
     question,
