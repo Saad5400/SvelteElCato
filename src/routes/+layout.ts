@@ -1,8 +1,7 @@
 import type { LayoutLoad } from "./$types";
-import usePb from "$lib/hooks/usePb";
+import { pb } from "$lib/pocketbase";
 
 export const load: LayoutLoad = () => {
-  const pb = usePb();
   return {
     pb,
   };
