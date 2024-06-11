@@ -4,7 +4,7 @@
   export let text: string;
 </script>
 
-<HoverCard.Root openDelay={100} closeDelay={100}>
+<HoverCard.Root>
   <HoverCard.Trigger class="flex">
     <slot />
     <span class="sr-only">{text}</span>
