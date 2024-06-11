@@ -10,9 +10,12 @@
   import PersonCircle from "virtual:icons/f7/PersonCircle";
   import { persisted } from "svelte-persisted-store";
   import IconButton from "$lib/components/IconButton.svelte";
+  import type { AuthModel } from "pocketbase";
 
   const allowSound = persisted("allowSound", true as boolean);
   const autoRedirect = persisted("autoRedirect", true as boolean);
+
+  export let user: AuthModel;
 </script>
 
 <div class="flex">
@@ -48,7 +51,7 @@
       />
     </Button>
   </IconButton>
-  <IconButton text="الثيم">
+  <IconButton text="المظهر">
     <Button on:click={toggleMode} variant="ghost" size="icon">
       <Sun
         class="absolute rotate-0 scale-100 duration-500 dark:rotate-90 dark:scale-0"
@@ -59,7 +62,7 @@
     </Button>
   </IconButton>
   <IconButton text="الحساب">
-    <Button variant="ghost" size="icon">
+    <Button variant="ghost" size="icon" href={user ? "/profile" : "/register"}>
       <PersonCircle />
     </Button>
   </IconButton>

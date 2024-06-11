@@ -16,6 +16,8 @@ const buttonVariants = tv({
       link: "text-primary underline-offset-4 hover:underline",
       outline3D:
         "border-input bg-background hover:bg-accent hover:text-accent-foreground border-[1px] border-r-4 border-b-4 hover:border-r-2 hover:border-b-2 transition-all backdrop-blur-sm",
+      outline3DFilled:
+        "border-background/30 bg-foreground text-background hover:bg-foreground/80 border-[1px] border-r-4 border-b-4 hover:border-r-2 hover:border-b-2 transition-all backdrop-blur-sm",
       outline3DLarge:
         "border-input bg-background hover:bg-accent hover:text-accent-foreground border-[1px] border-r-8 border-b-8 hover:border-r-4 hover:border-b-4 transition-all backdrop-blur-sm",
     },

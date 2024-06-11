@@ -3,6 +3,9 @@
   import NavMenu from "./NavMenu.svelte";
   import NavSheet from "./NavSheet.svelte";
   import NavSettings from "./NavSettings.svelte";
+  import type { AuthModel } from "pocketbase";
+
+  export let user: AuthModel;
 </script>
 
 <header
@@ -15,10 +18,16 @@
       <NavBack />
       <NavMenu />
     </div>
-    <NavSettings />
+    <NavSettings {user} />
   </div>
 </header>
 <main class="flex flex-row">
   <NavSheet />
   <slot />
 </main>
+
+<style>
+  header {
+    view-transition-name: navbar;
+  }
+</style>
