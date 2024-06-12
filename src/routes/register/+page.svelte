@@ -2,9 +2,13 @@
   import { Input } from "$lib/components/ui/input";
   import { Label } from "$lib/components/ui/label";
   import { Button } from "$lib/components/ui/button";
-  import useClass from "$lib/hooks/useClass";
   import { pb } from "$lib/pocketbase";
-  import type { ClientResponseError } from "pocketbase";
+  import Eye from "virtual:icons/f7/Eye";
+  import EyeSlash from "virtual:icons/f7/EyeSlash";
+  import CheckmarkCircle from "virtual:icons/f7/CheckmarkCircle";
+  import XmarkCircle from "virtual:icons/f7/XmarkCircle";
+  import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
+  import { fade } from "svelte/transition";
 
   let email = "";
   let emailChanged = false;
@@ -12,6 +16,7 @@
   let passwordChanged = false;
   let passwordConfirm = "";
   let passwordConfirmChanged = false;
+  let showPassword = false;
 
   $: validEmail =
     email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) && emailUsedDebounce();
@@ -32,8 +37,6 @@
 
     return true;
   }
-
-  $: console.log(isEmailUsed);
 </script>
 
 <div
@@ -42,7 +45,7 @@
   <form class="flex flex-1 flex-col items-center gap-8">
     <h1>تسجيل حساب جديد</h1>
     <div class="roboto-mono flex min-w-[min(30rem,90dvw)] flex-col gap-4">
-      <div class="flex w-full flex-col gap-2">
+      <div class="relative flex w-full flex-col gap-2">
         <Label for="email">البريد الإلكتروني</Label>
         <Input
           type="email"
@@ -58,11 +61,29 @@
               : "border-red-500"
             : ""}
         />
+        <Button
+          variant="ghost"
+          class="pointer-events-none absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
+        >
+          {#if validEmail && isEmailUsed === false}
+            <span transition:fade class="absolute text-green-500">
+              <CheckmarkCircle />
+            </span>
+          {:else if (!validEmail && emailChanged) || isEmailUsed === true}
+            <span transition:fade class="absolute text-red-500">
+              <XmarkCircle />
+            </span>
+          {:else if isEmailUsed === undefined && emailChanged}
+            <span transition:fade class="absolute">
+              <LoadingLoop />
+            </span>
+          {/if}
+        </Button>
       </div>
-      <div class="w-ful flex flex-col gap-2">
+      <div class="relative flex w-full flex-col gap-2">
         <Label for="password">كلمة المرور</Label>
         <Input
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="password"
           placeholder="••••••••"
           minlength={8}
@@ -76,11 +97,23 @@
               : "border-red-500"
             : ""}
         />
+        <Button
+          size="icon"
+          variant="ghost"
+          class="absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
+          on:click={() => (showPassword = !showPassword)}
+        >
+          {#if showPassword}
+            <span transition:fade class="absolute"><Eye /></span>
+          {:else}
+            <span transition:fade class="absolute"><EyeSlash /></span>
+          {/if}
+        </Button>
       </div>
-      <div class="w-ful flex flex-col gap-2">
+      <div class="relative flex w-full flex-col gap-2">
         <Label for="passwordConfirm">تأكيد كلمة المرور</Label>
         <Input
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="passwordConfirm"
           placeholder="••••••••"
           minlength={8}
@@ -94,11 +127,21 @@
               : "border-red-500"
             : ""}
         />
+        <Button
+          size="icon"
+          variant="ghost"
+          class="absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
+          on:click={() => (showPassword = !showPassword)}
+        >
+          {#if showPassword}
+            <span transition:fade class="absolute"><Eye /></span>
+          {:else}
+            <span transition:fade class="absolute"><EyeSlash /></span>
+          {/if}
+        </Button>
       </div>
 
-      <Button class="w-full border-foreground" type="submit">
-        تسجيل
-      </Button>
+      <Button class="w-full border-foreground" type="submit">تسجيل</Button>
       <small>
         عندك حساب؟
         <Button class="p-0" variant="link" href="/login">تسجيل الدخول</Button>

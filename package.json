@@ -15,6 +15,8 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.31",
     "@iconify-json/f7": "^1.1.0",
+    "@iconify-json/line-md": "^1.1.37",
+    "@iconify-json/material-symbols-light": "^1.1.19",
     "@playwright/test": "^1.28.1",
     "@prgm/sveltekit-progress-bar": "^2.0.0",
     "@sveltejs/adapter-auto": "^3.0.0",
@@ -42,7 +44,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@iconify-json/material-symbols-light": "^1.1.19",
     "@sindresorhus/slugify": "^2.2.1",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
