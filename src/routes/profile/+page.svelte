@@ -2,7 +2,10 @@
   import type { PageServerData } from "./$types";
   import IconButton from "$lib/components/IconButton.svelte";
   import { Button } from "$lib/components/ui/button";
-  import PencilCircle from "virtual:icons/f7/PencilCircle";
+  import Edit from "virtual:icons/carbon/Edit";
+  import Logout from "virtual:icons/carbon/Logout";
+  import Anonymous from "$lib/components/icons/Anonymous.svelte";
+  import * as Dialog from "$lib/components/ui/dialog";
 
   export let data: PageServerData;
 </script>
@@ -10,11 +13,31 @@
 <div class="container flex w-full max-w-screen-md flex-col">
   <h2 class="self-center">إدارة الحساب</h2>
   <div class="flex flex-row items-center justify-between gap-4">
-    <IconButton text="تعديل">
-      <Button size="icon" variant="ghost">
-        <PencilCircle class="h-8 w-8" />
-      </Button>
-    </IconButton>
+    <div class="flex" dir="ltr">
+      <IconButton text="تعديل">
+        <Button size="icon" variant="ghost">
+          <Edit class="h-6 w-6 text-primary" />
+        </Button>
+      </IconButton>
+      <Dialog.Root>
+        <Dialog.Trigger>
+          <IconButton text="تسجيل الخروج">
+            <Button size="icon" variant="ghost">
+              <Logout class="h-6 w-6 text-red-500" />
+            </Button>
+          </IconButton>
+        </Dialog.Trigger>
+        <Dialog.Content>
+          <Dialog.Header>
+            <Dialog.Title>متأكد تبغا تسجل خروجك؟</Dialog.Title>
+            <Button>إلغاء</Button>
+            <Button class="border-foreground/40 bg-red-500 hover:bg-red-500/80">
+              تسجيل الخروج
+            </Button>
+          </Dialog.Header>
+        </Dialog.Content>
+      </Dialog.Root>
+    </div>
     <div class="flex-1" dir="ltr">
       <h3>
         {data.user.name}
@@ -24,24 +47,7 @@
       </h4>
     </div>
     <figure class="h-20 w-20 rounded-full bg-black pt-1">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-full w-full"
-        viewBox="0 0 48 48"
-      >
-        <path
-          class="fill-white stroke-black"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M7.286 10.071V24c0 6.757 11.293 19.497 16.714 19.5S40.714 30.757 40.714 24V10.071C40.714 4.704 29.782 4.5 24 4.5s-16.714.204-16.714 5.571"
-        />
-        <path
-          class="fill-white stroke-black"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M19.357 17.964a10.8 10.8 0 0 0-3.714-1.393a10.8 10.8 0 0 0-3.714 1.393a10.8 10.8 0 0 0 3.714 1.393a10.8 10.8 0 0 0 3.714-1.393m9.286 0a10.8 10.8 0 0 1 3.714-1.393a10.8 10.8 0 0 1 3.714 1.393a10.8 10.8 0 0 1-3.714 1.393a10.8 10.8 0 0 1-3.714-1.393m-6.5 17.179v4.178L24 41.18l1.857-1.858v-4.178ZM11.929 24.929l3.714 6.964h6.5L24 30.036l1.857 1.857h6.5l3.714-6.964l-4.642 4.178h-3.715l-2.785-2.786H23.07l-2.785 2.786H16.57Zm-.465-10.215c2.912-1.477 5.209-2.02 8.357 1.672a1.43 1.43 0 0 0 1.858 0a1.42 1.42 0 0 0 0-1.857c-3.78-3.85-8.265-3.483-10.215.185m25.072 0c-2.912-1.477-5.209-2.02-8.357 1.672a1.43 1.43 0 0 1-1.858 0a1.42 1.42 0 0 1 0-1.857c3.78-3.85 8.266-3.483 10.215.185"
-        />
-      </svg>
+      <Anonymous />
     </figure>
   </div>
 </div>
