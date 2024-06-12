@@ -11,6 +11,7 @@
   import { fade } from "svelte/transition";
   import { applyAction, enhance } from "$app/forms";
   import { toast } from "svelte-sonner";
+  import useClass from "$lib/hooks/useClass";
 
   let email = "";
   let emailChanged = false;
@@ -113,7 +114,15 @@
       <div class="flex flex-col">
         <small class="flex justify-between">
           نسيت كلمة المرور؟
-          <Button class="h-fit p-0" variant="link" href="/auth/register">
+          <Button
+            class="h-fit p-0"
+            variant="link"
+            disabled={!validEmail}
+            on:click={async () => {
+              await pb.collection("users").requestPasswordReset(email);
+              toast.success("تم إرسال رابط إعادة ضبط كلمة المرور إلى بريدك");
+            }}
+          >
             إعادة ضبط كلمة المرور
           </Button>
         </small>
