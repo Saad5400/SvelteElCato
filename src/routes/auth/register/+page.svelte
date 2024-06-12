@@ -97,6 +97,7 @@
         <Button
           variant="ghost"
           class="pointer-events-none absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
+          tabindex={-1}
         >
           {#if validEmail && isEmailUsed === false}
             <span transition:fade class="absolute text-green-500">
@@ -136,6 +137,7 @@
           variant="ghost"
           class="absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
           on:click={() => (showPassword = !showPassword)}
+          tabindex={-1}
         >
           {#if showPassword}
             <span transition:fade class="absolute"><Eye /></span>
@@ -167,6 +169,7 @@
           variant="ghost"
           class="absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
           on:click={() => (showPassword = !showPassword)}
+          tabindex={-1}
         >
           {#if showPassword}
             <span transition:fade class="absolute"><Eye /></span>

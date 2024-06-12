@@ -91,6 +91,7 @@
           variant="ghost"
           class="absolute start-1.5 top-[1.6rem] h-8 w-8 hover:bg-inherit"
           on:click={() => (showPassword = !showPassword)}
+          tabindex={-1}
         >
           {#if showPassword}
             <span transition:fade class="absolute"><Eye /></span>
