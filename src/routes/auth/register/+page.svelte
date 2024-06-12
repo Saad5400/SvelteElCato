@@ -194,9 +194,11 @@
           تسجيل
         {/if}
       </Button>
-      <small>
+      <small class="flex justify-between">
         عندك حساب؟
-        <Button class="p-0" variant="link" href="/auth/login">تسجيل الدخول</Button>
+        <Button class="h-fit p-0" variant="link" href="/auth/login">
+          تسجيل الدخول
+        </Button>
       </small>
     </div>
   </form>
