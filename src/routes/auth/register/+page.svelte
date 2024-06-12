@@ -9,6 +9,7 @@
   import XmarkCircle from "virtual:icons/f7/XmarkCircle";
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import { fade } from "svelte/transition";
+  import { applyAction, enhance } from "$app/forms";
 
   let email = "";
   let emailChanged = false;
@@ -17,6 +18,7 @@
   let passwordConfirm = "";
   let passwordConfirmChanged = false;
   let showPassword = false;
+  let isSubmitted = false;
 
   $: validEmail =
     email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) && emailUsedDebounce();
@@ -42,7 +44,16 @@
 <div
   class="container flex min-h-[calc(100dvh-10rem)] items-center justify-center"
 >
-  <form class="flex flex-1 flex-col items-center gap-8">
+  <form
+    class="flex flex-1 flex-col items-center gap-8"
+    method="POST"
+    use:enhance={() => {
+      return async ({ result }) => {
+        pb.authStore.loadFromCookie(document.cookie);
+        await applyAction(result);
+      };
+    }}
+  >
     <h1>تسجيل حساب جديد</h1>
     <div class="roboto-mono flex min-w-[min(30rem,90dvw)] flex-col gap-4">
       <div class="relative flex w-full flex-col gap-2">
@@ -50,6 +61,7 @@
         <Input
           type="email"
           id="email"
+          name="email"
           placeholder="email@example.com"
           dir="ltr"
           required
@@ -85,6 +97,7 @@
         <Input
           type={showPassword ? "text" : "password"}
           id="password"
+          name="password"
           placeholder="••••••••"
           minlength={8}
           dir="ltr"
@@ -115,6 +128,7 @@
         <Input
           type={showPassword ? "text" : "password"}
           id="passwordConfirm"
+          name="passwordConfirm"
           placeholder="••••••••"
           minlength={8}
           dir="ltr"
@@ -141,7 +155,23 @@
         </Button>
       </div>
 
-      <Button class="w-full border-foreground" type="submit">تسجيل</Button>
+      <Button
+        class="w-full border-foreground"
+        type="submit"
+        disabled={!validEmail ||
+          !passwordsMatch ||
+          isEmailUsed === true ||
+          isSubmitted}
+        on:click={() => {
+          isSubmitted = true;
+        }}
+      >
+        {#if isSubmitted}
+          <LoadingLoop />
+        {:else}
+          تسجيل
+        {/if}
+      </Button>
       <small>
         عندك حساب؟
         <Button class="p-0" variant="link" href="/login">تسجيل الدخول</Button>
