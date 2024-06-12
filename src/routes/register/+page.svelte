@@ -96,7 +96,7 @@
         />
       </div>
 
-      <Button class="w-full" variant="outline3DFilled" type="submit">
+      <Button class="w-full border-foreground" type="submit">
         تسجيل
       </Button>
       <small>
