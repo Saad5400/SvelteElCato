@@ -2,6 +2,7 @@
   import { Button } from "$lib/components/ui/button";
   import SkipBack from "virtual:icons/f7/BackwardEnd";
   import { page } from "$app/stores";
+  import IconButton from "$lib/components/IconButton.svelte";
 
   function getBackUrl(route: string): string {
     switch (route) {
@@ -23,13 +24,15 @@
 </script>
 
 {#if url}
-  <Button
-    href={url}
-    class="mr-4 flex items-center space-x-2 font-bold"
-    size="icon"
-    variant="ghost"
-    aria-label="Go back"
-  >
-    <SkipBack class="rotate-180" />
-  </Button>
+  <IconButton text="الرجوع">
+    <Button
+      href={url}
+      class="mr-4 flex items-center space-x-2 font-bold"
+      size="icon"
+      variant="ghost"
+      aria-label="Go back"
+    >
+      <SkipBack class="rotate-180" />
+    </Button>
+  </IconButton>
 {/if}

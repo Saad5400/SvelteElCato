@@ -6,7 +6,6 @@ import type College from "$lib/models/College";
 import type Course from "$lib/models/Course";
 import type Post from "$lib/models/Post";
 import type Step from "$lib/models/Step";
-import type Tag from "$lib/models/Tag";
 import type Track from "$lib/models/Track";
 import { error } from "@sveltejs/kit";
 
