@@ -11,6 +11,7 @@
   import { onMount } from "svelte";
   import InitLoading from "$lib/components/InitLoading.svelte";
   import type { LayoutServerData } from "./$types";
+  import userStore from "$lib/stores/userStore";
 
   usePageTransition();
   onMount(() => {
@@ -41,13 +42,11 @@
   });
   // injectSpeedInsights();
   // injectAnalytics();
-
-  export let data: LayoutServerData;
 </script>
 
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar class="text-accent-foreground" zIndex={100} />
-<Navbar user={data.user}>
+<Navbar user={$userStore}>
   <slot />
 </Navbar>

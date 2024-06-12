@@ -48,6 +48,7 @@
     class="flex flex-1 flex-col items-center gap-8"
     method="POST"
     use:enhance={() => {
+      isSubmitted = true;
       return async ({ result }) => {
         pb.authStore.loadFromCookie(document.cookie);
         await applyAction(result);
@@ -162,9 +163,6 @@
           !passwordsMatch ||
           isEmailUsed === true ||
           isSubmitted}
-        on:click={() => {
-          isSubmitted = true;
-        }}
       >
         {#if isSubmitted}
           <LoadingLoop />
