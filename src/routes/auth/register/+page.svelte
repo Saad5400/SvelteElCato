@@ -58,7 +58,7 @@
       };
     }}
   >
-    <h1>تسجيل حساب جديد</h1>
+    <h1 id="title">تسجيل حساب جديد</h1>
     <div class="roboto-mono flex min-w-[min(30rem,90dvw)] flex-col gap-4">
       <div class="relative flex w-full flex-col gap-2">
         <Label for="email">اسم المستخدم</Label>
@@ -77,11 +77,10 @@
             : ""}
         />
       </div>
-      <div class="relative flex w-full flex-col gap-2">
+      <div id="email" class="relative flex w-full flex-col gap-2">
         <Label for="email">البريد الإلكتروني</Label>
         <Input
           type="email"
-          id="email"
           name="email"
           placeholder="email@example.com"
           dir="ltr"
@@ -114,11 +113,10 @@
           {/if}
         </Button>
       </div>
-      <div class="relative flex w-full flex-col gap-2">
+      <div id="password" class="relative flex w-full flex-col gap-2">
         <Label for="password">كلمة المرور</Label>
         <Input
           type={showPassword ? "text" : "password"}
-          id="password"
           name="password"
           placeholder="••••••••"
           minlength={8}
@@ -178,23 +176,24 @@
           {/if}
         </Button>
       </div>
-
-      <Button
-        class="w-full border-foreground"
-        type="submit"
-        disabled={!validName ||
-          !validEmail ||
-          !passwordsMatch ||
-          isEmailUsed === true ||
-          isSubmitted}
-      >
-        {#if isSubmitted}
-          <LoadingLoop />
-        {:else}
-          تسجيل
-        {/if}
-      </Button>
-      <small class="flex justify-between">
+      <div id="submit">
+        <Button
+          class="w-full border-foreground"
+          type="submit"
+          disabled={!validName ||
+            !validEmail ||
+            !passwordsMatch ||
+            isEmailUsed === true ||
+            isSubmitted}
+        >
+          {#if isSubmitted}
+            <LoadingLoop />
+          {:else}
+            تسجيل
+          {/if}
+        </Button>
+      </div>
+      <small id="alternative" class="flex justify-between">
         عندك حساب؟
         <Button class="h-fit p-0" variant="link" href="/auth/login">
           تسجيل الدخول
@@ -203,3 +202,25 @@
     </div>
   </form>
 </div>
+
+<style>
+  #title {
+    view-transition-name: title;
+  }
+
+  #submit {
+    view-transition-name: submit;
+  }
+
+  #alternative {
+    view-transition-name: alternative;
+  }
+
+  #email {
+    view-transition-name: email;
+  }
+
+  #password {
+    view-transition-name: password;
+  }
+</style>

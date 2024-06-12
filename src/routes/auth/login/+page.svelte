@@ -49,13 +49,12 @@
       };
     }}
   >
-    <h1>تسجيل الدخول</h1>
+    <h1 id="title">تسجيل الدخول</h1>
     <div class="roboto-mono flex min-w-[min(30rem,90dvw)] flex-col gap-4">
-      <div class="relative flex w-full flex-col gap-2">
+      <div id="email" class="relative flex w-full flex-col gap-2">
         <Label for="email">البريد الإلكتروني</Label>
         <Input
           type="email"
-          id="email"
           name="email"
           placeholder="email@example.com"
           dir="ltr"
@@ -69,11 +68,10 @@
             : ""}
         />
       </div>
-      <div class="relative flex w-full flex-col gap-2">
+      <div id="password" class="relative flex w-full flex-col gap-2">
         <Label for="password">كلمة المرور</Label>
         <Input
           type={showPassword ? "text" : "password"}
-          id="password"
           name="password"
           placeholder="••••••••"
           dir="ltr"
@@ -100,19 +98,20 @@
           {/if}
         </Button>
       </div>
-
-      <Button
-        class="w-full border-foreground"
-        type="submit"
-        disabled={!validPassword || !validEmail || isSubmitted}
-      >
-        {#if isSubmitted}
-          <LoadingLoop />
-        {:else}
-          تسجيل الدخول
-        {/if}
-      </Button>
-      <div class="flex flex-col">
+      <div id="submit">
+        <Button
+          class="w-full border-foreground"
+          type="submit"
+          disabled={!validPassword || !validEmail || isSubmitted}
+        >
+          {#if isSubmitted}
+            <LoadingLoop />
+          {:else}
+            تسجيل الدخول
+          {/if}
+        </Button>
+      </div>
+      <div id="alternative" class="flex flex-col">
         <small class="flex justify-between">
           نسيت كلمة المرور؟
           <Button
@@ -137,3 +136,25 @@
     </div>
   </form>
 </div>
+
+<style>
+  #title {
+    view-transition-name: title;
+  }
+
+  #submit {
+    view-transition-name: submit;
+  }
+
+  #alternative {
+    view-transition-name: alternative;
+  }
+
+  #email {
+    view-transition-name: email;
+  }
+
+  #password {
+    view-transition-name: password;
+  }
+</style>
