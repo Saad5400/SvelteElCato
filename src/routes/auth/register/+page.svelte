@@ -193,7 +193,7 @@
       </Button>
       <small>
         عندك حساب؟
-        <Button class="p-0" variant="link" href="/login">تسجيل الدخول</Button>
+        <Button class="p-0" variant="link" href="/auth/login">تسجيل الدخول</Button>
       </small>
     </div>
   </form>

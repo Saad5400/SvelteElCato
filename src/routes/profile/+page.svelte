@@ -36,7 +36,7 @@
             <form
               method="POST"
               class="w-full"
-              action="/logout"
+              action="/auth/logout"
               use:enhance={() => {
                 return async ({ result }) => {
                   pb.authStore.clear();
