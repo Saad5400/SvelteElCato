@@ -6,6 +6,8 @@
   import Logout from "virtual:icons/carbon/Logout";
   import Anonymous from "$lib/components/icons/Anonymous.svelte";
   import * as Dialog from "$lib/components/ui/dialog";
+  import { pb } from "$lib/pocketbase";
+  import { applyAction, enhance } from "$app/forms";
 
   export let data: PageServerData;
 </script>
@@ -31,9 +33,24 @@
           <Dialog.Header>
             <Dialog.Title>متأكد تبغا تسجل خروجك؟</Dialog.Title>
             <Button>إلغاء</Button>
-            <Button class="border-foreground/40 bg-red-500 hover:bg-red-500/80">
-              تسجيل الخروج
-            </Button>
+            <form
+              method="POST"
+              class="w-full"
+              action="/logout"
+              use:enhance={() => {
+                return async ({ result }) => {
+                  pb.authStore.clear();
+                  await applyAction(result);
+                };
+              }}
+            >
+              <Button
+                class="w-full border-foreground/40 bg-red-500 hover:bg-red-500/80"
+                type="submit"
+              >
+                تسجيل الخروج
+              </Button>
+            </form>
           </Dialog.Header>
         </Dialog.Content>
       </Dialog.Root>

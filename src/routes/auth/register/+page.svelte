@@ -11,6 +11,8 @@
   import { fade } from "svelte/transition";
   import { applyAction, enhance } from "$app/forms";
 
+  let name = "";
+  let nameChanged = false;
   let email = "";
   let emailChanged = false;
   let password = "";
@@ -20,6 +22,7 @@
   let showPassword = false;
   let isSubmitted = false;
 
+  $: validName = name.length >= 2 && name.length <= 32;
   $: validEmail =
     email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) && emailUsedDebounce();
   $: passwordsMatch = password.length >= 8 && password === passwordConfirm;
@@ -57,6 +60,23 @@
   >
     <h1>تسجيل حساب جديد</h1>
     <div class="roboto-mono flex min-w-[min(30rem,90dvw)] flex-col gap-4">
+      <div class="relative flex w-full flex-col gap-2">
+        <Label for="email">اسم المستخدم</Label>
+        <Input
+          id="name"
+          name="name"
+          placeholder="الاسم العلني"
+          dir="auto"
+          required
+          bind:value={name}
+          on:input={() => (nameChanged = true)}
+          class={nameChanged
+            ? validName
+              ? "border-green-500"
+              : "border-red-500"
+            : ""}
+        />
+      </div>
       <div class="relative flex w-full flex-col gap-2">
         <Label for="email">البريد الإلكتروني</Label>
         <Input
@@ -159,7 +179,8 @@
       <Button
         class="w-full border-foreground"
         type="submit"
-        disabled={!validEmail ||
+        disabled={!validName ||
+          !validEmail ||
           !passwordsMatch ||
           isEmailUsed === true ||
           isSubmitted}
