@@ -2,7 +2,6 @@ import { pb } from "$lib/pocketbase";
 import userStore from "$lib/stores/userStore";
 import { PUBLIC_ENVIRONMENT } from "$env/static/public";
 
-console.log(document.cookie);
 pb.authStore.loadFromCookie(document.cookie);
 pb.authStore.onChange(() => {
   userStore.set(pb.authStore.model);
