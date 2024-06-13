@@ -33,6 +33,8 @@ Create a `.env` file in the root of the project with the following content (repl
 
 ```env
 PUBLIC_POCKETBASE_URL=http://127.0.0.1:8090/
+PUBLIC_ENVIRONMENT=development
+BUNNY_TOKEN=your-bunny-cdn-token
 ```
 
 Start the pocketbase server:
