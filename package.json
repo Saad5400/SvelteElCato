@@ -23,6 +23,7 @@
     "@sveltejs/adapter-vercel": "^5.3.1",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@types/node": "^20.14.2",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "postcss-nesting": "^12.1.0",

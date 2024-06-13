@@ -13,6 +13,7 @@
 
   let timeout: any;
   const autoRedirect = persisted("autoRedirect", true as boolean);
+  const libraryId = 253444;
 
   function setTimeoutToRedirect() {
     if (!browser || !$autoRedirect || !data.isExternal) return;
@@ -44,7 +45,7 @@
 </svelte:head>
 
 <div class="min-h-screen-without-navbar flex w-full flex-col">
-  <div class="flex h-full max-h-[calc(100dvh-20rem)] w-full flex-1">
+  <div class="flex aspect-video flex-1">
     {#if data.step.type === "youtube"}
       <iframe
         src={data.step.linked}
@@ -63,9 +64,9 @@
           سيتم نقلك تلقائياً إلى الصفحة المطلوبة
         {:else}
           <div>
-            لقد تم تعطيل التحويل التلقائي، اضغط على <AppBlockingOutlineSharp
-              class="inline h-5 w-5"
-            /> أعلى يسار الصفحة لتفعيل التحويل التلقائي
+            لقد تم تعطيل التحويل التلقائي، اضغط على
+            <AppBlockingOutlineSharp class="inline h-5 w-5" />
+            أعلى يسار الصفحة لتفعيل التحويل التلقائي
           </div>
         {/if}
         <div>
@@ -80,11 +81,24 @@
           </Button>
         </div>
       </div>
+    {:else if data.step.type === "bunny"}
+      <div class="relative w-full pt-[56.25%]">
+        <iframe
+          title="Video"
+          src="https://iframe.mediadelivery.net/embed/{libraryId}/{data.step
+            .linked}?token={data.hash}&expires={data.expires}&autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+          loading="lazy"
+          style="border:0;position:absolute;top:0;height:100%;width:100%;"
+          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+          allowfullscreen={true}
+        ></iframe>
+      </div>
     {/if}
   </div>
 
   {#if data.step.description}
-    <div class="max-w-[100dvw] border-t-2 p-4">
+    <div class="mx-auto w-full max-w-[90dvw] border-t-2 p-8 md:mx-4 md:w-auto">
+      <h3>وصف الدرس</h3>
       <Article content={useHighlight(data.step.description)} />
     </div>
   {/if}
