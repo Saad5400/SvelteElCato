@@ -13,14 +13,18 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   event.locals.pb = pb;
+  // @ts-ignore
   event.locals.user = pb.authStore.model;
 
   const response = await resolve(event);
 
-  response.headers.set("set-cookie", pb.authStore.exportToCookie({
-    httpOnly: false,
-    secure: PUBLIC_ENVIRONMENT === "production",
-  }));
+  response.headers.set(
+    "set-cookie",
+    pb.authStore.exportToCookie({
+      httpOnly: false,
+      secure: PUBLIC_ENVIRONMENT === "production",
+    }),
+  );
 
   return response;
 };

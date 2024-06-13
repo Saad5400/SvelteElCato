@@ -3,6 +3,7 @@ import Course from "$lib/models/Course";
 import Step from "$lib/models/Step";
 import crypto from "crypto";
 import { error } from "@sveltejs/kit";
+import { BUNNY_TOKEN } from "$env/static/private";
 
 export const load: PageServerLoad = async ({ locals, params }) => {
   const courseRequest = Course.fetch(
@@ -20,12 +21,11 @@ export const load: PageServerLoad = async ({ locals, params }) => {
       throw error(403);
     }
 
-    const token = "c718f5b9-4d56-4c04-979a-2ec675037e2a";
     const videoId = step.linked;
     const expires = Math.floor(Date.now() / 1000) + 3600;
     const hash = crypto
       .createHash("sha256")
-      .update(`${token}${videoId}${expires}`)
+      .update(`${BUNNY_TOKEN}${videoId}${expires}`)
       .digest("hex");
 
     return {
