@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
   const [course, step] = await Promise.all([courseRequest, stepRequest]);
 
   if (step.type === "bunny") {
-    if (!locals.user.registeredCourses.includes(course.id)) {
+    if (!locals.user.registeredCourses.includes(course.id) && !step.isFree) {
       throw error(403);
     }
 

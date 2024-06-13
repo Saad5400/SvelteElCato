@@ -7,6 +7,7 @@ export default class Step extends BaseModel {
   linked: string;
   type: "external" | "bunny" | "youtube" | "section";
   description: string;
+  isFree: boolean;
 
   constructor(data: any) {
     super(data);
@@ -14,6 +15,7 @@ export default class Step extends BaseModel {
     this.linked = data.linked;
     this.type = data.type;
     this.description = data.description;
+    this.isFree = data.isFree;
   }
 
   public static async fetch(stepId: string, pbInstance = pb) {
