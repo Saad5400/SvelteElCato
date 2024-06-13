@@ -30,4 +30,9 @@ export const load: PageServerLoad = async ({ locals, params }) => {
       hash,
     };
   }
+
+  return {
+    expires: undefined,
+    hash: undefined,
+  };
 };
