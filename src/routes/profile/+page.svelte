@@ -8,8 +8,11 @@
   import * as Dialog from "$lib/components/ui/dialog";
   import { pb } from "$lib/pocketbase";
   import { applyAction, enhance } from "$app/forms";
+  import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
 
   export let data: PageServerData;
+
+  let logoutRequested = false;
 </script>
 
 <div class="container flex w-full max-w-screen-md flex-col">
@@ -38,7 +41,9 @@
               class="w-full"
               action="/auth/logout"
               use:enhance={() => {
+                logoutRequested = true;
                 return async ({ result }) => {
+                  logoutRequested = false;
                   pb.authStore.clear();
                   await applyAction(result);
                 };
@@ -47,8 +52,13 @@
               <Button
                 class="w-full border-foreground/40 bg-red-500 hover:bg-red-500/80"
                 type="submit"
+                disabled={logoutRequested}
               >
-                تسجيل الخروج
+                {#if logoutRequested}
+                  <LoadingLoop />
+                {:else}
+                  تسجيل الخروج
+                {/if}
               </Button>
             </form>
           </Dialog.Header>

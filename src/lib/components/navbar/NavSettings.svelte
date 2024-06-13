@@ -62,7 +62,11 @@
     </Button>
   </IconButton>
   <IconButton text="الحساب">
-    <Button variant="ghost" size="icon" href={user ? "/profile" : "/auth/register"}>
+    <Button
+      variant="ghost"
+      size="icon"
+      href={user ? "/profile" : "/auth/register"}
+    >
       <PersonCircle />
     </Button>
   </IconButton>
