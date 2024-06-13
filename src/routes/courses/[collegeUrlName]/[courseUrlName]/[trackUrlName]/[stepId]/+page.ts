@@ -1,7 +1,7 @@
 import type { PageLoad } from "./$types";
 import { error } from "@sveltejs/kit";
 
-export const load: PageLoad = async ({ parent, params }) => {
+export const load: PageLoad = async ({ parent, params, data }) => {
   const { track } = await parent();
 
   if (!track || !track.steps) error(404);
@@ -13,5 +13,7 @@ export const load: PageLoad = async ({ parent, params }) => {
   return {
     step,
     isExternal,
+    expires: data.expires,
+    hash: data.hash,
   };
 };

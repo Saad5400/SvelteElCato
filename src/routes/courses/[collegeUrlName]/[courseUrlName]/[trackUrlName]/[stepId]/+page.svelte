@@ -86,7 +86,7 @@
         <iframe
           title="Video"
           src="https://iframe.mediadelivery.net/embed/{libraryId}/{data.step
-            .linked}?token={data.hash}&expires={data.expires}&autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+            .linked}?token={data.hash}&expires={data.expires}&autoplay=false&loop=false&muted=false&preload=false&responsive=true"
           loading="lazy"
           style="border:0;position:absolute;top:0;height:100%;width:100%;"
           allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
