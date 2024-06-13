@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import Course from "$lib/models/Course";
 import Step from "$lib/models/Step";
-import crypto from "crypto";
+import { sha256 } from "js-sha256";
 import { error } from "@sveltejs/kit";
 import { BUNNY_TOKEN } from "$env/static/private";
 
@@ -23,10 +23,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 
     const videoId = step.linked;
     const expires = Math.floor(Date.now() / 1000) + 3600;
-    const hash = crypto
-      .createHash("sha256")
-      .update(`${BUNNY_TOKEN}${videoId}${expires}`)
-      .digest("hex");
+    const hash = sha256(`${BUNNY_TOKEN}${videoId}${expires}`);
 
     return {
       expires,
