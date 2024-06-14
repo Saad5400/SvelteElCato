@@ -14,66 +14,74 @@
   let logoutRequested = false;
 </script>
 
-<div class="container flex w-full max-w-screen-md flex-col">
-  <h2 class="self-center">إدارة الحساب</h2>
-  <div class="flex flex-row items-center justify-between gap-4">
-    <div class="flex flex-col" dir="ltr">
-      <IconButton text="تعديل">
-        <Button size="icon" variant="ghost">
-          <Edit class="h-6 w-6 text-primary" />
-        </Button>
-      </IconButton>
-      <Dialog.Root>
-        <Dialog.Trigger>
-          <IconButton text="تسجيل الخروج">
-            <Button size="icon" variant="ghost">
-              <Logout class="h-6 w-6 text-red-500" />
-            </Button>
-          </IconButton>
-        </Dialog.Trigger>
-        <Dialog.Content>
-          <Dialog.Header>
-            <Dialog.Title>متأكد تبغا تسجل خروجك؟</Dialog.Title>
-            <Button>إلغاء</Button>
-            <form
-              method="POST"
-              class="w-full"
-              action="/auth/logout"
-              use:enhance={() => {
-                logoutRequested = true;
-                return async ({ result }) => {
-                  logoutRequested = false;
-                  pb.authStore.clear();
-                  await applyAction(result);
-                };
-              }}
-            >
-              <Button
-                class="w-full border-foreground/40 bg-red-500 hover:bg-red-500/80"
-                type="submit"
-                disabled={logoutRequested}
-              >
-                {#if logoutRequested}
-                  <LoadingLoop />
-                {:else}
-                  تسجيل الخروج
-                {/if}
+<div class="container flex w-full max-w-screen-lg flex-col px-4">
+  <div class="card flex flex-col">
+    <h2 class="self-center">إدارة الحساب</h2>
+    <div class="flex flex-row items-center justify-between gap-4">
+      <div class="flex flex-col" dir="ltr">
+        <IconButton text="تعديل">
+          <Button size="icon" variant="outline3DFilled">
+            <Edit class="h-6 w-6" />
+          </Button>
+        </IconButton>
+        <Dialog.Root>
+          <Dialog.Trigger>
+            <IconButton text="تسجيل الخروج">
+              <Button size="icon" class="bg-red-500 hover:bg-red-500/80 text-white" variant="outline3DFilled">
+                <Logout class="h-6 w-6" />
               </Button>
-            </form>
-          </Dialog.Header>
-        </Dialog.Content>
-      </Dialog.Root>
+            </IconButton>
+          </Dialog.Trigger>
+          <Dialog.Content class="max-w-[90dvw] rounded-lg">
+            <Dialog.Header>
+              <Dialog.Title>متأكد تبغا تسجل خروجك؟</Dialog.Title>
+              <Button>إلغاء</Button>
+              <form
+                method="POST"
+                class="w-full"
+                action="/auth/logout"
+                use:enhance={() => {
+                  logoutRequested = true;
+                  return async ({ result }) => {
+                    logoutRequested = false;
+                    pb.authStore.clear();
+                    await applyAction(result);
+                  };
+                }}
+              >
+                <Button
+                  class="w-full border-foreground/40 bg-red-500 hover:bg-red-500/80"
+                  type="submit"
+                  disabled={logoutRequested}
+                >
+                  {#if logoutRequested}
+                    <LoadingLoop />
+                  {:else}
+                    تسجيل الخروج
+                  {/if}
+                </Button>
+              </form>
+            </Dialog.Header>
+          </Dialog.Content>
+        </Dialog.Root>
+      </div>
+      <div class="flex-1" dir="ltr">
+        <h3>
+          {$user?.name}
+        </h3>
+        <h4>
+          {$user?.email}
+        </h4>
+      </div>
+      <figure class="h-20 w-20 rounded-full bg-black pt-1">
+        <Anonymous />
+      </figure>
     </div>
-    <div class="flex-1" dir="ltr">
-      <h3>
-        {$user?.name}
-      </h3>
-      <h4>
-        {$user?.email}
-      </h4>
-    </div>
-    <figure class="h-20 w-20 rounded-full bg-black pt-1">
-      <Anonymous />
-    </figure>
   </div>
 </div>
+
+<style>
+  .card {
+    @apply rounded-lg border border-b-4 border-s-4 bg-accent p-4;
+  }
+</style>
