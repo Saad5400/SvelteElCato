@@ -8,6 +8,7 @@ export const load: LayoutLoad = async ({ parent, params, fetch }) => {
   const course = await Course.fetch(
     params.collegeUrlName,
     params.courseUrlName,
+    fetch,
   );
 
   const questions = course.quizzes

@@ -18,7 +18,7 @@ export default class Step extends BaseModel {
     this.isFree = data.isFree;
   }
 
-  public static async fetch(stepId: string, pbInstance = pb) {
+  public static async fetch(stepId: string, fetch: any, pbInstance = pb) {
     return new Step(
       await pbInstance
         .collection("steps")

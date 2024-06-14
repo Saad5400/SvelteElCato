@@ -5,14 +5,15 @@ import { sha256 } from "js-sha256";
 import { error, redirect } from "@sveltejs/kit";
 import { BUNNY_TOKEN } from "$env/static/private";
 
-export const load: PageServerLoad = async ({ locals, params }) => {
+export const load: PageServerLoad = async ({ locals, params, fetch }) => {
   const courseRequest = Course.fetch(
     params.collegeUrlName,
     params.courseUrlName,
+    fetch,
     locals.pb,
   );
 
-  const stepRequest = Step.fetch(params.stepId, locals.pb);
+  const stepRequest = Step.fetch(params.stepId, fetch, locals.pb);
 
   const [course, step] = await Promise.all([courseRequest, stepRequest]);
 

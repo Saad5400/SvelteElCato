@@ -38,6 +38,7 @@ export default class Course extends BaseModel {
   public static async fetch(
     collegeUrlName: string,
     courseUrlName: string,
+    fetch: any,
     pbInstance = pb,
   ) {
     return new Course(
