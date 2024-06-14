@@ -15,17 +15,13 @@
   injectAnalytics();
 </script>
 
-<div id="progressBar">
-  <ProgressBar class="text-accent-foreground" zIndex={100} />
-</div>
+<ProgressBar
+  dir="ltr"
+  class="!top-[3.5rem] text-accent-foreground"
+  zIndex={100}
+/>
 <InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <Navbar user={$user} />
 <slot />
-
-<style>
-  #progressBar {
-    view-transition-name: progressBar;
-  }
-</style>
