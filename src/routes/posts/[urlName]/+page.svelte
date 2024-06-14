@@ -59,7 +59,13 @@
   <Sheet.Content class="flex flex-col items-center gap-2 overflow-y-auto">
     <h3 class="mb-2">محتويات المنشور</h3>
     {#each data.navItems as item}
-      <Button href={item.href} class="flex w-full flex-wrap justify-start">
+      <Button
+        href={item.href}
+        on:click={() => {
+          menu.set({ open: false });
+        }}
+        class="flex w-full flex-wrap justify-start"
+      >
         {item.title}
       </Button>
     {/each}
@@ -72,7 +78,16 @@
     >
       <h3 class="mb-2">محتويات المنشور</h3>
       {#each data.navItems as item}
-        <Button href={item.href} class="flex w-[23rem] flex-wrap justify-start">
+        <Button
+          on:click={() => {
+            document.querySelector(item.href)?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            window.history.pushState(null, "", item.href);
+          }}
+          class="flex w-[23rem] flex-wrap justify-start"
+        >
           {item.title}
         </Button>
       {/each}
