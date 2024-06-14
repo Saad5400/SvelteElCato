@@ -4,8 +4,7 @@
   import Calendar from "virtual:icons/f7/Calendar";
   import Clock from "virtual:icons/f7/Clock";
   import Eye from "virtual:icons/f7/Eye";
-  import { onDestroy, onMount } from "svelte";
-  import navStore from "$lib/stores/navStore";
+  import { onMount } from "svelte";
   import { page } from "$app/stores";
   import Article from "$lib/components/Article.svelte";
 
@@ -21,11 +20,6 @@
   }
 
   onMount(() => {
-    navStore.set({
-      title: "محتويات الصفحة",
-      items: data.navItems,
-    });
-
     if (location && location.hash) {
       const element = document.querySelector(location.hash);
       if (element) {
@@ -37,13 +31,6 @@
         }, 100);
       }
     }
-  });
-
-  onDestroy(() => {
-    navStore.set({
-      title: "",
-      items: [],
-    });
   });
 </script>
 
