@@ -37,7 +37,7 @@
     emailUsedTimeout = setTimeout(async () => {
       isEmailUsed = await pb.send("/api/users/exists", {
         method: "POST",
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: email.toLowerCase() }),
       });
     }, 500);
 
@@ -196,7 +196,11 @@
       </div>
       <small id="alternative" class="flex justify-between">
         عندك حساب؟
-        <Button class="h-fit p-0" variant="link" href={`/auth/login/${$page.url.search}`}>
+        <Button
+          class="h-fit p-0"
+          variant="link"
+          href={`/auth/login/${$page.url.search}`}
+        >
           تسجيل الدخول
         </Button>
       </small>

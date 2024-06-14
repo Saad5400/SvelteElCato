@@ -18,7 +18,7 @@ export const actions: Actions = {
     try {
       await locals.pb
         .collection("users")
-        .authWithPassword(data.email, data.password);
+        .authWithPassword(data.email.toLowerCase(), data.password);
     } catch (e) {
       return fail(401, {
         message: "Invalid email or password",

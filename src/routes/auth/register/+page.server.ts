@@ -19,7 +19,7 @@ export const actions: Actions = {
       await locals.pb.collection("users").create(data);
       await locals.pb
         .collection("users")
-        .authWithPassword(data.email, data.password);
+        .authWithPassword(data.email.toLowerCase(), data.password);
     } catch (e) {
       console.error(e);
       throw e;
