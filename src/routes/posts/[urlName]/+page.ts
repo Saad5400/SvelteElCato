@@ -16,6 +16,10 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
         {
           expand: "tags",
           fetch: async (url, config) => fetch(url, config),
+          cache: "force-cache",
+          headers: {
+            "Cache-Control": "max-age=600",
+          },
         },
       )
       .catch(handleError),

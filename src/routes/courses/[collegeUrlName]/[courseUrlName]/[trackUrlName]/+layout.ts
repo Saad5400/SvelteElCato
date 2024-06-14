@@ -14,6 +14,10 @@ export const load: LayoutLoad = async ({ parent, params, fetch }) => {
     .getFirstListItem(pb.filter("id = {:trackId}", { trackId: track.id }), {
       expand: "steps",
       fetch: async (url, config) => fetch(url, config),
+      cache: "force-cache",
+      headers: {
+        "Cache-Control": "max-age=600",
+      },
     })
     .catch(handleError);
 

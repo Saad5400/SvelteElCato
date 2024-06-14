@@ -55,6 +55,10 @@ export default class Course extends BaseModel {
           {
             expand: "college,tracks,quizzes",
             fetch: async (url, config) => fetch(url, config),
+            cache: "force-cache",
+            headers: {
+              "Cache-Control": "max-age=600",
+            },
           },
         )
         .catch(handleError),

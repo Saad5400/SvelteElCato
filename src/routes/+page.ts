@@ -22,6 +22,10 @@ export const load: PageLoad = async ({ parent, fetch }) => {
       expand: "tags",
       fetch: async (url, config) => fetch(url, config),
       fields: "displayName,urlName,views,readTime",
+      cache: "force-cache",
+      headers: {
+        "Cache-Control": "max-age=3600",
+      },
     })
     .catch(handleError);
 

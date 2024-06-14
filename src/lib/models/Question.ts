@@ -53,6 +53,10 @@ export default class Question extends BaseModel {
         .collection("questions")
         .getOne(id, {
           fetch: async (url, config) => fetch(url, config),
+          cache: "force-cache",
+          headers: {
+            "Cache-Control": "max-age=600",
+          },
         })
         .catch(handleError),
     );
