@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PageServerData } from "./$types";
+  import type { PageData, PageServerData } from "./$types";
   import IconButton from "$lib/components/IconButton.svelte";
   import { Button } from "$lib/components/ui/button";
   import Edit from "virtual:icons/line-md/Edit";
@@ -10,13 +10,18 @@
   import { applyAction, enhance } from "$app/forms";
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import user from "$lib/stores/user";
+  import Card from "$lib/components/cardsView/Card.svelte";
+  import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
+  import BetweenLines from "$lib/components/BetweenLines.svelte";
+
+  export let data: PageServerData & PageData;
 
   let logoutRequested = false;
 </script>
 
-<div class="container flex w-full max-w-screen-lg flex-col px-4">
-  <div class="card flex flex-col">
-    <h2 class="self-center">إدارة الحساب</h2>
+<div class="container flex w-full max-w-screen-lg flex-col gap-4 px-4">
+  <div class="flex flex-col">
+    <BetweenLines>إدارة الحساب</BetweenLines>
     <div class="flex flex-row items-center justify-between gap-4">
       <div class="flex flex-col" dir="ltr">
         <IconButton text="تعديل">
@@ -27,7 +32,11 @@
         <Dialog.Root>
           <Dialog.Trigger>
             <IconButton text="تسجيل الخروج">
-              <Button size="icon" class="bg-red-500 hover:bg-red-500/80 text-white" variant="outline3DFilled">
+              <Button
+                size="icon"
+                class="bg-red-500 text-white hover:bg-red-500/80"
+                variant="outline3DFilled"
+              >
                 <Logout class="h-6 w-6" />
               </Button>
             </IconButton>
@@ -78,10 +87,16 @@
       </figure>
     </div>
   </div>
+  <div class="card flex flex-col">
+    <BetweenLines>دوراتي</BetweenLines>
+    <div class="flex flex-col">
+      {#each data.courses as course}
+        {#if !course.hidden}
+          <Card href="/courses/{course.college.urlName}/{course.urlName}">
+            {course.displayName}
+          </Card>
+        {/if}
+      {/each}
+    </div>
+  </div>
 </div>
-
-<style>
-  .card {
-    @apply rounded-lg border border-b-4 border-s-4 bg-accent p-4;
-  }
-</style>
