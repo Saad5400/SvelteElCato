@@ -2,8 +2,8 @@ import { redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ locals }) => {
-  if (locals.user) {
-    throw redirect(303, "/profile");
+  if (locals.pb.authStore.isValid) {
+    redirect(303, "/profile");
   }
 };
 
@@ -25,6 +25,6 @@ export const actions: Actions = {
       throw e;
     }
 
-    throw redirect(303, "/profile");
+    redirect(303, "/profile");
   },
 };

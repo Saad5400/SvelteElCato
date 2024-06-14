@@ -5,36 +5,19 @@
   import Sun from "virtual:icons/f7/SunMax";
   import Speaker from "virtual:icons/f7/Speaker";
   import Speaker2 from "virtual:icons/f7/Speaker-2";
-  import AppShortcutOutlineSharp from "virtual:icons/material-symbols-light/AppShortcutOutlineSharp";
-  import AppBlockingOutlineSharp from "virtual:icons/material-symbols-light/AppBlockingOutlineSharp";
   import PersonCircle from "virtual:icons/f7/PersonCircle";
+  import Login from "virtual:icons/line-md/Login";
   import { persisted } from "svelte-persisted-store";
   import IconButton from "$lib/components/IconButton.svelte";
+  import { pb } from "$lib/pocketbase";
   import type { AuthModel } from "pocketbase";
 
-  const allowSound = persisted("allowSound", true as boolean);
-  const autoRedirect = persisted("autoRedirect", true as boolean);
-
   export let user: AuthModel;
+
+  const allowSound = persisted("allowSound", true as boolean);
 </script>
 
 <div class="flex">
-  <IconButton text="التحويل التلقائي للروابط الخارجية">
-    <Button
-      on:click={() => autoRedirect.update((value) => !value)}
-      variant="ghost"
-      size="icon"
-    >
-      <AppBlockingOutlineSharp
-        class={"absolute h-5 w-5 transition-all " +
-          ($autoRedirect ? "opacity-0" : "opacity-100")}
-      />
-      <AppShortcutOutlineSharp
-        class={"absolute h-5 w-5 transition-all " +
-          ($autoRedirect ? "opacity-100" : "opacity-0")}
-      />
-    </Button>
-  </IconButton>
   <IconButton text="الصوت">
     <Button
       on:click={() => allowSound.update((value) => !value)}
@@ -61,13 +44,17 @@
       />
     </Button>
   </IconButton>
-  <IconButton text="الحساب">
-    <Button
-      variant="ghost"
-      size="icon"
-      href={user ? "/profile" : "/auth/register"}
-    >
-      <PersonCircle />
-    </Button>
-  </IconButton>
+  {#if user}
+    <IconButton text="الحساب">
+      <Button variant="ghost" size="icon" href="/profile">
+        <PersonCircle />
+      </Button>
+    </IconButton>
+  {:else}
+    <IconButton text="تسجيل الدخول">
+      <Button variant="ghost" size="icon" href="/auth/login">
+        <Login />
+      </Button>
+    </IconButton>
+  {/if}
 </div>

@@ -12,6 +12,7 @@
   import { applyAction, enhance } from "$app/forms";
   import { toast } from "svelte-sonner";
   import useClass from "$lib/hooks/useClass";
+  import { page } from "$app/stores";
 
   let email = "";
   let emailChanged = false;
@@ -128,7 +129,7 @@
         </small>
         <small class="flex justify-between">
           ما عندك حساب؟
-          <Button class="h-fit p-0" variant="link" href="/auth/register">
+          <Button class="h-fit p-0" variant="link" href={`/auth/register/${$page.url.search}`}>
             تسجيل حساب جديد
           </Button>
         </small>

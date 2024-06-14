@@ -1,10 +1,11 @@
 import { pb } from "$lib/pocketbase";
-import userStore from "$lib/stores/userStore";
+import user from "$lib/stores/user";
 import { PUBLIC_ENVIRONMENT } from "$env/static/public";
 
 pb.authStore.loadFromCookie(document.cookie);
 pb.authStore.onChange(() => {
-  userStore.set(pb.authStore.model);
+  // @ts-ignore
+  user.set(pb.authStore.model);
   document.cookie = pb.authStore.exportToCookie({
     httpOnly: false,
     secure: PUBLIC_ENVIRONMENT === "production",

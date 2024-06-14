@@ -9,8 +9,7 @@
   import { pb } from "$lib/pocketbase";
   import { applyAction, enhance } from "$app/forms";
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
-
-  export let data: PageServerData;
+  import user from "$lib/stores/user";
 
   let logoutRequested = false;
 </script>
@@ -67,10 +66,10 @@
     </div>
     <div class="flex-1" dir="ltr">
       <h3>
-        {data.user.name}
+        {$user?.name}
       </h3>
       <h4>
-        {data.user.email}
+        {$user?.email}
       </h4>
     </div>
     <figure class="h-20 w-20 rounded-full bg-black pt-1">

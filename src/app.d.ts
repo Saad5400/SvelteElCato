@@ -9,22 +9,24 @@ declare global {
     // interface Error {}
     interface Locals {
       pb: TypedPocketBase;
-      user: BaseModel & {
-        email: string;
-        emailVisibility: boolean;
-        username: string;
-        verified: boolean;
-        registeredCourses: string[];
-        markedQuestions: string[];
-        solvedQuestions: string[];
-        name: string;
-      };
+      user: User | null;
       course: any;
     }
 
     // interface PageData {}
     // interface PageState {}
     // interface Platform {}
+  }
+
+  interface User extends BaseModel {
+    email: string;
+    emailVisibility: boolean;
+    username: string;
+    verified: boolean;
+    registeredCourses: string[];
+    markedQuestions: string[];
+    solvedQuestions: string[];
+    name: string;
   }
 
   interface ViewTransition {

@@ -3,13 +3,13 @@ import type { Actions } from "./$types";
 import type { PageServerLoad } from "../../../../.svelte-kit/types/src/routes/auth/register/$types";
 
 export const load: PageServerLoad = async ({ locals }) => {
-  if (locals.user) {
-    throw redirect(303, "/profile");
+  if (locals.pb.authStore.isValid) {
+    redirect(303, "/profile");
   }
 };
 
 export const actions: Actions = {
-  default: async ({ locals, request }) => {
+  default: async ({ locals, request, url }) => {
     const data = Object.fromEntries(await request.formData()) as {
       email: string;
       password: string;
@@ -25,6 +25,9 @@ export const actions: Actions = {
       });
     }
 
-    throw redirect(303, "/profile");
+    if (url.searchParams.has("redirect")) {
+      throw redirect(303, url.searchParams.get("redirect")!);
+    }
+    throw redirect(303, "/");
   },
 };

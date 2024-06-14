@@ -1,6 +1,6 @@
 import type { AuthModel } from "pocketbase";
 import { writable } from "svelte/store";
 
-const userStore = writable<AuthModel>(null);
+const user = writable<User | null>(null);
 
-export default userStore;
+export default user;
