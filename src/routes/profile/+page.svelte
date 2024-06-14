@@ -20,7 +20,7 @@
 </script>
 
 <div class="container flex w-full max-w-screen-lg flex-col gap-4 px-4">
-  <div class="flex flex-col">
+  <div class="card flex flex-col">
     <BetweenLines>إدارة الحساب</BetweenLines>
     <div class="flex flex-row items-center justify-between gap-4">
       <div class="flex flex-col" dir="ltr">
@@ -100,3 +100,9 @@
     </div>
   </div>
 </div>
+
+<style>
+  .card {
+    @apply rounded-lg border border-b-4 border-s-4 bg-foreground/10 p-4;
+  }
+</style>
