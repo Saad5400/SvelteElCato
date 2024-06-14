@@ -1,10 +1,10 @@
 <script>
-  let className = "mb-2 text-2xl";
+  let className = "";
 
   export { className as class };
 </script>
 
-<header class={className}>
+<header class={"mb-2 text-2xl " + className}>
   <slot />
 </header>
 

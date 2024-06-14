@@ -2,6 +2,7 @@
   import NavBack from "./NavBack.svelte";
   import NavSettings from "./NavSettings.svelte";
   import type { AuthModel } from "pocketbase";
+  import NavMenu from "$lib/components/navbar/NavMenu.svelte";
 
   export let user: AuthModel;
 </script>
@@ -14,6 +15,7 @@
   >
     <div class="flex">
       <NavBack />
+      <NavMenu />
     </div>
     <NavSettings {user} />
   </div>
