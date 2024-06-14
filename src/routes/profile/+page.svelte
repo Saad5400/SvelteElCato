@@ -21,7 +21,7 @@
 
 <div class="container flex w-full max-w-screen-lg flex-col gap-4 px-4">
   <div class="card flex flex-col">
-    <BetweenLines>إدارة الحساب</BetweenLines>
+    <BetweenLines>حسابي</BetweenLines>
     <div class="flex flex-row items-center justify-between gap-4">
       <div class="flex flex-col" dir="ltr">
         <IconButton text="تعديل">
@@ -41,7 +41,7 @@
               </Button>
             </IconButton>
           </Dialog.Trigger>
-          <Dialog.Content class="max-w-[90dvw] rounded-lg">
+          <Dialog.Content class="max-w-[min(90dvw,30rem)] rounded-lg">
             <Dialog.Header>
               <Dialog.Title>متأكد تبغا تسجل خروجك؟</Dialog.Title>
               <Button>إلغاء</Button>
