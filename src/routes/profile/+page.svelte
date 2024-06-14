@@ -87,18 +87,20 @@
       </figure>
     </div>
   </div>
-  <div class="card flex flex-col">
-    <BetweenLines>دوراتي</BetweenLines>
-    <div class="flex flex-col">
-      {#each data.courses as course}
-        {#if !course.hidden}
-          <Card href="/courses/{course.college.urlName}/{course.urlName}">
-            {course.displayName}
-          </Card>
-        {/if}
-      {/each}
+  {#if data.courses.length > 0}
+    <div class="card flex flex-col">
+      <BetweenLines>دوراتي</BetweenLines>
+      <div class="flex flex-col">
+        {#each data.courses as course}
+          {#if !course.hidden}
+            <Card href="/courses/{course.college.urlName}/{course.urlName}">
+              {course.displayName}
+            </Card>
+          {/if}
+        {/each}
+      </div>
     </div>
-  </div>
+  {/if}
 </div>
 
 <style>
