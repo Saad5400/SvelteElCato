@@ -47,25 +47,25 @@
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
     <CardsGrid title="الاختبارات">
-      {#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}
-        <Card
-          href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}
-          class="marked col-span-full h-fit"
-        >
-          الأسئلة المُعلمه
-        </Card>
-      {/if}
-      <Card
-        href={`${data.course.url()}/quizzes/random`}
-        class={useClass(
-          data.questions.every((id) => $solvedStore.includes(id)),
-          "correct",
-          "col-span-full h-fit",
-        )}
-      >
-        جميع الأسئلة عشوائيا
-      </Card>
-      <Separator class="col-span-full" />
+      <!--{#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}-->
+      <!--  <Card-->
+      <!--    href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}-->
+      <!--    class="marked col-span-full h-fit"-->
+      <!--  >-->
+      <!--    الأسئلة المُعلمه-->
+      <!--  </Card>-->
+      <!--{/if}-->
+      <!--<Card-->
+      <!--  href={`${data.course.url()}/quizzes/random`}-->
+      <!--  class={useClass(-->
+      <!--    data.questions.every((id) => $solvedStore.includes(id)),-->
+      <!--    "correct",-->
+      <!--    "col-span-full h-fit",-->
+      <!--  )}-->
+      <!--&gt;-->
+      <!--  جميع الأسئلة عشوائيا-->
+      <!--</Card>-->
+      <!--<Separator class="col-span-full" />-->
       {#each data.course.quizzes as quiz}
         <Card
           href={quiz.url(data.course)}
