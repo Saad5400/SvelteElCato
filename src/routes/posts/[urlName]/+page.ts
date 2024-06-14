@@ -3,7 +3,6 @@ import Post from "$lib/models/Post";
 import { handleError } from "$lib/models/TypedPocketBase";
 import useHighlight from "$lib/hooks/useHighlight";
 import slugify from "@sindresorhus/slugify";
-import navStore, { type NavItem } from "$lib/stores/navStore";
 
 export const load: PageLoad = async ({ parent, params, fetch }) => {
   const { pb } = await parent();
@@ -27,7 +26,7 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
 
   post.content = useHighlight(post.content);
 
-  let navItems: NavItem[] = [];
+  let navItems: any[] = [];
   const h1Elements = post.content.match(/<h1.*?>(.*?)<\/h1>/g);
   h1Elements?.forEach((h1, index) => {
     const content = h1.replace(/<[^>]*>/g, "");

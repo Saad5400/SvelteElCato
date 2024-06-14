@@ -1,23 +1,53 @@
 <script lang="ts">
   import type { LayoutData } from "./$types";
-  import { onDestroy } from "svelte";
-  import { persisted } from "svelte-persisted-store";
-  import updateNavStore, { restoreNavStore } from "../updateNavStore";
-
-  const solvedStore = persisted("solvedQuestions", [] as string[]);
-  const markedStore = persisted("markedQuestions", [] as string[]);
+  import { onDestroy, onMount } from "svelte";
+  import menu from "$lib/stores/menu";
+  import * as Dialog from "$lib/components/ui/dialog";
+  import { page } from "$app/stores";
+  import useClass from "$lib/hooks/useClass";
+  import { Button } from "$lib/components/ui/button";
 
   export let data: LayoutData;
 
-  $: updateNavStore(
-    data.quiz.questions_ids,
-    `/courses/${data.course.college.urlName}/${data.course.urlName}/quizzes/${data.quiz.urlName}/`,
-    $solvedStore,
-    $markedStore,
-    data.quiz.displayName
-  );
+  onMount(() => {
+    if (data.quiz.questions_ids.length > 0) {
+      menu.set({ open: false, alwaysShow: true });
+    }
+  });
 
-  onDestroy(() => restoreNavStore());
+  onDestroy(() => {
+    menu.set(null);
+  });
 </script>
 
-<slot />
+<Dialog.Root open={$menu?.open}>
+  <Dialog.Content class="max-w-[min(90dvw,30rem)]">
+    <Dialog.Header>
+      <Dialog.Title>
+        {data.quiz.displayName}
+      </Dialog.Title>
+      <nav
+        class="mx-auto grid max-h-[20rem] w-fit grid-cols-5 gap-2 overflow-y-auto"
+      >
+        {#each data.quiz.questions_ids as question, index}
+          {@const active = $page.params.questionId === question}
+          <Button
+            href={data.quiz.questionUrl(data.course, question)}
+            class={useClass(
+              active,
+              "active",
+              "flex h-12 w-12 items-center justify-center text-sm font-medium",
+            )}
+            on:click={() => menu.update((menu) => ({ ...menu, open: false }))}
+          >
+            {index}
+          </Button>
+        {/each}
+      </nav>
+    </Dialog.Header>
+  </Dialog.Content>
+</Dialog.Root>
+
+<div id="quizLayout" class="flex flex-1 flex-row overflow-x-clip">
+  <slot />
+</div>

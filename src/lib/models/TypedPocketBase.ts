@@ -20,7 +20,7 @@ export default interface TypedPocketBase extends PocketBase {
 
 export function handleError(er: ClientResponseError) {
   const status = er.status >= 400 && er.status < 600 ? er.status : 500;
-  return error(
+  error(
     status,
     `${JSON.stringify(er.response)}\n${JSON.stringify(er.originalError)}\n${er.originalError}`,
   );

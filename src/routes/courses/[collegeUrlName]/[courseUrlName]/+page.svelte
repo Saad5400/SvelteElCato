@@ -3,23 +3,11 @@
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import Card from "$lib/components/cardsView/Card.svelte";
   import { page } from "$app/stores";
-  import { persisted } from "svelte-persisted-store";
-  import type Quiz from "$lib/models/Quiz";
   import useClass from "$lib/hooks/useClass";
   import { Separator } from "$lib/components/ui/separator";
+  import user from "$lib/stores/user";
 
   export let data: PageData;
-
-  const markedStore = persisted("markedQuestions", [] as string[]);
-  const solvedStore = persisted("solvedQuestions", [] as string[]);
-
-  function hasMarkedQuestion(quiz: Quiz) {
-    return quiz.questions_ids.some((id) => $markedStore.includes(id));
-  }
-
-  function allQuestionsSolved(quiz: Quiz) {
-    return quiz.questions_ids.every((id) => $solvedStore.includes(id));
-  }
 </script>
 
 <svelte:head>
@@ -39,6 +27,12 @@
         <Card
           subtitle={track.description}
           href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
+          class={useClass(
+            !track.hasFree &&
+              !$user?.registeredCourses.includes(data.course.id),
+            "disabled",
+            "h-auto",
+          )}
         >
           {track.displayName}
         </Card>
@@ -47,29 +41,33 @@
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
     <CardsGrid title="الاختبارات">
-      {#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}
-        <Card
-          href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}
-          class="marked col-span-full h-fit"
-        >
-          الأسئلة المُعلمه
-        </Card>
-      {/if}
-      <Card
-        href={`${data.course.url()}/quizzes/random`}
-        class={useClass(
-          data.questions.every((id) => $solvedStore.includes(id)),
-          "correct",
-          "col-span-full h-fit",
-        )}
-      >
-        جميع الأسئلة عشوائيا
-      </Card>
-      <Separator class="col-span-full" />
+      <!--{#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}-->
+      <!--  <Card-->
+      <!--    href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}-->
+      <!--    class="marked col-span-full h-fit"-->
+      <!--  >-->
+      <!--    الأسئلة المُعلمه-->
+      <!--  </Card>-->
+      <!--{/if}-->
+      <!--<Card-->
+      <!--  href={`${data.course.url()}/quizzes/random`}-->
+      <!--  class={useClass(-->
+      <!--    data.questions.every((id) => $solvedStore.includes(id)),-->
+      <!--    "correct",-->
+      <!--    "col-span-full h-fit",-->
+      <!--  )}-->
+      <!--&gt;-->
+      <!--  جميع الأسئلة عشوائيا-->
+      <!--</Card>-->
+      <!--<Separator class="col-span-full" />-->
       {#each data.course.quizzes as quiz}
         <Card
           href={quiz.url(data.course)}
-          class={useClass(allQuestionsSolved(quiz), "correct", "h-auto")}
+          class={useClass(
+            !quiz.isFree && !$user?.registeredCourses.includes(data.course.id),
+            "disabled",
+            "h-auto",
+          )}
         >
           {quiz.displayName}
         </Card>

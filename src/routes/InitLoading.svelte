@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Loading from "./icons/Loading.svelte";
+  import Loading from "$lib/components/icons/Loading.svelte";
 
   const count = 50;
   let div: HTMLDivElement;

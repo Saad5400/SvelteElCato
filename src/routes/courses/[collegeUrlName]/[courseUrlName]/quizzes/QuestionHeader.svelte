@@ -19,6 +19,7 @@
   <div class="flex flex-row gap-1">
     <IconButton text="علامة">
       <Button
+        disabled
         variant="outline"
         size="icon"
         class={"rounded-e-none border-e-0 border-foreground/50 text-foreground " +
@@ -28,14 +29,13 @@
         on:click={markQuestion}
       >
         <Flag
-          class={$markedStore.includes(question.id)
-            ? "spin spin-active"
-            : ""}
+          class={$markedStore.includes(question.id) ? "spin spin-active" : ""}
         />
       </Button>
     </IconButton>
     <IconButton text="تم الحل">
       <Button
+        disabled
         variant="outline"
         size="icon"
         class={"rounded-s-none border-s-0 border-foreground/50 text-foreground " +
@@ -57,9 +57,7 @@
         }}
       >
         <Checkmark
-          class={$solvedStore.includes(question.id)
-            ? "spin spin-active"
-            : ""}
+          class={$solvedStore.includes(question.id) ? "spin spin-active" : ""}
         />
       </Button>
     </IconButton>

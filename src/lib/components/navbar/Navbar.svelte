@@ -1,9 +1,8 @@
 <script lang="ts">
   import NavBack from "./NavBack.svelte";
-  import NavMenu from "./NavMenu.svelte";
-  import NavSheet from "./NavSheet.svelte";
   import NavSettings from "./NavSettings.svelte";
   import type { AuthModel } from "pocketbase";
+  import NavMenu from "$lib/components/navbar/NavMenu.svelte";
 
   export let user: AuthModel;
 </script>
@@ -21,10 +20,6 @@
     <NavSettings {user} />
   </div>
 </header>
-<main class="flex flex-row">
-  <NavSheet />
-  <slot />
-</main>
 
 <style>
   header {

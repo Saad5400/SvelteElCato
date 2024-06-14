@@ -73,8 +73,7 @@
     }
 
     * {
-        @apply border-border scrollbar-thin;
-        scroll-behavior: smooth;
+        @apply border-border custom-scrollbar;
     }
 
     body {
@@ -372,5 +371,9 @@
     button.active.marked,
     a.active.marked {
         @apply !border-accent-foreground !border-s-destructive !border-b-destructive;
+    }
+
+    .custom-scrollbar {
+        @apply scrollbar scrollbar-thumb-input hover:scrollbar-thumb-foreground;
     }
 }

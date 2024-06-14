@@ -23,4 +23,8 @@ export default class Quiz extends BaseModel {
   public url(course: Course): string {
     return course.url() + `/quizzes/${this.urlName}/${this.questions_ids[0]}`;
   }
+
+  public questionUrl(course: Course, questionId: string): string {
+    return course.url() + `/quizzes/${this.urlName}/${questionId}`;
+  }
 }
