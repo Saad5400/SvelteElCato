@@ -26,8 +26,8 @@ export const actions: Actions = {
     }
 
     if (url.searchParams.has("redirect")) {
-      throw redirect(303, url.searchParams.get("redirect")!);
+      redirect(303, url.searchParams.get("redirect")!);
     }
-    throw redirect(303, "/");
+    redirect(303, "/");
   },
 };
