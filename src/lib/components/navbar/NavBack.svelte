@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button";
-  import SkipBack from "virtual:icons/f7/BackwardEnd";
+  import ArrowRight from "virtual:icons/line-md/ArrowRight";
   import { page } from "$app/stores";
   import IconButton from "$lib/components/IconButton.svelte";
 
@@ -32,7 +32,7 @@
       variant="ghost"
       aria-label="Go back"
     >
-      <SkipBack class="rotate-180" />
+      <ArrowRight />
     </Button>
   </IconButton>
 {/if}

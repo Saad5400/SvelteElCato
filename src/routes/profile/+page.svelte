@@ -2,8 +2,8 @@
   import type { PageServerData } from "./$types";
   import IconButton from "$lib/components/IconButton.svelte";
   import { Button } from "$lib/components/ui/button";
-  import Edit from "virtual:icons/carbon/Edit";
-  import Logout from "virtual:icons/carbon/Logout";
+  import Edit from "virtual:icons/line-md/Edit";
+  import Logout from "virtual:icons/line-md/Logout";
   import Anonymous from "$lib/components/icons/Anonymous.svelte";
   import * as Dialog from "$lib/components/ui/dialog";
   import { pb } from "$lib/pocketbase";
@@ -17,7 +17,7 @@
 <div class="container flex w-full max-w-screen-md flex-col">
   <h2 class="self-center">إدارة الحساب</h2>
   <div class="flex flex-row items-center justify-between gap-4">
-    <div class="flex" dir="ltr">
+    <div class="flex flex-col" dir="ltr">
       <IconButton text="تعديل">
         <Button size="icon" variant="ghost">
           <Edit class="h-6 w-6 text-primary" />

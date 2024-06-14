@@ -1,11 +1,11 @@
 <script lang="ts">
   import { toggleMode } from "mode-watcher";
   import { Button } from "$lib/components/ui/button";
-  import Moon from "virtual:icons/f7/MoonStars";
-  import Sun from "virtual:icons/f7/SunMax";
+  import Moon from "virtual:icons/line-md/Moon";
+  import Sun from "virtual:icons/line-md/SunnyOutline";
   import Speaker from "virtual:icons/f7/Speaker";
   import Speaker2 from "virtual:icons/f7/Speaker-2";
-  import PersonCircle from "virtual:icons/f7/PersonCircle";
+  import Account from "virtual:icons/line-md/Account";
   import Login from "virtual:icons/line-md/Login";
   import { persisted } from "svelte-persisted-store";
   import IconButton from "$lib/components/IconButton.svelte";
@@ -47,7 +47,7 @@
   {#if user}
     <IconButton text="الحساب">
       <Button variant="ghost" size="icon" href="/profile">
-        <PersonCircle />
+        <Account />
       </Button>
     </IconButton>
   {:else}

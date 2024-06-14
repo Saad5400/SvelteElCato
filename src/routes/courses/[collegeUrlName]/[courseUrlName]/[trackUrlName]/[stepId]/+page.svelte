@@ -12,24 +12,17 @@
   export let data: PageData;
 
   let timeout: any;
-  const autoRedirect = persisted("autoRedirect", true as boolean);
   const libraryId = 253444;
 
   function setTimeoutToRedirect() {
-    if (!browser || !$autoRedirect || !data.isExternal) return;
+    if (!browser || !data.isExternal) return;
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       open(data.step.linked, "_blank");
     }, 500);
   }
 
-  const unsubscribe = autoRedirect.subscribe((value) => {
-    if (value) setTimeoutToRedirect();
-    else clearTimeout(timeout);
-  });
-
   onDestroy(() => {
-    unsubscribe();
     clearTimeout(timeout);
   });
 
@@ -60,15 +53,7 @@
       >
         هذا الدرس يحتوي رابط خارجي
         <br />
-        {#if $autoRedirect}
-          سيتم نقلك تلقائياً إلى الصفحة المطلوبة
-        {:else}
-          <div>
-            لقد تم تعطيل التحويل التلقائي، اضغط على
-            <AppBlockingOutlineSharp class="inline h-5 w-5" />
-            أعلى يسار الصفحة لتفعيل التحويل التلقائي
-          </div>
-        {/if}
+        سيتم نقلك تلقائياً إلى الصفحة المطلوبة
         <div>
           او
           <Button

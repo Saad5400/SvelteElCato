@@ -5,8 +5,6 @@
   import { pb } from "$lib/pocketbase";
   import Eye from "virtual:icons/f7/Eye";
   import EyeSlash from "virtual:icons/f7/EyeSlash";
-  import CheckmarkCircle from "virtual:icons/f7/CheckmarkCircle";
-  import XmarkCircle from "virtual:icons/f7/XmarkCircle";
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import { fade } from "svelte/transition";
   import { applyAction, enhance } from "$app/forms";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import Menu from "virtual:icons/f7/Menu";
+  import Menu from "virtual:icons/line-md/Menu";
 
   export let data: PageData;
 </script>

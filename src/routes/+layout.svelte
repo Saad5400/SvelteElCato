@@ -9,7 +9,6 @@
   import usePageTransition from "$lib/hooks/usePageTransition";
   import user from "$lib/stores/user";
   import InitLoading from "$lib/components/InitLoading.svelte";
-  import { page } from "$app/stores";
 
   usePageTransition();
   injectSpeedInsights();
@@ -19,7 +18,15 @@
 <InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
-<ProgressBar class="text-accent-foreground" zIndex={100} />
+<div id="progressBar">
+  <ProgressBar class="text-accent-foreground" zIndex={100} />
+</div>
 <Navbar user={$user}>
   <slot />
 </Navbar>
+
+<style>
+  #progressBar {
+      view-transition-name: progressBar;
+  }
+</style>

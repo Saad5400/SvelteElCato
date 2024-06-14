@@ -1,6 +1,6 @@
 <script lang="ts">
   import navStore from "$lib/stores/navStore";
-  import Menu from "virtual:icons/f7/Menu";
+  import Menu from "virtual:icons/line-md/Menu";
   import * as Sheet from "$lib/components/ui/sheet";
   import * as Dialog from "$lib/components/ui/dialog";
   import { Button } from "$lib/components/ui/button";

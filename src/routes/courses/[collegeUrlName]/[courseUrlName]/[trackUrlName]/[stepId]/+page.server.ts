@@ -19,10 +19,10 @@ export const load: PageServerLoad = async ({ locals, params, fetch }) => {
 
   if (step.type === "bunny") {
     if (!step.isFree) {
-      if (!locals.pb.authStore.isValid) {
-        redirect(303, "/auth/login");
-      }
-      if (!locals.user?.registeredCourses.includes(course.id)) {
+      if (
+        !locals.user?.registeredCourses.includes(course.id) ||
+        !locals.pb.authStore.isValid
+      ) {
         error(403);
       }
     }

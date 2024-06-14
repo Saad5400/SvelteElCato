@@ -1,6 +1,5 @@
 <script lang="ts">
   import NavItems from "$lib/components/navbar/NavItems.svelte";
-  import SkipBack from "virtual:icons/f7/BackwardEnd";
   import navStore from "$lib/stores/navStore";
 
   let largeNavMenu: HTMLElement;
