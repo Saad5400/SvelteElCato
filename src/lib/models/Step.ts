@@ -1,6 +1,8 @@
 import BaseModel from "$lib/models/BaseModel";
 import { pb } from "$lib/pocketbase";
 import { handleError } from "$lib/models/TypedPocketBase";
+import type Course from "$lib/models/Course";
+import type Track from "$lib/models/Track";
 
 export default class Step extends BaseModel {
   displayName: string;
@@ -27,5 +29,9 @@ export default class Step extends BaseModel {
         })
         .catch(handleError),
     );
+  }
+
+  public url(course: Course, track: Track): string {
+    return track.url(course) + `/${this.id}`;
   }
 }

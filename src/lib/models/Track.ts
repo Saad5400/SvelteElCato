@@ -1,5 +1,6 @@
 import BaseModel from "$lib/models/BaseModel";
 import Step from "$lib/models/Step";
+import type Course from "$lib/models/Course";
 
 export default class Track extends BaseModel {
   displayName: string;
@@ -13,5 +14,9 @@ export default class Track extends BaseModel {
     this.urlName = data.urlName;
     this.description = data.description;
     this.steps = data.expand?.steps?.map((step: any) => new Step(step)) || [];
+  }
+
+  public url(course: Course): string {
+    return course.url() + `/${this.urlName}`;
   }
 }
