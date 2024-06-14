@@ -3,6 +3,7 @@
   import NavSettings from "./NavSettings.svelte";
   import type { AuthModel } from "pocketbase";
   import NavMenu from "$lib/components/navbar/NavMenu.svelte";
+  import { ProgressBar } from "@prgm/sveltekit-progress-bar";
 
   export let user: AuthModel;
 </script>
@@ -19,6 +20,7 @@
     </div>
     <NavSettings {user} />
   </div>
+  <ProgressBar zIndex={100} />
 </header>
 
 <style>

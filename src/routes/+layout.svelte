@@ -2,7 +2,6 @@
   import "../app.pcss";
   import { ModeWatcher } from "mode-watcher";
   import Navbar from "$lib/components/navbar/Navbar.svelte";
-  import { ProgressBar } from "@prgm/sveltekit-progress-bar";
   import { Toaster } from "$lib/components/ui/sonner";
   import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
   import { inject as injectAnalytics } from "@vercel/analytics";
@@ -15,11 +14,6 @@
   injectAnalytics();
 </script>
 
-<ProgressBar
-  dir="ltr"
-  class="!top-[3.5rem] text-accent-foreground"
-  zIndex={100}
-/>
 <InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
