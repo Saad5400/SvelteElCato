@@ -7,6 +7,7 @@ export default class Track extends BaseModel {
   urlName: string;
   description: string;
   steps: Step[];
+  hasFree: boolean;
 
   constructor(data: any) {
     super(data);
@@ -14,6 +15,7 @@ export default class Track extends BaseModel {
     this.urlName = data.urlName;
     this.description = data.description;
     this.steps = data.expand?.steps?.map((step: any) => new Step(step)) || [];
+    this.hasFree = data.hasFree;
   }
 
   public url(course: Course): string {
