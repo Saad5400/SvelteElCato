@@ -9,6 +9,7 @@
   import usePageTransition from "$lib/hooks/usePageTransition";
   import user from "$lib/stores/user";
   import InitLoading from "$lib/components/InitLoading.svelte";
+  import { page } from "$app/stores";
 
   usePageTransition();
   injectSpeedInsights();
