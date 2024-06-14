@@ -17,6 +17,7 @@ declare global {
         registeredCourses: string[];
         markedQuestions: string[];
         solvedQuestions: string[];
+        name: string;
       };
       course: any;
     }
