@@ -7,6 +7,7 @@ export default class Quiz extends BaseModel {
   urlName: string;
   questions: Question[];
   questions_ids: string[];
+  isFree: boolean;
 
   constructor(data: any) {
     super(data);
@@ -16,6 +17,7 @@ export default class Quiz extends BaseModel {
     this.questions =
       data.expand?.questions?.map((question: any) => new Question(question)) ||
       [];
+    this.isFree = data.isFree;
   }
 
   public url(course: Course): string {
