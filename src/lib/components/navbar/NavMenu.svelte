@@ -4,17 +4,18 @@
   import IconButton from "$lib/components/IconButton.svelte";
   import menu from "$lib/stores/menu";
 
-  function toggleOpen() {
+  function openMenu() {
     menu.update((prev) => ({
-      open: !prev?.open,
+      ...prev,
+      open: true,
     }));
   }
 </script>
 
 {#if $menu}
-  <div class="md:hidden">
+  <div class={$menu.alwaysShow ? "" : "md:hidden"}>
     <IconButton text="القائمة">
-      <Button size="icon" variant="ghost" on:click={toggleOpen}>
+      <Button size="icon" variant="ghost" on:click={openMenu}>
         <Menu />
       </Button>
     </IconButton>
