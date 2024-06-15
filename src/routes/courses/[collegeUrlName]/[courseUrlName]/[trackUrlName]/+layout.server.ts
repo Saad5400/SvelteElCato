@@ -1,7 +1,6 @@
 import { handleError } from "$lib/models/TypedPocketBase";
 import type { LayoutServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import Course from "$lib/models/Course";
 import type Track from "$lib/models/Track";
 
 export const load: LayoutServerLoad = async ({
@@ -27,6 +26,6 @@ export const load: LayoutServerLoad = async ({
     .catch(handleError);
 
   return {
-    track,
+    track: track as Track,
   };
 };

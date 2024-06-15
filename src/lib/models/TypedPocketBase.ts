@@ -26,6 +26,8 @@ export default interface TypedPocketBase extends PocketBase {
 
   collection(idOrName: "steps"): RecordService<Step>;
 
+  collection(idOrName: "stepsView"): RecordService<Step>;
+
   collection(idOrName: "tracks"): RecordService<Track>;
 
   collection(idOrName: "users"): RecordService<User>;

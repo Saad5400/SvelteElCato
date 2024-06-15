@@ -1,6 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
 import { handleError } from "$lib/models/TypedPocketBase";
+import type Course from "$lib/models/Course";
 
 export const load: PageServerLoad = async ({ locals }) => {
   if (!locals.pb.authStore.isValid) {

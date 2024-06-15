@@ -1,28 +1,26 @@
 import type { PageLoad } from "./$types";
-import Post from "$lib/models/Post";
 import { handleError } from "$lib/models/TypedPocketBase";
 import useHighlight from "$lib/hooks/useHighlight";
 import slugify from "@sindresorhus/slugify";
+import type Post from "$lib/models/Post";
 
 export const load: PageLoad = async ({ parent, params, fetch }) => {
   const { pb } = await parent();
 
-  const post = new Post(
-    await pb
-      .collection("posts")
-      .getFirstListItem(
-        pb.filter("urlName = {:urlName}", { urlName: params.urlName }),
-        {
-          expand: "tags",
-          fetch: fetch,
-          cache: "force-cache",
-          headers: {
-            "Cache-Control": "max-age=600",
-          },
+  const post = (await pb
+    .collection("posts")
+    .getFirstListItem(
+      pb.filter("urlName = {:urlName}", { urlName: params.urlName }),
+      {
+        expand: "tags",
+        fetch: fetch,
+        cache: "force-cache",
+        headers: {
+          "Cache-Control": "max-age=600",
         },
-      )
-      .catch(handleError),
-  );
+      },
+    )
+    .catch(handleError)) as Post;
 
   post.content = useHighlight(post.content);
 

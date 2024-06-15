@@ -1,5 +1,6 @@
 import type { LayoutServerLoad } from "./$types";
 import { handleError } from "$lib/models/TypedPocketBase";
+import type Course from "$lib/models/Course";
 
 export const load: LayoutServerLoad = async ({ locals, params }) => {
   const course = await locals.pb
@@ -23,6 +24,6 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
     .catch(handleError);
 
   return {
-    course,
+    course: course!,
   };
 };
