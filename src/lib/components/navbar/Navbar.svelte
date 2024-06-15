@@ -20,7 +20,6 @@
     </div>
     <NavSettings {user} />
   </div>
-  <ProgressBar zIndex={100} />
 </header>
 
 <style>
