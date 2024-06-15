@@ -8,9 +8,9 @@ export const load: PageServerLoad = async ({ locals }) => {
     redirect(302, "/auth/login?redirect=/profile");
   }
 
-  const courses = await locals.pb
+  const courses = (await locals.pb
     .collection("courses")
-    .getList(1, 100, {
+    .getFullList({
       filter: locals.pb.filter("{:registeredCourses} ~ id", {
         registeredCourses: locals.user?.registeredCourses,
       }),
@@ -20,7 +20,7 @@ export const load: PageServerLoad = async ({ locals }) => {
         "Cache-Control": "max-age=600",
       },
     })
-    .catch(handleError);
+    .catch(handleError)) as Course[];
 
   return {
     user: locals.user,
