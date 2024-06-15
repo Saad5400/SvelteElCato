@@ -17,5 +17,6 @@
 <InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
+<ProgressBar zIndex={100} />
 <Navbar user={$user} />
 <slot />
