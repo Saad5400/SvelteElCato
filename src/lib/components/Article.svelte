@@ -60,4 +60,8 @@
   :global(article p:not(:first-child)) {
     @apply !mt-0;
   }
+
+  :global(article img) {
+    @apply mx-auto max-w-[max(50rem,50%)];
+  }
 </style>
