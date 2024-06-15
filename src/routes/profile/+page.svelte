@@ -90,7 +90,7 @@
       <div class="flex flex-col">
         {#each data.courses as course}
           {#if !course.hidden}
-            <Card href="/courses/{course.college.urlName}/{course.urlName}">
+            <Card href="/courses/{course.expand.college.urlName}/{course.urlName}">
               {course.displayName}
             </Card>
           {/if}
