@@ -107,7 +107,7 @@
       <small class="flex min-w-40 flex-row items-center justify-between">
         <span class="flex flex-row justify-start gap-1">
           <Calendar class="h-3 w-3" />
-          {data.post.updated.toLocaleDateString()}
+          {new Date(data.post.created).toLocaleDateString()}
         </span>
         <span class="flex flex-row items-center justify-center gap-2">
           <span class="flex flex-row items-center justify-center gap-1">
