@@ -20,9 +20,3 @@
     <NavSettings {user} />
   </div>
 </header>
-
-<style>
-  header {
-    view-transition-name: navbar;
-  }
-</style>
