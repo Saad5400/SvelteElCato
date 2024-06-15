@@ -8,7 +8,6 @@
   import * as Sheet from "$lib/components/ui/sheet";
   import useClass from "$lib/hooks/useClass";
   import { page } from "$app/stores";
-  import user from "$lib/stores/user";
 
   export let data: LayoutData;
 
@@ -49,7 +48,7 @@
             "active",
             useClass(
               !step.isFree &&
-                !$user?.registeredCourses.includes(data.course.id),
+                !data.user?.registeredCourses.includes(data.course.id),
               "disabled",
               "flex w-full flex-wrap justify-start",
             ),
@@ -79,7 +78,7 @@
               "active",
               useClass(
                 !step.isFree &&
-                  !$user?.registeredCourses.includes(data.course.id),
+                  !data.user?.registeredCourses.includes(data.course.id),
                 "disabled",
                 "flex w-[23rem] flex-wrap justify-start",
               ),

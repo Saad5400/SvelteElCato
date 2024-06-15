@@ -1,20 +1,8 @@
 import type { LayoutLoad } from "./$types";
 import Course from "$lib/models/Course";
 
-export const load: LayoutLoad = async ({ parent, params, fetch }) => {
-  const course = await Course.fetch(
-    params.collegeUrlName,
-    params.courseUrlName,
-    fetch,
-  );
-
-  const questions = course.quizzes
-    .map((quiz) => quiz.questions_ids)
-    .flat()
-    .sort((a, b) => a.localeCompare(b));
-
+export const load: LayoutLoad = async ({ data }) => {
   return {
-    course,
-    questions,
+    course: new Course(data.course!),
   };
 };

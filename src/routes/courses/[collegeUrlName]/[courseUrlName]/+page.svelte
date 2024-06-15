@@ -27,7 +27,7 @@
           href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
           class={useClass(
             !track.hasFree &&
-              !$user?.registeredCourses.includes(data.course.id),
+              !data.user?.registeredCourses.includes(data.course.id),
             "disabled",
             "h-auto",
           )}
@@ -62,7 +62,8 @@
         <Card
           href={quiz.url(data.course)}
           class={useClass(
-            !quiz.isFree && !$user?.registeredCourses.includes(data.course.id),
+            !quiz.isFree &&
+              !data.user?.registeredCourses.includes(data.course.id),
             "disabled",
             "h-auto",
           )}
