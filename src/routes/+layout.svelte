@@ -8,6 +8,7 @@
   import usePageTransition from "$lib/hooks/usePageTransition";
   import user from "$lib/stores/user";
   import InitLoading from "./InitLoading.svelte";
+  import { ProgressBar } from "@prgm/sveltekit-progress-bar";
 
   usePageTransition();
   injectSpeedInsights();
