@@ -3,7 +3,7 @@ import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ locals }) => {
   if (!locals.pb.authStore.isValid) {
-    redirect(303, "/auth/login?redirect=/profile");
+    redirect(302, "/auth/login?redirect=/profile");
   }
 
   return {

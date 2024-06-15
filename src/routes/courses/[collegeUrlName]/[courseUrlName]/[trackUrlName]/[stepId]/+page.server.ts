@@ -5,7 +5,12 @@ import { sha256 } from "js-sha256";
 import { error, redirect } from "@sveltejs/kit";
 import { BUNNY_TOKEN } from "$env/static/private";
 
-export const load: PageServerLoad = async ({ locals, params, fetch }) => {
+export const load: PageServerLoad = async ({
+  locals,
+  params,
+  fetch,
+  request,
+}) => {
   const courseRequest = Course.fetch(
     params.collegeUrlName,
     params.courseUrlName,
@@ -19,10 +24,10 @@ export const load: PageServerLoad = async ({ locals, params, fetch }) => {
 
   if (step.type === "bunny") {
     if (!step.isFree) {
-      if (
-        !locals.user?.registeredCourses.includes(course.id) ||
-        !locals.pb.authStore.isValid
-      ) {
+      if (!locals.pb.authStore.isValid) {
+        redirect(302, `/auth/login?redirect=${request.url}`);
+      }
+      if (!locals.user?.registeredCourses.includes(course.id)) {
         error(403);
       }
     }

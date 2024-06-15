@@ -3,7 +3,7 @@ import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ locals }) => {
   if (locals.pb.authStore.isValid) {
-    redirect(303, "/profile");
+    redirect(302, "/profile");
   }
 };
 
@@ -25,6 +25,6 @@ export const actions: Actions = {
       throw e;
     }
 
-    redirect(303, "/profile");
+    redirect(302, "/profile");
   },
 };

@@ -4,7 +4,7 @@ import type { PageServerLoad } from "../../../../.svelte-kit/types/src/routes/au
 
 export const load: PageServerLoad = async ({ locals }) => {
   if (locals.pb.authStore.isValid) {
-    redirect(303, "/profile");
+    redirect(302, "/profile");
   }
 };
 
@@ -26,8 +26,8 @@ export const actions: Actions = {
     }
 
     if (url.searchParams.has("redirect")) {
-      redirect(303, url.searchParams.get("redirect")!);
+      redirect(302, url.searchParams.get("redirect")!);
     }
-    redirect(303, "/");
+    redirect(302, "/");
   },
 };
