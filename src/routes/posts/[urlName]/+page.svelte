@@ -11,6 +11,7 @@
   import { Button } from "$lib/components/ui/button";
   // @ts-ignore
   import * as Sheet from "$lib/components/ui/sheet";
+  import useScrollTo from "$lib/hooks/useScrollTo";
 
   export let data: PageData;
 
@@ -84,13 +85,7 @@
       <h3 class="mb-2">محتويات المنشور</h3>
       {#each data.navItems as item}
         <Button
-          on:click={() => {
-            document.querySelector(item.href)?.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            window.history.pushState(null, "", item.href);
-          }}
+          on:click={() => useScrollTo(item.href)}
           class="flex w-[23rem] flex-wrap justify-start"
         >
           {item.title}

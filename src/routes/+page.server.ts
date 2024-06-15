@@ -32,7 +32,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
   const [courses, posts] = await Promise.all([coursesRequest, postsRequest]);
 
   return {
-    courses: courses,
-    posts: posts,
+    courses: courses as Course[],
+    posts: posts as Post[],
   };
 };

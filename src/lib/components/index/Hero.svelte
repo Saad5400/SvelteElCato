@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
   import { Separator } from "$lib/components/ui/separator";
   import Telegram from "$lib/components/icons/Telegram.svelte";
   import Whatsapp from "$lib/components/icons/Whatsapp.svelte";
   import { Button } from "$lib/components/ui/button";
   import Glitched from "$lib/components/index/Glitched.svelte";
   import HeroImage from "$lib/components/index/HeroImage.svelte";
+  import useScrollTo from "$lib/hooks/useScrollTo";
 </script>
 
 <br />
@@ -47,8 +48,12 @@
       </p>
     </div>
     <div class="grid gap-2">
-      <Button href="#courses" class="flex-1 text-lg">الدورات</Button>
-      <Button href="#posts" class="flex-1 text-lg">المنشورات</Button>
+      <Button on:click={() => useScrollTo("#courses")} class="flex-1 text-lg">
+        الدورات
+      </Button>
+      <Button on:click={() => useScrollTo("#posts")} class="flex-1 text-lg">
+        المنشورات
+      </Button>
       <div>
         <p class="text-muted-foreground">تواصل معنا:</p>
         <div class="flex w-full flex-row items-center justify-center gap-2">
