@@ -4,46 +4,54 @@ import Step from "$lib/models/Step";
 import { sha256 } from "js-sha256";
 import { error, redirect } from "@sveltejs/kit";
 import { BUNNY_TOKEN } from "$env/static/private";
+import Track from "$lib/models/Track";
+import { handleError } from "$lib/models/TypedPocketBase";
 
 export const load: PageServerLoad = async ({
   locals,
   params,
   fetch,
+  parent,
   request,
 }) => {
-  const courseRequest = Course.fetch(
-    params.collegeUrlName,
-    params.courseUrlName,
-    fetch,
-    locals.pb,
-  );
+  const { course, track } = await parent();
 
-  const stepRequest = Step.fetch(params.stepId, fetch, locals.pb);
+  const courseObj = new Course(course);
+  const trackObj = new Track(track);
+  const step = await locals.pb
+    .collection("steps")
+    .getOne(params.stepId, {
+      fetch,
+    })
+    .catch(handleError);
 
-  const [course, step] = await Promise.all([courseRequest, stepRequest]);
+  const stepObj = new Step(step);
 
-  if (step.type === "bunny") {
-    if (!step.isFree) {
+  let returned = {
+    step,
+    expires: 0,
+    hash: "",
+  };
+
+  if (stepObj.type === "bunny") {
+    if (!stepObj.isFree) {
       if (!locals.pb.authStore.isValid) {
         redirect(302, `/auth/login?redirect=${request.url}`);
       }
-      if (!locals.user?.registeredCourses.includes(course.id)) {
+      if (!locals.user?.registeredCourses.includes(courseObj.id)) {
         error(403);
       }
     }
 
-    const videoId = step.linked;
+    const videoId = stepObj.linked;
     const expires = Math.floor(Date.now() / 1000) + 3600;
     const hash = sha256(`${BUNNY_TOKEN}${videoId}${expires}`);
 
-    return {
-      expires,
-      hash,
-    };
+    returned.expires = expires;
+    returned.hash = hash;
   }
 
-  return {
-    expires: undefined,
-    hash: undefined,
-  };
+  console.log(returned.step);
+
+  return returned;
 };

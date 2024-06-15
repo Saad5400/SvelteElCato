@@ -1,6 +1,7 @@
 import type { Handle } from "@sveltejs/kit";
 import { createPbInstance } from "$lib/pocketbase";
 import { PUBLIC_ENVIRONMENT } from "$env/static/public";
+import type User from "$lib/models/User";
 
 export const handle: Handle = async ({ event, resolve }) => {
   const pb = createPbInstance();

@@ -1,6 +1,6 @@
 import "unplugin-icons/types/svelte";
 import type TypedPocketBase from "$lib/models/TypedPocketBase";
-import type BaseModel from "$lib/models/BaseModel";
+import type User from "$lib/models/User";
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -16,17 +16,6 @@ declare global {
     // interface PageData {}
     // interface PageState {}
     // interface Platform {}
-  }
-
-  interface User extends BaseModel {
-    email: string;
-    emailVisibility: boolean;
-    username: string;
-    verified: boolean;
-    registeredCourses: string[];
-    markedQuestions: string[];
-    solvedQuestions: string[];
-    name: string;
   }
 
   interface ViewTransition {

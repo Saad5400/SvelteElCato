@@ -66,7 +66,7 @@
       class="fixed flex max-h-[calc(100dvh-5rem)] w-[25rem] flex-col items-center gap-2 overflow-y-auto overflow-x-clip border-e-2"
     >
       <h3 class="mb-2">{data.track.displayName}</h3>
-      {#each data.track.steps as step}
+      {#each data.track.expand.steps as step}
         {#if step.type === "section"}
           <BetweenLines class="mx-2 text-lg">
             {step.displayName}

@@ -6,7 +6,7 @@ export const load: LayoutLoad = async ({ parent, params, fetch }) => {
   const { course } = await parent();
 
   const quiz =
-    course.quizzes.find((q: Quiz) => q.urlName === params.quizUrlName) ||
+    course.expand.quizzes.find((q: Quiz) => q.urlName === params.quizUrlName) ||
     error(404, "Quiz not found");
 
   return {

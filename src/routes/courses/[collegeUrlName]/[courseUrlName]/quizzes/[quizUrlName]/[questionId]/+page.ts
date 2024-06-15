@@ -5,13 +5,12 @@ import { error, redirect } from "@sveltejs/kit";
 export const load: PageLoad = async ({ parent, params, fetch, url, data }) => {
   const { course, quiz } = await parent();
 
-  const questionIndex = quiz.questions_ids.indexOf(params.questionId);
+  const questionIndex = quiz.questions.indexOf(params.questionId);
   const next =
-    quiz.questions_ids.length < questionIndex + 2
+    quiz.questions.length < questionIndex + 2
       ? null
-      : quiz.questions_ids[questionIndex + 1];
-  const prev =
-    questionIndex === 0 ? null : quiz.questions_ids[questionIndex - 1];
+      : quiz.questions[questionIndex + 1];
+  const prev = questionIndex === 0 ? null : quiz.questions[questionIndex - 1];
 
   let question: Question;
   try {

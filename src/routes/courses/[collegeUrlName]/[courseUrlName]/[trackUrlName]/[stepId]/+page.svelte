@@ -13,7 +13,7 @@
   const libraryId = 253444;
 
   function setTimeoutToRedirect() {
-    if (!browser || !data.isExternal) return;
+    if (!browser || data.step.type !== "external") return;
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       open(data.step.linked, "_blank");
@@ -24,8 +24,7 @@
     clearTimeout(timeout);
   });
 
-  $: stepId = $page.params.stepId;
-  $: if (stepId && data.isExternal) setTimeoutToRedirect();
+  $: if ($page.params.stepId && data.step.type === "external") setTimeoutToRedirect();
 </script>
 
 <svelte:head>
@@ -45,7 +44,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       />
-    {:else if data.isExternal}
+    {:else if data.step.type === "external"}
       <div
         class="flex h-full w-full flex-1 flex-col items-center justify-center text-center"
       >

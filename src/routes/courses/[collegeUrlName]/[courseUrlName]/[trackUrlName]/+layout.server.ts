@@ -2,6 +2,7 @@ import { handleError } from "$lib/models/TypedPocketBase";
 import type { LayoutServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
 import Course from "$lib/models/Course";
+import type Track from "$lib/models/Track";
 
 export const load: LayoutServerLoad = async ({
   parent,
@@ -11,29 +12,21 @@ export const load: LayoutServerLoad = async ({
 }) => {
   const { course } = await parent();
 
-  const courseObj = new Course(course);
+  const track =
+    course!.expand!.tracks.find(
+      (t: Track) => t.urlName === params.trackUrlName,
+    ) || error(404, "Track not found");
 
-  let track =
-    courseObj.tracks.find((t) => t.urlName === params.trackUrlName) ||
-    error(404, "Track not found");
-  let trackWithSteps = await locals.pb
-    .collection("tracks")
-    .getFirstListItem(
-      locals.pb.filter("id = {:trackId}", { trackId: track.id }),
-      {
-        expand: "steps",
-        fields:
-          "id,displayName,urlName,expand.steps.displayName,expand.steps.id",
-        fetch: fetch,
-        cache: "force-cache",
-        headers: {
-          "Cache-Control": "max-age=600",
-        },
-      },
-    )
+  await locals.pb
+    .collection("stepsView")
+    .getFullList({
+      filter: locals.pb.filter("{:steps} ?= id", {
+        steps: track.steps,
+      }),
+    })
     .catch(handleError);
 
   return {
-    track: trackWithSteps,
+    track,
   };
 };

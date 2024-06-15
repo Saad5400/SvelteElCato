@@ -1,30 +1,13 @@
-import BaseModel from "$lib/models/BaseModel";
-import Question from "$lib/models/Question";
-import Course from "$lib/models/Course";
+import type BaseModel from "$lib/models/BaseModel";
+import type Question from "$lib/models/Question";
+import type Course from "$lib/models/Course";
 
-export default class Quiz extends BaseModel {
+export default interface Quiz extends BaseModel {
   displayName: string;
   urlName: string;
-  questions: Question[];
-  questions_ids: string[];
+  questions: string[];
   isFree: boolean;
-
-  constructor(data: any) {
-    super(data);
-    this.displayName = data.displayName;
-    this.urlName = data.urlName;
-    this.questions_ids = data.questions;
-    this.questions =
-      data.expand?.questions?.map((question: any) => new Question(question)) ||
-      [];
-    this.isFree = data.isFree;
-  }
-
-  public url(course: Course): string {
-    return course.url() + `/quizzes/${this.urlName}/${this.questions_ids[0]}`;
-  }
-
-  public questionUrl(course: Course, questionId: string): string {
-    return course.url() + `/quizzes/${this.urlName}/${questionId}`;
-  }
+  expand: {
+    questions: Question[];
+  };
 }
