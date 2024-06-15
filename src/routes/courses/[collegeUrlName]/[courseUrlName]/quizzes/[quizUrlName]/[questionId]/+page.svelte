@@ -7,31 +7,47 @@
   import * as Drawer from "$lib/components/ui/drawer";
   import Separator from "$lib/components/ui/separator/separator.svelte";
   import useVibrate from "$lib/hooks/useVibrate";
-  import { persisted } from "svelte-persisted-store";
-  import QuestionHeader from "./QuestionHeader.svelte";
   import { preloadData } from "$app/navigation";
   import { browser } from "$app/environment";
-  import { questionOptions } from "$lib/models/Question";
   import type { PageServerData } from "./$types";
+  import Flag from "virtual:icons/f7/Flag";
+  import Checkmark from "virtual:icons/f7/Checkmark";
+  import IconButton from "$lib/components/IconButton.svelte";
 
   export let data: PageServerData;
 
-  const solvedStore = persisted("solvedQuestions", [] as string[]);
-  const markedStore = persisted("markedQuestions", [] as string[]);
+  function setSolved() {
+    if (!data.user.solvedQuestions.includes(data.question.id)) {
+      data.user.solvedQuestions = [
+        ...data.user.solvedQuestions,
+        data.question.id,
+      ];
+      data.pb.collection("users").update(data.user.id, {
+        "solvedQuestions+": data.question.id,
+      });
+    }
+  }
+
+  function toggleSolved() {
+    if (data.user.solvedQuestions.includes(data.question.id)) {
+      data.user.solvedQuestions = data.user.solvedQuestions.filter(
+        (id) => id !== data.question.id,
+      );
+    } else {
+      setSolved();
+    }
+  }
 
   function correct(element: HTMLElement) {
     element.classList.add("correct");
     showExplanation = true;
     useVibrate([10, 10, 10]);
-    solvedStore.update((solved) => {
-      if (!solved.includes(data.question.id)) solved.push(data.question.id);
-      return solved;
-    });
+    setSolved();
   }
 
   function incorrect(element: HTMLElement) {
-    if (!showExplanation && !$markedStore.includes(data.question.id))
-      markQuestion();
+    // if (!showExplanation && !$markedStore.includes(data.question.id))
+    //   markQuestion();
     element.classList.add("incorrect");
     useVibrate([50, 50, 50]);
   }
@@ -42,27 +58,27 @@
   }
 
   function markQuestion() {
-    if ($markedStore.includes(data.question.id)) {
-      markedStore.update((solved) => {
-        solved.splice(solved.indexOf(data.question.id), 1);
-        return solved;
-      });
-    } else {
-      markedStore.update((solved) => {
-        solved.push(data.question.id);
-        return solved;
-      });
-    }
+    // if ($markedStore.includes(data.question.id)) {
+    //   markedStore.update((solved) => {
+    //     solved.splice(solved.indexOf(data.question.id), 1);
+    //     return solved;
+    //   });
+    // } else {
+    //   markedStore.update((solved) => {
+    //     solved.push(data.question.id);
+    //     return solved;
+    //   });
+    // }
   }
 
   let showExplanation = false;
-  let options = questionOptions(data.question);
-
   $: if ($page.url.href) {
     showExplanation = false;
-    options = questionOptions(data.question);
     if (browser && data.next) preloadData(`./${data.next}`);
   }
+
+  $: isMarked = data.user.markedQuestions.includes(data.question.id);
+  $: isSolved = data.user.solvedQuestions.includes(data.question.id);
 </script>
 
 <svelte:head>
@@ -80,16 +96,43 @@
     class="flex w-full flex-1 flex-col items-start justify-start gap-2 p-2 md:px-4 lg:px-8 xl:px-16"
     id="main"
   >
-    <QuestionHeader
-      question={data.question}
-      questionIndex={data.questionIndex}
-      totalQuestions={data.quiz.questions.length}
-      {markQuestion}
-    />
+    <div class="flex flex-row items-center gap-1" id="container">
+      <div class="flex flex-row gap-1">
+        <IconButton text="علامة">
+          <Button
+            variant="outline"
+            size="icon"
+            class="rounded-e-none border-e-0 border-foreground/50 text-foreground {isMarked &&
+              'border-destructive text-destructive hover:text-destructive'}"
+            on:click={markQuestion}
+          >
+            <Flag class={isMarked && "spin spin-active"} />
+          </Button>
+        </IconButton>
+        <IconButton text="تم الحل">
+          <Button
+            variant="outline"
+            size="icon"
+            class="rounded-s-none border-s-0 border-foreground/50 text-foreground {isSolved &&
+              'border-success text-success hover:text-success'}"
+            on:click={toggleSolved}
+          >
+            <Checkmark class={isSolved && "spin spin-active"} />
+          </Button>
+        </IconButton>
+      </div>
+      <div
+        class="flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4 {true &&
+          'border-success text-success'}} {true &&
+          '!border-destructive !text-destructive'}"
+      >
+        Question {data.questionIndex + 1}/{data.quiz.questions.length}
+      </div>
+    </div>
     <Article content={data.question.content} />
     <Separator />
     <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-      {#each options as option, index}
+      {#each data.options as option, index}
         <div class="indicator">
           {#if data.question.explanation && option.name === data.question.correct && showExplanation}
             <!-- Explain -->
@@ -128,7 +171,7 @@
     <div class="flex w-full flex-row gap-4 p-2 md:px-4 lg:px-8 xl:px-16">
       <Button
         variant="outline3D"
-        class={"choice w-full flex-1 " + (data.prev ? "" : "disabled")}
+        class="choice w-full flex-1 {data.prev || 'disabled'}"
         href={`./${data.prev}`}
         on:click={() => {
           document.documentElement.classList.add("question-back");
@@ -138,7 +181,7 @@
       </Button>
       <Button
         variant="outline3D"
-        class={"choice w-full flex-1 " + (data.next ? "" : "disabled")}
+        class="choice w-full flex-1 {data.next || 'disabled'}"
         href={`./${data.next}`}
         on:click={() => {
           document.documentElement.classList.remove("question-back");
@@ -153,5 +196,9 @@
 <style>
   #main {
     view-transition-name: question;
+  }
+
+  #container {
+    view-transition-name: question-header-container;
   }
 </style>

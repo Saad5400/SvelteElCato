@@ -29,7 +29,7 @@ export function questionOptions(question: Question): Option[] {
   if (question.d) options.push({ name: "d", content: question.d });
   if (question.e) options.push({ name: "e", content: question.e });
 
-  return options.sort(() => Math.random() - 0.5);
+  return options.sort((a, b) => Math.random() - 0.5);
 }
 
 export function questionHighlight(question: Question): Question {

@@ -38,7 +38,7 @@
               'active'}"
             on:click={() => menu.update((menu) => ({ ...menu, open: false }))}
           >
-            {index}
+            {index + 1}
           </Button>
         {/each}
       </nav>

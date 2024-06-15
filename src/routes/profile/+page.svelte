@@ -49,10 +49,6 @@
                 action="/auth/logout"
                 use:enhance={() => {
                   logoutRequested = true;
-                  return async ({ result }) => {
-                    logoutRequested = false;
-                    await applyAction(result);
-                  };
                 }}
               >
                 <Button
@@ -90,7 +86,9 @@
       <div class="flex flex-col">
         {#each data.courses as course}
           {#if !course.hidden}
-            <Card href="/courses/{course.expand.college.urlName}/{course.urlName}">
+            <Card
+              href="/courses/{course.expand.college.urlName}/{course.urlName}"
+            >
               {course.displayName}
             </Card>
           {/if}
