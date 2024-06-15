@@ -96,6 +96,7 @@
           {item.title}
         </Button>
       {/each}
+      <br />
     </nav>
   </div>
   <main class="container flex-1">
