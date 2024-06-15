@@ -9,17 +9,24 @@
   import InitLoading from "./InitLoading.svelte";
   import { ProgressBar } from "@prgm/sveltekit-progress-bar";
   import type { LayoutData } from "./$types";
+  import { onMount } from "svelte";
 
   usePageTransition();
   injectSpeedInsights();
   injectAnalytics();
 
   export let data: LayoutData;
+
+  let s;
+
+  onMount(() => {
+    s.start();
+  });
 </script>
 
 <InitLoading />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
-<ProgressBar zIndex={100} />
+<ProgressBar zIndex={50} bind:this={s} />
 <Navbar user={data.user} />
 <slot />
