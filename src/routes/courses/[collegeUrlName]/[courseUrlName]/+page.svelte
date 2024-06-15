@@ -4,6 +4,7 @@
   import Card from "$lib/components/cardsView/Card.svelte";
   import { page } from "$app/stores";
   import useClass from "$lib/hooks/useClass";
+  import { quizFirstQuestionUrl } from "$lib/models/Quiz";
 
   export let data: PageData;
 </script>
@@ -20,7 +21,7 @@
   </h1>
   {#if data.course.tracks && data.course.tracks.length > 0}
     <CardsGrid title="المسارات">
-      {#each data.course.tracks as track}
+      {#each data.course.expand.tracks as track}
         <!-- TODO: redirect to the last visited step -->
         <Card
           subtitle={track.description}
@@ -58,9 +59,9 @@
       <!--  جميع الأسئلة عشوائيا-->
       <!--</Card>-->
       <!--<Separator class="col-span-full" />-->
-      {#each data.course.quizzes as quiz}
+      {#each data.course.expand.quizzes as quiz}
         <Card
-          href={quiz.url(data.course)}
+          href={quizFirstQuestionUrl(quiz, data.course)}
           class={useClass(
             !quiz.isFree &&
               !data.user?.registeredCourses.includes(data.course.id),

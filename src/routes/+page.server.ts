@@ -1,10 +1,12 @@
 import type { PageServerLoad } from "./$types";
 import { handleError } from "$lib/models/TypedPocketBase";
+import type Post from "$lib/models/Post";
+import type Course from "$lib/models/Course";
 
 export const load: PageServerLoad = async ({ locals, fetch }) => {
   const coursesRequest = locals.pb
     .collection("courses")
-    .getList(1, 10, {
+    .getFullList({
       expand: "college",
       fetch: fetch,
       cache: "force-cache",
@@ -16,7 +18,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
 
   const postsRequest = locals.pb
     .collection("posts")
-    .getList(1, 100, {
+    .getFullList({
       expand: "tags",
       fetch: fetch,
       fields: "displayName,urlName,views,readTime",
@@ -30,7 +32,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
   const [courses, posts] = await Promise.all([coursesRequest, postsRequest]);
 
   return {
-    posts,
-    courses,
+    courses: courses,
+    posts: posts,
   };
 };

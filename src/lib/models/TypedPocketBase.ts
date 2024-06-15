@@ -1,5 +1,9 @@
 import PocketBase, {
   type ClientResponseError,
+  type ListResult,
+  type RecordFullListOptions,
+  type RecordListOptions,
+  type RecordModel,
   RecordService,
 } from "pocketbase";
 import { error } from "@sveltejs/kit";

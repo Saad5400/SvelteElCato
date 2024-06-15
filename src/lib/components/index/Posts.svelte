@@ -4,29 +4,24 @@
   import { readable } from "svelte/store";
   // @ts-ignore
   import * as Table from "$lib/components/ui/table";
-  // @ts-ignore
-  import type { PageData } from "./$types";
   import BetweenLines from "$lib/components/BetweenLines.svelte";
   import type Post from "$lib/models/Post";
   import { Button } from "$lib/components/ui/button";
   import Eye from "virtual:icons/f7/Eye";
   import { Input } from "$lib/components/ui/input";
 
-  export let posts: PageData;
+  export let posts: Post[];
 
-  const table = createTable(
-    readable(posts.sort((a: Post, b: Post) => b.views - a.views)),
-    {
-      filter: addTableFilter({
-        fn: ({ filterValue, value }) =>
-          value.toLowerCase().includes(filterValue.toLowerCase()),
-      }),
-    },
-  );
+  const table = createTable(readable(posts), {
+    filter: addTableFilter({
+      fn: ({ filterValue, value }) =>
+        value.toLowerCase().includes(filterValue.toLowerCase()),
+    }),
+  });
 
   const columns = table.createColumns([
     table.column({
-      accessor: (post) => (post as Post).displayName,
+      accessor: (post) => post.displayName,
       header: "المنشورات",
     }),
   ]);

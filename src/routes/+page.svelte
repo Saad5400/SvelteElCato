@@ -1,12 +1,12 @@
 <script lang="ts">
   import Hero from "$lib/components/index/Hero.svelte";
   import Posts from "$lib/components/index/Posts.svelte";
-  import type { PageLoad } from "./$types";
+  import type { PageServerLoad } from "./$types";
   import Card from "$lib/components/cardsView/Card.svelte";
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import { Separator } from "$lib/components/ui/separator";
 
-  export let data: PageLoad;
+  export let data: PageServerLoad;
 </script>
 
 <svelte:head>
@@ -24,8 +24,8 @@
     {#each data.courses as course}
       {#if !course.hidden}
         <Card
-          href="/courses/{course.college.urlName}/{course.urlName}"
-          subtitle={course.college.displayName}
+          href="/courses/{course.expand.college.urlName}/{course.urlName}"
+          subtitle={course.expand.college.displayName}
           description={course.description}
         >
           {course.displayName}

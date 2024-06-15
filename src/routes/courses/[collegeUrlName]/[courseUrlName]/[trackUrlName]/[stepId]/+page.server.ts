@@ -4,6 +4,7 @@ import { error, redirect } from "@sveltejs/kit";
 import { BUNNY_TOKEN } from "$env/static/private";
 import { handleError } from "$lib/models/TypedPocketBase";
 import type Step from "$lib/models/Step";
+import type { ClientResponseError } from "pocketbase";
 
 export const load: PageServerLoad = async ({
   locals,
@@ -19,7 +20,18 @@ export const load: PageServerLoad = async ({
     .getOne(params.stepId, {
       fetch,
     })
-    .catch(handleError)) as Step;
+    .catch((er: ClientResponseError) => {
+      if (er.status === 404) {
+        if (!locals.pb.authStore.isValid) {
+          redirect(302, `/auth/login?redirect=${request.url}`);
+        }
+        if (!locals.user?.registeredCourses.includes(course.id)) {
+          error(403);
+        }
+      }
+
+      handleError(er);
+    })) as Step;
 
   let returned = {
     step,

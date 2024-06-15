@@ -8,6 +8,7 @@
   import * as Sheet from "$lib/components/ui/sheet";
   import useClass from "$lib/hooks/useClass";
   import { page } from "$app/stores";
+  import { stepUrl } from "$lib/models/Step";
 
   export let data: LayoutData;
 
@@ -83,7 +84,7 @@
                 "flex w-[23rem] flex-wrap justify-start",
               ),
             )}
-            href={step.url(data.course, data.track)}
+            href={stepUrl(step, data.course, data.track)}
           >
             {step.displayName}
           </Button>
