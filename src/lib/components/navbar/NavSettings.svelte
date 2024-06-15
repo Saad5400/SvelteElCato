@@ -6,11 +6,9 @@
   import Speaker from "virtual:icons/f7/Speaker";
   import Speaker2 from "virtual:icons/f7/Speaker-2";
   import Account from "virtual:icons/line-md/Account";
-  import AccountAlertLoop from "virtual:icons/line-md/AccountAlertLoop";
   import Login from "virtual:icons/line-md/Login";
   import { persisted } from "svelte-persisted-store";
   import IconButton from "$lib/components/IconButton.svelte";
-  import { pb } from "$lib/pocketbase";
   import type { AuthModel } from "pocketbase";
 
   export let user: AuthModel;

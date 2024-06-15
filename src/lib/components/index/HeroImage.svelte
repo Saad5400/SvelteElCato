@@ -30,7 +30,6 @@
   <svg
     class="w-[40rem] lg:absolute lg:-translate-y-1/2 lg:drop-shadow-[0_0_1rem_rgba(0,0,0,1)] lg:dark:drop-shadow-[0_0_1rem_rgba(255,255,255,1)]"
     style="left: {left}; top: {top};"
-    version="1.0"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 300.000000 300.000000"
     preserveAspectRatio="xMidYMid meet"

@@ -13,8 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   event.locals.pb = pb;
-  // @ts-ignore
-  event.locals.user = pb.authStore.model;
+  event.locals.user = pb.authStore.model as User | null;
 
   const response = await resolve(event);
 

@@ -2,7 +2,6 @@
   import { Input } from "$lib/components/ui/input";
   import { Label } from "$lib/components/ui/label";
   import { Button } from "$lib/components/ui/button";
-  import { pb } from "$lib/pocketbase";
   import Eye from "virtual:icons/f7/Eye";
   import EyeSlash from "virtual:icons/f7/EyeSlash";
   import CheckmarkCircle from "virtual:icons/f7/CheckmarkCircle";
@@ -11,6 +10,9 @@
   import { fade } from "svelte/transition";
   import { applyAction, enhance } from "$app/forms";
   import { page } from "$app/stores";
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
 
   let name = "";
   let nameChanged = false;
@@ -35,11 +37,11 @@
     isEmailUsed = undefined;
     clearTimeout(emailUsedTimeout);
     emailUsedTimeout = setTimeout(async () => {
-      isEmailUsed = await pb.send("/api/users/exists", {
+      isEmailUsed = await data.pb.send("/api/users/exists", {
         method: "POST",
         body: JSON.stringify({ email: email.toLowerCase() }),
       });
-    }, 500);
+    }, 1000);
 
     return true;
   }
@@ -53,10 +55,9 @@
     method="POST"
     use:enhance={() => {
       isSubmitted = true;
-      return async ({ result }) => {
-        pb.authStore.loadFromCookie(document.cookie);
-        await applyAction(result);
-      };
+      // return async ({ result }) => {
+      //   await applyAction(result);
+      // };
     }}
   >
     <h1 id="title">تسجيل حساب جديد</h1>

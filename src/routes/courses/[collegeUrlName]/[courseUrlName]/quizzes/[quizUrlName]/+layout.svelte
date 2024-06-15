@@ -2,6 +2,7 @@
   import type { LayoutData } from "./$types";
   import { onDestroy, onMount } from "svelte";
   import menu from "$lib/stores/menu";
+  // @ts-ignore
   import * as Dialog from "$lib/components/ui/dialog";
   import { page } from "$app/stores";
   import useClass from "$lib/hooks/useClass";

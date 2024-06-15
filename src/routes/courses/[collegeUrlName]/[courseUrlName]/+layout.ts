@@ -1,10 +1,7 @@
 import type { LayoutLoad } from "./$types";
 import Course from "$lib/models/Course";
-import { handleError } from "$lib/models/TypedPocketBase";
 
 export const load: LayoutLoad = async ({ parent, params, fetch }) => {
-  const { pb } = await parent();
-
   const course = await Course.fetch(
     params.collegeUrlName,
     params.courseUrlName,

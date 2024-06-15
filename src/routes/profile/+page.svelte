@@ -5,13 +5,11 @@
   import Edit from "virtual:icons/line-md/Edit";
   import Logout from "virtual:icons/line-md/Logout";
   import Anonymous from "$lib/components/icons/Anonymous.svelte";
+  // @ts-ignore
   import * as Dialog from "$lib/components/ui/dialog";
-  import { pb } from "$lib/pocketbase";
   import { applyAction, enhance } from "$app/forms";
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
-  import user from "$lib/stores/user";
   import Card from "$lib/components/cardsView/Card.svelte";
-  import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import BetweenLines from "$lib/components/BetweenLines.svelte";
 
   export let data: PageServerData & PageData;
@@ -53,7 +51,6 @@
                   logoutRequested = true;
                   return async ({ result }) => {
                     logoutRequested = false;
-                    pb.authStore.clear();
                     await applyAction(result);
                   };
                 }}
@@ -76,10 +73,10 @@
       </div>
       <div class="flex-1" dir="ltr">
         <h3>
-          {$user?.name}
+          {data.user?.name}
         </h3>
         <h4>
-          {$user?.email}
+          {data.user?.email}
         </h4>
       </div>
       <figure class="h-20 w-20 rounded-full bg-black pt-1">

@@ -4,6 +4,7 @@
   import BetweenLines from "$lib/components/BetweenLines.svelte";
   import { onDestroy, onMount } from "svelte";
   import menu from "$lib/stores/menu";
+  // @ts-ignore
   import * as Sheet from "$lib/components/ui/sheet";
   import useClass from "$lib/hooks/useClass";
   import { page } from "$app/stores";

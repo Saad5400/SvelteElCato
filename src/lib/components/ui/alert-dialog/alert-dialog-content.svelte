@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from "bits-ui";
+	// @ts-ignore
 	import * as AlertDialog from "./index.js";
 	import { cn, flyAndScale } from "$lib/utils.js";
 

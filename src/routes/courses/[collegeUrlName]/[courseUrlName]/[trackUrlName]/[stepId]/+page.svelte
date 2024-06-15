@@ -1,13 +1,11 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { Button } from "$lib/components/ui/button";
-  import { onDestroy, onMount } from "svelte";
+  import { onDestroy } from "svelte";
   import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import Article from "$lib/components/Article.svelte";
   import useHighlight from "$lib/hooks/useHighlight";
-  import { persisted } from "svelte-persisted-store";
-  import AppBlockingOutlineSharp from "virtual:icons/material-symbols-light/AppBlockingOutlineSharp";
 
   export let data: PageData;
 

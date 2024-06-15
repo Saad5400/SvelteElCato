@@ -17,13 +17,6 @@ export default class BaseModel {
     this.expand = data.expand || null;
   }
 
-  public static toClass<T extends BaseModel>(
-    this: new (...args: any[]) => T,
-    obj: RecordModel,
-  ): T {
-    return new this(obj);
-  }
-
   public static toClassList<T extends BaseModel>(
     this: new (...args: any[]) => T,
     obj: ListResult<any>,

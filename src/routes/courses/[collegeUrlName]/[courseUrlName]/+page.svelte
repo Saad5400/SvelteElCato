@@ -4,8 +4,6 @@
   import Card from "$lib/components/cardsView/Card.svelte";
   import { page } from "$app/stores";
   import useClass from "$lib/hooks/useClass";
-  import { Separator } from "$lib/components/ui/separator";
-  import user from "$lib/stores/user";
 
   export let data: PageData;
 </script>

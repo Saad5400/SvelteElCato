@@ -1,12 +1,9 @@
 import type { PageLoad } from "./$types";
 import Question from "$lib/models/Question";
 import { error, redirect } from "@sveltejs/kit";
-import { get } from "svelte/store";
-import user from "$lib/stores/user";
-import { pb } from "$lib/pocketbase";
 
 export const load: PageLoad = async ({ parent, params, fetch, url, data }) => {
-  const { user, course, quiz } = await parent();
+  const { course, quiz } = await parent();
 
   const questionIndex = quiz.questions_ids.indexOf(params.questionId);
   const next =

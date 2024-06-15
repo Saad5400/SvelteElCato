@@ -2,15 +2,16 @@
   import { Input } from "$lib/components/ui/input";
   import { Label } from "$lib/components/ui/label";
   import { Button } from "$lib/components/ui/button";
-  import { pb } from "$lib/pocketbase";
   import Eye from "virtual:icons/f7/Eye";
   import EyeSlash from "virtual:icons/f7/EyeSlash";
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import { fade } from "svelte/transition";
   import { applyAction, enhance } from "$app/forms";
   import { toast } from "svelte-sonner";
-  import useClass from "$lib/hooks/useClass";
   import { page } from "$app/stores";
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
 
   let email = "";
   let emailChanged = false;
@@ -33,7 +34,6 @@
       isSubmitted = true;
       return async ({ result }) => {
         if (result.status && result.status >= 200 && result.status <= 399) {
-          pb.authStore.loadFromCookie(document.cookie);
           await applyAction(result);
         } else if (result.status && result.status === 401) {
           toast.error("البريد الإلكتروني أو كلمة المرور غير صحيحة");
@@ -118,7 +118,7 @@
             variant="link"
             disabled={!validEmail}
             on:click={async () => {
-              await pb.collection("users").requestPasswordReset(email);
+              await data.pb.collection("users").requestPasswordReset(email);
               toast.success("تم إرسال رابط إعادة ضبط كلمة المرور إلى بريدك");
             }}
           >
@@ -127,7 +127,11 @@
         </small>
         <small class="flex justify-between">
           ما عندك حساب؟
-          <Button class="h-fit p-0" variant="link" href={`/auth/register/${$page.url.search}`}>
+          <Button
+            class="h-fit p-0"
+            variant="link"
+            href={`/auth/register/${$page.url.search}`}
+          >
             تسجيل حساب جديد
           </Button>
         </small>

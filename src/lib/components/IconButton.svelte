@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-ignore
   import * as HoverCard from "$lib/components/ui/hover-card";
 
   export let text: string;

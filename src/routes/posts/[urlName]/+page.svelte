@@ -9,6 +9,7 @@
   import Article from "$lib/components/Article.svelte";
   import menu from "$lib/stores/menu";
   import { Button } from "$lib/components/ui/button";
+  // @ts-ignore
   import * as Sheet from "$lib/components/ui/sheet";
 
   export let data: PageData;
@@ -23,7 +24,7 @@
 
   onMount(() => {
     if (data.navItems.length > 0) {
-      menu.set({ open: false });
+      menu.set({ open: false, class: "lg:hidden" });
     }
 
     if (location && location.hash) {
@@ -53,7 +54,9 @@
 <Sheet.Root
   open={$menu?.open}
   onOpenChange={(e) => {
-    menu.set({ open: e });
+    menu.update((state) => {
+      return { ...state, open: e };
+    });
   }}
 >
   <Sheet.Content class="flex flex-col items-center gap-2 overflow-y-auto">
@@ -62,7 +65,9 @@
       <Button
         href={item.href}
         on:click={() => {
-          menu.set({ open: false });
+          menu.update((state) => {
+            return { ...state, open: false };
+          });
         }}
         class="flex w-full flex-wrap justify-start"
       >
@@ -72,7 +77,7 @@
   </Sheet.Content>
 </Sheet.Root>
 <div class="flex flex-row">
-  <div class="hidden min-w-[25rem] pe-4 md:block">
+  <div class="hidden min-w-[25rem] pe-4 lg:block">
     <nav
       class="fixed flex max-h-[calc(100dvh-5rem)] w-[25rem] flex-col items-center gap-2 overflow-y-auto overflow-x-clip border-e-2"
     >
@@ -117,6 +122,9 @@
       </small>
     </div>
     <br />
-    <Article content={data.post.content} class="overflow-x-clip" />
+    <Article
+      content={data.post.content}
+      class="overflow-x-clip lg:[&>*]:max-w-[calc(100dvw-30rem)]"
+    />
   </main>
 </div>

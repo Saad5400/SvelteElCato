@@ -7,14 +7,14 @@ import slugify from "@sindresorhus/slugify";
 export const load: PageLoad = async ({ parent, params, fetch }) => {
   const { pb } = await parent();
 
-  const post = Post.toClass(
+  const post = new Post(
     await pb
       .collection("posts")
       .getFirstListItem(
         pb.filter("urlName = {:urlName}", { urlName: params.urlName }),
         {
           expand: "tags",
-          fetch: async (url, config) => fetch(url, config),
+          fetch: fetch,
           cache: "force-cache",
           headers: {
             "Cache-Control": "max-age=600",

@@ -1,9 +1,9 @@
 import type { LayoutLoad } from "./$types";
-import { pb } from "$lib/pocketbase";
+import PocketBase from "pocketbase";
 
-export const load: LayoutLoad = ({ data }) => {
+export const load: LayoutLoad = async ({ data }) => {
   return {
-    pb,
+    pb: new PocketBase(data.pb.baseUrl, data.pb.authStore, data.pb.lang),
     user: data.user,
   };
 };

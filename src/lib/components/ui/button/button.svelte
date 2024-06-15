@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-ignore
   import { Button as ButtonPrimitive } from "bits-ui";
   import { cn } from "$lib/utils";
   import { buttonVariants, type Props, type Events } from ".";
