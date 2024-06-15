@@ -43,5 +43,5 @@
   >
     العودة إلى الصفحة الرئيسية
   </Button>
-  <p dir="ltr">{message}</p>
+  <p dir="ltr" class="max-w-[min(40rem,95dvw)] break-all">{message}</p>
 </div>
