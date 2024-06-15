@@ -32,7 +32,7 @@
     <h3 class="mb-2">
       {data.track.displayName}
     </h3>
-    {#each data.track.steps as step}
+    {#each data.track.expand.steps as step}
       {@const active = $page.params.stepId === step.id}
       {@const hasAccess =
         !step.isFree && !data.user?.registeredCourses.includes(data.course.id)}
@@ -42,7 +42,7 @@
         </BetweenLines>
       {:else}
         <Button
-          href={step.url(data.course, data.track)}
+          href={stepUrl(step, data.course, data.track)}
           on:click={() => {
             menu.set({ open: false });
           }}
@@ -56,7 +56,7 @@
   </Sheet.Content>
 </Sheet.Root>
 <div class="flex flex-row">
-  <div class="hidden min-w-[25rem] pe-4 md:block">
+  <div class="hidden min-w-[25rem] pe-4 lg:block">
     <nav
       class="fixed flex max-h-[calc(100dvh-5rem)] w-[25rem] flex-col items-center gap-2 overflow-y-auto overflow-x-clip border-e-2"
     >

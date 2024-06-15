@@ -16,7 +16,7 @@
 </script>
 
 {#if $menu}
-  <div class={$menu?.class ? $menu.class : "md:hidden"}>
+  <div class={$menu?.class ? $menu.class : "lg:hidden"}>
     <IconButton text="القائمة">
       <Button size="icon" variant="ghost" on:click={openMenu}>
         <Menu />
