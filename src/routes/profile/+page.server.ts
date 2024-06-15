@@ -15,6 +15,10 @@ export const load: PageServerLoad = async ({ locals }) => {
         registeredCourses: locals.user?.registeredCourses,
       }),
       expand: "college",
+      cache: "force-cache",
+      headers: {
+        "Cache-Control": "max-age=600",
+      },
     })
     .catch(handleError);
 
