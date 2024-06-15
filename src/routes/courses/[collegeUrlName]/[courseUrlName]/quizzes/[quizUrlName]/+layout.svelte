@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { LayoutData } from "./$types";
+  import type { LayoutServerData } from "./$types";
   import { onDestroy, onMount } from "svelte";
   import menu from "$lib/stores/menu";
   // @ts-ignore
@@ -8,7 +8,7 @@
   import { Button } from "$lib/components/ui/button";
   import { questionUrl } from "$lib/models/Question";
 
-  export let data: LayoutData;
+  export let data: LayoutServerData;
 
   onMount(() => {
     if (data.quiz.questions.length > 0) {
