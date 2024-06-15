@@ -3,7 +3,7 @@ import { handleError } from "$lib/models/TypedPocketBase";
 import type Course from "$lib/models/Course";
 
 export const load: LayoutServerLoad = async ({ locals, params }) => {
-  const course = await locals.pb
+  const course = (await locals.pb
     .collection("courses")
     .getFirstListItem(
       locals.pb.filter(
@@ -21,9 +21,9 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
         },
       },
     )
-    .catch(handleError);
+    .catch(handleError)) as Course;
 
   return {
-    course: course!,
+    course,
   };
 };

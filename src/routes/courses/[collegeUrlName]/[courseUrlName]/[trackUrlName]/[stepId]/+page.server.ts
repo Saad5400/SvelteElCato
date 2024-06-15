@@ -58,7 +58,5 @@ export const load: PageServerLoad = async ({
     returned.hash = hash;
   }
 
-  console.log(returned.step);
-
   return returned;
 };

@@ -18,3 +18,7 @@ export default interface Course extends BaseModel {
     quizzes: Quiz[];
   };
 }
+
+export function courseUrl(course: Course): string {
+  return `/courses/${course.expand.college.urlName}/${course.urlName}`;
+}

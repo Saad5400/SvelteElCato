@@ -3,8 +3,9 @@
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import Card from "$lib/components/cardsView/Card.svelte";
   import { page } from "$app/stores";
-  import useClass from "$lib/hooks/useClass";
   import { quizFirstQuestionUrl } from "$lib/models/Quiz";
+  import { courseUrl } from "$lib/models/Course";
+  import { Separator } from "$lib/components/ui/separator";
 
   export let data: PageData;
 </script>
@@ -22,16 +23,14 @@
   {#if data.course.tracks && data.course.tracks.length > 0}
     <CardsGrid title="المسارات">
       {#each data.course.expand.tracks as track}
+        {@const hasAccess =
+          !track.hasFree &&
+          !data.user?.registeredCourses.includes(data.course.id)}
         <!-- TODO: redirect to the last visited step -->
         <Card
           subtitle={track.description}
           href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
-          class={useClass(
-            !track.hasFree &&
-              !data.user?.registeredCourses.includes(data.course.id),
-            "disabled",
-            "h-auto",
-          )}
+          class="h-auto {hasAccess && 'disabled'}"
         >
           {track.displayName}
         </Card>
@@ -48,26 +47,20 @@
       <!--    الأسئلة المُعلمه-->
       <!--  </Card>-->
       <!--{/if}-->
-      <!--<Card-->
-      <!--  href={`${data.course.url()}/quizzes/random`}-->
-      <!--  class={useClass(-->
-      <!--    data.questions.every((id) => $solvedStore.includes(id)),-->
-      <!--    "correct",-->
-      <!--    "col-span-full h-fit",-->
-      <!--  )}-->
-      <!--&gt;-->
-      <!--  جميع الأسئلة عشوائيا-->
-      <!--</Card>-->
-      <!--<Separator class="col-span-full" />-->
+      <Card
+        href={`${courseUrl(data.course)}/quizzes/random`}
+        class="col-span-full h-fit"
+      >
+        جميع الأسئلة عشوائيا
+      </Card>
+      <Separator class="col-span-full" />
       {#each data.course.expand.quizzes as quiz}
+        {@const hasAccess =
+          !quiz.isFree &&
+          !data.user?.registeredCourses.includes(data.course.id)}
         <Card
           href={quizFirstQuestionUrl(quiz, data.course)}
-          class={useClass(
-            !quiz.isFree &&
-              !data.user?.registeredCourses.includes(data.course.id),
-            "disabled",
-            "h-auto",
-          )}
+          class="h-auto {hasAccess && 'disabled'}"
         >
           {quiz.displayName}
         </Card>

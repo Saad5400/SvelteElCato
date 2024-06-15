@@ -5,7 +5,6 @@
   // @ts-ignore
   import * as Dialog from "$lib/components/ui/dialog";
   import { page } from "$app/stores";
-  import useClass from "$lib/hooks/useClass";
   import { Button } from "$lib/components/ui/button";
   import { questionUrl } from "$lib/models/Question";
 
@@ -35,11 +34,8 @@
           {@const active = $page.params.questionId === question}
           <Button
             href={questionUrl(question, data.quiz, data.course)}
-            class={useClass(
-              active,
-              "active",
-              "flex h-12 w-12 items-center justify-center text-sm font-medium",
-            )}
+            class="flex h-12 w-12 items-center justify-center text-sm font-medium {active &&
+              'active'}"
             on:click={() => menu.update((menu) => ({ ...menu, open: false }))}
           >
             {index}

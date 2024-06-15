@@ -6,7 +6,6 @@
   import menu from "$lib/stores/menu";
   // @ts-ignore
   import * as Sheet from "$lib/components/ui/sheet";
-  import useClass from "$lib/hooks/useClass";
   import { page } from "$app/stores";
   import { stepUrl } from "$lib/models/Step";
 
@@ -34,6 +33,9 @@
       {data.track.displayName}
     </h3>
     {#each data.track.steps as step}
+      {@const active = $page.params.stepId === step.id}
+      {@const hasAccess =
+        !step.isFree && !data.user?.registeredCourses.includes(data.course.id)}
       {#if step.type === "section"}
         <BetweenLines class="mx-2 text-lg">
           {step.displayName}
@@ -44,16 +46,8 @@
           on:click={() => {
             menu.set({ open: false });
           }}
-          class={useClass(
-            $page.params.stepId === step.id,
-            "active",
-            useClass(
-              !step.isFree &&
-                !data.user?.registeredCourses.includes(data.course.id),
-              "disabled",
-              "flex w-full flex-wrap justify-start",
-            ),
-          )}
+          class="flex w-full flex-wrap justify-start {hasAccess &&
+            'disabled'} {active && 'active'}"
         >
           {step.displayName}
         </Button>
@@ -68,22 +62,19 @@
     >
       <h3 class="mb-2">{data.track.displayName}</h3>
       {#each data.track.expand.steps as step}
+        {@const active = $page.params.stepId === step.id}
+        {@const hasAccess =
+          !step.isFree &&
+          !data.user?.registeredCourses.includes(data.course.id)}
         {#if step.type === "section"}
           <BetweenLines class="mx-2 text-lg">
             {step.displayName}
           </BetweenLines>
         {:else}
           <Button
-            class={useClass(
-              $page.params.stepId === step.id,
-              "active",
-              useClass(
-                !step.isFree &&
-                  !data.user?.registeredCourses.includes(data.course.id),
-                "disabled",
-                "flex w-[23rem] flex-wrap justify-start",
-              ),
-            )}
+            class="flex w-[23rem] flex-wrap justify-start {hasAccess &&
+              'disabled'} {active && 'active'}
+          "
             href={stepUrl(step, data.course, data.track)}
           >
             {step.displayName}
