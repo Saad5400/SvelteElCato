@@ -7,12 +7,13 @@
   import { page } from "$app/stores";
   import useClass from "$lib/hooks/useClass";
   import { Button } from "$lib/components/ui/button";
+  import { questionUrl } from "$lib/models/Question";
 
   export let data: LayoutData;
 
   onMount(() => {
-    if (data.quiz.questions_ids.length > 0) {
-      menu.set({ open: false, alwaysShow: true });
+    if (data.quiz.questions.length > 0) {
+      menu.set({ open: false, class: "block" });
     }
   });
 
@@ -30,10 +31,10 @@
       <nav
         class="mx-auto grid max-h-[20rem] w-fit grid-cols-5 gap-2 overflow-y-auto"
       >
-        {#each data.quiz.questions_ids as question, index}
+        {#each data.quiz.questions as question, index}
           {@const active = $page.params.questionId === question}
           <Button
-            href={data.quiz.questionUrl(data.course, question)}
+            href={questionUrl(question, data.quiz, data.course)}
             class={useClass(
               active,
               "active",

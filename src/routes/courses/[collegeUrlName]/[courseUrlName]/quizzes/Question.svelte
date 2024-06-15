@@ -10,6 +10,7 @@
   import QuestionHeader from "./QuestionHeader.svelte";
   import { preloadData } from "$app/navigation";
   import { browser } from "$app/environment";
+  import { questionOptions } from "$lib/models/Question";
   import type Question from "$lib/models/Question";
 
   export let question: Question;
@@ -59,11 +60,11 @@
   }
 
   let showExplanation = false;
-  let options = question.options();
+  let options = questionOptions(question);
 
   $: if ($page.url.href) {
     showExplanation = false;
-    options = question.options();
+    options = questionOptions(question);
     if (browser && next) preloadData(`./${next}`);
   }
 </script>

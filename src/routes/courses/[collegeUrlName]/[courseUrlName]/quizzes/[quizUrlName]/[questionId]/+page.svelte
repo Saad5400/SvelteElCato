@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
+  import type { PageServerData } from "./$types";
   import Question from "../../Question.svelte";
 
-  export let data: PageData;
+  export let data: PageServerData;
 </script>
 
 <Question
@@ -12,5 +12,5 @@
   courseDisplayName={data.course.displayName}
   quizDisplayName={data.quiz.displayName}
   questionIndex={data.questionIndex}
-  totalQuestions={data.quiz.questions_ids.length}
+  totalQuestions={data.quiz.questions.length}
 />
