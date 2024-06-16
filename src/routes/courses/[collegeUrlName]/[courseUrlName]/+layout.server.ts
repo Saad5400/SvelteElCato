@@ -15,7 +15,8 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
         },
       ),
       {
-        expand: "college,tracks,quizzes",
+        expand: "college,quizzes,tracks,tracks.steps",
+        fields: "*,expand.*,expand.tracks.*,expand.tracks.expand.steps.isFree",
         cache: "force-cache",
         headers: {
           "Cache-Control": "max-age=600",
@@ -24,8 +25,10 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
     )
     .catch(handleError)) as Course;
 
+  console.log(course.expand.tracks[0].expand.steps[0]);
 
-  const allQuestions = course.expand.quizzes.flatMap((q: Quiz) => {
+
+  const allQuestions = course.expand?.quizzes?.flatMap((q: Quiz) => {
     if (
       q.isFree ||
       (locals.user && locals.user.registeredCourses.includes(course.id))

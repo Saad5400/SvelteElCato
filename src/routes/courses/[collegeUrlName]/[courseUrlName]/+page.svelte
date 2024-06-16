@@ -24,13 +24,13 @@
     <CardsGrid title="المسارات">
       {#each data.course.expand.tracks as track}
         {@const hasAccess =
-          !track.hasFree &&
-          !data.user?.registeredCourses.includes(data.course.id)}
+          track.expand?.steps.some((step) => step.isFree) ||
+          data.user?.registeredCourses.includes(data.course.id)}
         <!-- TODO: redirect to the last visited step -->
         <Card
           subtitle={track.description}
           href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
-          class="h-auto {hasAccess && 'disabled'}"
+          class="h-auto {hasAccess || 'disabled'}"
         >
           {track.displayName}
         </Card>
