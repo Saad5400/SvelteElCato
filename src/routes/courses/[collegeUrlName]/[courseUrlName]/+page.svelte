@@ -6,6 +6,8 @@
   import { quizFirstQuestionUrl } from "$lib/models/Quiz";
   import { courseUrl } from "$lib/models/Course";
   import { Separator } from "$lib/components/ui/separator";
+  import solvedStore from "$lib/stores/solvedStore";
+  import markedStore from "$lib/stores/markedStore";
 
   export let data: PageData;
 </script>
@@ -49,19 +51,26 @@
       <!--{/if}-->
       <Card
         href={`${courseUrl(data.course)}/quizzes/random`}
-        class="col-span-full h-fit {data.allQuestions.length === 0 &&
-          'disabled'}"
+        class="col-span-full h-fit {data.allQuestions.every((question) =>
+          $solvedStore.includes(question),
+        ) && 'correct'} {data.allQuestions.length === 0 && 'disabled'}"
       >
         جميع الأسئلة عشوائيا
       </Card>
       <Separator class="col-span-full" />
       {#each data.course.expand.quizzes as quiz}
         {@const hasAccess =
-          !quiz.isFree &&
-          !data.user?.registeredCourses.includes(data.course.id)}
+          quiz.isFree || data.user?.registeredCourses.includes(data.course.id)}
+        {@const allSolved = quiz.questions.every((question) =>
+          $solvedStore.includes(question),
+        )}
+        {@const anyMarked = quiz.questions.some((question) =>
+          $markedStore.includes(question),
+        )}
         <Card
           href={quizFirstQuestionUrl(quiz, data.course)}
-          class="h-auto {hasAccess && 'disabled'}"
+          class="h-auto {hasAccess || 'disabled'} {allSolved &&
+            'correct'} {anyMarked && 'marked'}"
         >
           {quiz.displayName}
         </Card>
