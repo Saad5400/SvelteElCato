@@ -13,15 +13,14 @@
   import Flag from "virtual:icons/f7/Flag";
   import Checkmark from "virtual:icons/f7/Checkmark";
   import IconButton from "$lib/components/IconButton.svelte";
+  import solvedStore from "$lib/stores/solvedStore";
+  import markedStore from "$lib/stores/markedStore";
 
   export let data: PageServerData & PageData;
 
-  let solvedQuestions = data.user?.solvedQuestions || [];
-  let markedQuestions = data.user?.markedQuestions || [];
-
   function setSolved() {
-    if (!solvedQuestions.includes(data.question.id)) {
-      solvedQuestions = [...solvedQuestions, data.question.id];
+    if (!$solvedStore.includes(data.question.id)) {
+      solvedStore.update((e) => [...e, data.question.id]);
       data.pb.collection("users").update(data.user!.id, {
         "solvedQuestions+": data.question.id,
       });
@@ -29,9 +28,9 @@
   }
 
   function setUnsolved() {
-    if (solvedQuestions.includes(data.question.id)) {
-      solvedQuestions = solvedQuestions.filter(
-        (id: string) => id !== data.question.id,
+    if ($solvedStore.includes(data.question.id)) {
+      solvedStore.update((e) =>
+        e.filter((id: string) => id !== data.question.id),
       );
       data.pb.collection("users").update(data.user!.id, {
         "solvedQuestions-": data.question.id,
@@ -40,7 +39,7 @@
   }
 
   function toggleSolved() {
-    if (solvedQuestions.includes(data.question.id)) {
+    if ($solvedStore.includes(data.question.id)) {
       setUnsolved();
     } else {
       setSolved();
@@ -55,7 +54,7 @@
   }
 
   function incorrect(element: HTMLElement) {
-    if (!showExplanation && !markedQuestions.includes(data.question.id))
+    if (!showExplanation && !$markedStore.includes(data.question.id))
       markQuestion();
     element.classList.add("incorrect");
     useVibrate([50, 50, 50]);
@@ -67,8 +66,8 @@
   }
 
   function markQuestion() {
-    if (!markedQuestions.includes(data.question.id)) {
-      markedQuestions = [...markedQuestions, data.question.id];
+    if (!$markedStore.includes(data.question.id)) {
+      markedStore.update((e) => [...e, data.question.id]);
       data.pb.collection("users").update(data.user!.id, {
         "markedQuestions+": data.question.id,
       });
@@ -76,9 +75,9 @@
   }
 
   function unmarkQuestion() {
-    if (markedQuestions.includes(data.question.id)) {
-      markedQuestions = markedQuestions.filter(
-        (id: string) => id !== data.question.id,
+    if ($markedStore.includes(data.question.id)) {
+      markedStore.update((e) =>
+        e.filter((id: string) => id !== data.question.id),
       );
       data.pb.collection("users").update(data.user!.id, {
         "markedQuestions-": data.question.id,
@@ -87,7 +86,7 @@
   }
 
   function toggleMarked() {
-    if (markedQuestions.includes(data.question.id)) {
+    if ($markedStore.includes(data.question.id)) {
       unmarkQuestion();
     } else {
       markQuestion();
@@ -100,8 +99,8 @@
     if (browser && data.next) preloadData(`./${data.next}`);
   }
 
-  $: isMarked = markedQuestions.includes(data.question.id);
-  $: isSolved = solvedQuestions.includes(data.question.id);
+  $: isSolved = $solvedStore.includes(data.question.id);
+  $: isMarked = $markedStore.includes(data.question.id);
 </script>
 
 <svelte:head>
@@ -147,8 +146,8 @@
         </IconButton>
       </div>
       <div
-        class="flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4 {true &&
-          'border-success text-success'}} {true &&
+        class="flex h-full flex-col justify-center rounded-md rounded-s-none border border-s-0 border-foreground/50 px-4 {isSolved &&
+          'border-success text-success'} {isMarked &&
           '!border-destructive !text-destructive'}"
       >
         Question {data.questionIndex + 1}/{data.quiz.questions.length}

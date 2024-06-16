@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { LayoutServerData } from "./$types";
+  import type { LayoutData, LayoutServerData } from "./$types";
   import { onDestroy, onMount } from "svelte";
   import menu from "$lib/stores/menu";
   // @ts-ignore
@@ -7,8 +7,10 @@
   import { page } from "$app/stores";
   import { Button } from "$lib/components/ui/button";
   import { questionUrl } from "$lib/models/Question";
+  import solvedStore from "$lib/stores/solvedStore";
+  import markedStore from "$lib/stores/markedStore";
 
-  export let data: LayoutServerData;
+  export let data: LayoutServerData & LayoutData;
 
   onMount(() => {
     if (data.quiz.questions.length > 0) {
@@ -35,7 +37,8 @@
           <Button
             href={questionUrl(question, data.quiz, data.course)}
             class="flex h-12 w-12 items-center justify-center text-sm font-medium {active &&
-              'active'}"
+              'active'} {$solvedStore.includes(question) &&
+              'correct'} {$markedStore.includes(question) && 'marked'}"
             on:click={() => menu.update((menu) => ({ ...menu, open: false }))}
           >
             {index + 1}
