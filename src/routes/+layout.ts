@@ -3,12 +3,14 @@ import PocketBase from "pocketbase";
 import type TypedPocketBase from "$lib/models/TypedPocketBase";
 
 export const load: LayoutLoad = async ({ data }) => {
+  const pb = new PocketBase(
+    data.pb.baseUrl,
+  ) as TypedPocketBase;
+
+  pb.authStore.loadFromCookie(data.cookies || "");
+
   return {
-    pb: new PocketBase(
-      data.pb.baseUrl,
-      data.pb.authStore,
-      data.pb.lang,
-    ) as TypedPocketBase,
+    pb,
     user: data.user,
   };
 };
