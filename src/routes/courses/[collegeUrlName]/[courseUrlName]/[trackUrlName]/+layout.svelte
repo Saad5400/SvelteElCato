@@ -35,9 +35,9 @@
   </Sheet.Content>
 </Sheet.Root>
 <div class="flex flex-row">
-  <div class="hidden min-w-[{largeWidth}] pe-4 lg:block">
+  <div class="hidden min-w-[30rem] pe-4 lg:block">
     <nav
-      class="fixed flex max-h-[calc(100dvh-5rem)] w-[{largeWidth}] flex-col items-center gap-2 overflow-y-auto overflow-x-clip border-e-2"
+      class="fixed flex max-h-[calc(100dvh-5rem)] w-[30rem] flex-col items-center gap-2 overflow-y-auto overflow-x-clip border-e-2"
     >
       <TrackStepsMenu {data} class="flex w-[27rem] flex-wrap justify-start" />
       <br />
