@@ -25,9 +25,6 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
     )
     .catch(handleError)) as Course;
 
-  console.log(course.expand.tracks[0].expand.steps[0]);
-
-
   const allQuestions = course.expand?.quizzes?.flatMap((q: Quiz) => {
     if (
       q.isFree ||
