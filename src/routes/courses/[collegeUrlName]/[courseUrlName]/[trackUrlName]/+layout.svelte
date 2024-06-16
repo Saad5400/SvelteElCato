@@ -28,9 +28,6 @@
   }}
 >
   <Sheet.Content class="flex flex-col items-center gap-2 overflow-y-auto">
-    <h3 class="mb-2">
-      {data.track.displayName}
-    </h3>
     <TrackStepsMenu {data} class="flex w-full flex-wrap justify-start" />
   </Sheet.Content>
 </Sheet.Root>
