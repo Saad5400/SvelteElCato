@@ -5,6 +5,7 @@ import type Question from "$lib/models/Question";
 import type Quiz from "$lib/models/Quiz";
 import { handleError } from "$lib/models/TypedPocketBase";
 import type { ClientResponseError } from "pocketbase";
+import type User from "$lib/models/User";
 
 export const load: PageServerLoad = async ({
   parent,

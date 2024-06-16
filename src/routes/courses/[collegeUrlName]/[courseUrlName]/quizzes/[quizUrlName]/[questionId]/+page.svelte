@@ -9,30 +9,39 @@
   import useVibrate from "$lib/hooks/useVibrate";
   import { preloadData } from "$app/navigation";
   import { browser } from "$app/environment";
-  import type { PageServerData } from "./$types";
+  import type { PageServerData, PageData } from "./$types";
   import Flag from "virtual:icons/f7/Flag";
   import Checkmark from "virtual:icons/f7/Checkmark";
   import IconButton from "$lib/components/IconButton.svelte";
 
-  export let data: PageServerData;
+  export let data: PageServerData & PageData;
+
+  let solvedQuestions = data.user?.solvedQuestions || [];
+  let markedQuestions = data.user?.markedQuestions || [];
 
   function setSolved() {
-    if (!data.user.solvedQuestions.includes(data.question.id)) {
-      data.user.solvedQuestions = [
-        ...data.user.solvedQuestions,
-        data.question.id,
-      ];
-      data.pb.collection("users").update(data.user.id, {
+    if (!solvedQuestions.includes(data.question.id)) {
+      solvedQuestions = [...solvedQuestions, data.question.id];
+      data.pb.collection("users").update(data.user!.id, {
         "solvedQuestions+": data.question.id,
       });
     }
   }
 
-  function toggleSolved() {
-    if (data.user.solvedQuestions.includes(data.question.id)) {
-      data.user.solvedQuestions = data.user.solvedQuestions.filter(
-        (id) => id !== data.question.id,
+  function setUnsolved() {
+    if (solvedQuestions.includes(data.question.id)) {
+      solvedQuestions = solvedQuestions.filter(
+        (id: string) => id !== data.question.id,
       );
+      data.pb.collection("users").update(data.user!.id, {
+        "solvedQuestions-": data.question.id,
+      });
+    }
+  }
+
+  function toggleSolved() {
+    if (solvedQuestions.includes(data.question.id)) {
+      setUnsolved();
     } else {
       setSolved();
     }
@@ -46,8 +55,8 @@
   }
 
   function incorrect(element: HTMLElement) {
-    // if (!showExplanation && !$markedStore.includes(data.question.id))
-    //   markQuestion();
+    if (!showExplanation && !markedQuestions.includes(data.question.id))
+      markQuestion();
     element.classList.add("incorrect");
     useVibrate([50, 50, 50]);
   }
@@ -58,17 +67,31 @@
   }
 
   function markQuestion() {
-    // if ($markedStore.includes(data.question.id)) {
-    //   markedStore.update((solved) => {
-    //     solved.splice(solved.indexOf(data.question.id), 1);
-    //     return solved;
-    //   });
-    // } else {
-    //   markedStore.update((solved) => {
-    //     solved.push(data.question.id);
-    //     return solved;
-    //   });
-    // }
+    if (!markedQuestions.includes(data.question.id)) {
+      markedQuestions = [...markedQuestions, data.question.id];
+      data.pb.collection("users").update(data.user!.id, {
+        "markedQuestions+": data.question.id,
+      });
+    }
+  }
+
+  function unmarkQuestion() {
+    if (markedQuestions.includes(data.question.id)) {
+      markedQuestions = markedQuestions.filter(
+        (id: string) => id !== data.question.id,
+      );
+      data.pb.collection("users").update(data.user!.id, {
+        "markedQuestions-": data.question.id,
+      });
+    }
+  }
+
+  function toggleMarked() {
+    if (markedQuestions.includes(data.question.id)) {
+      unmarkQuestion();
+    } else {
+      markQuestion();
+    }
   }
 
   let showExplanation = false;
@@ -77,8 +100,8 @@
     if (browser && data.next) preloadData(`./${data.next}`);
   }
 
-  $: isMarked = data.user.markedQuestions.includes(data.question.id);
-  $: isSolved = data.user.solvedQuestions.includes(data.question.id);
+  $: isMarked = markedQuestions.includes(data.question.id);
+  $: isSolved = solvedQuestions.includes(data.question.id);
 </script>
 
 <svelte:head>
@@ -98,23 +121,25 @@
   >
     <div class="flex flex-row items-center gap-1" id="container">
       <div class="flex flex-row gap-1">
-        <IconButton text="علامة">
+        <IconButton text="علامة {!data.user ? '(يتطلب تسجيل الدخول)' : ''}">
           <Button
             variant="outline"
             size="icon"
             class="rounded-e-none border-e-0 border-foreground/50 text-foreground {isMarked &&
               'border-destructive text-destructive hover:text-destructive'}"
-            on:click={markQuestion}
+            disabled={!data.user}
+            on:click={toggleMarked}
           >
             <Flag class={isMarked && "spin spin-active"} />
           </Button>
         </IconButton>
-        <IconButton text="تم الحل">
+        <IconButton text="تم الحل {!data.user ? '(يتطلب تسجيل الدخول)' : ''}">
           <Button
             variant="outline"
             size="icon"
             class="rounded-s-none border-s-0 border-foreground/50 text-foreground {isSolved &&
               'border-success text-success hover:text-success'}"
+            disabled={!data.user}
             on:click={toggleSolved}
           >
             <Checkmark class={isSolved && "spin spin-active"} />
