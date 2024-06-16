@@ -1,8 +1,10 @@
+import { pushState } from "$app/navigation";
+
 const useScrollTo = (query: string, arg?: ScrollIntoViewOptions) => {
   document
     .querySelector(query)
     ?.scrollIntoView({ behavior: "smooth", block: "start", ...arg });
-  window.history.pushState(null, "", query);
+  pushState(query, {});
 };
 
 export default useScrollTo;
