@@ -15,14 +15,14 @@
 {#each data.track.expand.steps as step}
   {@const active = $page.params.stepId === step.id}
   {@const hasAccess =
-    !step.isFree && !data.user?.registeredCourses.includes(data.course.id)}
+    step.isFree || data.user?.registeredCourses.includes(data.course.id)}
   {#if step.type === "section"}
     <BetweenLines class="mx-2 text-lg">
       {step.displayName}
     </BetweenLines>
   {:else}
     <Button
-      class="{className} {hasAccess && 'disabled'} {active && 'active'}
+      class="{className} {hasAccess || 'disabled'} {active && 'active'}
           "
       href={stepUrl(step, data.course, data.track)}
     >
