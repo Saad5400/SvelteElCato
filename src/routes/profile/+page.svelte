@@ -22,11 +22,11 @@
     <BetweenLines>حسابي</BetweenLines>
     <div class="flex flex-row items-center justify-between gap-4">
       <div class="flex flex-col" dir="ltr">
-        <IconButton text="تعديل">
+        <!-- <IconButton text="تعديل">
           <Button size="icon" variant="outline3DFilled">
             <Edit class="h-6 w-6" />
           </Button>
-        </IconButton>
+        </IconButton> -->
         <Dialog.Root>
           <Dialog.Trigger>
             <IconButton text="تسجيل الخروج">
