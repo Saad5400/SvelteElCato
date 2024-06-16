@@ -49,7 +49,8 @@
       <!--{/if}-->
       <Card
         href={`${courseUrl(data.course)}/quizzes/random`}
-        class="col-span-full h-fit"
+        class="col-span-full h-fit {data.allQuestions.length === 0 &&
+          'disabled'}"
       >
         جميع الأسئلة عشوائيا
       </Card>

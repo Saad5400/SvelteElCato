@@ -3,16 +3,7 @@ import { error } from "@sveltejs/kit";
 import type Quiz from "$lib/models/Quiz";
 
 export const load: LayoutServerLoad = async ({ parent, params, locals }) => {
-  const { course } = await parent();
-
-  const allQuestions = course.expand.quizzes.flatMap((q: Quiz) => {
-    if (
-      q.isFree ||
-      (locals.user && locals.user.registeredCourses.includes(course.id))
-    )
-      return q.questions;
-    return [];
-  });
+  const { course, allQuestions } = await parent();
 
   let quiz: Quiz;
 
