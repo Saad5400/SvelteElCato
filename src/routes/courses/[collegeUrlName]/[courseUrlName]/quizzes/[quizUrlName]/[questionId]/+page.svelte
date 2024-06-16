@@ -130,7 +130,7 @@
             disabled={!data.user}
             on:click={toggleMarked}
           >
-            <Flag class={isMarked && "spin spin-active"} />
+            <Flag class={(isMarked && "spin spin-active") + ""} />
           </Button>
         </IconButton>
         <IconButton text="تم الحل {!data.user ? '(يتطلب تسجيل الدخول)' : ''}">
@@ -142,7 +142,7 @@
             disabled={!data.user}
             on:click={toggleSolved}
           >
-            <Checkmark class={isSolved && "spin spin-active"} />
+            <Checkmark class={(isSolved && "spin spin-active") + ""} />
           </Button>
         </IconButton>
       </div>

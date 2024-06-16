@@ -19,6 +19,7 @@
   let passwordChanged = false;
   let showPassword = false;
   let isSubmitted = false;
+  let resetPasswordSubmitted = false;
 
   $: validEmail = !!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
   $: validPassword = password.length >= 1;
@@ -116,13 +117,26 @@
           <Button
             class="h-fit p-0"
             variant="link"
-            disabled={!validEmail}
+            disabled={!validEmail || resetPasswordSubmitted}
             on:click={async () => {
-              await data.pb.collection("users").requestPasswordReset(email);
-              toast.success("تم إرسال رابط إعادة ضبط كلمة المرور إلى بريدك");
+              resetPasswordSubmitted = true;
+              try {
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+                await data.pb.collection("users").requestPasswordReset(email);
+                toast.success("تم إرسال رابط إعادة ضبط كلمة المرور إلى بريدك");
+              } catch (e) {
+                toast.error("حدث خطأ ما");
+                console.error(e);
+              } finally {
+                resetPasswordSubmitted = false;
+              }
             }}
           >
-            إعادة ضبط كلمة المرور
+            {#if resetPasswordSubmitted}
+              <LoadingLoop />
+            {:else}
+              إعادة ضبط كلمة المرور
+            {/if}
           </Button>
         </small>
         <small class="flex justify-between">
