@@ -41,14 +41,14 @@
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
     <CardsGrid title="الاختبارات">
-      <!--{#if $markedStore.filter((id) => data.questions.includes(id)).length > 0}-->
-      <!--  <Card-->
-      <!--    href={`${data.course.url()}/quizzes/marked/${$markedStore.filter((id) => data.questions.includes(id))[0]}`}-->
-      <!--    class="marked col-span-full h-fit"-->
-      <!--  >-->
-      <!--    الأسئلة المُعلمه-->
-      <!--  </Card>-->
-      <!--{/if}-->
+      {#if $markedStore.filter( (id) => data.allQuestions.includes(id), ).length > 0}
+        <Card
+          href={`/courses/${data.course.expand.college.urlName}/${data.course.urlName}/quizzes/marked`}
+          class="marked col-span-full h-fit"
+        >
+          الأسئلة المُعلمه
+        </Card>
+      {/if}
       <Card
         href={`${courseUrl(data.course)}/quizzes/random`}
         class="col-span-full h-fit {data.allQuestions.every((question) =>
