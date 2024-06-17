@@ -6,6 +6,7 @@
   import { browser } from "$app/environment";
   import Article from "$lib/components/Article.svelte";
   import useHighlight from "$lib/hooks/useHighlight";
+  import * as Tabs from "$lib/components/ui/tabs";
 
   export let data: PageData;
 
@@ -24,7 +25,8 @@
     clearTimeout(timeout);
   });
 
-  $: if ($page.params.stepId && data.step.type === "external") setTimeoutToRedirect();
+  $: if ($page.params.stepId && data.step.type === "external")
+    setTimeoutToRedirect();
 </script>
 
 <svelte:head>
@@ -35,7 +37,7 @@
 </svelte:head>
 
 <div class="min-h-screen-without-navbar flex w-full flex-col">
-  <div class="flex aspect-video">
+  <div class="mx-4 flex aspect-video">
     {#if data.step.type === "youtube"}
       <iframe
         src={data.step.linked}
@@ -79,9 +81,22 @@
   </div>
 
   {#if data.step.description}
-    <div class="mx-auto w-full max-w-[90dvw] border-t-2 p-8 md:mx-4 md:w-auto">
-      <h3>وصف الدرس</h3>
-      <Article content={useHighlight(data.step.description)} />
-    </div>
+    <Tabs.Root
+      value="description"
+      class="mx-auto mb-32 w-full max-w-[100dvw] p-2 md:mx-4 md:w-auto"
+    >
+      <Tabs.List class="w-full">
+        <Tabs.Trigger value="description" class="w-full">الوصف</Tabs.Trigger>
+        <Tabs.Trigger value="comments" class="w-full">التعليقات</Tabs.Trigger>
+      </Tabs.List>
+      <div
+        class="mt-2 rounded-lg border-b-8 border-l-8 border-accent-foreground/20 bg-input p-2"
+      >
+        <Tabs.Content value="description">
+          <Article content={useHighlight(data.step.description)} />
+        </Tabs.Content>
+        <Tabs.Content value="comments">لا يوجد تعليقات</Tabs.Content>
+      </div>
+    </Tabs.Root>
   {/if}
 </div>
