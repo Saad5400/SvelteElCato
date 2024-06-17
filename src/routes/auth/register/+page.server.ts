@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-  default: async ({ locals, request }) => {
+  default: async ({ locals, request, url, fetch }) => {
     const data = Object.fromEntries(await request.formData()) as {
       email: string;
       password: string;
@@ -16,15 +16,25 @@ export const actions: Actions = {
     };
 
     try {
-      await locals.pb.collection("users").create(data);
+      await locals.pb.collection("users").create(data, {
+        fetch
+      });
       await locals.pb
         .collection("users")
-        .authWithPassword(data.email.toLowerCase(), data.password);
+        .authWithPassword(data.email.toLowerCase(), data.password, {
+          fetch
+        });
+      await locals.pb.collection("users").requestVerification(data.email.toLowerCase(), {
+        fetch
+      });
     } catch (e) {
       console.error(e);
       throw e;
     }
 
-    redirect(302, "/profile");
+    if (url.searchParams.has("redirect")) {
+      redirect(302, url.searchParams.get("redirect")!);
+    }
+    redirect(302, "/");
   },
 };

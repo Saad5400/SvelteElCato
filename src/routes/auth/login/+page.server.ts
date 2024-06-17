@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-  default: async ({ locals, request, url }) => {
+  default: async ({ locals, request, url, fetch }) => {
     const data = Object.fromEntries(await request.formData()) as {
       email: string;
       password: string;
@@ -18,7 +18,9 @@ export const actions: Actions = {
     try {
       await locals.pb
         .collection("users")
-        .authWithPassword(data.email.toLowerCase(), data.password);
+        .authWithPassword(data.email.toLowerCase(), data.password, {
+          fetch
+        });
     } catch (e) {
       return fail(401, {
         message: "Invalid email or password",
