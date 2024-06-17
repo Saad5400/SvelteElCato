@@ -22,6 +22,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
       expand: "tags",
       fetch: fetch,
       fields: "displayName,urlName,views,readTime",
+      sort: "-views",
       cache: "force-cache",
       headers: {
         "Cache-Control": "max-age=3600",
