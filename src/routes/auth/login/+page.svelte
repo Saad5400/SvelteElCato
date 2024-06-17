@@ -25,6 +25,10 @@
   $: validPassword = password.length >= 1;
 </script>
 
+<svelte:head>
+  <title>تسجيل الدخول</title>
+</svelte:head>
+
 <div
   class="container flex min-h-[calc(100dvh-10rem)] items-center justify-center"
 >

@@ -47,6 +47,10 @@
   }
 </script>
 
+<svelte:head>
+  <title>تسجيل حساب جديد</title>
+</svelte:head>
+
 <div
   class="container flex min-h-[calc(100dvh-10rem)] items-center justify-center"
 >

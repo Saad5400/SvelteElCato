@@ -17,6 +17,10 @@
   let logoutRequested = false;
 </script>
 
+<svelte:head>
+  <title>حسابي</title>
+</svelte:head>
+
 <div class="container flex w-full max-w-screen-lg flex-col gap-4 px-4">
   <div class="card flex flex-col">
     <BetweenLines>حسابي</BetweenLines>
