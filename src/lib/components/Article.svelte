@@ -1,10 +1,19 @@
 <script lang="ts">
   import { mode } from "mode-watcher";
+  import { onMount } from "svelte";
 
   export let content: string;
   export let prefix: string = "";
   export let prefixClass: string = "";
   let classes = "";
+
+  onMount(() => {
+    if (content.includes("<script>")) {
+      // save the scripts and their contents
+      const scripts = content.match(/<script>[\s\S]*?<\/script>/g);
+      console.log(scripts);
+    }
+  });
 
   export { classes as class };
 </script>
@@ -63,5 +72,13 @@
 
   :global(article img) {
     @apply mx-auto max-w-[max(50rem,50%)];
+  }
+
+  :global(article ul) {
+    @apply list-disc list-inside;
+  }
+
+  :global(article ol) {
+    @apply list-decimal list-inside;
   }
 </style>
