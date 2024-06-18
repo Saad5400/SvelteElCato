@@ -4,6 +4,7 @@
   import BetweenLines from "$lib/components/BetweenLines.svelte";
   import { Button } from "$lib/components/ui/button";
   import type { LayoutData } from "./$types";
+  import Clock from "virtual:icons/f7/Clock";
 
   export let data: LayoutData;
   let className: string;
@@ -22,11 +23,18 @@
     </BetweenLines>
   {:else}
     <Button
-      class="{className} {hasAccess || 'disabled'} {active && 'active'}
+      class="{className} flex justify-between {hasAccess ||
+        'disabled'} {active && 'active'}
           "
       href={stepUrl(step, data.course, data.track)}
     >
-      {step.displayName}
+      <span>
+        {step.displayName}
+      </span>
+      <span class="flex items-center justify-center gap-1 roboto-mono">
+        {step.length}
+        <Clock class="h-4 w-4" />
+      </span>
     </Button>
   {/if}
 {/each}

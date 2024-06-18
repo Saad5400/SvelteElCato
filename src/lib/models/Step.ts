@@ -8,6 +8,7 @@ export default interface Step extends BaseModel {
   type: "external" | "bunny" | "youtube" | "section" | "post";
   description: string;
   isFree: boolean;
+  length: number;
 }
 
 export function stepUrl(step: Step, course: Course, track: Track): string {
