@@ -77,10 +77,12 @@
           allowfullscreen={true}
         ></iframe>
       </div>
+    {:else if data.step.type === "post"}
+      <Article content={useHighlight(data.step.description)} />
     {/if}
   </div>
 
-  {#if data.step.description}
+  {#if data.step.description && data.step.type !== "post"}
     <Tabs.Root
       value="description"
       class="mx-auto mb-32 w-full max-w-[100dvw] p-2 md:mx-4 md:w-auto"

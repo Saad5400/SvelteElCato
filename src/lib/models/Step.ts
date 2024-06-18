@@ -5,7 +5,7 @@ import type Course from "$lib/models/Course";
 export default interface Step extends BaseModel {
   displayName: string;
   linked: string;
-  type: "external" | "bunny" | "youtube" | "section";
+  type: "external" | "bunny" | "youtube" | "section" | "post";
   description: string;
   isFree: boolean;
 }
