@@ -31,10 +31,12 @@
       <span>
         {step.displayName}
       </span>
-      <span class="flex items-center justify-center gap-1 roboto-mono">
-        {step.length}
-        <Clock class="h-4 w-4" />
-      </span>
+      {#if step.length > 0}
+        <span class="roboto-mono flex items-center justify-center gap-1">
+          {step.length}
+          <Clock class="h-4 w-4" />
+        </span>
+      {/if}
     </Button>
   {/if}
 {/each}
