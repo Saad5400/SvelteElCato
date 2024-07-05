@@ -5,7 +5,7 @@ export default interface Track extends BaseModel {
   displayName: string;
   urlName: string;
   description: string;
-  steps: Step[];
+  steps: string[];
   expand: {
     steps: Step[];
   };

@@ -8,8 +8,23 @@
   import { Separator } from "$lib/components/ui/separator";
   import solvedStore from "$lib/stores/solvedStore";
   import markedStore from "$lib/stores/markedStore";
+  import { cn } from "$lib/utils";
+  import { Button } from "$lib/components/ui/button";
+  import Clock from "virtual:icons/f7/Clock";
+  import type Track from "$lib/models/Track";
 
   export let data: PageData;
+
+  function getTotalLength(track: Track): number {
+    return track.expand?.steps.reduce((acc, step) => acc + step.length, 0);
+  }
+
+  function getLengthLabel(length: number): string {
+    if (length == 1) return "دقيقة واحدة";
+    if (length == 2) return "دقيقتان";
+    if (length >= 3 && length <= 10) return `${length} دقائق`;
+    return `${length} دقيقة`;
+  }
 </script>
 
 <svelte:head>
@@ -28,14 +43,27 @@
         {@const hasAccess =
           track.expand?.steps.some((step) => step.isFree) ||
           data.user?.registeredCourses.includes(data.course.id)}
+        {@const totalLength = getTotalLength(track)}
         <!-- TODO: redirect to the last visited step -->
-        <Card
-          subtitle={track.description}
+        <Button
           href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
-          class="h-auto {hasAccess || 'disabled'}"
+          class={cn(
+            "flex h-auto justify-between whitespace-normal text-2xl",
+            hasAccess || "disabled",
+          )}
+          variant="outline3DLarge"
         >
-          {track.displayName}
-        </Card>
+          <span>
+            {track.displayName}
+          </span>
+          {#if track.expand && track.expand.steps.length > 0 && totalLength > 0}
+            <span
+              class="ms-2 inline-flex items-center gap-1 self-end text-base"
+            >
+              ({getLengthLabel(totalLength)})
+            </span>
+          {/if}
+        </Button>
       {/each}
     </CardsGrid>
   {/if}
