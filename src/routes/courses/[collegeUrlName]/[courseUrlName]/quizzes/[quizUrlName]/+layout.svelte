@@ -23,7 +23,7 @@
   });
 </script>
 
-<Dialog.Root open={$menu?.open}>
+<Dialog.Root open={$menu?.open} openFocus=".active">
   <Dialog.Content class="max-w-[min(90dvw,30rem)]">
     <Dialog.Header>
       <Dialog.Title>
