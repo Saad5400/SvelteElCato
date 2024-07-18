@@ -21,14 +21,9 @@
   const largeWidth = "30rem";
 </script>
 
-<Sheet.Root
-  open={$menu?.open}
-  onOpenChange={(e) => {
-    menu.set({ open: e });
-  }}
->
+<Sheet.Root open={$menu?.open} openFocus=".scroll-active">
   <Sheet.Content class="flex flex-col items-center gap-2 overflow-y-auto">
-    <TrackStepsMenu {data} class="flex w-full flex-wrap justify-start" />
+    <TrackStepsMenu activeClass="scroll-active" {data} class="flex w-full flex-wrap justify-start" />
   </Sheet.Content>
 </Sheet.Root>
 <div class="flex flex-row">

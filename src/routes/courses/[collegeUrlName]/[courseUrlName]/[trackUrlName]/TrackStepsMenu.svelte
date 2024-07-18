@@ -7,6 +7,7 @@
   import Clock from "virtual:icons/f7/Clock";
 
   export let data: LayoutData;
+  export let activeClass: string = "";
   let className: string;
 
   export { className as class };
@@ -24,7 +25,7 @@
   {:else}
     <Button
       class="{className} flex justify-between {hasAccess ||
-        'disabled'} {active && 'active'}
+        'disabled'} {active && `active ${activeClass}`}
           "
       href={stepUrl(step, data.course, data.track)}
     >
