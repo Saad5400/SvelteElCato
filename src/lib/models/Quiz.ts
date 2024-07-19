@@ -1,6 +1,7 @@
 import type BaseModel from "$lib/models/BaseModel";
 import type Question from "$lib/models/Question";
 import type Course from "$lib/models/Course";
+import { courseUrl } from "$lib/models/Course";
 
 export default interface Quiz extends BaseModel {
   displayName: string;
@@ -13,5 +14,5 @@ export default interface Quiz extends BaseModel {
 }
 
 export function quizFirstQuestionUrl(quiz: Quiz, course: Course) {
-  return `/courses/${course.expand.college.urlName}/${course.urlName}/quizzes/${quiz.urlName}/${quiz.questions[0]}`;
+  return `${courseUrl(course)}/quizzes/${quiz.urlName}/${quiz.questions[0]}`;
 }

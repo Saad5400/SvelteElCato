@@ -10,10 +10,9 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
     .collection("courses")
     .getFirstListItem(
       locals.pb.filter(
-        "urlName = {:courseUrlName} && college.urlName = {:collegeUrlName}",
+        "urlName = {:courseUrlName}",
         {
           courseUrlName: params.courseUrlName,
-          collegeUrlName: params.collegeUrlName,
         },
       ),
       {

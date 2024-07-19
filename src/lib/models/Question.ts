@@ -2,6 +2,7 @@ import type BaseModel from "$lib/models/BaseModel";
 import useHighlight from "$lib/hooks/useHighlight";
 import type Quiz from "$lib/models/Quiz";
 import type Course from "$lib/models/Course";
+import { courseUrl } from "$lib/models/Course";
 
 export interface Option {
   name: string;
@@ -44,5 +45,5 @@ export function questionHighlight(question: Question): Question {
 }
 
 export function questionUrl(questionId: string, quiz: Quiz, course: Course) {
-  return `/courses/${course.expand.college.urlName}/${course.urlName}/quizzes/${quiz.urlName}/${questionId}`;
+  return `${courseUrl(course)}/quizzes/${quiz.urlName}/${questionId}`;
 }

@@ -11,6 +11,7 @@
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import Card from "$lib/components/cardsView/Card.svelte";
   import BetweenLines from "$lib/components/BetweenLines.svelte";
+  import { courseUrl } from "$lib/models/Course";
 
   export let data: PageServerData & PageData;
 
@@ -90,9 +91,7 @@
       <div class="flex flex-col">
         {#each data.courses as course}
           {#if !course.hidden}
-            <Card
-              href="/courses/{course.expand.college.urlName}/{course.urlName}"
-            >
+            <Card href={courseUrl(course)}>
               {course.displayName}
             </Card>
           {/if}

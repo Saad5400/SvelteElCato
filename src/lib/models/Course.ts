@@ -1,5 +1,4 @@
 import type BaseModel from "$lib/models/BaseModel";
-import type College from "$lib/models/College";
 import type Track from "$lib/models/Track";
 import type Quiz from "$lib/models/Quiz";
 
@@ -9,16 +8,16 @@ export default interface Course extends BaseModel {
   order: number;
   description: string;
   hidden: boolean;
-  college: string;
   tracks: string[];
   quizzes: string[];
+  subtitle: string;
+  image: string;
   expand: {
-    college: College;
     tracks: Track[];
     quizzes: Quiz[];
   };
 }
 
 export function courseUrl(course: Course): string {
-  return `/courses/${course.expand.college.urlName}/${course.urlName}`;
+  return `/courses/${course.urlName}`;
 }

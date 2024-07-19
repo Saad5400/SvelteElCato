@@ -46,7 +46,7 @@
         {@const totalLength = getTotalLength(track)}
         <!-- TODO: redirect to the last visited step -->
         <Button
-          href={`/courses/${$page.params.collegeUrlName}/${$page.params.courseUrlName}/${track.urlName}`}
+          href={`/courses/${$page.params.courseUrlName}/${track.urlName}`}
           class={cn(
             "flex h-auto justify-between whitespace-normal text-2xl",
             hasAccess || "disabled",
@@ -71,7 +71,7 @@
     <CardsGrid title="الاختبارات">
       {#if $markedStore.filter( (id) => data.allQuestions.includes(id), ).length > 0}
         <Card
-          href={`/courses/${data.course.expand.college.urlName}/${data.course.urlName}/quizzes/marked`}
+          href={`${courseUrl(data.course)}/quizzes/marked`}
           class="marked col-span-full h-fit"
         >
           الأسئلة المُعلمه

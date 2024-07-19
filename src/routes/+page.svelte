@@ -5,6 +5,7 @@
   import Card from "$lib/components/cardsView/Card.svelte";
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import { Separator } from "$lib/components/ui/separator";
+  import { courseUrl } from "$lib/models/Course";
 
   export let data: PageServerLoad;
 </script>
@@ -24,8 +25,8 @@
     {#each data.courses as course}
       {#if !course.hidden}
         <Card
-          href="/courses/{course.expand.college.urlName}/{course.urlName}"
-          subtitle={course.expand.college.displayName}
+          href={courseUrl(course)}
+          subtitle={course.subtitle}
           description={course.description}
         >
           {course.displayName}
