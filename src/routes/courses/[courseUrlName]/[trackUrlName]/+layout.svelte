@@ -10,7 +10,7 @@
 
   onMount(() => {
     if (data.track.steps.length > 0) {
-      menu.set({ open: false });
+      menu.init();
     }
   });
 

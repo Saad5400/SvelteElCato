@@ -5,6 +5,7 @@
   import { Button } from "$lib/components/ui/button";
   import type { LayoutData } from "./$types";
   import Clock from "virtual:icons/f7/Clock";
+  import menu from "$lib/stores/menu";
 
   export let data: LayoutData;
   export let activeClass: string = "";
@@ -28,6 +29,7 @@
         'disabled'} {active && `active ${activeClass}`}
           "
       href={stepUrl(step, data.course, data.track)}
+      on:click={menu.close}
     >
       <span>
         {step.displayName}

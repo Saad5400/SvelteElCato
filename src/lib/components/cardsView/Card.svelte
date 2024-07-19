@@ -1,13 +1,15 @@
 <script lang="ts">
   import { Button, type Variant } from "$lib/components/ui/button/index.js";
   import type { ButtonEventHandler } from "bits-ui/dist/bits/button";
+  import { cn } from "$lib/utils";
 
   export let href: string | null = null;
-  export let className = "flex-1 flex flex-col h-fit min-w-64";
+  export let className = "";
   export let titleClassName = "text-2xl text-center";
   export let variant: Variant = "outline3DLarge";
   export let subtitle = "";
   export let description = "";
+  export let image = "";
   export let dataSveltekitPreloadData:
     | true
     | ""
@@ -24,12 +26,19 @@
 </script>
 
 <Button
-  class={className}
+  class={cn("flex h-fit min-w-64 flex-1 flex-col", className)}
   {variant}
   {href}
   data-sveltekit-preload-data={dataSveltekitPreloadData}
   on:click={onClick}
 >
+  {#if image}
+    <img
+      src={image}
+      alt="شعار"
+      class="absolute -z-10 h-full w-full object-cover opacity-20 grayscale blur-[2px]"
+    />
+  {/if}
   <span class={titleClassName}>
     <slot />
   </span>

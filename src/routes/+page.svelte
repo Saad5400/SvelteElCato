@@ -1,13 +1,13 @@
 <script lang="ts">
   import Hero from "$lib/components/index/Hero.svelte";
   import Posts from "$lib/components/index/Posts.svelte";
-  import type { PageServerLoad } from "./$types";
+  import type { PageServerData } from "./$types";
   import Card from "$lib/components/cardsView/Card.svelte";
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import { Separator } from "$lib/components/ui/separator";
   import { courseUrl } from "$lib/models/Course";
 
-  export let data: PageServerLoad;
+  export let data: PageServerData;
 </script>
 
 <svelte:head>
@@ -28,6 +28,7 @@
           href={courseUrl(course)}
           subtitle={course.subtitle}
           description={course.description}
+          image={data.pb.files.getUrl(course, course.image)}
         >
           {course.displayName}
         </Card>
