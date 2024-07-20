@@ -37,6 +37,15 @@
   <h1>
     {data.course.displayName}
   </h1>
+  {#if !data.user?.registeredCourses.includes(data.course.id)}
+    <Button
+      href={`${courseUrl(data.course)}/subscribe`}
+      variant="outline3DFilled"
+      class="roboto-mono h-fit text-xl"
+    >
+      الاشتراك
+    </Button>
+  {/if}
   {#if data.course.tracks && data.course.tracks.length > 0}
     <CardsGrid title="المسارات">
       {#each data.course.expand.tracks as track}
@@ -74,7 +83,7 @@
           href={`${courseUrl(data.course)}/quizzes/marked`}
           class="marked col-span-full h-fit"
         >
-          الأسئلة المُعلمه
+          الأسئلة المُعلمة
         </Card>
       {/if}
       <Card

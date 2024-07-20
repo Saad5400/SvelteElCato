@@ -14,6 +14,7 @@
       case "/courses/[courseUrlName]/quizzes/[quizUrlName]/[questionId]":
       case "/courses/[courseUrlName]/quizzes/marked/[questionId]":
       case "/courses/[courseUrlName]/quizzes/random/[questionId]":
+      case "/courses/[courseUrlName]/subscribe":
         return `/courses/${$page.params.courseUrlName}`;
       default:
         return "/";

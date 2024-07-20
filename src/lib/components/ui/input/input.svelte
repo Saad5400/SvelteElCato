@@ -8,14 +8,24 @@
 
   let className: $$Props["class"] = undefined;
   export let value: $$Props["value"] = undefined;
+  export let variant: "default" | "filled" = "default";
   export { className as class };
+
+  function getVariant() {
+    switch (variant) {
+      case "filled":
+        return "bg-foreground text-background file:text-foreground file:bg-background";
+      default:
+        return "bg-background text-foreground file:text-background file:bg-foreground";
+    }
+  }
+
+  let base =
+    "flex h-10 w-full ring-offset-background border-foreground/50 placeholder:text-muted-foreground rounded-md border-2 px-3 py-2 text-sm file:border-0 file:rounded-sm file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
 </script>
 
 <input
-  class={cn(
-    "flex h-10 w-full rounded-md border-2 border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-    className,
-  )}
+  class={cn(base, getVariant(), className)}
   bind:value
   on:blur
   on:change
