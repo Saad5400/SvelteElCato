@@ -14,12 +14,12 @@
 </script>
 
 <AccordionPrimitive.Content
-	class={cn("overflow-hidden text-sm transition-all p-4 bg-diagonal rounded-lg", className)}
+	class={cn("overflow-hidden text-sm transition-all rounded-lg", className)}
 	{transition}
 	{transitionConfig}
 	{...$$restProps}
 >
-	<div class="pb-4 pt-0">
+	<div class="p-4">
 		<slot />
 	</div>
 </AccordionPrimitive.Content>

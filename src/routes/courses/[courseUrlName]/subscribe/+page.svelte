@@ -3,20 +3,21 @@
   import * as Accordion from "$lib/components/ui/accordion";
   import PaymentInfo from "./PaymentInfo.svelte";
   import { Button } from "$lib/components/ui/button";
-  import { Label } from "$lib/components/ui/label";
-  import { Input } from "$lib/components/ui/input";
+  import ConfirmPayment from "./ConfirmPayment.svelte";
+  import { writable } from "svelte/store";
+  import Payments from "./Payments.svelte";
 
-  let accordionValue: string[] = ["submit"];
-  let amount: number | null = null;
-
+  const accordionValue = writable(["payments"]);
   export let data: PageData;
 
   function expandAccordion(value: string) {
-    accordionValue = [value];
+    accordionValue.set([value]);
   }
-
-  $: console.log(accordionValue);
 </script>
+
+<svelte:head>
+  <title>الاشتراك بدورة {data.course.displayName}</title>
+</svelte:head>
 
 <main class="container my-8 flex max-w-screen-sm flex-col gap-8 px-4">
   <h1>
@@ -47,8 +48,8 @@
     </Button>
     عن طريق رفع إيصال التحويل، كما يمكنك القراءة أكثر عن تفاصيل الدورة بالأسفل:
   </p>
-  <Accordion.Root multiple={true} value={accordionValue}>
-    <Accordion.Item value="payment">
+  <Accordion.Root multiple={true} value={$accordionValue}>
+    <Accordion.Item value="payment-info">
       <Accordion.Trigger>حسابات التحويل</Accordion.Trigger>
       <Accordion.Content>
         <PaymentInfo />
@@ -57,34 +58,13 @@
     <Accordion.Item value="submit">
       <Accordion.Trigger>تأكيد الدفع</Accordion.Trigger>
       <Accordion.Content>
-        <form class="roboto-mono flex flex-col gap-4">
-          <div class="input">
-            <Label for="receipt">إيصال التحويل</Label>
-            <Input type="file" id="receipt" name="receipt" required />
-          </div>
-          <div class="input">
-            <Label class="flex items-center justify-between" for="amount">
-              <span> المبلغ المحول </span>
-              <span>
-                <Button size="sm" on:click={() => (amount = data.course.price)}>
-                  كامل المبلغ
-                </Button>
-                <Button size="sm" on:click={() => (amount = Math.floor(data.course.price / 2))}>
-                  نصف المبلغ
-                </Button>
-              </span>
-            </Label>
-            <Input
-              bind:value={amount}
-              type="number"
-              id="amount"
-              name="amount"
-              required
-              min={0}
-            />
-          </div>
-          <Button type="submit" variant="outline3DFilled">تأكيد الدفع</Button>
-        </form>
+        <ConfirmPayment {data} {accordionValue} />
+      </Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="payments">
+      <Accordion.Trigger>عمليات الدفع</Accordion.Trigger>
+      <Accordion.Content>
+        <Payments {data} />
       </Accordion.Content>
     </Accordion.Item>
   </Accordion.Root>

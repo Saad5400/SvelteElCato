@@ -11,7 +11,6 @@
     if (content.includes("<script>")) {
       // save the scripts and their contents
       const scripts = content.match(/<script>[\s\S]*?<\/script>/g);
-      console.log(scripts);
     }
   });
 
