@@ -12,7 +12,7 @@
   import Reviews from "./Reviews.svelte";
   import WhoIsElCato from "./WhoIsElCato.svelte";
 
-  const accordionValue = writable(["who-am-i"] as string[]);
+  const accordionValue = writable([] as string[]);
   export let data: PageData;
 
   function expandAccordion(value: string) {
