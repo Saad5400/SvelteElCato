@@ -3,10 +3,16 @@ import { fail, redirect } from "@sveltejs/kit";
 import type { Actions } from "./$types";
 import { getCourseRemainder } from "$lib/models/Payment";
 import type Payment from "$lib/models/Payment";
+import { courseUrl } from "$lib/models/Course";
 
-export const load: PageServerLoad = async ({ locals, url, params }) => {
+export const load: PageServerLoad = async ({ locals, url, parent }) => {
+  const { course } = await parent();
   if (!locals.pb.authStore.isValid || !locals.pb.authStore.model)
     redirect(302, `/auth/register?redirect=${url.toString()}`);
+
+  if (!course.isAvailable) {
+    redirect(302, courseUrl(course));
+  }
 
   const payments = await locals.pb.collection('payments').getFullList({
     filter: locals.pb.filter('user.id = {:userId}', {

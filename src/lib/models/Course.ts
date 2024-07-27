@@ -8,6 +8,7 @@ export default interface Course extends BaseModel {
   order: number;
   description: string;
   hidden: boolean;
+  isAvailable: boolean;
   tracks: string[];
   quizzes: string[];
   subtitle: string;

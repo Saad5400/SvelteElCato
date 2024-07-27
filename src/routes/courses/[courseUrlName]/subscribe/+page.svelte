@@ -10,8 +10,9 @@
   import { courseUrl } from "$lib/models/Course";
   import Article from "$lib/components/Article.svelte";
     import Reviews from "./Reviews.svelte";
+    import WhoIsElCato from "./WhoIsElCato.svelte";
 
-  const accordionValue = writable(['reviews'] as string[]);
+  const accordionValue = writable(['who-am-i'] as string[]);
   export let data: PageData;
 
   function expandAccordion(value: string) {
@@ -26,7 +27,7 @@
 </svelte:head>
 
 <div class="bg-patteren fixed left-0 top-0 -z-10 h-[100vh] w-[100vw]" />
-<main class="container my-8 flex max-w-screen-sm flex-col gap-8 px-4">
+<main class="container my-8 flex max-w-screen-md flex-col gap-8 px-4">
   <h1>
     الاشتراك بدورة
     {data.course.displayName}
@@ -105,7 +106,9 @@
     </Accordion.Item>
     <Accordion.Item value="who-am-i">
       <Accordion.Trigger>مين الكاتو؟</Accordion.Trigger>
-      <Accordion.Content></Accordion.Content>
+      <Accordion.Content>
+        <WhoIsElCato />
+      </Accordion.Content>
     </Accordion.Item>
   </Accordion.Root>
 </main>
