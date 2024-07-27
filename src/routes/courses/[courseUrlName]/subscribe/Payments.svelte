@@ -2,16 +2,17 @@
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
   import type Payment from "$lib/models/Payment";
-  import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import * as Table from "$lib/components/ui/table";
+  import { Skeleton } from "$lib/components/ui/skeleton";
 
   export let data: PageData;
   let payments: Promise<Payment[]> = Promise.resolve([]);
 
   onMount(async () => {
     payments = data.pb.collection("payments").getFullList({
-      filter: data.pb.filter("user.id = {:userId}", {
+      filter: data.pb.filter("user.id = {:userId} && course.id = {:courseId}", {
         userId: data.pb.authStore.model!.id,
+        courseId: data.course.id,
       }),
       fetch,
       cache: "no-cache",
@@ -34,11 +35,30 @@
 
 {#await payments}
   <div class="flex h-full w-full flex-1 items-center justify-center">
-    <LoadingLoop class="h-16 w-16" />
+    <Table.Root class="roboto-mono">
+      <Table.Header>
+        <Table.Row>
+          <Table.Head class="text-start"><Skeleton /></Table.Head>
+          <Table.Head class="text-start"><Skeleton /></Table.Head>
+          <Table.Head class="text-start"><Skeleton /></Table.Head>
+          <Table.Head class="text-start"><Skeleton /></Table.Head>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
+          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
+          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
+          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table.Root>
   </div>
 {:then payments}
   {#if payments.length === 0}
-    <p>لم تقم بأي عمليات دفع بعد</p>
+    <p class="flex min-h-16 items-center justify-center">
+      لم تقم بأي عمليات دفع بعد
+    </p>
   {:else}
     <Table.Root class="roboto-mono">
       <Table.Header>
