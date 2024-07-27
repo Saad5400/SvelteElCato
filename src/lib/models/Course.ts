@@ -13,8 +13,7 @@ export default interface Course extends BaseModel {
   quizzes: string[];
   subtitle: string;
   image: string;
-  included: string;
-  excluded: string;
+  details: string;
   price: number;
   expand: {
     tracks: Track[];

@@ -9,10 +9,10 @@
   import { getCourseRemainder } from "$lib/models/Payment";
   import { courseUrl } from "$lib/models/Course";
   import Article from "$lib/components/Article.svelte";
-    import Reviews from "./Reviews.svelte";
-    import WhoIsElCato from "./WhoIsElCato.svelte";
+  import Reviews from "./Reviews.svelte";
+  import WhoIsElCato from "./WhoIsElCato.svelte";
 
-  const accordionValue = writable(['who-am-i'] as string[]);
+  const accordionValue = writable(["who-am-i"] as string[]);
   export let data: PageData;
 
   function expandAccordion(value: string) {
@@ -87,15 +87,9 @@
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item value="included">
-      <Accordion.Trigger>ما يتضمنه الاشتراك</Accordion.Trigger>
+      <Accordion.Trigger>تفاصيل الدورة وما تتضمنه</Accordion.Trigger>
       <Accordion.Content>
-        <Article content={data.course.included} />
-      </Accordion.Content>
-    </Accordion.Item>
-    <Accordion.Item value="excluded">
-      <Accordion.Trigger>ما لا يتضمنه الاشتراك</Accordion.Trigger>
-      <Accordion.Content>
-        <Article content={data.course.excluded} />
+        <Article content={data.course.details} />
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item value="reviews">
