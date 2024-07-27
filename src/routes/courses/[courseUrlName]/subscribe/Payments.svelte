@@ -6,12 +6,16 @@
   import * as Table from "$lib/components/ui/table";
 
   export let data: PageData;
-  let payments = data.pb.collection("payments").getFullList({
-    filter: data.pb.filter("user.id = {:userId}", {
-      userId: data.pb.authStore.model!.id,
-    }),
-    fetch,
-    cache: "no-cache",
+  let payments: Promise<Payment[]> = Promise.resolve([]);
+
+  onMount(async () => {
+    payments = data.pb.collection("payments").getFullList({
+      filter: data.pb.filter("user.id = {:userId}", {
+        userId: data.pb.authStore.model!.id,
+      }),
+      fetch,
+      cache: "no-cache",
+    });
   });
 
   function translateStatus(status: Payment["status"]) {
@@ -42,6 +46,7 @@
           <Table.Head class="text-start">التاريخ</Table.Head>
           <Table.Head class="text-start">المبلغ</Table.Head>
           <Table.Head class="text-start">الحالة</Table.Head>
+          <Table.Head class="text-start">الملاحظات</Table.Head>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -52,6 +57,7 @@
             >
             <Table.Cell>{payment.amount} ريال</Table.Cell>
             <Table.Cell>{translateStatus(payment.status)}</Table.Cell>
+            <Table.Cell>{payment.feedback}</Table.Cell>
           </Table.Row>
         {/each}
       </Table.Body>

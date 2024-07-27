@@ -1,6 +1,7 @@
 import type { BaseModel } from "pocketbase";
 import type Course from "$lib/models/Course";
 import type Question from "$lib/models/Question";
+import type Payment from "./Payment";
 
 export default interface User extends BaseModel {
   email: string;

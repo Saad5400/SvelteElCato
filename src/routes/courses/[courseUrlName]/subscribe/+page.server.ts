@@ -1,6 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions } from "./$types";
+import { getCourseRemainder } from "$lib/models/Payment";
 
 export const load: PageServerLoad = async ({ locals, url }) => {
   if (!locals.pb.authStore.isValid || !locals.pb.authStore.model)
@@ -13,6 +14,7 @@ export const actions: Actions = {
     const data = Object.fromEntries(await request.formData()) as {
       amount: string;
       receipt: File;
+      course: string;
     };
 
     if (!locals.pb.authStore.isValid || !locals.pb.authStore.model) {
@@ -27,23 +29,34 @@ export const actions: Actions = {
       });
     }
 
-    const pendingPaymentsCount = (await locals.pb.collection('payments').getFullList({
-      filter: locals.pb.filter('user.id = {:userId} && status = "pending"', {
+    const paymentsRequest = locals.pb.collection('payments').getFullList({
+      filter: locals.pb.filter('user.id = {:userId}', {
         userId: locals.pb.authStore.model.id,
       }),
+      expand: 'course',
       fetch
-    })).length;
+    });
+    const courseRequest = locals.pb.collection('courses').getOne(data.course, { fetch });
 
-    if (pendingPaymentsCount > 1) {
+    const [payments, course] = await Promise.all([paymentsRequest, courseRequest]);
+
+    const pendingPaymentsCount = payments.filter(payment => payment.status === 'pending').length;
+    const remainder = getCourseRemainder(payments, course);
+
+    if (pendingPaymentsCount > 0) {
       return fail(400, {
         message: 'لديك طلبات اشتراك معلقة! يجب انتظار موافقة الإدارة قبل تقديم طلب جديد'
       });
     }
 
+    console.log(remainder);
+
     await locals.pb.collection('payments').create({
       ...data,
+      course: course.id,
       user: locals.pb.authStore.model.id,
       status: 'pending',
+      remainder: remainder !== null ? remainder - parseInt(data.amount) : course.price - parseInt(data.amount),
     }, {
       fetch,
     })

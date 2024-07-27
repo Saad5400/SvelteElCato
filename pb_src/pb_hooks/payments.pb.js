@@ -16,12 +16,8 @@ onModelAfterUpdate((e) => {
     });
 
     if (payment.getString('status') == "accepted") {
-        const total = course.getFloat('price');
-        const paid = payment.getFloat('amount');
-        const credits = user.getFloat('credits') || 0;
-        user.set('credits', (credits + paid) - total);
         user.set('registeredCourses', user.get('registeredCourses').concat([course.getId()]));
-        message.html = `<div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center"><h3>تم تفعيل الدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;
+        message.html = `<div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center"><h3>تم قبول عملية الدفع وتفعيل الدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;
     } else if (payment.getString('status') == "rejected") {
         message.html = `<div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center"><h3>تم رفض عملية الدفع للدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;
     }

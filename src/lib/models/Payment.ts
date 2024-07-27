@@ -8,8 +8,17 @@ export default interface Payment extends BaseModel {
     amount: number;
     receipt: string;
     status: "pending" | "accepted" | "rejected";
+    feedback: string;
+    remainder: number;
     expand?: {
         user?: User;
         course?: Course;
     }
+}
+
+export function getCourseRemainder(payments: Payment[], course: Course): number | null {
+    const coursePayments = payments.filter(payment => payment.course === course.id).sort((a, b) => {
+        return new Date(b.created).getTime() - new Date(a.created).getTime();
+    });
+    return coursePayments.length ? coursePayments[0].remainder : null;
 }
