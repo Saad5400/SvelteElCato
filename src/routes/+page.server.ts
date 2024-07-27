@@ -10,6 +10,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
       expand: "college",
       fetch: fetch,
       cache: "force-cache",
+      sort: "-order",
       headers: {
         "Cache-Control": "max-age=3600",
       },

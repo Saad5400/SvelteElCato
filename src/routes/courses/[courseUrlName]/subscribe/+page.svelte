@@ -7,8 +7,11 @@
   import { writable } from "svelte/store";
   import Payments from "./Payments.svelte";
   import { getCourseRemainder } from "$lib/models/Payment";
+  import { courseUrl } from "$lib/models/Course";
+  import Article from "$lib/components/Article.svelte";
+    import Reviews from "./Reviews.svelte";
 
-  const accordionValue = writable([] as string[]);
+  const accordionValue = writable(['reviews'] as string[]);
   export let data: PageData;
 
   function expandAccordion(value: string) {
@@ -22,7 +25,7 @@
   <title>الاشتراك بدورة {data.course.displayName}</title>
 </svelte:head>
 
-<div class="fixed -z-10 top-0 left-0 w-[100vw] h-[100vh] bg-patteren" />
+<div class="bg-patteren fixed left-0 top-0 -z-10 h-[100vh] w-[100vw]" />
 <main class="container my-8 flex max-w-screen-sm flex-col gap-8 px-4">
   <h1>
     الاشتراك بدورة
@@ -51,11 +54,16 @@
       >
         تأكيد الدفع
       </Button>
-      عن طريق رفع إيصال التحويل، كما يمكنك القراءة أكثر عن تفاصيل الدورة بالأسفل:
+      عن طريق رفع إيصال التحويل، كما يمكنك القراءة أكثر عن تفاصيل الدورة بالأسفل
+      او مشاهدة
+      <Button variant="link" class="h-fit p-0" href={courseUrl(data.course)}>
+        الشرح والتمارين التجريبية
+      </Button>
     </p>
   {:else}
     <p class="roboto-mono">
-      تبقى لك دفع مبلغ {remainder} ريال سعودي لاستكمال الاشتراك بالدورة، الرجاء تحويل المبلغ ثم تأكيد الدفع
+      تبقى لك دفع مبلغ {remainder} ريال سعودي لاستكمال الاشتراك بالدورة، الرجاء تحويل
+      المبلغ ثم تأكيد الدفع
     </p>
   {/if}
   <Accordion.Root multiple={true} value={$accordionValue} class="bg-background">
@@ -80,26 +88,24 @@
     <Accordion.Item value="included">
       <Accordion.Trigger>ما يتضمنه الاشتراك</Accordion.Trigger>
       <Accordion.Content>
-        
+        <Article content={data.course.included} />
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item value="excluded">
       <Accordion.Trigger>ما لا يتضمنه الاشتراك</Accordion.Trigger>
       <Accordion.Content>
-        
+        <Article content={data.course.excluded} />
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item value="reviews">
-      <Accordion.Trigger>آراء الطلاب</Accordion.Trigger>
+      <Accordion.Trigger>تجارب المشتركين</Accordion.Trigger>
       <Accordion.Content>
-        
+        <Reviews />
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item value="who-am-i">
       <Accordion.Trigger>مين الكاتو؟</Accordion.Trigger>
-      <Accordion.Content>
-        
-      </Accordion.Content>
+      <Accordion.Content></Accordion.Content>
     </Accordion.Item>
   </Accordion.Root>
 </main>
