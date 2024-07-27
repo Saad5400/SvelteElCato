@@ -2,10 +2,23 @@ import type { PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions } from "./$types";
 import { getCourseRemainder } from "$lib/models/Payment";
+import type Payment from "$lib/models/Payment";
 
-export const load: PageServerLoad = async ({ locals, url }) => {
+export const load: PageServerLoad = async ({ locals, url, params }) => {
   if (!locals.pb.authStore.isValid || !locals.pb.authStore.model)
     redirect(302, `/auth/register?redirect=${url.toString()}`);
+
+  const payments = await locals.pb.collection('payments').getFullList({
+    filter: locals.pb.filter('user.id = {:userId}', {
+      userId: locals.pb.authStore.model.id,
+    }),
+    expand: 'course',
+    fetch
+  });
+
+  return {
+    payments: payments as Payment[],
+  }
 };
 
 export const actions: Actions = {

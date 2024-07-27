@@ -7,12 +7,14 @@
   import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
   import { toast } from "svelte-sonner";
   import type { Writable } from "svelte/store";
+  import { getCourseRemainder } from "$lib/models/Payment";
 
   let amount: number | null = null;
   let isSubmitted = false;
 
   export let data: PageData;
   export let accordionValue: Writable<string[]>;
+  $: remainder = getCourseRemainder(data.payments, data.course);
 </script>
 
 <form
@@ -55,20 +57,30 @@
     <Label class="flex items-center justify-between" for="amount">
       <span> المبلغ المحول </span>
       <span>
-        <Button
-          variant="outline3DFilled"
-          size="sm"
-          on:click={() => (amount = data.course.price)}
-        >
-          كامل المبلغ
-        </Button>
-        <Button
-          variant="outline3DFilled"
-          size="sm"
-          on:click={() => (amount = Math.floor(data.course.price / 2))}
-        >
-          نصف المبلغ
-        </Button>
+        {#if remainder === null}
+          <Button
+            variant="outline3DFilled"
+            size="sm"
+            on:click={() => (amount = data.course.price)}
+          >
+            كامل المبلغ
+          </Button>
+          <Button
+            variant="outline3DFilled"
+            size="sm"
+            on:click={() => (amount = Math.floor(data.course.price / 2))}
+          >
+            نصف المبلغ
+          </Button>
+        {:else}
+          <Button
+            variant="outline3DFilled"
+            size="sm"
+            on:click={() => (amount = remainder)}
+          >
+            المبلغ المتبقي
+          </Button>
+        {/if}
       </span>
     </Label>
     <Input

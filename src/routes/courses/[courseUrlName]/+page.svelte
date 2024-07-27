@@ -37,19 +37,17 @@
   <h1>
     {data.course.displayName}
   </h1>
-  {#if !data.user?.registeredCourses.includes(data.course.id) || data.user.credits < 0}
-    <Button
-      href={`${courseUrl(data.course)}/subscribe`}
-      variant="outline3DFilled"
-      class="roboto-mono h-fit text-xl"
-    >
-      {#if !data.user?.registeredCourses.includes(data.course.id)}
-        الاشتراك
-      {:else if data.user.credits < 0}
-        اكمال الدفع
-      {/if}
-    </Button>
-  {/if}
+  <Button
+    href={`${courseUrl(data.course)}/subscribe`}
+    variant="outline3DFilled"
+    class="roboto-mono h-fit text-xl"
+  >
+    {#if !data.user?.registeredCourses.includes(data.course.id)}
+      الاشتراك
+    {:else}
+      تفاصيل الدورة والدفع
+    {/if}
+  </Button>
   {#if data.course.tracks && data.course.tracks.length > 0}
     <CardsGrid title="المسارات">
       {#each data.course.expand.tracks as track}

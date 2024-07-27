@@ -17,6 +17,7 @@ onModelAfterUpdate((e) => {
 
     if (payment.getString('status') == "accepted") {
         user.set('registeredCourses', user.get('registeredCourses').concat([course.getId()]));
+        $app.dao().saveRecord(user);
         message.html = `<div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center"><h3>تم قبول عملية الدفع وتفعيل الدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;
     } else if (payment.getString('status') == "rejected") {
         message.html = `<div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center"><h3>تم رفض عملية الدفع للدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;

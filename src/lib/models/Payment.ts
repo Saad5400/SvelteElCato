@@ -6,7 +6,7 @@ export default interface Payment extends BaseModel {
     user: string;
     course: string;
     amount: number;
-    receipt: string;
+    receipt: string;  
     status: "pending" | "accepted" | "rejected";
     feedback: string;
     remainder: number;
