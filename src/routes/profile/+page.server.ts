@@ -14,7 +14,6 @@ export const load: PageServerLoad = async ({ locals }) => {
       filter: locals.pb.filter("{:registeredCourses} ~ id", {
         registeredCourses: locals.user?.registeredCourses,
       }),
-      expand: "college",
       cache: "force-cache",
       headers: {
         "Cache-Control": "max-age=600",

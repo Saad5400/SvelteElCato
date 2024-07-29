@@ -7,7 +7,6 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
   const coursesRequest = locals.pb
     .collection("courses")
     .getFullList({
-      expand: "college",
       fetch: fetch,
       cache: "force-cache",
       sort: "-order",

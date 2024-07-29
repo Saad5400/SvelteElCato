@@ -16,7 +16,7 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
         },
       ),
       {
-        expand: "college,quizzes,tracks",
+        expand: "quizzes,tracks",
         cache: "force-cache",
         headers: {
           "Cache-Control": "max-age=600",
