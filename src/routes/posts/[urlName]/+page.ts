@@ -12,7 +12,6 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
     .getFirstListItem(
       pb.filter("urlName = {:urlName}", { urlName: params.urlName }),
       {
-        expand: "tags",
         fetch: fetch,
         cache: "force-cache",
         headers: {

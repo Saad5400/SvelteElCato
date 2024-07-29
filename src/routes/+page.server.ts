@@ -19,7 +19,6 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
   const postsRequest = locals.pb
     .collection("posts")
     .getFullList({
-      expand: "tags",
       fetch: fetch,
       fields: "displayName,urlName,views,readTime",
       sort: "-views",
