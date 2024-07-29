@@ -17,7 +17,7 @@ onModelAfterUpdate((e) => {
     if (payment.getString('status') == "accepted") {
         user.set('registeredCourses', user.get('registeredCourses').concat([course.getId()]));
         $app.dao().saveRecord(user);
-        message.html = `<div style="width:100%; text-align: center;"><h3>تم قبول عملية الدفع وتفعيل الدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;
+        message.html = `<div style="width:100%; text-align: center;"><h3>تم قبول عملية الدفع وتفعيل الدورة ${course.getString('displayName')}</h3><a href="https://elcato.sb.sa/courses/${course.getString('urlName')}">صفحة الدورة</a><p>${payment.getString('feedback')}</p></div>`;
     } else if (payment.getString('status') == "rejected") {
         message.html = `<div style="width:100%; text-align: center;"><h3>تم رفض عملية الدفع للدورة ${course.getString('displayName')}</h3><p>${payment.getString('feedback')}</p></div>`;
     }
@@ -35,7 +35,7 @@ onModelAfterCreate((e) => {
         },
         to: [{ address: "sdbtwa@gmail.com" }],
         subject: "طلب اشتراك جديد",
-        html: `<div style="width:100%; text-align: center;"><h3>طلب اشتراك جديد</h3><p>الرجاء الدخول <a href="https://pbelcato.sb.sa/_/#/collections?collectionId=skhpj1bql7zd3ge&filter=&sort=-created&recordId=${e.model.getId()}>للوحة التحكم</a> للموافقة على الطلب</p></div>`
+        html: `<div style="width:100%; text-align: center;"><h3>طلب اشتراك جديد</h3><p>الرجاء الدخول <a href="https://pbelcato.sb.sa/_/#/collections?collectionId=skhpj1bql7zd3ge&filter=&sort=-created&recordId=${e.model.getId()}">للوحة التحكم</a> للموافقة على الطلب</p></div>`
     });
     $app.newMailClient().send(message);
 }, "payments")
