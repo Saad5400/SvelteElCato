@@ -29,7 +29,7 @@
     }
 
     if (location && location.hash) {
-      const element = document.querySelector(location.hash);
+      const element = document.getElementById(location.hash.slice(1));
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({
@@ -65,11 +65,7 @@
     {#each data.navItems as item}
       <Button
         href={item.href}
-        on:click={() => {
-          menu.update((state) => {
-            return { ...state, open: false };
-          });
-        }}
+        on:click={menu.close}
         class="flex w-full flex-wrap justify-start"
       >
         {item.title}
