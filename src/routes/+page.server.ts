@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
     .getFullList({
       fetch: fetch,
       cache: "force-cache",
-      sort: "-order",
+      sort: "order",
       headers: {
         "Cache-Control": "max-age=3600",
       },
