@@ -10,7 +10,6 @@
   import markedStore from "$lib/stores/markedStore";
   import { cn } from "$lib/utils";
   import { Button } from "$lib/components/ui/button";
-  import Clock from "virtual:icons/f7/Clock";
   import type Track from "$lib/models/Track";
 
   export let data: PageData;
@@ -37,7 +36,7 @@
   <h1>
     {data.course.displayName}
   </h1>
-  {#if data.course.isAvailable}
+  {#if data.course.isAvailable || data.user?.registeredCourses.includes(data.course.id)}
     <Button
       href={`${courseUrl(data.course)}/subscribe`}
       variant="outline3DFilled"
