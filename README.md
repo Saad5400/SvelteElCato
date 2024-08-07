@@ -1,6 +1,7 @@
 # Svelte El Cato
 
-Is the new website for [El Cato](elcato.sb.sa). Using [SvelteKit](https://kit.svelte.dev/) for the frontend and [PocketBase](https://pocketbase.io/) for the backend.
+Is the new website for [El Cato](elcato.sb.sa). Using [SvelteKit](https://kit.svelte.dev/) for the frontend
+and [PocketBase](https://pocketbase.io/) for the backend.
 
 # Getting started
 
@@ -25,11 +26,13 @@ npm install
 
 ## Development
 
-(Optional) download the Svelte extensions for your favourite IDE: [VSCode](https://marketplace.visualstudio.com/items?itemName=1YiB.svelte-bundle) - [WebStorm](https://www.jetbrains.com/help/webstorm/svelte.html)
+(Optional) download the Svelte extensions for your favourite
+IDE: [VSCode](https://marketplace.visualstudio.com/items?itemName=1YiB.svelte-bundle) - [WebStorm](https://www.jetbrains.com/help/webstorm/svelte.html)
 
 Checkout the components library, [shadcn-svelte](https://www.shadcn-svelte.com/)
 
-Create a `.env` file in the root of the project with the following content (replace the URL with the URL of your Pocketbase).
+Create a `.env` file in the root of the project with the following content (replace the URL with the URL of your
+Pocketbase).
 
 ```env
 PUBLIC_POCKETBASE_URL=http://127.0.0.1:8090/

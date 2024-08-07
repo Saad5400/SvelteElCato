@@ -8,6 +8,7 @@
   import { toast } from "svelte-sonner";
   import type { Writable } from "svelte/store";
   import { getCourseRemainder } from "$lib/models/Payment";
+  import { page } from "$app/stores";
 
   let amount: number | null = null;
   let isSubmitted = false;
@@ -40,8 +41,35 @@
       }
     };
   }}
-  class="roboto-mono flex flex-col gap-4"
+  class="roboto-mono flex flex-col gap-4 relative"
 >
+
+  {#if !data.pb.authStore.isValid}
+    <div
+      class="absolute z-10 top-0 left-0 w-full h-full bg-background/90 flex justify-center items-center whitespace-normal flex-wrap">
+      <div>
+        تحتاج
+        <Button
+          href={`/auth/login?redirect=${$page.url}`}
+          variant="link"
+          class="h-fit p-0"
+        >
+          تسجل الدخول
+        </Button>
+        او
+        <Button
+          href={`/auth/register?redirect=${$page.url}`}
+          variant="link"
+          class="h-fit p-0"
+        >
+          تسجل حساب جديد
+        </Button>
+        لتتمكن من الاشتراك
+      </div>
+    </div>
+  {/if}
+
+
   <Input
     type="hidden"
     id="course"

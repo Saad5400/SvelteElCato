@@ -18,6 +18,9 @@ COPY ./pb_migrations /pb/pb_migrations
 # uncomment to copy the local pb_hooks dir into the container
 COPY ./pb_hooks /pb/pb_hooks
 
+# ceate /pb/pb_hooks/env.json file with the "environment" key set to "production"
+RUN echo '{"environment": "production"}' > /pb/pb_hooks/env.json
+
 # uncomment to copy the local pb_public dir into the container
 # COPY ./pb_public /pb/pb_public
 

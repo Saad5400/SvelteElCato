@@ -11,9 +11,20 @@
   import Article from "$lib/components/Article.svelte";
   import Reviews from "./Reviews.svelte";
   import WhoIsElCato from "./WhoIsElCato.svelte";
+  import { onMount } from "svelte";
+  import { page } from "$app/stores";
+  import { goto } from "$app/navigation";
+
 
   const accordionValue = writable([] as string[]);
   export let data: PageData;
+
+  onMount(() => {
+    const hashes = $page.url.hash.slice(1).split(",");
+    if (hashes.length > 0) {
+      accordionValue.set(hashes);
+    }
+  });
 
   function expandAccordion(value: string) {
     accordionValue.set([value]);
@@ -61,13 +72,28 @@
         الشرح والتمارين التجريبية
       </Button>
     </p>
+  {:else if remainder === 0}
+    <p class="roboto-mono">
+      تم استلام مبلغ الاشتراك بالكامل، يمكنك الآن
+      <Button
+        variant="link"
+        class="h-fit p-0"
+        href={courseUrl(data.course)}
+      >
+        البدء بالدورة
+      </Button>
+    </p>
   {:else}
     <p class="roboto-mono">
       تبقى لك دفع مبلغ {remainder} ريال سعودي لاستكمال الاشتراك بالدورة، الرجاء تحويل
       المبلغ ثم تأكيد الدفع
     </p>
   {/if}
-  <Accordion.Root multiple={true} value={$accordionValue} class="bg-background">
+  <Accordion.Root multiple={true} value={$accordionValue} class="bg-background" onValueChange={(v) => {
+      if (v) {
+          goto('#' + v.join(','));
+      }
+  }}>
     <Accordion.Item value="payment-info">
       <Accordion.Trigger>حسابات التحويل</Accordion.Trigger>
       <Accordion.Content>
@@ -80,12 +106,14 @@
         <ConfirmPayment {data} {accordionValue} />
       </Accordion.Content>
     </Accordion.Item>
-    <Accordion.Item value="payments">
-      <Accordion.Trigger>عمليات الدفع</Accordion.Trigger>
-      <Accordion.Content>
-        <Payments {data} />
-      </Accordion.Content>
-    </Accordion.Item>
+    {#if data.pb.authStore.isValid}
+      <Accordion.Item value="payments">
+        <Accordion.Trigger>عمليات الدفع</Accordion.Trigger>
+        <Accordion.Content>
+          <Payments {data} />
+        </Accordion.Content>
+      </Accordion.Item>
+    {/if}
     <Accordion.Item value="included">
       <Accordion.Trigger>تفاصيل الدورة وما تتضمنه</Accordion.Trigger>
       <Accordion.Content>
@@ -108,7 +136,7 @@
 </main>
 
 <style lang="postcss">
-  .input {
-    @apply flex flex-col gap-2;
-  }
+    .input {
+        @apply flex flex-col gap-2;
+    }
 </style>
