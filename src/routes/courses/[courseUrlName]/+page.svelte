@@ -43,9 +43,9 @@
       class="roboto-mono h-fit text-xl"
     >
       {#if !data.user?.registeredCourses.includes(data.course.id)}
-        الاشتراك
+        التفاصيل والاشتراك
       {:else}
-        تفاصيل الدورة والدفع
+        تفاصيل الدورة والمدفوعات
       {/if}
     </Button>
   {/if}
@@ -53,8 +53,8 @@
     <CardsGrid title="المسارات">
       {#each data.course.expand.tracks as track}
         {@const hasAccess =
-          track.expand?.steps.some((step) => step.isFree) ||
-          data.user?.registeredCourses.includes(data.course.id)}
+        track.expand?.steps.some((step) => step.isFree) ||
+        data.user?.registeredCourses.includes(data.course.id)}
         {@const totalLength = getTotalLength(track)}
         <!-- TODO: redirect to the last visited step -->
         <Button
@@ -81,7 +81,7 @@
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
     <CardsGrid title="الاختبارات">
-      {#if $markedStore.filter( (id) => data.allQuestions.includes(id), ).length > 0}
+      {#if $markedStore.filter((id) => data.allQuestions.includes(id),).length > 0}
         <Card
           href={`${courseUrl(data.course)}/quizzes/marked`}
           class="marked col-span-full h-fit"
@@ -100,7 +100,7 @@
       <Separator class="col-span-full" />
       {#each data.course.expand.quizzes as quiz}
         {@const hasAccess =
-          quiz.isFree || data.user?.registeredCourses.includes(data.course.id)}
+        quiz.isFree || data.user?.registeredCourses.includes(data.course.id)}
         {@const allSolved = quiz.questions.every((question) =>
           $solvedStore.includes(question),
         )}
