@@ -6,9 +6,9 @@
   import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
   import { inject as injectAnalytics } from "@vercel/analytics";
   import usePageTransition from "$lib/hooks/usePageTransition";
-  import InitLoading from "./InitLoading.svelte";
   import { ProgressBar } from "@prgm/sveltekit-progress-bar";
   import type { LayoutData } from "./$types";
+  import IntroVideo from "$lib/components/IntroVideo.svelte";
 
   usePageTransition();
   injectSpeedInsights();
@@ -17,6 +17,7 @@
   export let data: LayoutData;
 </script>
 
+<IntroVideo randomQuote={data.randomQuote} />
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar zIndex={50} />

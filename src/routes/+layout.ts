@@ -12,5 +12,6 @@ export const load: LayoutLoad = async ({ data }) => {
   return {
     pb,
     user: data.user,
+    randomQuote: data.randomQuote,
   };
 };
