@@ -40,6 +40,8 @@ PUBLIC_ENVIRONMENT=development
 BUNNY_TOKEN=your-bunny-cdn-token
 ```
 
+Copy the `pb_src/pb_hooks/env.json.example` file to `pb_src/pb_hooks/env.json`
+
 Start the pocketbase server:
 
 ```bash
