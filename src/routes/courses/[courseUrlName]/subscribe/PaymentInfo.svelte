@@ -5,12 +5,12 @@
 </script>
 
 <div
-  class="roboto-mono flex w-full flex-col justify-between gap-8 text-start relative"
+  class="roboto-mono flex w-full flex-col justify-between gap-8 text-start"
 >
 
   {#if !data.pb.authStore.isValid}
     <div
-      class="absolute z-10 top-0 left-0 w-full h-full bg-background/90 backdrop-blur flex justify-center items-center whitespace-normal flex-wrap">
+      class="w-full h-full flex justify-center items-center whitespace-normal flex-wrap">
       <div>
         تحتاج
         <Button
@@ -31,8 +31,7 @@
         لتتمكن من الاشتراك
       </div>
     </div>
-  {/if}
-
+{:else}
   <section>
     <CopyText copyText="سعد نور" />
     الاسم لجميع الحسابات: سعد نور
@@ -68,7 +67,9 @@
       رقم الجوال: 0501321169
     </div>
   </section>
+  {/if}
 </div>
+
 
 <style lang="postcss">
   #arb_qr_black {
