@@ -97,7 +97,7 @@
     <Accordion.Item value="payment-info">
       <Accordion.Trigger>حسابات التحويل</Accordion.Trigger>
       <Accordion.Content>
-        <PaymentInfo />
+        <PaymentInfo {data} />
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item value="submit">

@@ -10,7 +10,7 @@
   {/each}
 	<p class="font-bold">برمجة 2 دفعة 45</p>
 	<hr />
-	{#each Array.from({ length: 28 }, (_, i) => i) as i}
+	{#each Array.from({ length: 27 }, (_, i) => i) as i}
 	<img src={`/images/reviews/45/cs1312/${i + 1}.jpg`} alt="review" />
 {/each}
 </div>

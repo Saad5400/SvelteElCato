@@ -2,6 +2,10 @@
   import Telegram from "$lib/components/icons/Telegram.svelte";
   import CopyText from "$lib/components/CopyText.svelte";
   import { Button } from "$lib/components/ui/button";
+  import { page } from "$app/stores";
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
 </script>
 
 <div
