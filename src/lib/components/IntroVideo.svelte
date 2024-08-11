@@ -36,6 +36,7 @@
 <div
   class="fixed top-0 left-0 w-[100dvw] h-[100dvh] z-[100] bg-background"
   hidden={videoStarted}
+  dir="ltr"
 >
   <div class="flex w-full h-full items-center justify-center flex-col">
     <Button
