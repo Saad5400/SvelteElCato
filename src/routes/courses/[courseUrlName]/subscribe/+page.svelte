@@ -19,13 +19,6 @@
   const accordionValue = writable([] as string[]);
   export let data: PageData;
 
-  onMount(() => {
-    const hashes = $page.url.hash.slice(1).split(",");
-    if (hashes.length > 0) {
-      accordionValue.set(hashes);
-    }
-  });
-
   function expandAccordion(value: string) {
     accordionValue.set([value]);
   }
@@ -89,11 +82,7 @@
       المبلغ ثم تأكيد الدفع
     </p>
   {/if}
-  <Accordion.Root multiple={true} value={$accordionValue} class="bg-background" onValueChange={(v) => {
-      if (v) {
-          goto('#' + v.join(','));
-      }
-  }}>
+  <Accordion.Root multiple={true} value={$accordionValue} class="bg-background">
     <Accordion.Item value="payment-info">
       <Accordion.Trigger>حسابات التحويل</Accordion.Trigger>
       <Accordion.Content>
