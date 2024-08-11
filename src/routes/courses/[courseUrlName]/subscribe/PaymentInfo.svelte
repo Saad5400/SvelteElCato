@@ -5,8 +5,34 @@
 </script>
 
 <div
-  class="roboto-mono flex w-full flex-col justify-between gap-8 text-start"
+  class="roboto-mono flex w-full flex-col justify-between gap-8 text-start relative"
 >
+
+  {#if !data.pb.authStore.isValid}
+    <div
+      class="absolute z-10 top-0 left-0 w-full h-full bg-background/90 backdrop-blur flex justify-center items-center whitespace-normal flex-wrap">
+      <div>
+        تحتاج
+        <Button
+          href={`/auth/login?redirect=${$page.url}`}
+          variant="link"
+          class="h-fit p-0"
+        >
+          تسجل الدخول
+        </Button>
+        او
+        <Button
+          href={`/auth/register?redirect=${$page.url}`}
+          variant="link"
+          class="h-fit p-0"
+        >
+          تسجل حساب جديد
+        </Button>
+        لتتمكن من الاشتراك
+      </div>
+    </div>
+  {/if}
+
   <section>
     <CopyText copyText="سعد نور" />
     الاسم لجميع الحسابات: سعد نور
