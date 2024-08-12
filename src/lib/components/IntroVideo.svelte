@@ -7,6 +7,7 @@
   let videoEnded = false;
   let video: HTMLVideoElement;
   let clicks = 0;
+  let videoButton: HTMLButtonElement;
 
   function enterClicked(e: any) {
     e.preventDefault();
@@ -22,9 +23,12 @@
   function videoClicked(e: any) {
     e.preventDefault();
     clicks++;
-    if (clicks >= 2)
-      endVideo();
-
+    if (clicks >= 2) {
+      videoButton.style.opacity = "0";
+      setTimeout(() => {
+        endVideo();
+      }, 100);
+    }
   }
 
   function timeUpdated() {
@@ -48,7 +52,7 @@
       Enter
       <LogIn class="w-7" />
     </Button>
-    <p>
+    <p class="text-center px-4">
       {randomQuote}
     </p>
   </div>
@@ -56,10 +60,12 @@
 
 <button
   hidden={!videoStarted||videoEnded}
-  class="fixed top-0 left-0 w-[100dvw] h-[100dvh] z-[100]"
+  class="fixed top-0 left-0 w-[100dvw] h-[100dvh] z-[100] transition-all"
   on:click={videoClicked}
+  bind:this={videoButton}
 >
-    <span class="fixed top-[70%] left-1/2 -translate-y-1/2 -translate-x-1/2 bg-background/50 backdrop-blur p-2 px-8">
+    <span
+      class="text-white bg-black fixed top-[70%] left-1/2 -translate-y-1/2 -translate-x-1/2 bg-background/50 backdrop-blur p-2 px-8">
       Click twice to skip
     </span>
   <video
