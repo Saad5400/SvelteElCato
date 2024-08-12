@@ -11,6 +11,7 @@
   import { cn } from "$lib/utils";
   import { Button } from "$lib/components/ui/button";
   import type Track from "$lib/models/Track";
+  import completedSteps from "$lib/stores/completedSteps";
 
   export let data: PageData;
 
@@ -62,6 +63,9 @@
           class={cn(
             "flex h-auto justify-between whitespace-normal text-2xl",
             hasAccess || "disabled",
+            track.expand.steps.every((step) =>
+                 step.type === 'section' ||  $completedSteps.includes(step.id)
+            ) && "correct",
           )}
           variant="outline3DLarge"
         >
@@ -102,10 +106,10 @@
         {@const hasAccess =
         quiz.isFree || data.user?.registeredCourses.includes(data.course.id)}
         {@const allSolved = quiz.questions.every((question) =>
-          $solvedStore.includes(question),
+            $solvedStore.includes(question),
         )}
         {@const anyMarked = quiz.questions.some((question) =>
-          $markedStore.includes(question),
+            $markedStore.includes(question),
         )}
         <Card
           href={quizFirstQuestionUrl(quiz, data.course)}

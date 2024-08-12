@@ -17,7 +17,7 @@
   export let data: LayoutData;
 </script>
 
-<IntroVideo randomQuote={data.randomQuote} />
+<!--<IntroVideo randomQuote={data.randomQuote} />-->
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar zIndex={50} />

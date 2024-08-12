@@ -89,7 +89,6 @@
     >
       <Tabs.List class="w-full">
         <Tabs.Trigger value="description" class="w-full">الوصف</Tabs.Trigger>
-        <Tabs.Trigger value="comments" class="w-full">التعليقات</Tabs.Trigger>
       </Tabs.List>
       <div
         class="mt-2 rounded-lg border-b-8 border-l-8 border-accent-foreground/20 bg-input p-2"
@@ -97,7 +96,6 @@
         <Tabs.Content value="description">
           <Article content={useHighlight(data.step.description)} />
         </Tabs.Content>
-        <Tabs.Content value="comments">لا يوجد تعليقات</Tabs.Content>
       </div>
     </Tabs.Root>
   {/if}
