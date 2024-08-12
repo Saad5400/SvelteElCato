@@ -9,6 +9,8 @@
   import { ProgressBar } from "@prgm/sveltekit-progress-bar";
   import type { LayoutData } from "./$types";
   import IntroVideo from "$lib/components/IntroVideo.svelte";
+  import { PUBLIC_ENVIRONMENT } from "$env/static/public";
+
 
   usePageTransition();
   injectSpeedInsights();
@@ -17,7 +19,9 @@
   export let data: LayoutData;
 </script>
 
-<!--<IntroVideo randomQuote={data.randomQuote} />-->
+{#if PUBLIC_ENVIRONMENT !== 'development'}
+  <IntroVideo randomQuote={data.randomQuote} />
+{/if}
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar zIndex={50} />

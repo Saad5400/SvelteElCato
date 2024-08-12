@@ -13,11 +13,13 @@ export default interface User extends BaseModel {
   markedQuestions: string[];
   solvedQuestions: string[];
   completedSteps: string[];
+  payments: string[];
   name: string;
   expand: {
     registeredCourses: Course[];
     markedQuestions: Question[];
     solvedQuestions: Question[];
     completedSteps: Step[];
+    payments: Payment[];
   };
 }

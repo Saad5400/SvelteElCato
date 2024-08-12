@@ -31,14 +31,7 @@ IDE: [VSCode](https://marketplace.visualstudio.com/items?itemName=1YiB.svelte-bu
 
 Checkout the components library, [shadcn-svelte](https://www.shadcn-svelte.com/)
 
-Create a `.env` file in the root of the project with the following content (replace the URL with the URL of your
-Pocketbase).
-
-```env
-PUBLIC_POCKETBASE_URL=http://127.0.0.1:8090/
-PUBLIC_ENVIRONMENT=development
-BUNNY_TOKEN=your-bunny-cdn-token
-```
+Copy the `.env.example` file to `.env`
 
 Copy the `pb_src/pb_hooks/env.json.example` file to `pb_src/pb_hooks/env.json`
 
