@@ -60,7 +60,7 @@
 
 <button
   hidden={!videoStarted||videoEnded}
-  class="fixed top-0 left-0 w-[100dvw] h-[100dvh] z-[100] transition-all"
+  class="fixed top-0 left-0 w-[100vw] h-[100vh] z-[100] transition-all"
   on:click={videoClicked}
   bind:this={videoButton}
 >
