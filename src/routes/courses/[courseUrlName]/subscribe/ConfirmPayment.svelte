@@ -9,9 +9,13 @@
   import type { Writable } from "svelte/store";
   import { getCourseRemainder } from "$lib/models/Payment";
   import { page } from "$app/stores";
+  import { Checkbox } from "$lib/components/ui/checkbox";
 
   let amount: number | null = null;
   let isSubmitted = false;
+  let shareAccount = false;
+  let shareContent = false;
+  let finalAgreement = false;
 
   export let data: PageData;
   export let accordionValue: Writable<string[]>;
@@ -120,7 +124,46 @@
       min={0}
     />
   </div>
-  <Button type="submit" variant="outline3DFilled">
+  <div class="flex items-center gap-2">
+    <Checkbox id="shareAccount" name="shareAccount" bind:checked={shareAccount} />
+    <Label for="shareAccount">
+      أتعهد
+      <span class="text-destructive">
+        بعدم مشاركة الحساب
+      </span>
+      مع أي شخص آخر
+    </Label>
+  </div>
+  <div class="flex items-center gap-2">
+    <Checkbox id="shareContent" name="shareContent" bind:checked={shareContent} />
+    <Label for="shareContent">
+      أتعهد
+      <span class="text-destructive">
+        بعدم نشر محتوى
+      </span>
+      الدورة مع أي شخص آخر
+    </Label>
+  </div>
+  <div class="flex items-center gap-2">
+    <Checkbox id="finalAgreement" name="finalAgreement" bind:checked={finalAgreement} />
+    <Label for="finalAgreement" class="leading-5">
+      أعلم أن فريق الكاتو
+      <span class="text-destructive">
+        لا يحللون
+      </span>
+      الإخلال بالشروط المذكورة أعلاه
+      وأنها
+      <span class="text-destructive">
+        تضر رزق الفريق بشكل مباشر
+      </span>
+      ولذلك قد يتم
+      <span class="text-destructive">
+        حظر حسابك مباشرة
+      </span>
+      في حال الإخلال بالشروط
+    </Label>
+  </div>
+  <Button type="submit" variant="outline3DFilled" disabled={!shareAccount || !shareContent || !finalAgreement}>
     {#if isSubmitted}
       <LoadingLoop />
     {:else}
