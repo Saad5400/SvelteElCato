@@ -12,8 +12,17 @@
   import { Button } from "$lib/components/ui/button";
   import type Track from "$lib/models/Track";
   import completedSteps from "$lib/stores/completedSteps";
+  import BetweenLines from "$lib/components/BetweenLines.svelte";
+  import { Label } from "$lib/components/ui/label";
+  import { Textarea } from "$lib/components/ui/textarea/index.js";
+  import { Slider } from "$lib/components/ui/slider";
+  import { applyAction, enhance } from "$app/forms";
+  import LoadingLoop from "virtual:icons/line-md/LoadingLoop";
 
   export let data: PageData;
+  let rating = [5];
+  $: ratingValue = rating[0];
+  let isSubmitted = false;
 
   function getTotalLength(track: Track): number {
     return track.expand?.steps.reduce((acc, step) => acc + step.length, 0);
@@ -121,4 +130,39 @@
       {/each}
     </CardsGrid>
   {/if}
+<!--  <BetweenLines>-->
+<!--    التقييمات-->
+<!--  </BetweenLines>-->
+<!--  {#if data.user?.registeredCourses.includes(data.course.id)}-->
+<!--    <form-->
+<!--      use:enhance={({}) => {-->
+<!--          isSubmitted = true;-->
+<!--          return async ({ result, update }) => {-->
+<!--              await applyAction(result);-->
+<!--          }-->
+<!--      }}-->
+<!--      action="?/rate"-->
+<!--      class="flex flex-col gap-4 roboto-mono"-->
+<!--    >-->
+<!--      <Label for="rating">قيم الدورة*</Label>-->
+<!--      <Slider class="mt-4" bind:value={rating} min={1} max={5} step={1} />-->
+<!--      <input type="hidden" id="rating" name="rating" bind:value={ratingValue} />-->
+<!--      <div class="flex flex-row justify-between w-full text-foreground/80">-->
+<!--        <span>ممتازة</span>-->
+<!--        <span>جيدة</span>-->
+<!--        <span>متوسطة</span>-->
+<!--        <span>مقبولة</span>-->
+<!--        <span>سيئة</span>-->
+<!--      </div>-->
+<!--      <Label class="mt-8" for="comment">أضف تعليقا</Label>-->
+<!--      <Textarea class="text-foreground/80" id="comment" name="comment" placeholder="..." />-->
+<!--      <Button variant="outline3DFilled" type="submit" disabled={isSubmitted}>-->
+<!--        {#if (isSubmitted)}-->
+<!--          <LoadingLoop class="w-6 h-auto" />-->
+<!--        {:else}-->
+<!--          إرسال-->
+<!--        {/if}-->
+<!--      </Button>-->
+<!--    </form>-->
+<!--  {/if}-->
 </div>

@@ -17,10 +17,13 @@ cronAdd("sendEmails", "*/1 * * * *", () => {
     );
 
     for (const email of emailsToSend) {
+        const senderAddress = email.getString("fromAddress");
+        const senderName = email.getString("fromName");
+
         const message = new MailerMessage({
             from: {
-                address: email.getString("fromAddress"),
-                name: email.getString("fromName")
+                address: senderAddress ? senderAddress : $app.settings().meta.senderAddress,
+                name: senderName ? senderName : $app.settings().meta.senderName
             },
             to: [{ address: email.getString("toAddress") }],
             subject: email.getString("subject"),

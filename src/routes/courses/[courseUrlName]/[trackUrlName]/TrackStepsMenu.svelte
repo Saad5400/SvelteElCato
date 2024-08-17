@@ -37,7 +37,7 @@
     </BetweenLines>
   {:else}
     <Button
-      class="{className} flex justify-between p-0 px-2 {hasAccess ||
+      class="{className} flex justify-between px-2 {hasAccess ||
         'disabled'} {active && `active ${activeClass}`}
           "
     >

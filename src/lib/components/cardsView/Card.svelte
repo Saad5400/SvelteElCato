@@ -19,14 +19,15 @@
     | null
     | undefined = "hover";
   export let onClick: (
-    event: ButtonEventHandler<MouseEvent>,
-  ) => void = () => {};
+    event: ButtonEventHandler<MouseEvent>
+  ) => void = () => {
+  };
 
   export { className as class };
 </script>
 
 <Button
-  class={cn("flex h-fit min-w-64 flex-1 flex-col", className)}
+  class={cn("flex h-fit min-w-64 flex-1 flex-col relative", className)}
   {variant}
   {href}
   data-sveltekit-preload-data={dataSveltekitPreloadData}
@@ -36,7 +37,7 @@
     <img
       src={image}
       alt="شعار"
-      class="absolute -z-10 h-full w-full object-cover opacity-20 grayscale blur-[2px]"
+      class="absolute top-0 left-0 -z-10 h-full w-full object-cover opacity-20 grayscale blur-[2px]"
     />
   {/if}
   <span class={titleClassName}>
@@ -55,8 +56,8 @@
 </Button>
 
 <style lang="postcss">
-  span {
-    /*wrap text*/
-    @apply whitespace-normal;
-  }
+    span {
+        /*wrap text*/
+        @apply whitespace-normal;
+    }
 </style>
