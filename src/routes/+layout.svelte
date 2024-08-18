@@ -19,9 +19,6 @@
   export let data: LayoutData;
 </script>
 
-{#if PUBLIC_ENVIRONMENT !== 'development'}
-  <IntroVideo randomQuote={data.randomQuote} />
-{/if}
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
 <Toaster class="max-w-[20rem]" />
 <ProgressBar zIndex={50} />
