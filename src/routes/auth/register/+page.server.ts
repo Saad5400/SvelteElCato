@@ -24,9 +24,9 @@ export const actions: Actions = {
         .authWithPassword(data.email.toLowerCase(), data.password, {
           fetch
         });
-      await locals.pb.collection("users").requestVerification(data.email.toLowerCase(), {
-        fetch
-      });
+      // await locals.pb.collection("users").requestVerification(data.email.toLowerCase(), {
+      //   fetch
+      // });
     } catch (e) {
       console.error(e);
       throw e;
