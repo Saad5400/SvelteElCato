@@ -9,6 +9,7 @@
   import menu from "$lib/stores/menu";
   import { Checkbox } from "$lib/components/ui/checkbox";
   import completedSteps from "$lib/stores/completedSteps";
+  import { cn } from "$lib/utils";
 
   export let data: LayoutData;
   export let activeClass: string = "";
@@ -37,9 +38,12 @@
     </BetweenLines>
   {:else}
     <Button
-      class="{className} flex justify-between px-2 {hasAccess ||
-        'disabled'} {active && `active ${activeClass}`}
-          "
+      class={cn(
+      className,
+      "flex justify-between px-2 whitespace-normal h-fit",
+      hasAccess || "disabled",
+      active && `active ${activeClass}`
+      )}
     >
       <div class="flex-1 h-full flex items-center gap-2">
         {#if data.pb.authStore.isValid && data.user}
