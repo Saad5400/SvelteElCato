@@ -70,7 +70,7 @@
         <Button
           href={`/courses/${$page.params.courseUrlName}/${track.urlName}`}
           class={cn(
-            "flex h-auto justify-between whitespace-normal text-2xl",
+            "flex h-auto justify-center whitespace-normal text-2xl",
             hasAccess || "disabled",
             track.expand.steps.every((step) =>
                  step.type === 'section' ||  $completedSteps.includes(step.id)
@@ -81,13 +81,13 @@
           <span>
             {track.displayName}
           </span>
-          {#if track.expand && track.expand.steps.length > 0 && totalLength > 0}
-            <span
-              class="ms-2 inline-flex items-center gap-1 self-end text-base"
-            >
-              ({getLengthLabel(totalLength)})
-            </span>
-          {/if}
+          <!--{#if track.expand && track.expand.steps.length > 0 && totalLength > 0}-->
+          <!--  <span-->
+          <!--    class="ms-2 inline-flex items-center gap-1 self-end text-base"-->
+          <!--  >-->
+          <!--    ({getLengthLabel(totalLength)})-->
+          <!--  </span>-->
+          <!--{/if}-->
         </Button>
       {/each}
     </CardsGrid>
@@ -130,39 +130,39 @@
       {/each}
     </CardsGrid>
   {/if}
-<!--  <BetweenLines>-->
-<!--    التقييمات-->
-<!--  </BetweenLines>-->
-<!--  {#if data.user?.registeredCourses.includes(data.course.id)}-->
-<!--    <form-->
-<!--      use:enhance={({}) => {-->
-<!--          isSubmitted = true;-->
-<!--          return async ({ result, update }) => {-->
-<!--              await applyAction(result);-->
-<!--          }-->
-<!--      }}-->
-<!--      action="?/rate"-->
-<!--      class="flex flex-col gap-4 roboto-mono"-->
-<!--    >-->
-<!--      <Label for="rating">قيم الدورة*</Label>-->
-<!--      <Slider class="mt-4" bind:value={rating} min={1} max={5} step={1} />-->
-<!--      <input type="hidden" id="rating" name="rating" bind:value={ratingValue} />-->
-<!--      <div class="flex flex-row justify-between w-full text-foreground/80">-->
-<!--        <span>ممتازة</span>-->
-<!--        <span>جيدة</span>-->
-<!--        <span>متوسطة</span>-->
-<!--        <span>مقبولة</span>-->
-<!--        <span>سيئة</span>-->
-<!--      </div>-->
-<!--      <Label class="mt-8" for="comment">أضف تعليقا</Label>-->
-<!--      <Textarea class="text-foreground/80" id="comment" name="comment" placeholder="..." />-->
-<!--      <Button variant="outline3DFilled" type="submit" disabled={isSubmitted}>-->
-<!--        {#if (isSubmitted)}-->
-<!--          <LoadingLoop class="w-6 h-auto" />-->
-<!--        {:else}-->
-<!--          إرسال-->
-<!--        {/if}-->
-<!--      </Button>-->
-<!--    </form>-->
-<!--  {/if}-->
+  <!--  <BetweenLines>-->
+  <!--    التقييمات-->
+  <!--  </BetweenLines>-->
+  <!--  {#if data.user?.registeredCourses.includes(data.course.id)}-->
+  <!--    <form-->
+  <!--      use:enhance={({}) => {-->
+  <!--          isSubmitted = true;-->
+  <!--          return async ({ result, update }) => {-->
+  <!--              await applyAction(result);-->
+  <!--          }-->
+  <!--      }}-->
+  <!--      action="?/rate"-->
+  <!--      class="flex flex-col gap-4 roboto-mono"-->
+  <!--    >-->
+  <!--      <Label for="rating">قيم الدورة*</Label>-->
+  <!--      <Slider class="mt-4" bind:value={rating} min={1} max={5} step={1} />-->
+  <!--      <input type="hidden" id="rating" name="rating" bind:value={ratingValue} />-->
+  <!--      <div class="flex flex-row justify-between w-full text-foreground/80">-->
+  <!--        <span>ممتازة</span>-->
+  <!--        <span>جيدة</span>-->
+  <!--        <span>متوسطة</span>-->
+  <!--        <span>مقبولة</span>-->
+  <!--        <span>سيئة</span>-->
+  <!--      </div>-->
+  <!--      <Label class="mt-8" for="comment">أضف تعليقا</Label>-->
+  <!--      <Textarea class="text-foreground/80" id="comment" name="comment" placeholder="..." />-->
+  <!--      <Button variant="outline3DFilled" type="submit" disabled={isSubmitted}>-->
+  <!--        {#if (isSubmitted)}-->
+  <!--          <LoadingLoop class="w-6 h-auto" />-->
+  <!--        {:else}-->
+  <!--          إرسال-->
+  <!--        {/if}-->
+  <!--      </Button>-->
+  <!--    </form>-->
+  <!--  {/if}-->
 </div>
