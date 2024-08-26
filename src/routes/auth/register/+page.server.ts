@@ -15,6 +15,8 @@ export const actions: Actions = {
       passwordConfirm: string;
     };
 
+    data.email = data.email.toLowerCase();
+
     try {
       await locals.pb.collection("users").create(data, {
         fetch
@@ -36,5 +38,5 @@ export const actions: Actions = {
       redirect(302, url.searchParams.get("redirect")!);
     }
     redirect(302, "/");
-  },
+  }
 };
