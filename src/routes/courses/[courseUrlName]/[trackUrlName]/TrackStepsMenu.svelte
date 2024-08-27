@@ -40,7 +40,7 @@
     <Button
       class={cn(
       className,
-      "flex justify-between px-2 whitespace-normal h-fit",
+      "flex justify-between px-2 py-0 whitespace-normal h-fit",
       hasAccess || "disabled",
       active && `active ${activeClass}`
       )}
@@ -56,7 +56,7 @@
         <a
           href={stepUrl(step, data.course, data.track)}
           on:click={menu.close}
-          class="flex-1 h-full text-start flex items-center"
+          class="flex-1 h-full text-start flex items-center py-2"
         >
           {step.displayName}
         </a>
