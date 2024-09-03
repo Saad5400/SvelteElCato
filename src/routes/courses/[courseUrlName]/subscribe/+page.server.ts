@@ -37,7 +37,7 @@ export const actions: Actions = {
 
     const data = Object.fromEntries(await request.formData()) as {
       amount: string;
-      receipt: File;
+      receipt?: File;
       course: string;
     };
 
@@ -47,7 +47,7 @@ export const actions: Actions = {
       });
     }
 
-    if (data.receipt.size > 5242880) {
+    if (data.receipt && data.receipt.size > 5242880) {
       return fail(400, {
         message: "ملف الايصال كبير جداً! يجب أن يكون أقل من 5 ميجابايت"
       });

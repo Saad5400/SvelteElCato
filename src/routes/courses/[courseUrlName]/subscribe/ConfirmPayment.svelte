@@ -83,7 +83,7 @@
   />
   <div class="input">
     <Label for="receipt">إيصال التحويل</Label>
-    <Input type="file" id="receipt" name="receipt" required />
+    <Input type="file" id="receipt" name="receipt" />
   </div>
   <div class="input">
     <Label class="flex items-center justify-between" for="amount">
