@@ -14,6 +14,9 @@ import type Question from "$lib/models/Question";
 import type Quiz from "$lib/models/Quiz";
 import type User from "$lib/models/User";
 import type Payment from "./Payment";
+import type Email from "$lib/models/Email";
+import type Logout from "$lib/models/Logout";
+import type FingerPrint from "$lib/models/FingerPrint";
 
 class Track { }
 
@@ -27,6 +30,9 @@ export default interface TypedPocketBase extends PocketBase {
   collection(idOrName: "stepsView"): RecordService<Step>;
   collection(idOrName: "tracks"): RecordService<Track>;
   collection(idOrName: "users"): RecordService<User>;
+  collection(idOrName: "emails"): RecordService<Email>;
+  collection(idOrName: "logouts"): RecordService<Logout>;
+  collection(idOrName: "fingerprints"): RecordService<FingerPrint>;
 }
 
 export function handleError(er: ClientResponseError) {

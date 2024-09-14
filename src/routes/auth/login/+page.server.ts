@@ -9,21 +9,22 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-  default: async ({ locals, request, url, fetch }) => {
+  default: async ({ locals, request, url, fetch, getClientAddress }) => {
     const data = Object.fromEntries(await request.formData()) as {
       email: string;
       password: string;
     };
 
     try {
-      await locals.pb
+      const user = await locals.pb
         .collection("users")
         .authWithPassword(data.email.toLowerCase(), data.password, {
           fetch
         });
+      await locals.pb.collection("users").update(user.record.id, { clientAddress: getClientAddress() });
     } catch (e) {
       return fail(401, {
-        message: "Invalid email or password",
+        message: "Invalid email or password"
       });
     }
 
@@ -31,5 +32,5 @@ export const actions: Actions = {
       redirect(302, url.searchParams.get("redirect")!);
     }
     redirect(302, "/");
-  },
+  }
 };

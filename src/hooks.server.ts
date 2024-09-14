@@ -13,6 +13,19 @@ export const handle: Handle = async ({ event, resolve }) => {
     pb.authStore.clear();
   }
 
+  const user = pb.authStore.model as User | null;
+  if (user) {
+    const storedClientAddress = user.clientAddress;
+    const currentClientAddress = event.getClientAddress();
+
+    if (storedClientAddress && storedClientAddress !== currentClientAddress) {
+      await pb.collection("logouts").create({
+        user: user.id,
+      });
+      pb.authStore.clear();
+    }
+  }
+
   event.locals.pb = pb;
   event.locals.user = pb.authStore.model as User | null;
 
@@ -23,8 +36,8 @@ export const handle: Handle = async ({ event, resolve }) => {
     pb.authStore.exportToCookie({
       httpOnly: false,
       sameSite: PUBLIC_ENVIRONMENT === "production" ? "None" : "Lax",
-      secure: PUBLIC_ENVIRONMENT === "production",
-    }),
+      secure: PUBLIC_ENVIRONMENT === "production"
+    })
   );
 
   return response;
