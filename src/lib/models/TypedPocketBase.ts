@@ -15,6 +15,7 @@ import type Quiz from "$lib/models/Quiz";
 import type User from "$lib/models/User";
 import type Payment from "./Payment";
 import type Email from "$lib/models/Email";
+import type Logout from "$lib/models/Logout";
 
 class Track { }
 
@@ -29,6 +30,7 @@ export default interface TypedPocketBase extends PocketBase {
   collection(idOrName: "tracks"): RecordService<Track>;
   collection(idOrName: "users"): RecordService<User>;
   collection(idOrName: "emails"): RecordService<Email>;
+  collection(idOrName: "logouts"): RecordService<Logout>;
 }
 
 export function handleError(er: ClientResponseError) {

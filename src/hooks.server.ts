@@ -19,11 +19,8 @@ export const handle: Handle = async ({ event, resolve }) => {
     const currentClientAddress = event.getClientAddress();
 
     if (storedClientAddress && storedClientAddress !== currentClientAddress) {
-      await pb.collection("emails").create({
-        toAddress: "sdbtwa@gmail.com",
-        subject: "User logged in from different IP",
-        html: `<h3>User ${user.displayName} Id: ${user.id} logged in from different IP.</h3><a href="https://pbelcato.sb.sa/_/#/collections?collectionId=_pb_users_auth_&recordId=${user.id}">Admin panel</a>`,
-        status: "pending"
+      await pb.collection("logouts").create({
+        user: user.id,
       });
       pb.authStore.clear();
     }
