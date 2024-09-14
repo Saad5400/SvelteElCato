@@ -24,5 +24,21 @@ onModelAfterUpdate((e) => {
 
 onModelAfterCreate((e) => {
     const addEmailToQueue = require(`${__hooks}/emails-utils.js`).addEmailToQueue;
-    addEmailToQueue(null, null, "sdbtwa@gmail.com", "طلب اشتراك جديد", `<div style="width:100%; text-align: center;"><h3>طلب اشتراك جديد</h3><p>الرجاء الدخول <a href="https://pbelcato.sb.sa/_/#/collections?collectionId=skhpj1bql7zd3ge&filter=&sort=-created&recordId=${e.model.getId()}">للوحة التحكم</a> للموافقة على الطلب</p></div>`);
+
+    const payment = $app.dao().findRecordById("payments", e.model.getId());
+
+    // In case the user did not upload the receipt
+    if (!payment.get("receipt"))
+        addEmailToQueue(null, null, "sdbtwa@gmail.com", "طلب اشتراك جديد", `<div style="width:100%; text-align: center;"><h3>طلب اشتراك جديد</h3><p>الرجاء الدخول <a href="https://pbelcato.sb.sa/_/#/collections?collectionId=skhpj1bql7zd3ge&filter=&sort=-created&recordId=${e.model.getId()}">للوحة التحكم</a> للموافقة على الطلب</p></div>`);
+    // In case the user uploaded the receipt, we will send an email to the admin, and immediately approve the payment
+    else {
+        addEmailToQueue(null, null, "sdbtwa@gmail.com", "تم تفعيل اشتراك جديد", `<div style="width:100%; text-align: center;"><h3>تم تفعيل اشتراك جديد</h3><p>الرجاء الدخول <a href="https://pbelcato.sb.sa/_/#/collections?collectionId=skhpj1bql7zd3ge&filter=&sort=-created&recordId=${e.model.getId()}">للوحة التحكم</a> للمتابعة</p></div>`);
+
+        const form = new RecordUpsertForm($app, payment);
+        form.loadData({
+            "status": "accepted",
+            "feedback": "قروب التيليجرام https://t.me/+pdalfPvoXCs3ZDA0"
+        });
+        form.submit();
+    }
 }, "payments");
