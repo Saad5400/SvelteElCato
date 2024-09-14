@@ -14,6 +14,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   const user = pb.authStore.model as User | null;
+  /*
   if (user) {
     const storedClientAddress = user.clientAddress;
     const currentClientAddress = event.getClientAddress();
@@ -25,6 +26,7 @@ export const handle: Handle = async ({ event, resolve }) => {
       pb.authStore.clear();
     }
   }
+  */
 
   event.locals.pb = pb;
   event.locals.user = pb.authStore.model as User | null;
