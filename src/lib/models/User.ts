@@ -15,6 +15,7 @@ export default interface User extends BaseModel {
   completedSteps: string[];
   payments: string[];
   name: string;
+  clientAddress: string;
   expand: {
     registeredCourses: Course[];
     markedQuestions: Question[];
