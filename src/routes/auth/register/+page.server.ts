@@ -8,14 +8,16 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-  default: async ({ locals, request, url, fetch }) => {
+  default: async ({ locals, request, url, fetch, getClientAddress }) => {
     const data = Object.fromEntries(await request.formData()) as {
       email: string;
       password: string;
       passwordConfirm: string;
+      clientAddress: string;
     };
 
     data.email = data.email.toLowerCase();
+    data.clientAddress = getClientAddress();
 
     try {
       await locals.pb.collection("users").create(data, {

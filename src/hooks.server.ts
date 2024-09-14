@@ -15,19 +15,18 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   const user = pb.authStore.model as User | null;
   if (user) {
-    console.log(user.clientAddress);
-    console.log(event.getClientAddress());
-    if (user.clientAddress != "" && user.clientAddress !== event.getClientAddress()) {
+    const storedClientAddress = user.clientAddress;
+    const currentClientAddress = event.getClientAddress();
+
+    if (storedClientAddress && storedClientAddress !== currentClientAddress) {
       await pb.collection("emails").create({
         toAddress: "sdbtwa@gmail.com",
         subject: "User logged in from different IP",
-        html: `<h3>User ${user.displayName} Id: ${user.id} logged in from different IP.</h3><a href="https://pbelcato.sb.sa/_/#/collections?collectionId=_pb_users_auth_&recordId=${user.clientAddress}">IP Info</a>`,
+        html: `<h3>User ${user.displayName} Id: ${user.id} logged in from different IP.</h3><a href="https://pbelcato.sb.sa/_/#/collections?collectionId=_pb_users_auth_&recordId=${user.id}">Admin panel</a>`,
         status: "pending"
       });
-      throw new Error("Invalid client address");
+      pb.authStore.clear();
     }
-    if (user.clientAddress !== event.getClientAddress())
-      await pb.collection("users").update(user.id, { clientAddress: event.getClientAddress() });
   }
 
   event.locals.pb = pb;
