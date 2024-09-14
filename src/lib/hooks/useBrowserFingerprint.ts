@@ -73,7 +73,29 @@ const useBrowserFingerprint = ({
 
   const result = murmurhash3_32_gc(datastring);
   return {
-    data: JSON.parse(data),
+    data: {
+      canvas,
+      colorDepth,
+      cookieEnabled,
+      deviceMemory,
+      devicePixelRatio,
+      doNotTrack,
+      hardwareConcurrency,
+      height,
+      language,
+      languages,
+      maxTouchPoints,
+      pixelDepth,
+      platform,
+      timezone,
+      timezoneOffset,
+      touchSupport,
+      userAgent,
+      vendor,
+      webgl,
+      webglInfo,
+      width
+    },
     fp: result,
   };
 };
