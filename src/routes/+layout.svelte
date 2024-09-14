@@ -10,6 +10,9 @@
   import type { LayoutData } from "./$types";
   import IntroVideo from "$lib/components/IntroVideo.svelte";
   import { PUBLIC_ENVIRONMENT } from "$env/static/public";
+  import { onMount } from "svelte";
+  import useBrowserFingerprint from "$lib/hooks/useBrowserFingerprint";
+  import type FingerPrint from "$lib/models/FingerPrint";
 
 
   usePageTransition();
@@ -17,6 +20,24 @@
   injectAnalytics();
 
   export let data: LayoutData;
+
+  onMount(async () => {
+    if (data.user) {
+      const fp = useBrowserFingerprint({
+        enableScreen: true,
+        enableWebgl: true,
+        hardwareOnly: true
+      });
+
+      if (!data.fps.find((f: FingerPrint) => f.fp == fp.fp.toString())) {
+        await data.pb.collection("fingerprints").create({
+          user: data.user.id,
+          fp: fp.fp,
+          data: fp.data,
+        });
+      }
+    }
+  });
 </script>
 
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
