@@ -17,7 +17,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (user) {
     console.log(user.clientAddress);
     console.log(event.getClientAddress());
-    if (user.clientAddress != '' && user.clientAddress !== event.getClientAddress()) {
+    if (user.clientAddress != "" && user.clientAddress !== event.getClientAddress()) {
       await pb.collection("emails").create({
         toAddress: "sdbtwa@gmail.com",
         subject: "User logged in from different IP",
@@ -26,7 +26,8 @@ export const handle: Handle = async ({ event, resolve }) => {
       });
       throw new Error("Invalid client address");
     }
-    await pb.collection("users").update(user.id, { clientAddress: event.getClientAddress() });
+    if (user.clientAddress !== event.getClientAddress())
+      await pb.collection("users").update(user.id, { clientAddress: event.getClientAddress() });
   }
 
   event.locals.pb = pb;
