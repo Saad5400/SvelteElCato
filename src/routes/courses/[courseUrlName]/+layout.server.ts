@@ -17,10 +17,6 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
       ),
       {
         expand: "quizzes,tracks",
-        cache: "force-cache",
-        headers: {
-          "Cache-Control": "max-age=600",
-        },
       },
     )
     .catch(handleError)) as Course;
@@ -30,10 +26,6 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
       filter: locals.pb.filter("{:id} ~ id", {
         id: track.steps.map((s) => s),
       }),
-      cache: "force-cache",
-      headers: {
-        "Cache-Control": "max-age=3600",
-      },
       requestKey: track.id,
     });
   }
