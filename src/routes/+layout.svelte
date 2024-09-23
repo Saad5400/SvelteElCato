@@ -20,24 +20,6 @@
   injectAnalytics();
 
   export let data: LayoutData;
-
-  onMount(async () => {
-    if (data.user) {
-      const fp = useBrowserFingerprint({
-        enableScreen: true,
-        enableWebgl: true,
-        hardwareOnly: true
-      });
-
-      if (!data.fps.find((f: FingerPrint) => f.fp == fp.fp.toString())) {
-        await data.pb.collection("fingerprints").create({
-          user: data.user.id,
-          fp: fp.fp,
-          data: fp.data,
-        });
-      }
-    }
-  });
 </script>
 
 <ModeWatcher disableTransitions={false} defaultMode="dark" />
