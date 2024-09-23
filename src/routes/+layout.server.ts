@@ -25,21 +25,10 @@ export const load: LayoutServerLoad = async ({ locals, request, fetch }) => {
 
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
-  const fps = locals.user ? (await locals.pb.collection("fingerprints").getList(
-    1,
-    100,
-    {
-      fetch,
-      filter: locals.pb.filter("user = {:userId}", {
-        userId: locals.user?.id
-      })
-    })).items : [];
-
   return {
     randomQuote,
     pb: structuredClone(locals.pb),
     user: locals.user,
     cookies: request.headers.get("cookie"),
-    fps
   };
 };
