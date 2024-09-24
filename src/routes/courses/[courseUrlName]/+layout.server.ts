@@ -36,6 +36,7 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
         track.expand = {
           ...track.expand,
           steps: await requestSteps(track),
+
         };
       }),
     );
