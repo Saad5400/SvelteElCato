@@ -38,7 +38,7 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
     });
   }
 
-  for (let i = 0; i < course.expand?.tracks.length; i += 6) {
+  for (let i = 0; i < course.expand?.tracks?.length; i += 6) {
     await Promise.all(
       course.expand?.tracks.slice(i, i + 6).map(async (track) => {
         track.expand = {
