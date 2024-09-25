@@ -97,6 +97,7 @@
   $: if ($page.url.href) {
     showExplanation = false;
     if (browser && data.next) preloadData(`./${data.next}`);
+    if (browser && data.prev) preloadData(`./${data.prev}`);
   }
 
   $: isSolved = $solvedStore.includes(data.question.id);
