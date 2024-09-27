@@ -93,7 +93,7 @@
     </CardsGrid>
   {/if}
   {#if data.course.quizzes && data.course.quizzes.length > 0}
-    <CardsGrid title="الاختبارات">
+    <CardsGrid title="اسئلة تدريبية">
       {#if $markedStore.filter((id) => data.allQuestions.includes(id),).length > 0}
         <Card
           href={`${courseUrl(data.course)}/quizzes/marked`}
