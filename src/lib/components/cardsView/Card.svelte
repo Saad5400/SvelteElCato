@@ -37,6 +37,7 @@
     <img
       src={image}
       alt="شعار"
+      loading="lazy"
       class="absolute top-0 left-0 -z-10 h-full w-full object-cover opacity-20 grayscale blur-[2px]"
     />
   {/if}
