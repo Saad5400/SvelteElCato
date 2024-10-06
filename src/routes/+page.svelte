@@ -1,13 +1,13 @@
 <script lang="ts">
   import Hero from "$lib/components/index/Hero.svelte";
   import Posts from "$lib/components/index/Posts.svelte";
-  import type { PageServerData } from "./$types";
+  import type { PageData } from "./$types";
   import Card from "$lib/components/cardsView/Card.svelte";
   import CardsGrid from "$lib/components/cardsView/CardsGrid.svelte";
   import { Separator } from "$lib/components/ui/separator";
   import { courseUrl } from "$lib/models/Course";
 
-  export let data: PageServerData;
+  export let data: PageData;
 </script>
 
 <svelte:head>

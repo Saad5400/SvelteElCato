@@ -4,7 +4,7 @@ import type Post from "$lib/models/Post";
 import type Course from "$lib/models/Course";
 
 export const load: PageServerLoad = async ({ locals, fetch }) => {
-  const coursesRequest = locals.pb
+  const courses = await locals.pb
     .collection("courses")
     .getFullList({
       fetch: fetch,
@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
     })
     .catch(handleError);
 
-  const postsRequest = locals.pb
+  const posts = await locals.pb
     .collection("posts")
     .getFullList({
       fetch: fetch,
@@ -29,10 +29,8 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
     })
     .catch(handleError);
 
-  const [courses, posts] = await Promise.all([coursesRequest, postsRequest]);
-
   return {
-    courses: courses as Course[],
-    posts: posts as Post[],
+    courses: courses!,
+    posts: posts!,
   };
 };
