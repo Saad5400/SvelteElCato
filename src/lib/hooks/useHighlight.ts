@@ -1,4 +1,4 @@
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/core";
 import java from "highlight.js/lib/languages/java";
 
 export default function useHighlight(content: string): string {
