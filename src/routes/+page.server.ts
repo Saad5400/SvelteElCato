@@ -5,6 +5,7 @@ import type Course from "$lib/models/Course";
 
 export const load: PageServerLoad = async ({ locals, fetch }) => {
 
+  console.time("load");
   const [courses, posts] = await Promise.all([
     locals.pb
       .collection("courses")
@@ -30,6 +31,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
       })
       .catch(handleError)
   ]);
+  console.timeEnd("load");
 
   return {
     courses: courses!,
