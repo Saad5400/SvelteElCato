@@ -8,7 +8,9 @@ export const handle: Handle = async ({ event, resolve }) => {
   pb.authStore.loadFromCookie(event.request.headers.get("cookie") || "");
 
   try {
-    if (pb.authStore.isValid) await pb.collection("users").authRefresh();
+    if (pb.authStore.isValid) await pb.collection("users").authRefresh({
+      fetch: event.fetch
+    });
   } catch (_) {
     pb.authStore.clear();
   }
