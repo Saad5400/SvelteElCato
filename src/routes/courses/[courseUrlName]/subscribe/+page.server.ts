@@ -20,7 +20,8 @@ export const load: PageServerLoad = async ({ locals, url, parent }) => {
         userId: locals.pb.authStore.model.id
       }),
       expand: "course",
-      fetch
+      fetch,
+      cache: "no-cache"
     });
   }
 
@@ -58,7 +59,8 @@ export const actions: Actions = {
         userId: locals.pb.authStore.model.id
       }),
       expand: "course",
-      fetch
+      fetch,
+      cache: "no-cache"
     });
     const courseRequest = locals.pb.collection("courses").getOne(data.course, { fetch });
 
