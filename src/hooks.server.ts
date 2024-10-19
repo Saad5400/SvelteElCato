@@ -1,6 +1,6 @@
 import type { Handle } from "@sveltejs/kit";
 import { createPbInstance } from "$lib/pocketbase";
-import { PUBLIC_ENVIRONMENT } from "$env/static/public";
+import { PUBLIC_ENVIROMENT } from "$env/static/public";
 import type User from "$lib/models/User";
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -22,8 +22,8 @@ export const handle: Handle = async ({ event, resolve }) => {
     "set-cookie",
     pb.authStore.exportToCookie({
       httpOnly: false,
-      sameSite: PUBLIC_ENVIRONMENT === "production" ? "None" : "Lax",
-      secure: PUBLIC_ENVIRONMENT === "production"
+      sameSite: PUBLIC_ENVIROMENT === "production" ? "None" : "Lax",
+      secure: PUBLIC_ENVIROMENT === "production"
     })
   );
 
