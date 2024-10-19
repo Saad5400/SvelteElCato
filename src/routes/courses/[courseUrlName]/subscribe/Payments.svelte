@@ -12,9 +12,8 @@
     payments = data.pb.collection("payments").getFullList({
       filter: data.pb.filter("user.id = {:userId} && course.id = {:courseId}", {
         userId: data.pb.authStore.model!.id,
-        courseId: data.course.id,
-      }),
-      fetch,
+        courseId: data.course.id
+      })
       // cache: "no-cache",
     });
   });
@@ -38,18 +37,34 @@
     <Table.Root class="roboto-mono">
       <Table.Header>
         <Table.Row>
-          <Table.Head class="text-start"><Skeleton /></Table.Head>
-          <Table.Head class="text-start"><Skeleton /></Table.Head>
-          <Table.Head class="text-start"><Skeleton /></Table.Head>
-          <Table.Head class="text-start"><Skeleton /></Table.Head>
+          <Table.Head class="text-start">
+            <Skeleton />
+          </Table.Head>
+          <Table.Head class="text-start">
+            <Skeleton />
+          </Table.Head>
+          <Table.Head class="text-start">
+            <Skeleton />
+          </Table.Head>
+          <Table.Head class="text-start">
+            <Skeleton />
+          </Table.Head>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
-          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
-          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
-          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
-          <Table.Cell><Skeleton class="h-[2rem]" /></Table.Cell>
+          <Table.Cell>
+            <Skeleton class="h-[2rem]" />
+          </Table.Cell>
+          <Table.Cell>
+            <Skeleton class="h-[2rem]" />
+          </Table.Cell>
+          <Table.Cell>
+            <Skeleton class="h-[2rem]" />
+          </Table.Cell>
+          <Table.Cell>
+            <Skeleton class="h-[2rem]" />
+          </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table.Root>
@@ -73,7 +88,7 @@
         {#each payments as payment}
           <Table.Row>
             <Table.Cell
-              >{new Date(payment.created).toLocaleDateString()}</Table.Cell
+            >{new Date(payment.created).toLocaleDateString()}</Table.Cell
             >
             <Table.Cell>{payment.amount} ريال</Table.Cell>
             <Table.Cell>{translateStatus(payment.status)}</Table.Cell>

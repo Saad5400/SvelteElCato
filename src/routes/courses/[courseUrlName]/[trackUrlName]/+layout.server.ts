@@ -7,7 +7,6 @@ import type Step from "$lib/models/Step";
 export const load: LayoutServerLoad = async ({
   parent,
   params,
-  fetch,
   locals,
 }) => {
   const { course } = await parent();

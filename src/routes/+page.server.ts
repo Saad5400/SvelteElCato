@@ -1,14 +1,12 @@
 import type { PageServerLoad } from "./$types";
 import { handleError } from "$lib/models/TypedPocketBase";
 
-export const load: PageServerLoad = async ({ locals, fetch }) => {
+export const load: PageServerLoad = async ({ locals }) => {
 
-  console.time("load");
   const [courses, posts] = await Promise.all([
     locals.pb
       .collection("courses")
       .getFullList({
-        fetch: fetch,
         // cache: "force-cache",
         // headers: {
         //   "Cache-Control": "max-age=3600"
@@ -19,7 +17,6 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
     locals.pb
       .collection("posts")
       .getFullList({
-        fetch: fetch,
         fields: "displayName,urlName,views,readTime",
         sort: "-views",
         // cache: "force-cache",
@@ -29,7 +26,6 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
       })
       .catch(handleError)
   ]);
-  console.timeEnd("load");
 
   return {
     courses: courses!,

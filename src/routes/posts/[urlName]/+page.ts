@@ -4,7 +4,7 @@ import useHighlight from "$lib/hooks/useHighlight";
 import slugify from "@sindresorhus/slugify";
 import type Post from "$lib/models/Post";
 
-export const load: PageLoad = async ({ parent, params, fetch }) => {
+export const load: PageLoad = async ({ parent, params }) => {
   const { pb } = await parent();
 
   const post = (await pb
@@ -12,12 +12,11 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
     .getFirstListItem(
       pb.filter("urlName = {:urlName}", { urlName: params.urlName }),
       {
-        fetch: fetch,
         // cache: "force-cache",
         // headers: {
         //   "Cache-Control": "max-age=600",
         // },
-      },
+      }
     )
     .catch(handleError)) as Post;
 
@@ -32,7 +31,7 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
     post.content = post.content.replace(h1, newH1);
     navItems.push({
       title: content,
-      href: `#${slug}`,
+      href: `#${slug}`
     });
   });
 
@@ -44,6 +43,6 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
 
   return {
     post,
-    navItems,
+    navItems
   };
 };

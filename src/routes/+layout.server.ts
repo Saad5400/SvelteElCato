@@ -1,7 +1,7 @@
 import type { LayoutServerLoad } from "./$types";
 import type FingerPrint from "$lib/models/FingerPrint";
 
-export const load: LayoutServerLoad = async ({ locals, request, fetch }) => {
+export const load: LayoutServerLoad = async ({ locals, request }) => {
 
   const quotes = [
     "“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.”",
@@ -27,8 +27,7 @@ export const load: LayoutServerLoad = async ({ locals, request, fetch }) => {
 
   return {
     randomQuote,
-    pb: structuredClone(locals.pb),
     user: locals.user,
-    cookies: request.headers.get("cookie"),
+    cookies: request.headers.get("cookie")
   };
 };

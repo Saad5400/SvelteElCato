@@ -8,12 +8,11 @@ import type { ClientResponseError } from "pocketbase";
 import type User from "$lib/models/User";
 
 export const load: PageServerLoad = async ({
-  parent,
-  params,
-  fetch,
-  url,
-  locals,
-}) => {
+                                             parent,
+                                             params,
+                                             url,
+                                             locals
+                                           }) => {
   const { course, quiz } = await parent();
 
   const questionIndex = quiz.questions.indexOf(params.questionId);
@@ -25,10 +24,7 @@ export const load: PageServerLoad = async ({
 
   const question = (await locals.pb
     .collection("questions")
-    .getOne(params.questionId, {
-      fetch,
-      // cache: "no-cache",
-    })
+    .getOne(params.questionId)
     .catch((er: ClientResponseError) => {
       if (er.status === 404) {
         if (!locals.pb.authStore.isValid)
@@ -46,6 +42,6 @@ export const load: PageServerLoad = async ({
     question,
     questionIndex,
     next,
-    prev,
+    prev
   };
 };

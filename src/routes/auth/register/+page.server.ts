@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-  default: async ({ locals, request, url, fetch, getClientAddress }) => {
+  default: async ({ locals, request, url, getClientAddress }) => {
     const data = Object.fromEntries(await request.formData()) as {
       email: string;
       password: string;
@@ -20,14 +20,10 @@ export const actions: Actions = {
     data.clientAddress = getClientAddress();
 
     try {
-      await locals.pb.collection("users").create(data, {
-        fetch
-      });
+      await locals.pb.collection("users").create(data);
       await locals.pb
         .collection("users")
-        .authWithPassword(data.email.toLowerCase(), data.password, {
-          fetch
-        });
+        .authWithPassword(data.email.toLowerCase(), data.password);
       // await locals.pb.collection("users").requestVerification(data.email.toLowerCase(), {
       //   fetch
       // });

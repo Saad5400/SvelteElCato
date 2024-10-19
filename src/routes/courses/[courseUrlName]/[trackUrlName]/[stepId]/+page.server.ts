@@ -7,20 +7,16 @@ import type Step from "$lib/models/Step";
 import type { ClientResponseError } from "pocketbase";
 
 export const load: PageServerLoad = async ({
-  locals,
-  params,
-  fetch,
-  parent,
-  request,
-}) => {
+                                             locals,
+                                             params,
+                                             parent,
+                                             request
+                                           }) => {
   const { course, track } = await parent();
 
   const step = (await locals.pb
     .collection("steps")
-    .getOne(params.stepId, {
-      fetch,
-      // cache: "no-cache",
-    })
+    .getOne(params.stepId)
     .catch((er: ClientResponseError) => {
       if (er.status === 404) {
         if (!locals.pb.authStore.isValid) {
@@ -37,7 +33,7 @@ export const load: PageServerLoad = async ({
   let returned = {
     step,
     expires: 0,
-    hash: "",
+    hash: ""
   };
 
   if (step.type === "bunny") {

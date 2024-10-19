@@ -4,13 +4,11 @@ import { PUBLIC_ENVIROMENT } from "$env/static/public";
 import type User from "$lib/models/User";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const pb = createPbInstance();
+  const pb = createPbInstance(event.fetch);
   pb.authStore.loadFromCookie(event.request.headers.get("cookie") || "");
 
   try {
-    if (pb.authStore.isValid) await pb.collection("users").authRefresh({
-      fetch: event.fetch
-    });
+    if (pb.authStore.isValid) await pb.collection("users").authRefresh();
   } catch (_) {
     pb.authStore.clear();
   }

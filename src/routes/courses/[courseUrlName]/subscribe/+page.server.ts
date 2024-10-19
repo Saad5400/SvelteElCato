@@ -19,8 +19,7 @@ export const load: PageServerLoad = async ({ locals, url, parent }) => {
       filter: locals.pb.filter("user.id = {:userId}", {
         userId: locals.pb.authStore.model.id
       }),
-      expand: "course",
-      fetch,
+      expand: "course"
       // cache: "no-cache"
     });
   }
@@ -31,7 +30,7 @@ export const load: PageServerLoad = async ({ locals, url, parent }) => {
 };
 
 export const actions: Actions = {
-  default: async ({ locals, fetch, request }) => {
+  default: async ({ locals, request }) => {
 
     if (!locals.pb.authStore.isValid || !locals.pb.authStore.model)
       redirect(302, `/auth/register?redirect=${request.url.toString()}`);
@@ -58,11 +57,10 @@ export const actions: Actions = {
       filter: locals.pb.filter("user.id = {:userId}", {
         userId: locals.pb.authStore.model.id
       }),
-      expand: "course",
-      fetch,
+      expand: "course"
       // cache: "no-cache"
     });
-    const courseRequest = locals.pb.collection("courses").getOne(data.course, { fetch });
+    const courseRequest = locals.pb.collection("courses").getOne(data.course);
 
     const [payments, course] = await Promise.all([paymentsRequest, courseRequest]);
 
@@ -83,8 +81,6 @@ export const actions: Actions = {
       user: locals.pb.authStore.model.id,
       status: "pending",
       remainder: remainder !== null ? remainder - parseInt(data.amount) : course.price - parseInt(data.amount)
-    }, {
-      fetch
     });
   }
 };
