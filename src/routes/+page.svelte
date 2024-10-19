@@ -15,7 +15,7 @@
 </svelte:head>
 
 <div
-  class="repeating-text repeating-text-light dark:repeating-text-dark min-h-screen blur-[1px]"
+  class="repeating-text min-h-screen blur-[1px]"
 />
 <div class="container mb-20">
   <Hero />
