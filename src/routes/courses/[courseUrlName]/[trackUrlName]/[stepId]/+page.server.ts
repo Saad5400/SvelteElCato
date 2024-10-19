@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({
     .collection("steps")
     .getOne(params.stepId, {
       fetch,
-      cache: "no-cache",
+      // cache: "no-cache",
     })
     .catch((er: ClientResponseError) => {
       if (er.status === 404) {

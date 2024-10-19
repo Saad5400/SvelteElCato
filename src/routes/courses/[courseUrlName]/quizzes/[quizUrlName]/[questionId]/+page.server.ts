@@ -27,7 +27,7 @@ export const load: PageServerLoad = async ({
     .collection("questions")
     .getOne(params.questionId, {
       fetch,
-      cache: "no-cache",
+      // cache: "no-cache",
     })
     .catch((er: ClientResponseError) => {
       if (er.status === 404) {

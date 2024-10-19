@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ locals, url, parent }) => {
       }),
       expand: "course",
       fetch,
-      cache: "no-cache"
+      // cache: "no-cache"
     });
   }
 
@@ -60,7 +60,7 @@ export const actions: Actions = {
       }),
       expand: "course",
       fetch,
-      cache: "no-cache"
+      // cache: "no-cache"
     });
     const courseRequest = locals.pb.collection("courses").getOne(data.course, { fetch });
 

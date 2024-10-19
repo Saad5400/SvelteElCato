@@ -17,7 +17,7 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
       ),
       {
         expand: "quizzes,tracks",
-        cache: 'no-cache',
+        // cache: 'no-cache',
       },
     )
     .catch(handleError)) as Course;
@@ -28,7 +28,7 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
         id: track.steps.map((s) => s),
       }),
       requestKey: track.id,
-      cache: 'no-cache',
+      // cache: 'no-cache',
     });
   }
 

@@ -24,7 +24,7 @@ export const load: LayoutServerLoad = async ({
         filter: locals.pb.filter("{:steps} ?~ id", {
           steps: track.steps,
         }),
-        cache: "no-cache",
+        // cache: "no-cache",
       })
       .catch(handleError)) as Step[],
   };

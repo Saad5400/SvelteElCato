@@ -15,7 +15,7 @@
         courseId: data.course.id,
       }),
       fetch,
-      cache: "no-cache",
+      // cache: "no-cache",
     });
   });
 

@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ locals }) => {
       filter: locals.pb.filter("{:registeredCourses} ~ id", {
         registeredCourses: locals.user?.registeredCourses,
       }),
-      cache: "no-cache"
+      // cache: "no-cache"
     })
     .catch(handleError)) as Course[];
 

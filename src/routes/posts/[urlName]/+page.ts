@@ -13,10 +13,10 @@ export const load: PageLoad = async ({ parent, params, fetch }) => {
       pb.filter("urlName = {:urlName}", { urlName: params.urlName }),
       {
         fetch: fetch,
-        cache: "force-cache",
-        headers: {
-          "Cache-Control": "max-age=600",
-        },
+        // cache: "force-cache",
+        // headers: {
+        //   "Cache-Control": "max-age=600",
+        // },
       },
     )
     .catch(handleError)) as Post;
