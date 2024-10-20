@@ -48,7 +48,9 @@ export const load: PageServerLoad = async ({
 
     const videoId = step.linked;
     const expires = Math.floor(Date.now() / 1000) + 3600;
+    console.log("BUNNY_TOKEN", BUNNY_TOKEN);
     const hash = sha256(`${BUNNY_TOKEN}${videoId}${expires}`);
+    console.log("hash", hash);
 
     returned.expires = expires;
     returned.hash = hash;
