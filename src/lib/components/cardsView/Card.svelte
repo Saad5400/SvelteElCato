@@ -27,6 +27,7 @@
 </script>
 
 <Button
+  dir="auto"
   class={cn("flex h-fit min-w-64 flex-1 flex-col relative", className)}
   {variant}
   {href}
