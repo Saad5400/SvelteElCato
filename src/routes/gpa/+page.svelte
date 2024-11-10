@@ -91,8 +91,8 @@
     {/if}
     <!-- prev gpa and prev credits -->
     <div class="flex gap-4">
-      <Input bind:value={$prevGpa} class="w-1/2" placeholder="المعدل السابق" />
-      <Input bind:value={$prevCredits} class="w-1/2" placeholder="إجمالي الساعات السابقة" />
+      <Input bind:value={$prevGpa} class="w-1/2" placeholder="المعدل السابق (اختياري)" />
+      <Input bind:value={$prevCredits} class="w-1/2" placeholder="الساعات المجتازة (اختياري)" />
     </div>
     {#each $courses as course}
       <div class="flex" transition:fade>
