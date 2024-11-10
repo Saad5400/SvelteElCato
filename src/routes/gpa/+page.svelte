@@ -90,10 +90,16 @@
       </h2>
     {/if}
     <!-- prev gpa and prev credits -->
-    <div class="flex gap-4">
-      <Input bind:value={$prevGpa} class="w-1/2" placeholder="المعدل الحالي (اختياري)" />
-      <Input bind:value={$prevCredits} class="w-1/2" placeholder="الساعات المجتازة (اختياري)" />
+    <div class="flex flex-col gap-4">
+      <h5>
+        لحساب المعدل التراكمي:
+      </h5>
+      <div class="flex gap-4">
+        <Input bind:value={$prevGpa} class="w-1/2" placeholder="المعدل الحالي (اختياري)" />
+        <Input bind:value={$prevCredits} class="w-1/2" placeholder="الساعات المجتازة (اختياري)" />
+      </div>
     </div>
+    <hr />
     {#each $courses as course}
       <div class="flex" transition:fade>
         <Button class="w-fit rounded-e-none" variant="destructive3D"
