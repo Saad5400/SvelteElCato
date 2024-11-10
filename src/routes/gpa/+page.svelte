@@ -35,34 +35,28 @@
       label: string;
       value: string;
     };
-    credits?: number;
+    credits?: string;
   }
 
   const courses = persisted<Course[]>("courses", [
-    {
-      name: "التفكير الحاسوبي",
-      grade: {
-        disabled: false,
-        label: " A+",
-        value: "A+"
-      },
-      credits: 3
-    }
+    {}
   ]);
 
+  let gpa: number = 0;
   // use weighted mean to calculate GPA, if the course is not graded yet, ignore it
-  $: gpa = $courses.reduce((acc, course) => {
-    if (course.grade && course.grade.value in grades) {
-      const grade = course.grade.value as keyof typeof grades;
-      return acc + grades[grade] * (course.credits || 1);
+  $: {
+    let totalCredits = 0;
+    let totalWeightedGrade = 0;
+    for (const course of $courses) {
+      if (course.grade && course.grade.value && course.credits) {
+        totalCredits += parseInt(course.credits);
+        // @ts-ignore
+        totalWeightedGrade += grades[course.grade.value] * course.credits;
+      }
     }
-    return acc;
-  }, 0) / $courses.reduce((acc, course) => {
-    if (course.grade) {
-      return acc + (course.credits || 1);
-    }
-    return acc;
-  }, 0);
+    // round to 2 decimal places
+    gpa = Math.round((totalWeightedGrade / totalCredits) * 100) / 100;
+  }
 
   let grade: number | null = null;
   let mark: string | null = null;
