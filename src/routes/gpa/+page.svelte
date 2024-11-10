@@ -80,6 +80,12 @@
   }
 </script>
 
+<svelte:head>
+  <title>
+    حاسبة المعدل لأم القرى
+  </title>
+</svelte:head>
+
 <div class="container max-w-screen-md">
   <main class="flex flex-col gap-4">
     <h1 class="mb-8">
