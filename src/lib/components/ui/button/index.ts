@@ -9,6 +9,8 @@ const buttonVariants = tv({
       default: "bg-primary text-primary-foreground hover:bg-primary/90",
       destructive:
         "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+      destructive3D:
+        "bg-destructive/70 text-destructive-foreground hover:bg-destructive/60 border-[1px] border-destructive border-r-4 border-b-4 active:border-r-2 active:border-b-2 transition-all backdrop-blur-sm",
       outline:
         "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
@@ -19,19 +21,19 @@ const buttonVariants = tv({
       outline3DFilled:
         "border-background/30 bg-foreground text-background hover:bg-foreground/80 border-[1px] border-r-4 border-b-4 active:border-r-2 active:border-b-2 transition-all backdrop-blur-sm",
       outline3DLarge:
-        "border-input bg-background hover:bg-accent hover:text-accent-foreground border-[1px] border-r-8 border-b-8 active:border-r-4 active:border-b-4 transition-all backdrop-blur-sm",
+        "border-input bg-background hover:bg-accent hover:text-accent-foreground border-[1px] border-r-8 border-b-8 active:border-r-4 active:border-b-4 transition-all backdrop-blur-sm"
     },
     size: {
       default: "h-10 px-4 py-2",
       sm: "h-9 rounded-md px-3 text-xs",
       lg: "h-11 rounded-md px-8",
-      icon: "h-10 w-10",
-    },
+      icon: "h-10 w-10"
+    }
   },
   defaultVariants: {
     variant: "default",
-    size: "default",
-  },
+    size: "default"
+  }
 });
 
 export type Variant = VariantProps<typeof buttonVariants>["variant"];
@@ -53,5 +55,5 @@ export {
   Root as Button,
   type Props as ButtonProps,
   type Events as ButtonEvents,
-  buttonVariants,
+  buttonVariants
 };
