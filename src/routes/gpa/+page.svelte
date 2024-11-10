@@ -4,6 +4,7 @@
   import { Button } from "$lib/components/ui/button";
   import * as Select from "$lib/components/ui/select";
   import { fade } from "svelte/transition";
+  import { toast } from "svelte-sonner";
 
   const grades = {
     "A+": 4.0,
@@ -129,6 +130,42 @@
             on:click={() => $courses = [...$courses, { }]}>
       إضافة مقرر
     </Button>
+    <!--    export/import courses -->
+    <div class="flex flex-col gap-2">
+      <p>
+        يمكنك تصدير واستيراد البيانات لنقلها بين الأجهزة أو الاحتفاظ بها، هذه الخاصية منفصلة عن الحفظ التلقائي
+      </p>
+      <div class="flex gap-4">
+        <Button class="w-full" variant="outline3D"
+                on:click={() => {
+                  const data = {
+                      courses: $courses,
+                      prevGpa: $prevGpa,
+                      prevCredits: $prevCredits
+                  };
+                  navigator.clipboard.writeText(JSON.stringify(data));
+                  toast.success("تم نسخ البيانات للحافظة");
+              }}>
+          تصدير البيانات
+        </Button>
+        <Button class="w-full" variant="outline3D"
+                on:click={() => {
+                  navigator.clipboard.readText().then(text => {
+                      try {
+                          const data = JSON.parse(text);
+                          $courses = data.courses;
+                          $prevGpa = data.prevGpa;
+                          $prevCredits = data.prevCredits;
+                          toast.success("تم استيراد البيانات بنجاح");
+                      } catch (e) {
+                          toast.error("خطأ في استيراد البيانات");
+                      }
+                  });
+              }}>
+          استيراد البيانات
+        </Button>
+      </div>
+    </div>
 
     <hr>
 
