@@ -16,6 +16,18 @@
     "F": 0.0
   };
 
+  const marks = {
+    95: "A+",
+    90: "A",
+    85: "A",
+    80: "B+",
+    75: "B",
+    70: "B",
+    65: "C+",
+    60: "C",
+    0: "F"
+  };
+
   interface Course {
     name?: string;
     grade?: {
@@ -51,6 +63,19 @@
     }
     return acc;
   }, 0);
+
+  let grade: number | null = null;
+  let mark: string | null = null;
+  $: {
+    if (!grade) {
+      mark = null;
+    }
+    for (const [m, g] of Object.entries(marks)) {
+      if (grade && grade >= Number(m)) {
+        mark = g;
+      }
+    }
+  }
 </script>
 
 <div class="container max-w-screen-md">
@@ -90,5 +115,19 @@
             on:click={() => $courses = [...$courses, { }]}>
       إضافة مقرر
     </Button>
+
+    <hr>
+
+    <h2>
+      تحويل الدرجة إلى التقدير
+    </h2>
+    <div class="flex flex-col">
+      <Input class="w-full" bind:value={grade} placeholder="الدرجة" />
+      {#if (mark)}
+        <h3>
+          تقديرك هو {mark}
+        </h3>
+      {/if}
+    </div>
   </main>
 </div>
