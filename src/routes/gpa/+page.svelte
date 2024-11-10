@@ -6,6 +6,25 @@
   import { fade } from "svelte/transition";
   import { toast } from "svelte-sonner";
 
+  // Utility function to convert Arabic-Indic digits to Latin digits
+  function convertArabicToLatinDigits(arabicNumber: string) {
+    return arabicNumber
+      .replace(/[٠١٢٣٤٥٦٧٨٩]/g, (d: string) => "٠١٢٣٤٥٦٧٨٩".indexOf(d).toString())
+      .replace(/٫/g, "."); // Replace Arabic decimal separator with "."
+  }
+
+  // Function to parse Arabic integer
+  function parseArabicInt(arabicNumber: string) {
+    const latinNumber = convertArabicToLatinDigits(arabicNumber);
+    return parseInt(latinNumber, 10);
+  }
+
+  // Function to parse Arabic float
+  function parseArabicFloat(arabicNumber: string) {
+    const latinNumber = convertArabicToLatinDigits(arabicNumber);
+    return parseFloat(latinNumber);
+  }
+
   const grades = {
     "A+": 4.0,
     "A": 3.75,
@@ -53,14 +72,14 @@
     let totalWeightedGrade = 0;
     for (const course of $courses) {
       if (course.grade && course.grade.value && course.credits) {
-        totalCredits += parseInt(course.credits);
-        // @ts-ignore
-        totalWeightedGrade += grades[course.grade.value] * course.credits;
+        totalCredits += parseArabicInt(course.credits);
+        const grade = course.grade.value as keyof typeof grades;
+        totalWeightedGrade += grades[grade] * parseArabicInt(course.credits);
       }
     }
     if ($prevGpa && $prevCredits) {
-      totalCredits += parseInt($prevCredits);
-      totalWeightedGrade += parseFloat($prevGpa) * parseInt($prevCredits);
+      totalCredits += parseArabicInt($prevCredits);
+      totalWeightedGrade += parseArabicFloat($prevGpa) * parseArabicInt($prevCredits);
     }
     // round to 2 decimal places
     gpa = Math.round((totalWeightedGrade / totalCredits) * 100) / 100;
@@ -86,7 +105,7 @@
   </title>
 </svelte:head>
 
-<div class="container max-w-screen-md">
+<div class="container max-w-screen-md mb-8">
   <main class="flex flex-col gap-4">
     <h1 class="mb-8">
       حاسبة المعدل لأم القرى
