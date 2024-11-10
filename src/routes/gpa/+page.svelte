@@ -3,6 +3,7 @@
   import { Input } from "$lib/components/ui/input";
   import { Button } from "$lib/components/ui/button";
   import * as Select from "$lib/components/ui/select";
+  import { fade } from "svelte/transition";
 
   const grades = {
     "A+": 4.0,
@@ -41,6 +42,8 @@
   const courses = persisted<Course[]>("courses", [
     {}
   ]);
+  const prevGpa = persisted("prevGpa", "");
+  const prevCredits = persisted("prevCredits", "");
 
   let gpa: number = 0;
   // use weighted mean to calculate GPA, if the course is not graded yet, ignore it
@@ -53,6 +56,10 @@
         // @ts-ignore
         totalWeightedGrade += grades[course.grade.value] * course.credits;
       }
+    }
+    if ($prevGpa && $prevCredits) {
+      totalCredits += parseInt($prevCredits);
+      totalWeightedGrade += parseFloat($prevGpa) * parseInt($prevCredits);
     }
     // round to 2 decimal places
     gpa = Math.round((totalWeightedGrade / totalCredits) * 100) / 100;
@@ -77,11 +84,18 @@
     <h1 class="mb-8">
       حاسبة المعدل لأم القرى
     </h1>
-    <h2>
-      معدلك: {gpa} / 4.0
-    </h2>
+    {#if (gpa)}
+      <h2 transition:fade>
+        معدلك: {gpa} / 4
+      </h2>
+    {/if}
+    <!-- prev gpa and prev credits -->
+    <div class="flex gap-4">
+      <Input bind:value={$prevGpa} class="w-1/2" placeholder="المعدل السابق" />
+      <Input bind:value={$prevCredits} class="w-1/2" placeholder="إجمالي الساعات السابقة" />
+    </div>
     {#each $courses as course}
-      <div class="flex">
+      <div class="flex" transition:fade>
         <Button class="w-fit rounded-e-none" variant="destructive3D"
                 on:click={() => $courses = $courses.filter(c => c !== course)}>
           حذف
@@ -118,7 +132,7 @@
     <div class="flex flex-col">
       <Input class="w-full" bind:value={grade} placeholder="الدرجة" />
       {#if (mark)}
-        <h3>
+        <h3 transition:fade>
           تقديرك هو {mark}
         </h3>
       {/if}
