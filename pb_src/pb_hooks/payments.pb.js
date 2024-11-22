@@ -37,7 +37,7 @@ onModelAfterCreate((e) => {
         const form = new RecordUpsertForm($app, payment);
         form.loadData({
             "status": "accepted",
-            "feedback": "قروب التيليجرام https://t.me/+pdalfPvoXCs3ZDA0"
+            "feedback": "قروب التيليجرام https://t.me/+2UquWfE4Bz85MGM0"
         });
         form.submit();
     }
