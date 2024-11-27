@@ -21,8 +21,8 @@
   function setSolved() {
     if (!$solvedStore.includes(data.question.id)) {
       solvedStore.update((e) => [...e, data.question.id]);
-      data.pb.collection("users").update(data.user!.id, {
-        "solvedQuestions+": data.question.id,
+      if (data.user) data.pb.collection("users").update(data.user!.id, {
+        "solvedQuestions+": data.question.id
       });
     }
   }
@@ -30,10 +30,10 @@
   function setUnsolved() {
     if ($solvedStore.includes(data.question.id)) {
       solvedStore.update((e) =>
-        e.filter((id: string) => id !== data.question.id),
+        e.filter((id: string) => id !== data.question.id)
       );
-      data.pb.collection("users").update(data.user!.id, {
-        "solvedQuestions-": data.question.id,
+      if (data.user) data.pb.collection("users").update(data.user!.id, {
+        "solvedQuestions-": data.question.id
       });
     }
   }
@@ -69,7 +69,7 @@
     if (!$markedStore.includes(data.question.id)) {
       markedStore.update((e) => [...e, data.question.id]);
       data.pb.collection("users").update(data.user!.id, {
-        "markedQuestions+": data.question.id,
+        "markedQuestions+": data.question.id
       });
     }
   }
@@ -77,10 +77,10 @@
   function unmarkQuestion() {
     if ($markedStore.includes(data.question.id)) {
       markedStore.update((e) =>
-        e.filter((id: string) => id !== data.question.id),
+        e.filter((id: string) => id !== data.question.id)
       );
       data.pb.collection("users").update(data.user!.id, {
-        "markedQuestions-": data.question.id,
+        "markedQuestions-": data.question.id
       });
     }
   }
@@ -106,7 +106,7 @@
 <svelte:head>
   <title>
     {data.course.displayName}
-    {data.quiz.displayName}: {data.questionIndex}
+      {data.quiz.displayName}: {data.questionIndex}
   </title>
 </svelte:head>
 
@@ -218,11 +218,11 @@
 </div>
 
 <style>
-  #main {
-    view-transition-name: question;
-  }
+    #main {
+        view-transition-name: question;
+    }
 
-  #container {
-    view-transition-name: question-header-container;
-  }
+    #container {
+        view-transition-name: question-header-container;
+    }
 </style>
