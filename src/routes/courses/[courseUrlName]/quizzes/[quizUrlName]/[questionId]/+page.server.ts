@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import { error, redirect } from "@sveltejs/kit";
-import { questionOptions } from "$lib/models/Question";
+import { questionHighlight, questionOptions } from "$lib/models/Question";
 import type Question from "$lib/models/Question";
 import type Quiz from "$lib/models/Quiz";
 import { handleError } from "$lib/models/TypedPocketBase";
@@ -39,7 +39,7 @@ export const load: PageServerLoad = async ({
     options: questionOptions(question),
     course,
     quiz,
-    question,
+    question: questionHighlight(question),
     questionIndex,
     next,
     prev
