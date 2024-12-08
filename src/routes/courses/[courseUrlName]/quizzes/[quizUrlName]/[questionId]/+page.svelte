@@ -68,7 +68,7 @@
   function markQuestion() {
     if (!$markedStore.includes(data.question.id)) {
       markedStore.update((e) => [...e, data.question.id]);
-      data.pb.collection("users").update(data.user!.id, {
+      if (data.user) data.pb.collection("users").update(data.user!.id, {
         "markedQuestions+": data.question.id
       });
     }
@@ -79,7 +79,7 @@
       markedStore.update((e) =>
         e.filter((id: string) => id !== data.question.id)
       );
-      data.pb.collection("users").update(data.user!.id, {
+      if (data.user) data.pb.collection("users").update(data.user!.id, {
         "markedQuestions-": data.question.id
       });
     }
