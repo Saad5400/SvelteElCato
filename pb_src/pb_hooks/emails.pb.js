@@ -46,23 +46,26 @@ routerAdd("GET", "/send-emails-123854624525628543", (e) => {
 
   let records = $app.dao().findRecordsByFilter(
     "payments",
-    "course = 'putm7m2fwhmkqr4' && remainder > 0",
-    "created",
-    150
+    "course = 'putm7m2fwhmkqr4'",
+    "-created",
+    10000
   );
 
-  // unique by user (get the latest record for each user)
-  let uniqueRecords = [];
-
-  let users = {};
-
+  // let's get the latest payment for each user
+  let lastPaymentByUser = {};
   for (let record of records) {
     let user = record.getString("user");
-    if (users[user]) {
-      continue;
+    if (!lastPaymentByUser[user]) {
+      lastPaymentByUser[user] = record;
     }
-    users[user] = true;
-    uniqueRecords.push(record);
+  }
+
+  // filter out the payments with 0 remaining amount
+  let uniqueRecords = [];
+  for (let record of Object.values(lastPaymentByUser)) {
+    if (record.getInt("remainder") > 0) {
+      uniqueRecords.push(record);
+    }
   }
 
   // send an email to each user
@@ -78,6 +81,7 @@ routerAdd("GET", "/send-emails-123854624525628543", (e) => {
       <br>
       <br>
       نود تذكيرك بأن لديك دفعة متبقية للدورة التدريبية. يرجى تسديد المبلغ المتبقي في أقرب وقت ممكن.
+      <br>
       <a href="https://elcato.sb.sa/courses/cs1211/subscribe">الدفع</a>
       <br>
       <br>
@@ -88,8 +92,7 @@ routerAdd("GET", "/send-emails-123854624525628543", (e) => {
     );
   }
 
-  return {
-    success: true,
+  return e.json(200, {
     message: "Emails sent successfully to " + uniqueRecords.length + " users"
-  };
+  });
 });
