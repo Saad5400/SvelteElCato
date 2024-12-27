@@ -29,6 +29,6 @@ primary_region = 'cdg'
     hard_limit = 550
 
 [[vm]]
-  memory = '512mb'
+  memory = '1gb'
   cpu_kind = 'shared'
   cpus = 4
