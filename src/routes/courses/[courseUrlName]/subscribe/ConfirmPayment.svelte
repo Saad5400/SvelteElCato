@@ -97,6 +97,7 @@
           >
             كامل المبلغ
           </Button>
+{#if data.course.price > 50}
           <Button
             variant="outline3DFilled"
             size="sm"
@@ -104,6 +105,7 @@
           >
             نصف المبلغ
           </Button>
+{/if}
         {:else}
           <Button
             variant="outline3DFilled"
