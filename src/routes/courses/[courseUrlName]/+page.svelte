@@ -43,7 +43,7 @@
 </svelte:head>
 
 <div class="container mb-16 flex flex-col gap-8 first:gap-16">
-  <h1>
+  <h1 class="break-all">
     {data.course.displayName}
   </h1>
   {#if data.course.isAvailable || data.user?.registeredCourses.includes(data.course.id)}
