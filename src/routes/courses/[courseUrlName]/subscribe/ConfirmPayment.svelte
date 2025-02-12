@@ -160,10 +160,16 @@
       </span>
       ولذلك قد يتم
       <span class="text-destructive">
-        حظر حسابك مباشرة
+        حظر حسابك
       </span>
       في حال الإخلال بالشروط
+      <span class="text-destructive">
+        دون استرداد المبلغ
+      </span>
     </Label>
+  </div>
+  <div class="flex justify-center gap-2">
+    لا وفق الله من حاول نشر حسابه/المحتوى
   </div>
   <Button type="submit" variant="outline3DFilled" disabled={!shareAccount || !shareContent || !finalAgreement}>
     {#if isSubmitted}

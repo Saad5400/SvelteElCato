@@ -10,6 +10,7 @@
   import { toast } from "svelte-sonner";
   import { page } from "$app/stores";
   import type { PageData } from "./$types";
+  import { onMount } from "svelte";
 
   export let data: PageData;
 
@@ -20,9 +21,16 @@
   let showPassword = false;
   let isSubmitted = false;
   let resetPasswordSubmitted = false;
+  let fp = '';
 
   $: validEmail = !!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
   $: validPassword = password.length >= 1;
+
+  onMount(() => {
+    const randomId = Math.random().toString(36).substring(2);
+    fp = localStorage.getItem('fp') || randomId;
+    localStorage.setItem('fp', fp);
+  });
 </script>
 
 <svelte:head>
@@ -102,11 +110,17 @@
           {/if}
         </Button>
       </div>
+      <Input
+        type="hidden"
+        name="fp"
+        required
+        bind:value={fp}
+      />
       <div id="submit">
         <Button
           class="w-full border-foreground"
           type="submit"
-          disabled={!validPassword || !validEmail || isSubmitted}
+          disabled={!validPassword || !validEmail || !fp || isSubmitted}
         >
           {#if isSubmitted}
             <LoadingLoop />
