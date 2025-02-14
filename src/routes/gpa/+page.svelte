@@ -6,20 +6,17 @@
   import { fade } from "svelte/transition";
   import { toast } from "svelte-sonner";
 
-  // Utility function to convert Arabic-Indic digits to Latin digits
+  // Utility function to convert Arabic-Indic digits to Latin digits (with trimming)
   function convertArabicToLatinDigits(arabicNumber: string) {
     return arabicNumber
+      .trim()
       .replace(/[٠١٢٣٤٥٦٧٨٩]/g, (d: string) => "٠١٢٣٤٥٦٧٨٩".indexOf(d).toString())
-      .replace(/٫/g, "."); // Replace Arabic decimal separator with "."
+      .replace(/٫/g, ".")  // Replace Arabic decimal separator with "."
+      .replace(/،/g, ".") // Replace Arabic decimal separator with "."
+      .replace(/,/g, "."); // Replace Arabic decimal separator with "."
   }
 
-  // Function to parse Arabic integer
-  function parseArabicInt(arabicNumber: string) {
-    const latinNumber = convertArabicToLatinDigits(arabicNumber);
-    return parseInt(latinNumber, 10);
-  }
-
-  // Function to parse Arabic float
+  // Use parseFloat to capture any decimals (after trimming)
   function parseArabicFloat(arabicNumber: string) {
     const latinNumber = convertArabicToLatinDigits(arabicNumber);
     return parseFloat(latinNumber);
@@ -66,23 +63,26 @@
   const prevCredits = persisted("prevCredits", "");
 
   let gpa: number = 0;
-  // use weighted mean to calculate GPA, if the course is not graded yet, ignore it
+  // Calculate weighted GPA using floating-point parsing for credits
   $: {
     let totalCredits = 0;
     let totalWeightedGrade = 0;
     for (const course of $courses) {
       if (course.grade && course.grade.value && course.credits) {
-        totalCredits += parseArabicInt(course.credits);
+        // Use parseArabicFloat to handle potential decimals and extra spaces
+        const credits = parseArabicFloat(course.credits);
+        totalCredits += credits;
         const grade = course.grade.value as keyof typeof grades;
-        totalWeightedGrade += grades[grade] * parseArabicInt(course.credits);
+        totalWeightedGrade += grades[grade] * credits;
       }
     }
     if ($prevGpa && $prevCredits) {
-      totalCredits += parseArabicInt($prevCredits);
-      totalWeightedGrade += parseArabicFloat($prevGpa) * parseArabicInt($prevCredits);
+      const prevCred = parseArabicFloat($prevCredits);
+      totalCredits += prevCred;
+      totalWeightedGrade += parseArabicFloat($prevGpa) * prevCred;
     }
-    // round to 2 decimal places
-    gpa = Math.round((totalWeightedGrade / totalCredits) * 100) / 100;
+    // Use toFixed to round the result to 2 decimal places
+    gpa = Number((totalWeightedGrade / totalCredits).toFixed(2));
   }
 
   let grade: number | null = null;
@@ -98,6 +98,7 @@
     }
   }
 </script>
+
 
 <svelte:head>
   <title>
