@@ -244,7 +244,11 @@ Output must be valid JSON.`;
     </div>
     <div class="bg-primary/70 w-full p-4 rounded">
       <h4>
-        تدري ان تقدر تستعمل
+        معلومة 1: إدخال كل المقررات لجميع الفصول الدراسية يعطيك نتيجة أدق
+      </h4>
+      <hr class="my-2" />
+      <h4>
+        معلومة 2: تقدر تستعمل
         <Button variant="link" class="text-sky-400 text-base w-fit h-fit p-0 m-0" href="https://chatgpt.com/">ChatGPT
         </Button>
         لتسهيل حساب المعدل؟
