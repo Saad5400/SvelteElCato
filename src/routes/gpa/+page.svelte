@@ -63,10 +63,11 @@
   ]);
 
   let gpa: number = 0;
+  let approximateGpa: number = 0;
+  let totalCredits: number = 0;
+  let totalWeightedGrade: number = 0;
   // Calculate weighted GPA using floating-point parsing for credits
   $: {
-    let totalCredits = 0;
-    let totalWeightedGrade = 0;
     for (const course of $courses) {
       if (course.grade && course.grade.value && course.credits) {
         // Use parseArabicFloat to handle potential decimals and extra spaces
@@ -78,7 +79,8 @@
     }
 
     // Use toFixed to round the result to 2 decimal places
-    gpa = Number((totalWeightedGrade / totalCredits).toFixed(2));
+    gpa = Number((totalWeightedGrade / totalCredits).toFixed(5));
+    approximateGpa = Number((totalWeightedGrade / totalCredits).toFixed(2));
   }
 
   const chatGptPrompt = `You are given a student's academic history, which includes details about the courses they have taken, the number of credits for each course, and the grades they received. Your task is to convert this information into JSON data that strictly follows the structure below:
@@ -122,18 +124,48 @@ Output must be valid JSON.`;
     <h1 class="mb-8">
       حاسبة المعدل لأم القرى
     </h1>
-    <h2 use:autoAnimate>
-      معدلك:
+    <h3 use:autoAnimate>
       {#if (gpa)}
-        <span>
-          {gpa} / 4
-        </span>
+        <ul class="list-none list-inside w-full">
+          <li class="flex justify-between border-b-[1px]">
+            <span>
+              معدلك الحقيقي:
+            </span>
+            <span>
+              {gpa}
+            </span>
+          </li>
+          <li class="flex justify-between border-b-[1px]">
+            <span>
+              معدلك التقريبي:
+            </span>
+            <span>
+              {approximateGpa}
+            </span>
+          </li>
+          <li class="flex justify-between border-b-[1px]">
+            <span>
+              الساعات المجتازة:
+            </span>
+            <span>
+              {totalCredits}
+            </span>
+          </li>
+          <li class="flex justify-between">
+            <span>
+              إجمالي النقاط:
+            </span>
+            <span>
+              {totalWeightedGrade}
+            </span>
+          </li>
+        </ul>
       {:else}
         <span>
           املأ البيانات لحساب المعدل
         </span>
       {/if}
-    </h2>
+    </h3>
     <hr />
     <Button class="w-full" variant="outline3DFilled"
             on:click={() => $courses = [{ }, ...$courses]}>
