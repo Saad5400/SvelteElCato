@@ -259,7 +259,7 @@ Output must be valid JSON.`;
         </li>
         <li>
           ارفع الملف (او الصق كل محتوياته كنص) ل ChatGPT وقوله:
-          <CopyText variant="default" class="bg-primary-foreground/80 hover:bg-primary-foreground" copyText={chatGptPrompt} />
+          <CopyText variant="default" class="text-primary bg-primary-foreground/80 hover:bg-primary-foreground" copyText={chatGptPrompt} />
         </li>
         <li>
           انسخ كود البيانات من ChatGPT واضغط على استيراد البيانات هنا
