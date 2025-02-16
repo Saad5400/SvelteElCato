@@ -6,6 +6,7 @@
   import { fade } from "svelte/transition";
   import { toast } from "svelte-sonner";
   import autoAnimate from "@formkit/auto-animate";
+  import CopyText from "$lib/components/CopyText.svelte";
 
   // Utility function to convert Arabic-Indic digits to Latin digits (with trimming)
   function convertArabicToLatinDigits(arabicNumber: string) {
@@ -79,6 +80,34 @@
     // Use toFixed to round the result to 2 decimal places
     gpa = Number((totalWeightedGrade / totalCredits).toFixed(2));
   }
+
+  const chatGptPrompt = `You are given a student's academic history, which includes details about the courses they have taken, the number of credits for each course, and the grades they received. Your task is to convert this information into JSON data that strictly follows the structure below:
+
+{
+  "courses": [
+    {
+      "name": "Course Name",
+      "credits": "Course Credits",
+      "grade": {
+        "value": "Grade Value",
+      }
+    },
+    ...
+  ]
+}
+
+Requirements:
+
+Each course should be represented as an object within the "courses" array.
+The first course must be the latest course taken by the student.
+The last course must be the earliest course taken by the student.
+For every course:
+name: Use the first two words in Arabic and the course order (e.g., "برمجة 1", برمجة 2")
+credits: Use the credit value of the course as a string.
+grade: Represent the grade as an object with:
+value: The grade received (e.g., "A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"). If the course doesn't have a grade received, you should skip it entirely.
+Do not include any additional keys or fields.
+Output must be valid JSON.`;
 </script>
 
 
@@ -106,14 +135,8 @@
       {/if}
     </h2>
     <hr />
-    <div class="bg-primary w-full p-4 rounded">
-      <h4>
-        ميزة تجريبية: ارفع السجل الأكاديمي وسيتم ملء البيانات تلقائيا
-      </h4>
-      <Input type="file" accept=".pdf" />
-    </div>
     <Button class="w-full" variant="outline3DFilled"
-            on:click={() => $courses = [...$courses, { }]}>
+            on:click={() => $courses = [{ }, ...$courses]}>
       إضافة مقرر
     </Button>
     <main class="flex flex-col gap-2" use:autoAnimate>
@@ -135,7 +158,7 @@
               <Select.Value placeholder="التقدير" />
             </Select.Trigger>
             <Select.Content>
-              {#each Object.keys(grades) as grade}
+              {#each Object.keys(grades) as grade (grade)}
                 <Select.Item value={grade}>{grade}</Select.Item>
               {/each}
             </Select.Content>
@@ -164,9 +187,19 @@
                   navigator.clipboard.readText().then(text => {
                       try {
                           const data = JSON.parse(text);
+
+                          // copy the courses grade value to the label
+                          data.courses.forEach((course) => {
+                              if (course.grade && course.grade.value) {
+                                  course.grade['label'] = course.grade.value;
+                                  course.grade['disabled'] = false;
+                              }
+                          });
+
                           $courses = data.courses;
                           toast.success("تم استيراد البيانات بنجاح");
                       } catch (e) {
+                          console.error(e);
                           toast.error("خطأ في استيراد البيانات");
                       }
                   });
@@ -174,6 +207,26 @@
           استيراد البيانات
         </Button>
       </div>
+    </div>
+    <div class="bg-primary/70 w-full p-4 rounded">
+      <h4>
+        تدري ان تقدر تستعمل
+        <Button variant="link" class="text-sky-400 text-base w-fit h-fit p-0 m-0" href="https://chatgpt.com/">ChatGPT
+        </Button>
+        لتسهيل حساب المعدل؟
+      </h4>
+      <ol class="list-decimal list-inside">
+        <li>
+          ادخل موقع الجامعة > بوابتي الأكاديمية > شخصي > الوثائق > السجل الأكاديمي
+        </li>
+        <li>
+          ارفع الملف (او الصق كل محتوياته كنص) ل ChatGPT وقوله:
+          <CopyText variant="default" class="bg-background/80 hover:bg-background" copyText={chatGptPrompt} />
+        </li>
+        <li>
+          انسخ كود البيانات من ChatGPT واضغط على استيراد البيانات هنا
+        </li>
+      </ol>
     </div>
   </main>
 </div>
