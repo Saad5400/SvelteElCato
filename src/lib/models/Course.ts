@@ -17,10 +17,13 @@ export default interface Course extends BaseModel {
   image: string;
   details: string;
   price: number;
+  linked: string;
+  telegram: string;
   expand: {
     tracks: Track[];
     quizzes: Quiz[];
     ratings: Rating[];
+    linked: Course;
   };
 }
 

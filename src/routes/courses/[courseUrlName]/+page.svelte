@@ -59,6 +59,15 @@
       {/if}
     </Button>
   {/if}
+  {#if data.course.telegram}
+    <Button
+      href={data.course.telegram}
+      variant="outline3DFilled"
+      class="roboto-mono h-fit text-xl"
+    >
+      قروب الدورة (للمشتركين فقط)
+    </Button>
+  {/if}
   {#if data.course.tracks && data.course.tracks.length > 0}
     <CardsGrid title="المسارات">
       {#each data.course.expand.tracks as track}

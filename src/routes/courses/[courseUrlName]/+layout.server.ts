@@ -12,22 +12,22 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
       locals.pb.filter(
         "urlName = {:courseUrlName}",
         {
-          courseUrlName: params.courseUrlName,
-        },
+          courseUrlName: params.courseUrlName
+        }
       ),
       {
-        expand: "quizzes,tracks",
+        expand: "quizzes,tracks"
         // cache: 'no-cache',
-      },
+      }
     )
     .catch(handleError)) as Course;
 
   async function requestSteps(track: Track) {
     return locals.pb.collection("stepsView").getFullList({
       filter: locals.pb.filter("{:id} ~ id", {
-        id: track.steps.map((s) => s),
+        id: track.steps.map((s) => s)
       }),
-      requestKey: track.id,
+      requestKey: track.id
       // cache: 'no-cache',
     });
   }
@@ -37,10 +37,10 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
       course.expand?.tracks.slice(i, i + 6).map(async (track) => {
         track.expand = {
           ...track.expand,
-          steps: await requestSteps(track),
+          steps: await requestSteps(track)
 
         };
-      }),
+      })
     );
   }
 
@@ -53,8 +53,12 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
     return [];
   });
 
+  if (!locals.user || !locals.user.registeredCourses.includes(course.id)) {
+    course.telegram = "";
+  }
+
   return {
     course,
-    allQuestions,
+    allQuestions
   };
 };
