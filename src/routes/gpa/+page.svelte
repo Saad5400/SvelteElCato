@@ -5,6 +5,7 @@
   import * as Select from "$lib/components/ui/select";
   import { fade } from "svelte/transition";
   import { toast } from "svelte-sonner";
+  import autoAnimate from "@formkit/auto-animate";
 
   // Utility function to convert Arabic-Indic digits to Latin digits (with trimming)
   function convertArabicToLatinDigits(arabicNumber: string) {
@@ -59,8 +60,6 @@
   const courses = persisted<Course[]>("courses", [
     {}
   ]);
-  const prevGpa = persisted("prevGpa", "");
-  const prevCredits = persisted("prevCredits", "");
 
   let gpa: number = 0;
   // Calculate weighted GPA using floating-point parsing for credits
@@ -76,26 +75,9 @@
         totalWeightedGrade += grades[grade] * credits;
       }
     }
-    if ($prevGpa && $prevCredits) {
-      const prevCred = parseArabicFloat($prevCredits);
-      totalCredits += prevCred;
-      totalWeightedGrade += parseArabicFloat($prevGpa) * prevCred;
-    }
+
     // Use toFixed to round the result to 2 decimal places
     gpa = Number((totalWeightedGrade / totalCredits).toFixed(2));
-  }
-
-  let grade: number | null = null;
-  let mark: string | null = null;
-  $: {
-    if (!grade) {
-      mark = null;
-    }
-    for (const [m, g] of Object.entries(marks)) {
-      if (grade && grade >= Number(m)) {
-        mark = g;
-      }
-    }
   }
 </script>
 
@@ -111,51 +93,56 @@
     <h1 class="mb-8">
       حاسبة المعدل لأم القرى
     </h1>
-    {#if (gpa)}
-      <h2 transition:fade>
-        معدلك: {gpa} / 4
-      </h2>
-    {/if}
-    <!-- prev gpa and prev credits -->
-    <div class="flex flex-col gap-4">
-      <h5>
-        لحساب المعدل التراكمي:
-      </h5>
-      <div class="flex gap-4">
-        <Input bind:value={$prevGpa} class="w-1/2" placeholder="المعدل الحالي (اختياري)" />
-        <Input bind:value={$prevCredits} class="w-1/2" placeholder="الساعات المجتازة (اختياري)" />
-      </div>
-    </div>
+    <h2 use:autoAnimate>
+      معدلك:
+      {#if (gpa)}
+        <span>
+          {gpa} / 4
+        </span>
+      {:else}
+        <span>
+          املأ البيانات لحساب المعدل
+        </span>
+      {/if}
+    </h2>
     <hr />
-    {#each $courses as course}
-      <div class="flex" transition:fade>
-        <Button class="w-fit rounded-e-none" variant="destructive3D"
-                on:click={() => $courses = $courses.filter(c => c !== course)}>
-          حذف
-        </Button>
-        <Input class="w-full rounded-e-none rounded-s-none border-e-0 border-s-0" bind:value={course.name}
-               placeholder="اسم المقرر" />
-        <Input class="w-fit min-w-0 rounded-s-none rounded-e-none" bind:value={course.credits}
-               placeholder="الساعات" />
-        <Select.Root
-          selected={course.grade}
-          onSelectedChange={grade => course.grade = grade}
-        >
-          <Select.Trigger class="w-fit min-w-18 rounded-s-none border-s-0">
-            <Select.Value placeholder="التقدير" />
-          </Select.Trigger>
-          <Select.Content>
-            {#each Object.keys(grades) as grade}
-              <Select.Item value={grade}>{grade}</Select.Item>
-            {/each}
-          </Select.Content>
-        </Select.Root>
-      </div>
-    {/each}
+    <div class="bg-primary w-full p-4 rounded">
+      <h4>
+        ميزة تجريبية: ارفع السجل الأكاديمي وسيتم ملء البيانات تلقائيا
+      </h4>
+      <Input type="file" accept=".pdf" />
+    </div>
     <Button class="w-full" variant="outline3DFilled"
             on:click={() => $courses = [...$courses, { }]}>
       إضافة مقرر
     </Button>
+    <main class="flex flex-col gap-2" use:autoAnimate>
+      {#each $courses as course (course)}
+        <div class="flex">
+          <Button class="w-fit rounded-e-none" variant="destructive3D"
+                  on:click={() => $courses = $courses.filter(c => c !== course)}>
+            حذف
+          </Button>
+          <Input class="w-full rounded-e-none rounded-s-none border-e-0 border-s-0" bind:value={course.name}
+                 placeholder="اسم المقرر" />
+          <Input class="w-fit min-w-0 rounded-s-none rounded-e-none" bind:value={course.credits}
+                 placeholder="الساعات" />
+          <Select.Root
+            selected={course.grade}
+            onSelectedChange={grade => course.grade = grade}
+          >
+            <Select.Trigger class="w-fit min-w-18 rounded-s-none border-s-0">
+              <Select.Value placeholder="التقدير" />
+            </Select.Trigger>
+            <Select.Content>
+              {#each Object.keys(grades) as grade}
+                <Select.Item value={grade}>{grade}</Select.Item>
+              {/each}
+            </Select.Content>
+          </Select.Root>
+        </div>
+      {/each}
+    </main>
     <!--    export/import courses -->
     <div class="flex flex-col gap-2">
       <p>
@@ -166,8 +153,6 @@
                 on:click={() => {
                   const data = {
                       courses: $courses,
-                      prevGpa: $prevGpa,
-                      prevCredits: $prevCredits
                   };
                   navigator.clipboard.writeText(JSON.stringify(data));
                   toast.success("تم نسخ البيانات للحافظة");
@@ -180,8 +165,6 @@
                       try {
                           const data = JSON.parse(text);
                           $courses = data.courses;
-                          $prevGpa = data.prevGpa;
-                          $prevCredits = data.prevCredits;
                           toast.success("تم استيراد البيانات بنجاح");
                       } catch (e) {
                           toast.error("خطأ في استيراد البيانات");
@@ -191,20 +174,6 @@
           استيراد البيانات
         </Button>
       </div>
-    </div>
-
-    <hr>
-
-    <h2>
-      تحويل الدرجة إلى التقدير
-    </h2>
-    <div class="flex flex-col">
-      <Input class="w-full" bind:value={grade} placeholder="الدرجة" />
-      {#if (mark)}
-        <h3 transition:fade>
-          تقديرك هو {mark}
-        </h3>
-      {/if}
     </div>
   </main>
 </div>
