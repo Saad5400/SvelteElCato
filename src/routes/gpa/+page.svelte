@@ -68,6 +68,8 @@
   let totalWeightedGrade: number = 0;
   // Calculate weighted GPA using floating-point parsing for credits
   $: {
+    totalCredits = 0;
+    totalWeightedGrade = 0;
     for (const course of $courses) {
       if (course.grade && course.grade.value && course.credits) {
         // Use parseArabicFloat to handle potential decimals and extra spaces
