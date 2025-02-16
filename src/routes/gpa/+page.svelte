@@ -251,7 +251,7 @@ Output must be valid JSON.`;
         معلومة 2: تقدر تستعمل
         <Button variant="link" class="text-sky-400 text-base w-fit h-fit p-0 m-0" href="https://chatgpt.com/">ChatGPT
         </Button>
-        لتسهيل حساب المعدل؟
+        لتسهيل حساب المعدل
       </h4>
       <ol class="list-decimal list-inside">
         <li>
