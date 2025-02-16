@@ -249,7 +249,7 @@ Output must be valid JSON.`;
       <hr class="my-2" />
       <h4>
         معلومة 2: تقدر تستعمل
-        <Button variant="link" class="text-sky-400 text-base w-fit h-fit p-0 m-0" href="https://chatgpt.com/">ChatGPT
+        <Button variant="link" class="text-primary-foreground text-base w-fit h-fit p-0 m-0" href="https://chatgpt.com/">ChatGPT
         </Button>
         لتسهيل حساب المعدل
       </h4>
@@ -259,7 +259,7 @@ Output must be valid JSON.`;
         </li>
         <li>
           ارفع الملف (او الصق كل محتوياته كنص) ل ChatGPT وقوله:
-          <CopyText variant="default" class="bg-background/80 hover:bg-background" copyText={chatGptPrompt} />
+          <CopyText variant="default" class="bg-primary-foreground/80 hover:bg-primary-foreground" copyText={chatGptPrompt} />
         </li>
         <li>
           انسخ كود البيانات من ChatGPT واضغط على استيراد البيانات هنا
