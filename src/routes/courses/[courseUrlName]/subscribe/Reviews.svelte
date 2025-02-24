@@ -7,13 +7,13 @@
   <p class="font-bold">التفكير الحاسوبي دفعة 46</p>
   <hr />
   {#each Array.from({ length: 8 }, (_, i) => i) as i}
-    <img src={`/images/reviews/46/se1011/${i + 1}.jpeg`} alt="review" />
+    <img src={`/images/reviews/46/se1011/${i + 1}.jpg`} alt="review" />
   {/each}
 
   <p class="font-bold">برمجة 1 دفعة 46</p>
   <hr />
   {#each Array.from({ length: 15 }, (_, i) => i) as i}
-    <img src={`/images/reviews/46/cs1211/${i + 1}.jpeg`} alt="review" />
+    <img src={`/images/reviews/46/cs1211/${i + 1}.jpg`} alt="review" />
   {/each}
 
   <p class="font-bold">برمجة 1 دفعة 45</p>
