@@ -67,7 +67,7 @@ export const actions: Actions = {
     const pendingPaymentsCount = payments.filter(payment => payment.status === "pending").length;
     const remainder = getCourseRemainder(payments, course);
 
-    if (pendingPaymentsCount > 0) {
+    if (pendingPaymentsCount >= 3) {
       return fail(400, {
         message: "لديك طلبات اشتراك معلقة! يجب انتظار موافقة الإدارة قبل تقديم طلب جديد"
       });
